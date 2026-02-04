@@ -78,8 +78,8 @@ export class GameParticles extends BareGame
             }
         });
         
-        particleController.Add(this.smokeEmitter, {autoStart: true}); // AUTO START MAKES IT BECOME A CONTINUOUS EMITTER
         particleController.Add(this.explosionEmitter); // ONE SHOT IS THE DEFAULT. ACTIVATED BELOW WITH oneShot()
+        particleController.Add(this.smokeEmitter, {autoStart: true}); // AUTO START MAKES IT BECOME A CONTINUOUS EMITTER
     }
 
     OnUpdate(deltaTime: number): void
