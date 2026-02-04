@@ -1,0 +1,27 @@
+
+import { BareGame, GameObject, StartBare } from "bare-engine";
+
+/*  
+    WE ADD A SIMPLE GAME OBJECT WITH NAME '⚙'
+    IT WILL FIND ITS CORRESPONDING IMAGE AT 'public/demos/basics/images/' AND STREAM IT IN
+*/
+
+export class GameBasics extends BareGame
+{
+    cog: GameObject;
+
+    OnStart()
+    {
+        // ADD A SIMPLE GAME OBJECT ⚙ 
+        this.cog = bare.AddGameObject('⚙')
+            .SetPosition(bare.width * .5, bare.height * .5)
+            .CenterPivot();
+    }
+
+    OnUpdate(deltaTime: number): void
+    {
+        this.cog.rotation++;
+    }
+}
+
+StartBare(GameBasics);

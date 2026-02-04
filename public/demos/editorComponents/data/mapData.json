@@ -1,0 +1,25 @@
+{
+  "name": "mapEditor",
+  "categories": [
+    {
+	  "Levels": {
+		"image": "📦",
+		"entries": "level_[editorImages]"
+	  }
+	}
+  ],
+  "entities": 
+  {
+	"level_*":
+    {
+		"imagePath": "editorImages",
+		"editorComponents": {
+			"levelConnector": {}
+		},
+		"pivot": {
+	        "x": 0.5,
+	        "y": 0.5
+		}
+    }
+  }
+}

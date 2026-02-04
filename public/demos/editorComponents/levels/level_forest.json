@@ -1,0 +1,66 @@
+{
+  "name": "Sample Level",
+  "dimensions": {
+    "width": 3080,
+    "height": 2450
+  },
+  "background": {
+    "color": "#4CAF50"
+  },
+  "entitiesByLayer": {
+    "OBJECTS": [
+      {
+        "name": "🏚",
+        "position": {
+          "x": 147,
+          "y": 467
+        },
+        "customName": "brokenHouse"
+      },
+      {
+        "name": "🪵",
+        "position": {
+          "x": 1190,
+          "y": 671
+        }
+      },
+      {
+        "name": "🌲",
+        "position": {
+          "x": 685.710658238304,
+          "y": 1674.0017366306793
+        }
+      },
+      {
+        "name": "🌳",
+        "position": {
+          "x": 699.9283183543221,
+          "y": 546.2867265827135
+        }
+      },
+      {
+        "name": "🌳",
+        "position": {
+          "x": 105,
+          "y": 1219
+        }
+      },
+      {
+        "name": "🪓",
+        "position": {
+          "x": 787,
+          "y": 1207
+        }
+      }
+    ],
+    "SURFACE": [
+      {
+        "name": "grassPatch",
+        "position": {
+          "x": 103.53255230948616,
+          "y": 962.5404760049296
+        }
+      }
+    ]
+  }
+}

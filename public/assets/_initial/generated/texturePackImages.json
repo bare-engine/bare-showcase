@@ -1,0 +1,97 @@
+{
+  "frames": {
+    "🍀": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 102,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 102,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 102,
+        "h": 121
+      }
+    },
+    "🌺": {
+      "frame": {
+        "x": 106,
+        "y": 2,
+        "w": 123,
+        "h": 119
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 123,
+        "h": 119
+      },
+      "sourceSize": {
+        "w": 123,
+        "h": 119
+      }
+    },
+    "🌸": {
+      "frame": {
+        "x": 2,
+        "y": 125,
+        "w": 122,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 122,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 122,
+        "h": 120
+      }
+    },
+    "🌱": {
+      "frame": {
+        "x": 231,
+        "y": 2,
+        "w": 121,
+        "h": 119
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 121,
+        "h": 119
+      },
+      "sourceSize": {
+        "w": 121,
+        "h": 119
+      }
+    }
+  },
+  "animations": {},
+  "meta": {
+    "app": "http://github.com/pixijs/assetpack",
+    "version": "1.0",
+    "image": "texturePackImages.webp",
+    "format": "RGBA8888",
+    "size": {
+      "w": 354,
+      "h": 247
+    },
+    "scale": 1,
+    "related_multi_packs": []
+  }
+}

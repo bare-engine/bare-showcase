@@ -1,0 +1,111 @@
+{
+  "name": "Sample Level",
+  "dimensions": {
+    "width": 2250,
+    "height": 2000
+  },
+  "background": {
+    "color": "#979797"
+  },
+  "entitiesByLayer": {
+    "OBJECTS": [
+      {
+        "name": "level_farm",
+        "position": {
+          "x": 1101,
+          "y": 782
+        },
+        "editorComponents": {
+          "levelConnector": {
+            "top": "level_goal",
+            "right": "",
+            "bottom": "level_car",
+            "left": ""
+          }
+        }
+      },
+      {
+        "name": "level_goal",
+        "position": {
+          "x": 1112.067208098841,
+          "y": 453.4643435875954
+        },
+        "editorComponents": {
+          "levelConnector": {
+            "top": "",
+            "right": "",
+            "bottom": "level_farm",
+            "left": ""
+          }
+        }
+      },
+      {
+        "name": "level_car",
+        "position": {
+          "x": 1094,
+          "y": 1138
+        },
+        "editorComponents": {
+          "levelConnector": {
+            "top": "level_farm",
+            "right": "level_picknick",
+            "bottom": "level_whirlwind",
+            "left": "level_city"
+          }
+        }
+      },
+      {
+        "name": "level_city",
+        "position": {
+          "x": 765.5219087985092,
+          "y": 1152.331557611436
+        },
+        "editorComponents": {
+          "levelConnector": {
+            "top": "",
+            "right": "level_car",
+            "bottom": "",
+            "left": ""
+          }
+        }
+      },
+      {
+        "name": "level_whirlwind",
+        "position": {
+          "x": 1090.8270660096596,
+          "y": 1474.704485676777
+        },
+        "editorComponents": {
+          "levelConnector": {
+            "top": "level_car",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        }
+      },
+      {
+        "name": "level_picknick",
+        "position": {
+          "x": 1463.8270660096596,
+          "y": 1136.704485676777
+        },
+        "editorComponents": {
+          "levelConnector": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": "level_car"
+          }
+        }
+      }
+    ],
+    "BACKGROUND": [],
+    "SURFACE": [],
+    "FOREGROUND": [],
+    "COLLISION": [],
+    "ARROWS": [],
+    "TEST": [],
+    "TOP": []
+  }
+}
