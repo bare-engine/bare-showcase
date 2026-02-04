@@ -60,6 +60,8 @@ export class GameEditorComponents extends BareGame
 
     async OnStart()
     {
+        await assetsHandler.GetTexturePromise("arrowLevel");
+
         // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
         // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
         mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
@@ -82,12 +84,10 @@ export class GameEditorComponents extends BareGame
         this.PlaceDirectionalButtons();
     }
 
-    async PlaceDirectionalButtons()
+    PlaceDirectionalButtons()
     {
         var uiObjs = uiController.GetLayer(UILayer.UI).slice(0);
         uiObjs.forEach(o => bare.RemoveGameObject(o));
-
-        await assetsHandler.GetTexturePromise("arrowLevel");
 
         var connections = mapHandler.map[SaveData.currentLevelStr].connections;
         for (let dir in connections)
