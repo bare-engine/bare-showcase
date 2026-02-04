@@ -1,7 +1,7 @@
 import entityDataJson from '../entityData.json' 
 
 import { BareGame, BareClasses, StartBare, levelController, CameraScaleMode, cameraHandler } from "bare-engine";
-import { RigidBody } from "bare-engine/sopiroPhysics";
+import { Circle, RigidBody, Type } from "bare-engine/sopiroPhysics";
 
 /*  
     THIS DEMO SHOWS A PHYSICS ENGINE CALLED SOPIRO IN ACTION
@@ -33,8 +33,17 @@ export class GameSopiroPhysics extends BareGame
         await levelController.LoadLevel('level');
         cameraHandler.SetCameraDimensionsToLevel();
 
-        var rb = (objectController.GetObjectByName('⚽') as RigidBody);
-        rb?.SetVelocityXY(110, 0);
+        // EXAMPLE OF CREATING A RIGID BODY BY CODE
+        // THIS WORKS BECAUSE RIGIDBODY EXTENDS GAMEOBJECT
+        var rigidBody = new Circle(36, Type.Dynamic);
+        rigidBody.restitution = 1;
+        rigidBody.mass = 2;
+        bare.AddGameObject(rigidBody);
+
+        rigidBody.InitTexture('⚽');
+        rigidBody.CenterPivot();
+        rigidBody.SetPosition(levelController.currentLevel.dimensions.width * .5, 100);
+        rigidBody.SetVelocityXY(110, 0);
     }
 }
 
