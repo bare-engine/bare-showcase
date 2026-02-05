@@ -28,7 +28,7 @@ export class LevelConnectorComponent extends BaseComponent
 
     OnUpdate(deltaTime: number): void 
     {
-        if (mouseController.mouseIsDown || mouseController.rightMouseIsDown/* && hitboxController.GetCurrentHitboxHover() == this.go.hitbox*/)
+        if (mouseController.IsMouseDown() || mouseController.IsRightMouseDown()/* && hitboxController.GetCurrentHitboxHover() == this.go.hitbox*/)
         {
             var directions:Direction[] = ["top", "right", "bottom", "left"];
             for (var direction of directions)

@@ -85,7 +85,7 @@ export class GameParticles extends BareGame
     OnUpdate(deltaTime: number): void
     {
         // LET THE SMOKE FOLLOW THE MOUSE
-        this.smokeEmitter.position.set(mouseController.globalMousePosition.x, mouseController.globalMousePosition.y);
+        this.smokeEmitter.position.set(mouseController.screen.position.x, mouseController.screen.position.y);
         
         // ONE SHOT THE EXPLOSION EVERY explosionInterval SECONDS
         this.explosionTimer += deltaTime;

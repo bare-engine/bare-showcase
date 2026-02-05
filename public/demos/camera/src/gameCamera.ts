@@ -53,8 +53,8 @@ export class GameCamera extends BareGame
     OnUpdate(deltaTime: number): void
     {
         cameraHandler.SetCameraPosition(
-            mouseController.globalMousePosition.x,
-            mouseController.globalMousePosition.y
+            mouseController.screen.position.x,
+            mouseController.screen.position.y
         );
     }
 }
