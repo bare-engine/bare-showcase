@@ -38,8 +38,6 @@ export class GameAnimation extends BareGame
 
         await assetsHandler.LoadAtlas("texturePackImages");
 
-        bare.AddClass(BareClasses.ComponentController);
-        bare.AddClass(AnimationComponent);
     }
     
     OnStart()
@@ -48,15 +46,16 @@ export class GameAnimation extends BareGame
             .SetPosition(0, 110);
 
         var buffalo = this.AddGameObject('buffalo');
-        buffalo.animation.Play('run');
-        buffalo.animation.OnComplete('eat', 'run');
+        var animComponent = buffalo.AddComponent(AnimationComponent);
+        animComponent.Play('run');
+        animComponent.OnComplete('eat', 'run');
 
         buffalo.SetScale(4);
         buffalo.SetPosition(100, 550);
 
         events.on('pointerDown', (info) => {
             if (info.isLeftButton)
-                buffalo.animation.Play('eat', () => trace('animation complete'))
+                animComponent.Play('eat', () => trace('animation complete'))
         });
     }
 
