@@ -1,5 +1,5 @@
 
-import { AnimationComponent, BareGame, StartBare, assetsHandler } from "bare-engine";
+import { AnimationComponent, BareGame, StartBare, assetsHandler, events } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO LOAD AND PLAY AN ANIMATION
@@ -52,7 +52,11 @@ export class GameAnimation extends BareGame
 
         buffalo.SetScale(4);
         buffalo.SetPosition(100, 550);
-        buffalo.RemoveComponent(AnimationComponent);
+        
+        events.on('pointerDown', (info) => {
+            if (info.isLeftButton)
+                animComponent.Play('eat', () => trace('animation complete'))
+        });
     }
 
     OnClear(): void
