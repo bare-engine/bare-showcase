@@ -4,7 +4,8 @@
         "module": "ESNext",
         "outDir": "./dist/",
         "moduleResolution": "bundler",
-        "baseUrl": "./src"
+        "baseUrl": "./src",
+        "preserveSymlinks": true
     },
     "include": [
         "src"

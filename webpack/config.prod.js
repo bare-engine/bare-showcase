@@ -32,6 +32,7 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".js", ".json"],
+        symlinks: false,
         alias: {
         }
     },
