@@ -16,7 +16,7 @@ const data = ` {
             "isHappy": true
         },
         "🙁": {
-            "extend": "EmojiObject",
+            "extendClass": "EmojiObject",
             "pivot": {"x": 0.5, "y": 0.5},
             "components": {
                 "pop": {}

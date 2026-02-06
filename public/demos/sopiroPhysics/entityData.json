@@ -9,32 +9,33 @@
     ],
     "entityBases": {
         "ANY": {
+        },
+        "physicsBase": {
+            "mass": 1,
+            "restitution": 0.8
+        },
+        "physicsStatic": {
+            "static": true,
+            "restitution": 0.6
         }
     },
     "entities": {
         "⚽": {
-            "extend": "Circle",
-            "mass": 2,
-            "restitution": 1
+            "extendClass": "Circle",
+            "extendData": "physicsBase"
         },
         "🏈": {
-            "extend": "Polygon",
-            "polygonVertices": [23, 29, 36, 17, 51, 9, 66, 3, 86, 1, 101, 4, 114, 11, 119, 22, 120, 35, 116, 61, 106, 81, 92, 99, 71, 112, 50, 119, 30, 122, 17, 121, 7, 116, 1, 103, 1, 84, 4, 61],
-            "mass": 2,
-            "angularVelocity": 5,
-            "restitution": 0.8
+            "extendClass": "Polygon",
+            "extendData": "physicsBase",
+            "polygonVertices": [23, 29, 36, 17, 51, 9, 66, 3, 86, 1, 101, 4, 114, 11, 119, 22, 120, 35, 116, 61, 106, 81, 92, 99, 71, 112, 50, 119, 30, 122, 17, 121, 7, 116, 1, 103, 1, 84, 4, 61]
         },
         "platform": {
-            "extend": "Box",
-            "static": true,
-            "mass": 1,
-            "restitution": 0.5
+            "extendClass": "Box",
+            "extendData": "physicsStatic"
         },
         "ledge": {
-            "extend": "Box",
-            "static": true,
-            "mass": 1,
-            "restitution": 0.5
+            "extendClass": "Box",
+            "extendData": "physicsStatic"
         }
     }
 }

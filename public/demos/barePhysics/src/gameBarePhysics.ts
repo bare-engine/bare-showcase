@@ -16,7 +16,7 @@ export class GameBarePhysics extends BareGame
         super(JSON.parse(`{
             "entityBases": {
                 "ANY": {
-                    "extend": "PhysicsObjectBare",
+                    "extendClass": "PhysicsObjectBare",
                     "hitbox": "FULL",
                     "drag": 0.01
                 }

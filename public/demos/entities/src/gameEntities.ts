@@ -26,17 +26,17 @@ const data = ` {
             "rotation": 90
         },
         "bigAndNoRotation": {
-            "extend": "big",
+            "extendData": "big",
             "propertiesRemoved": ["rotation"]
         }
     },
     "entities": {
         "🍐": {},
         "🍌": {
-            "extend": "Fruit"
+            "extendClass": "Fruit"
         },
         "🍎": {
-            "extend": "bigAndNoRotation"
+            "extendData": "bigAndNoRotation"
         }
     }
   }`;
