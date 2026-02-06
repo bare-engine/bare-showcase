@@ -79,8 +79,8 @@ export class GameEditorComponents extends BareGame
 
     override OnLoadedLevel(level:LevelData)
     {
-        cameraHandler.SetCameraScaleMode(CameraScaleMode.Contain);
-        cameraHandler.SetCameraDimensionsToLevel();
+        cameraHandler.SetScaleMode(CameraScaleMode.Contain);
+        cameraHandler.SetDimensionsToLevel();
         this.PlaceDirectionalButtons();
     }
 

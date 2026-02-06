@@ -13,7 +13,7 @@ export class GameCamera extends BareGame
 {
     async OnStart()
     {
-        cameraHandler.SetCameraBounds({ x: -4500, y: -1500, width: 9000, height: 3000 });
+        cameraHandler.SetBounds({ x: -4500, y: -1500, width: 9000, height: 3000 });
 
         for (var i = 0; i < 500; i++)
         {
@@ -32,27 +32,27 @@ export class GameCamera extends BareGame
             if (count % 4 == 0)
             {
                 trace('Switched scaleMode to cover');
-                cameraHandler.SetCameraScaleMode(CameraScaleMode.Cover);
+                cameraHandler.SetScaleMode(CameraScaleMode.Cover);
                 zoom = .05;
             }
             else
             if (count % 2 == 0)
             {
                 trace('Switched scaleMode to contain');
-                cameraHandler.SetCameraScaleMode(CameraScaleMode.Contain);
+                cameraHandler.SetScaleMode(CameraScaleMode.Contain);
                 zoom = .05;
             }
 
             TweenTo(cameraHandler, .6, { zoom: zoom });
             count++;
         }, onUpdate: () => {
-            cameraHandler.CalculateCameraZoomFit()
+            cameraHandler.CalculateZoomFit()
         }, repeat: Infinity });
     }
 
     OnUpdate(deltaTime: number): void
     {
-        cameraHandler.SetCameraPosition(
+        cameraHandler.SetPosition(
             mouseController.screen.position.x,
             mouseController.screen.position.y
         );

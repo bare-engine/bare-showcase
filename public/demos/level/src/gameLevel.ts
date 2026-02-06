@@ -45,8 +45,8 @@ export class GameLevel extends BareGame
 	
 	OnLoadedLevel()
 	{
-		cameraHandler.SetCameraPosition(0, 0);
-		cameraHandler.SetCameraDimensionsToLevel();
+		cameraHandler.SetPosition(0, 0);
+		cameraHandler.SetDimensionsToLevel();
 	}
 }
 
