@@ -14,34 +14,25 @@
     "entities": {
         "⚽": {
             "extend": "Circle",
-            "physicsRadius": 36,
-            "innerScale": 1,
-            "pivot": {"x": 0.5, "y": 0.5},
             "mass": 2,
             "restitution": 1
         },
         "🏈": {
             "extend": "Polygon",
             "polygonVertices": [23, 29, 36, 17, 51, 9, 66, 3, 86, 1, 101, 4, 114, 11, 119, 22, 120, 35, 116, 61, 106, 81, 92, 99, 71, 112, 50, 119, 30, 122, 17, 121, 7, 116, 1, 103, 1, 84, 4, 61],
-            "innerScale": 1,
-            "pivot": {"x": 0.5, "y": 0.5},
             "mass": 2,
             "angularVelocity": 5,
             "restitution": 0.8
         },
         "platform": {
             "extend": "Box",
-            "physicsRect": {"width": 1024, "height": 64},
             "static": true,
-            "pivot": {"x": 0.5, "y": 0.5},
             "mass": 1,
             "restitution": 0.5
         },
         "ledge": {
             "extend": "Box",
-            "physicsRect": {"width": 64, "height": 256},
             "static": true,
-            "pivot": {"x": 0.5, "y": 0.5},
             "mass": 1,
             "restitution": 0.5
         }

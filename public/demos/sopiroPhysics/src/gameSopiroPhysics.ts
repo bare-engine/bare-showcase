@@ -37,12 +37,11 @@ export class GameSopiroPhysics extends BareGame
         // EXAMPLE OF CREATING A RIGID BODY BY CODE
         // THIS WORKS SINCE CIRCLE EXTENDS RIGIDBODY WHICH EXTENDS GAMEOBJECT
         var rigidBody = new Circle(36, Type.Dynamic);
-        rigidBody.restitution = 1;
+        rigidBody.restitution = .8;
         rigidBody.mass = 2;
         bare.AddGameObject(rigidBody);
 
         rigidBody.InitTexture('⚽');
-        rigidBody.CenterPivot();
         rigidBody.SetPosition(levelController.currentLevel.dimensions.width * .5, 100);
         rigidBody.SetVelocityXY(110, 0);
     }
