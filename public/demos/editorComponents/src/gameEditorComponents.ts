@@ -2,7 +2,7 @@ import entityDataJson from './../data/entityData.json'
 import mapDataJson from './../data/mapData.json'
 import mapLevelJson from './../levels/map.json'
 
-import { BareGame, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, BareClasses as BareClasses, StartBare, levelController, CameraScaleMode, editorController, cameraHandler, SettingsHandler} from "bare-engine";
+import { BareGame, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, BareClasses as BareClasses, StartBare, levelController, CameraScaleMode, editorController, cameraHandler, SettingsHandler, plugin} from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, mapHandler } from './mapHandler';
 import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
@@ -55,7 +55,7 @@ export class GameEditorComponents extends BareGame
         this.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
 
         // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
-        bare.plugin?.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
+        plugin.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
     }
 
     async OnStart()
@@ -73,8 +73,9 @@ export class GameEditorComponents extends BareGame
         // NOT NEEDED RIGHT AWAY, BUT HANDY TO HAVE IT BEFORE OPENING THE MAP EDITOR
         await this.mapDataStore.Process(mapDataJson);
 
-        // LOAD THE LEVEL! SaveData.currentLevelStr IS NEEDED TO GO TO LAST LEVEL WHEN RETURNING FROM EDITOR
+        // LOAD THE LEVEL!
         await levelController.LoadLevel(SaveData.currentLevelStr || "level_car");
+        // SaveData.currentLevelStr IS NEEDED TO GO TO LAST LEVEL WHEN RETURNING FROM EDITOR
     }
 
     override OnLoadedLevel(level:LevelData)

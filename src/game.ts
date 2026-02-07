@@ -85,7 +85,7 @@ export class Game extends BareGame
         events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
 
         // ENABLE PLUGIN
-        this.plugin = new BarePlugin();
+        this.AddClass(BarePlugin);
 
         // START 
         this.StartDemo(0);

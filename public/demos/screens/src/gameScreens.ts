@@ -1,5 +1,5 @@
 
-import { assetsHandler, BareGame, BareScreen, events, GameObject, screenController, StartBare, Text, Vec2 } from "bare-engine";
+import { assetsHandler, BareGame, BareScreen, events, GameObject, screenController, BareEvent, StartBare, Text, Vec2 } from "bare-engine";
 
 /*
     THIS DEMO SHOWS HOW TO SETUP SCREENS AND SWITCH BETWEEN THEM
@@ -21,11 +21,11 @@ export class GameScreens extends BareGame
             currentScreenIndex = (currentScreenIndex + 1) % screens.length;
             screenController.Goto(screens[currentScreenIndex]);
         };
-        events.persistent.on('pointerDown', pointerDown);
+        events.persistent.on(BareEvent.pointer_down, pointerDown);
 
         // SINCE POINTER DOWN EVENT IS PERSISTENT, WE NEED TO CLEAR IT LATER - JUST BECAUSE WE'RE SWITHING DEMOS
         this.clearFunction = () => {
-            events.persistent.off('pointerDown', pointerDown);
+            events.persistent.off(BareEvent.pointer_down, pointerDown);
         }
 
         screenController.Goto(screens[0]);

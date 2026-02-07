@@ -42,9 +42,9 @@ declare module "bare-engine"
     }
 
     // ADDING A NEW EVENT
-    interface Events
+    interface BareUserEvents
     {
-        popped : {gameObject: GameObject};
+        popped: { gameObject: GameObject };
     }
     
     // ADDING A NEW SAVE DATA PROPERTY
