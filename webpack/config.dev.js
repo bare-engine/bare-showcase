@@ -52,7 +52,8 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".js", ".json"],
-        symlinks: false,
+        // Follow symlinks so file:../BareEngine changes are tracked by watch/cache
+        symlinks: true,
         alias: {
         }
     },
@@ -102,7 +103,8 @@ module.exports = {
     ],
     watchOptions: {
         ignored: [
-            '**/node_modules/**',
+            "**/node_modules/**",
+            "!**/node_modules/bare-engine/**",
             '**/public/assets/_data/levels/**',
             '**/dist/**',
             '**/src/_bareTypes/layer.ts',
@@ -111,8 +113,9 @@ module.exports = {
         aggregateTimeout: 100,
         poll: false
     },
+    // Avoid filesystem cache staleness with linked bare-engine in dev
     cache: {
-        type: 'filesystem'
+        type: 'memory'
     },
     devServer: {
         static: {
