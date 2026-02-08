@@ -38,7 +38,7 @@ export class GameLevel extends BareGame
 		super(JSON.parse(data));
 	}
 
-	async OnStart()
+	async OnAwake()
 	{
 		await levelController.LoadLevel("level_forest");
 	}

@@ -46,7 +46,7 @@ export class GameEditorComponents extends BareGame
         this.mapEditorButton.addEventListener('click', this.OnClickMapEditorButton);
     }
         
-    OnAwake(): void
+    async OnAwake()
     {
         // REGISTER LevelConnectorComponent, NEEDED SINCE IT'S REFERENCED IN mapDataJson
         this.AddClass(LevelConnectorComponent);
@@ -56,32 +56,32 @@ export class GameEditorComponents extends BareGame
 
         // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
         plugin.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
-    }
-
-    async OnStart()
-    {
-        await assetsHandler.GetTexturePromise("arrowLevel");
-
-        // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
-        // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
-        mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
-
-        this.mapEditorButton.style.display = 'block';
 
         // THE MAP HAS "level_[editorImages]" IN IT'S CATEGORIES, THIS WILL RESOLVE THAT
         // BY FINDING ALL IMAGES IN editorImages FOLDER AND MAKING THEM INTO PLACABLE OBJECTS
         // NOT NEEDED RIGHT AWAY, BUT HANDY TO HAVE IT BEFORE OPENING THE MAP EDITOR
         await this.mapDataStore.Process(mapDataJson);
 
+        await assetsHandler.GetTexturePromise("arrowLevel");
+
         // LOAD THE LEVEL!
-        await levelController.LoadLevel(SaveData.currentLevelStr || "level_car");
-        // SaveData.currentLevelStr IS NEEDED TO GO TO LAST LEVEL WHEN RETURNING FROM EDITOR
+        await levelController.LoadLevel("level_car");
+    }
+
+    async OnStart()
+    {
+        this.mapEditorButton.style.display = 'block';
     }
 
     override OnLoadedLevel(level:LevelData)
     {
         cameraHandler.SetScaleMode(CameraScaleMode.Contain);
         cameraHandler.SetDimensionsToLevel();
+
+        // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
+        // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
+        mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
+
         this.PlaceDirectionalButtons();
     }
 
