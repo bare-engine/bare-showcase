@@ -90,7 +90,7 @@ export class GameEditorComponents extends BareGame
         var uiObjs = uiController.GetLayer(UILayer.UI).slice(0);
         uiObjs.forEach(o => bare.RemoveGameObject(o));
 
-        var connections = mapHandler.map[SaveData.currentLevelStr].connections;
+        var connections = mapHandler.map[SaveData.currentLevelStr]?.connections;
         for (let dir in connections)
         {
             if (connections[dir as Direction] == "")
