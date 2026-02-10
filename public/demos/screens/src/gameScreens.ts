@@ -39,7 +39,7 @@ export class GameScreens extends BareGame
 }
 
 // MENU SCREEN
-class MenuScreen implements BareScreen
+class MenuScreen extends BareGame
 {
     OnRender()
     {
@@ -53,7 +53,7 @@ class MenuScreen implements BareScreen
 }
 
 // GAME SCREEN
-class GameScreen implements BareScreen
+class GameScreen extends BareGame
 {
     controllerEmojiObj: GameObject;
     
@@ -86,7 +86,7 @@ class GameScreen implements BareScreen
 }
 
 // END SCREEN
-class EndScreen implements BareScreen
+class EndScreen extends BareGame
 {
     OnRender()
     {

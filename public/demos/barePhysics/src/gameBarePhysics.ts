@@ -73,8 +73,9 @@ export class GameBarePhysics extends BareGame
         ball.SetVelocityXY(546, 546);
 
         events.on(BareEvent.pointer_down, (info) => {
-            var vel = new Vec2(info.mouseX, info.mouseY).subtract(ball.position);
-            vel = vel.multiply(6);
+            var vel = new Vec2(info.mouseX, info.mouseY)
+                .subtract(ball.position)
+                .multiply(6);
             ball.SetVelocity(vel);
         });
     }

@@ -37,7 +37,6 @@ export class GameAnimation extends BareGame
         bare.textures.setAntialias(false); // DISABLE ANTIALIAS TO SHOW CRISP PIXEL ART
 
         await assetsHandler.LoadAtlas("texturePackImages");
-
     }
     
     OnStart()

@@ -47,6 +47,6 @@
         "webpack-merge": "^5.10.0"
     },
     "dependencies": {
-		"bare-engine": "git+ssh://git@github.com/BareEngine/Engine.git"
+		"bare-engine": "file:../BareEngine"
     }
 }

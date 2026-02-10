@@ -63,14 +63,13 @@ export class GameEditorComponents extends BareGame
         await this.mapDataStore.Process(mapDataJson);
 
         await assetsHandler.GetTexturePromise("arrowLevel");
-
-        // LOAD THE LEVEL!
-        await levelController.LoadLevel("level_car");
     }
 
     async OnStart()
     {
         this.mapEditorButton.style.display = 'block';
+
+        await levelController.LoadLevel("level_car");
     }
 
     override OnLoadedLevel(level:LevelData)

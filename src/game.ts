@@ -6,7 +6,7 @@
     SO DON'T TAKE TOO MUCH FROM THIS CODE, LEARN FROM THE DEMOS INSTEAD
 */
 
-export class Game extends BareGame
+export class MainGame extends BareGame
 {
     private demos = [
         GameBasics,
@@ -39,14 +39,13 @@ export class Game extends BareGame
     constructor()
     {
         super();
+
+        this.persistent = true;
     }
 
     async Start()
     {
         await super.Start();
-
-        if (this.RunMainLoopId == 2)
-            cancelAnimationFrame(1); // DON'T LOOK
 
         // CLEAR OURSELVES (DON'T WANT TO GET IN THE WAY OF OTHER GAME CLASSES)
         // USUALLY YOU PUT ALL CODE BELOW IN OnStart, BUT BECAUSE OF THE DEMO SETUP
@@ -130,7 +129,8 @@ export class Game extends BareGame
                 .trim();
 
         // START
-        this.currentDemo = new this.demos[demoIndex]();
+        var demoClass = this.demos[demoIndex];
+        this.currentDemo = screenController.Goto(demoClass)
     }
 
     ChangeDemo(delta: number)
@@ -142,7 +142,7 @@ export class Game extends BareGame
 
         this.demoIndex = newDemoIndex;
 
-        BareGame.ClearAll();
+        //BareGame.ClearAll();
         this.StartDemo(this.demoIndex);
     }
 
@@ -161,9 +161,9 @@ export class Game extends BareGame
 }
 
 BareGame.initialized = false;
-StartBare(Game, {antiAlias: true});
+StartBare(MainGame, {/*persistent: true, */antiAlias: true});
 
-import { StartBare, BareGame, Helper, events, BarePlugin } from 'bare-engine';
+import { StartBare, BareGame, Helper, events, BarePlugin, screenController } from 'bare-engine';
 import { GameBasics } from '../public/demos/basics/src/gameBasics';
 import { GameImageLoading } from '../public/demos/imageLoading/src/gameImageLoading';
 import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
