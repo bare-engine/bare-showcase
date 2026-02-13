@@ -1,12 +1,11 @@
 
 /*  
     HERE WE SETUP THE GAME AND MANAGE THE DEMOS
-    EACH DEMO IS A BareGame ON ITS OWN, WHICH MAKES IT EASY TO EXTRACT THE CODE AND MOVE IT TO THE BARE TEMPLATE FOR EXAMPLE
-    BUT, YOU'RE REALLY ONLY SUPPOSED TO HAVE ONE BareGame
-    SO DON'T TAKE TOO MUCH FROM THIS CODE, LEARN FROM THE DEMOS INSTEAD
+    EACH DEMO IS A Scene ON ITS OWN, WHICH MAKES IT EASY TO EXTRACT THE CODE 
+    AND MOVE IT TO THE BARE TEMPLATE FOR EXAMPLE
 */
 
-export class MainGame extends BareGame
+export class MainGame extends Scene
 {
     private demos = [
         GameBasics,
@@ -31,7 +30,7 @@ export class MainGame extends BareGame
     ];
 
     private demoIndex = 0;
-    private currentDemo: BareGame;
+    private currentDemo: Scene;
 
     private title: HTMLDivElement;
     private instructions: HTMLDivElement;
@@ -43,15 +42,8 @@ export class MainGame extends BareGame
         this.persistent = true;
     }
 
-    async Start()
+    async OnAwake()
     {
-        await super.Start();
-
-        // CLEAR OURSELVES (DON'T WANT TO GET IN THE WAY OF OTHER GAME CLASSES)
-        // USUALLY YOU PUT ALL CODE BELOW IN OnStart, BUT BECAUSE OF THE DEMO SETUP
-        // WE NEED TO CLEAR AT THE LAST STEP OF INIT SO PUTTING ALL CODE HERE
-        this.Clear(true);
-
         // TITLE DIV
         var title = document.createElement('div');
         title.className = 'title';
@@ -79,15 +71,12 @@ export class MainGame extends BareGame
         // SET FONT
         document.body.style.fontFamily = 'monospace';
         
-        events.persistent.on('gameStarted', () => this.DetermineEditorButtonVisibility());
-        events.persistent.on('editor_opened', () => this.SetDemoTextVisibility(false));
-        events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
+        this.events.persistent.on('gameStarted', () => this.DetermineEditorButtonVisibility());
+        this.events.persistent.on('editor_opened', () => this.SetDemoTextVisibility(false));
+        this.events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
 
         // ENABLE PLUGIN
         this.AddClass(BarePlugin);
-
-        // START 
-        this.StartDemo(0);
 
         document.addEventListener('keydown', async (e: KeyboardEvent) => {
             if (!this.currentDemo.started)
@@ -111,16 +100,21 @@ export class MainGame extends BareGame
         });
     }
 
-    StartDemo(demoIndex: number)
+    OnStart(): void | Promise<void>
+    {
+        this.StartDemo(0);
+    }
+
+    async StartDemo(demoIndex: number)
     {
         var name = this.demos[demoIndex].name.replace('Game', '');
 
         // SET PATHS TO UPCOMING DEMO DIR
         var folderName = name.toLowerCase();
-        BareGame.rootPath = `demos/${folderName}`;
-        BareGame.imagePath = `images`;
-        BareGame.levelPath = `levels`;
-        BareGame.soundPath = ``;
+        Scene.rootPath = `demos/${folderName}`;
+        Scene.imagePath = `images`;
+        Scene.levelPath = `levels`;
+        Scene.soundPath = ``;
 
         // UPDATE TEXT "TITLE: X. NAME"
         this.title.innerHTML = `${demoIndex + 1}. ` + name
@@ -130,7 +124,7 @@ export class MainGame extends BareGame
 
         // START
         var demoClass = this.demos[demoIndex];
-        this.currentDemo = screenController.Goto(demoClass)
+        this.currentDemo = await sceneController.Goto(demoClass)
     }
 
     ChangeDemo(delta: number)
@@ -142,7 +136,7 @@ export class MainGame extends BareGame
 
         this.demoIndex = newDemoIndex;
 
-        //BareGame.ClearAll();
+        //Scene.ClearAll();
         this.StartDemo(this.demoIndex);
     }
 
@@ -160,10 +154,9 @@ export class MainGame extends BareGame
     }
 }
 
-BareGame.initialized = false;
-StartBare(MainGame, {/*persistent: true, */antiAlias: true});
+StartBare(MainGame, {antiAlias: true});
 
-import { StartBare, BareGame, Helper, events, BarePlugin, screenController } from 'bare-engine';
+import { StartBare, Scene, Helper, globalEvents, BarePlugin, sceneController } from 'bare-engine';
 import { GameBasics } from '../public/demos/basics/src/gameBasics';
 import { GameImageLoading } from '../public/demos/imageLoading/src/gameImageLoading';
 import { GameAnimation } from '../public/demos/animation/src/gameAnimation';

@@ -1,5 +1,5 @@
 
-import { BareGame, Text, BaseComponent, componentController, events, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2} from "bare-engine";
+import { Scene, Text, BaseComponent, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2} from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO EXTEND ALL THE EXTENDABLE DATA STRUCTURES IN BARE
@@ -76,7 +76,7 @@ export class PopComponent extends BaseComponent
 
 // FINALLY! STARTING THE DEMO
 
-export class GameExtend extends BareGame
+export class GameExtend extends Scene
 {
     constructor()
     {
@@ -94,7 +94,7 @@ export class GameExtend extends BareGame
 
     OnStart()
     {
-        SaveDataHandler.Load(); // NOT WORKING ATM, SAVE GETS CLEARED WHEN CHANING DEMOS
+        SaveDataHandler.Load();
 
         trace('happy emojis clicked:', SaveData.happyEmojisClicked);
 
@@ -107,13 +107,13 @@ export class GameExtend extends BareGame
 
         // ASSIGNING BUTTONS TO SEND OUT A CUSTOM EVENT
         var pressedEmoji = (go: GameObject) => {
-            events.emit('popped', {gameObject: go});
+            this.events.emit('popped', {gameObject: go});
         }
         hitboxController.AssignButton(emojiSad, {OnPress: pressedEmoji});
         hitboxController.AssignButton(emojiHappy, {OnPress: pressedEmoji});
         
         // WHAT SHOULD HAPPEN WHEN THE CUSTOM EVENT IS EMITTED
-        events.on('popped', ({gameObject}) => {
+        this.events.on('popped', ({gameObject}) => {
             componentController.CallMethodOnAllComponents('Pop');
 
             var isHappy = gameObject.entity!.isHappy;
@@ -141,4 +141,4 @@ export class GameExtend extends BareGame
     }
 }
 
-StartBare(GameExtend);
+//StartBare(GameExtend);

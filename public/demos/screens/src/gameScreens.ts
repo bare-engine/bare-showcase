@@ -1,5 +1,5 @@
 
-import { assetsHandler, BareGame, BareScreen, events, GameObject, screenController, BareEvent, StartBare, Text, Vec2 } from "bare-engine";
+import { assetsHandler, Scene, BareScreen, GameObject, sceneController, BareEvent, StartBare, Text, Vec2 } from "bare-engine";
 
 /*
     THIS DEMO SHOWS HOW TO SETUP SCREENS AND SWITCH BETWEEN THEM
@@ -7,7 +7,7 @@ import { assetsHandler, BareGame, BareScreen, events, GameObject, screenControll
 */
 
 // MAIN GAME
-export class GameScreens extends BareGame
+export class GameScreens extends Scene
 {
     clearFunction: () => void;
 
@@ -19,16 +19,16 @@ export class GameScreens extends BareGame
         // LISTEN WITH PERSISTENT EVENT TO POINTER DOWN, BECAUSE NORMAL EVENTS GET CLEARED WHEN SWITCHING SCREENS
         var pointerDown = () => {
             currentScreenIndex = (currentScreenIndex + 1) % screens.length;
-            screenController.Goto(screens[currentScreenIndex]);
+            sceneController.Goto(screens[currentScreenIndex]);
         };
-        events.persistent.on(BareEvent.pointer_down, pointerDown);
+        this.events.persistent.on(BareEvent.pointer_down, pointerDown);
 
         // SINCE POINTER DOWN EVENT IS PERSISTENT, WE NEED TO CLEAR IT LATER - JUST BECAUSE WE'RE SWITHING DEMOS
         this.clearFunction = () => {
-            events.persistent.off(BareEvent.pointer_down, pointerDown);
+            this.events.persistent.off(BareEvent.pointer_down, pointerDown);
         }
 
-        screenController.Goto(screens[0]);
+        sceneController.Goto(screens[0]);
     }
 
     Clear(full?: boolean)
@@ -39,7 +39,7 @@ export class GameScreens extends BareGame
 }
 
 // MENU SCREEN
-class MenuScreen extends BareGame
+class MenuScreen extends Scene
 {
     OnRender()
     {
@@ -53,7 +53,7 @@ class MenuScreen extends BareGame
 }
 
 // GAME SCREEN
-class GameScreen extends BareGame
+class GameScreen extends Scene
 {
     controllerEmojiObj: GameObject;
     
@@ -86,7 +86,7 @@ class GameScreen extends BareGame
 }
 
 // END SCREEN
-class EndScreen extends BareGame
+class EndScreen extends Scene
 {
     OnRender()
     {
@@ -98,4 +98,4 @@ class EndScreen extends BareGame
     }
 }
 
-StartBare(GameScreens);
+//StartBare(GameScreens);

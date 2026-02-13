@@ -1,6 +1,6 @@
 import entityDataJson from '../entityData.json' 
 
-import { BareGame, BareClasses, StartBare, levelController, CameraScaleMode, cameraHandler, events, mouseController, Helper, BareEvent } from "bare-engine";
+import { Scene, BareClasses, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent } from "bare-engine";
 import { Circle, Type } from "bare-engine/sopiroPhysics";
 
 /*  
@@ -12,11 +12,11 @@ import { Circle, Type } from "bare-engine/sopiroPhysics";
     CUSTOM IN-ENGINE TOOL IS PLANNED
 */
 
-export class GameSopiroPhysics extends BareGame
+export class GameSopiroPhysics extends Scene
 {
     constructor()
     {
-        super(entityDataJson);
+        super({entityData: entityDataJson});
     }
     
     OnAwake()
@@ -26,14 +26,14 @@ export class GameSopiroPhysics extends BareGame
     
     async OnStart()
     {
-        await levelController.LoadLevel('level');
+        await this.LoadLevel('level');
 
         cameraHandler.SetDimensionsToLevel();
         cameraHandler.SetScaleMode(CameraScaleMode.Contain); 
 
         // EXAMPLE OF CREATING A RIGID BODY BY CODE
         // THIS WORKS SINCE CIRCLE EXTENDS RIGIDBODY WHICH EXTENDS GAMEOBJECT
-        events.on(BareEvent.pointer_down, () => {
+        this.events.on(BareEvent.pointer_down, () => {
             var rigidBody = new Circle(36, Type.Dynamic);
             rigidBody.restitution = .8;
             rigidBody.mass = 2;
@@ -46,4 +46,4 @@ export class GameSopiroPhysics extends BareGame
     }
 }
 
-StartBare(GameSopiroPhysics);
+//StartBare(GameSopiroPhysics);

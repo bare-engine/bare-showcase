@@ -1,12 +1,12 @@
 
-import { BareGame, Helper, hitboxController, StartBare, TweenTo } from "bare-engine";
+import { Scene, Helper, hitboxController, StartBare, TweenTo } from "bare-engine";
 import { soundHandler } from "bare-engine/sound";
 
 /*
     PLAY A SOUND, AT DIFFERENT RATES!
 */
 
-export class GameSound extends BareGame
+export class GameSound extends Scene
 {
     OnStart()
     {
@@ -26,4 +26,4 @@ export class GameSound extends BareGame
     }
 }
 
-StartBare(GameSound);
+//StartBare(GameSound);

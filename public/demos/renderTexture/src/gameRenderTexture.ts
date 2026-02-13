@@ -1,10 +1,10 @@
-import { BareGame, Color, GameObject, Helper, RenderTexture, StartBare } from "bare-engine";
+import { Scene, Color, GameObject, Helper, RenderTexture, StartBare } from "bare-engine";
 
 /*  
     THIS SHOW HOW TO SETUP A RENDER TEXTURE AND RENDER LOTS OF TEXTURES TO IT
 */
 
-export class GameRenderTexture extends BareGame
+export class GameRenderTexture extends Scene
 {
     renderTexture: RenderTexture;
 
@@ -30,4 +30,4 @@ export class GameRenderTexture extends BareGame
     }
 }
 
-StartBare(GameRenderTexture);
+//StartBare(GameRenderTexture);

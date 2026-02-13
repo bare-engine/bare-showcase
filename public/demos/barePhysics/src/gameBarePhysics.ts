@@ -1,5 +1,5 @@
 
-import { BareGame, BareClasses, events, Vec2, StartBare, BareEvent } from "bare-engine";
+import { Scene, BareClasses, Vec2, StartBare, BareEvent } from "bare-engine";
 import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
 
 /* 
@@ -9,7 +9,7 @@ import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
     SOMEHWAT WONKY STILL
 */
 
-export class GameBarePhysics extends BareGame
+export class GameBarePhysics extends Scene
 {
     constructor()
     {
@@ -72,7 +72,7 @@ export class GameBarePhysics extends BareGame
             .CenterPivot() as PhysicsObjectBare;
         ball.SetVelocityXY(546, 546);
 
-        events.on(BareEvent.pointer_down, (info) => {
+        this.events.on(BareEvent.pointer_down, (info) => {
             var vel = new Vec2(info.mouseX, info.mouseY)
                 .subtract(ball.position)
                 .multiply(6);
@@ -81,4 +81,4 @@ export class GameBarePhysics extends BareGame
     }
 }
 
-StartBare(GameBarePhysics);
+//StartBare(GameBarePhysics);

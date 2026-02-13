@@ -1,12 +1,12 @@
 
-import { BareGame, UILayer, Text, GameObject, StartBare } from "bare-engine";
+import { Scene, UILayer, Text, GameObject, StartBare } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP UI
     WITH bare.AddGameObject(text, UILayer.UI); AN OBJECT CAN BE ADDED TO THE UI
 */
 
-export class GameUi extends BareGame
+export class GameUi extends Scene
 {
     OnStart()
     {
@@ -44,4 +44,4 @@ export class GameUi extends BareGame
     }
 }
 
-StartBare(GameUi);
+//StartBare(GameUi);

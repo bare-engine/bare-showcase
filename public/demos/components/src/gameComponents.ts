@@ -1,5 +1,5 @@
 
-import { BareGame, componentController, StartBare } from "bare-engine";
+import { Scene, componentController, StartBare } from "bare-engine";
 import { WaveComponent } from "./components/waveComponent";
 
 /*  
@@ -18,7 +18,7 @@ const data = ` {
     }
   }`;
 
-export class GameComponents extends BareGame
+export class GameComponents extends Scene
 {
     constructor()
     {
@@ -46,4 +46,4 @@ export class GameComponents extends BareGame
     }
 }
 
-StartBare(GameComponents);
+//StartBare(GameComponents);

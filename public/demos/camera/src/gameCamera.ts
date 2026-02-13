@@ -1,5 +1,5 @@
 
-import { BareGame, cameraHandler, CameraScaleMode, Helper, mouseController, StartBare, TweenTo } from "bare-engine";
+import { Scene, cameraHandler, CameraScaleMode, Helper, mouseController, StartBare, TweenTo } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO MOVE THE CAMERA 
@@ -9,7 +9,7 @@ import { BareGame, cameraHandler, CameraScaleMode, Helper, mouseController, Star
     CONTAIN: WHEN ZOOMED OUT, FITS CONTENT WITHIN SCREEN, WITH SPACE AROUND (WILL SEE OUTSIDE CONTENT BOUNDS / LETTERBOXED)
 */
 
-export class GameCamera extends BareGame
+export class GameCamera extends Scene
 {
     async OnStart()
     {
@@ -59,4 +59,4 @@ export class GameCamera extends BareGame
     }
 }
 
-StartBare(GameCamera);
+//StartBare(GameCamera);

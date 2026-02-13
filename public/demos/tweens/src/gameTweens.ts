@@ -1,12 +1,12 @@
 
-import { BareGame, Easing, hitboxController, Tween, tweenController, TweenTo, StartBare } from "bare-engine";
+import { Scene, Easing, hitboxController, Tween, tweenController, TweenTo, StartBare } from "bare-engine";
 
 /*  
     THIS SHOWS ALL THE DIFFERENT WAYS YOU CAN TWEEN THINGS!
     NOTE THAT TWEENCHAINS DON'T WORK YET
 */
 
-export class GameTweens extends BareGame
+export class GameTweens extends Scene
 {
     OnStart()
     {
@@ -104,4 +104,4 @@ export class GameTweens extends BareGame
     }
 }
 
-StartBare(GameTweens);
+//StartBare(GameTweens);

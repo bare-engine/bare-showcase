@@ -1,12 +1,12 @@
 
-import { BareGame, GameObject, StartBare } from "bare-engine";
+import { Scene, GameObject, StartBare } from "bare-engine";
 
 /*  
     WE ADD A SIMPLE GAME OBJECT WITH NAME '⚙'
     IT WILL FIND ITS CORRESPONDING IMAGE AT 'public/demos/basics/images/' AND STREAM IT IN
 */
 
-export class GameBasics extends BareGame
+export class GameBasics extends Scene
 {
     cog: GameObject;
 
@@ -24,4 +24,4 @@ export class GameBasics extends BareGame
     }
 }
 
-StartBare(GameBasics);
+//StartBare(GameBasics);

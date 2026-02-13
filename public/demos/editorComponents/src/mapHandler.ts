@@ -1,5 +1,5 @@
 
-import { events, LevelData } from "bare-engine";
+import { events, globalEvents, LevelData } from "bare-engine";
 import type { Events } from "bare-engine";
 
 export type Direction = "top" | "right" | "bottom" | "left";
@@ -17,7 +17,7 @@ export class MapHandler
 
     constructor()
     {
-      events.persistent.on('level_savedToDisk', this.OnLevelSaved.bind(this));
+      globalEvents.persistent.on('level_savedToDisk', this.OnLevelSaved.bind(this));
     }
 
     OnLevelSaved({ level }: Events['level_savedToDisk'])

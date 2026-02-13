@@ -1,10 +1,10 @@
-import { assetsHandler, BareGame, Color, MaskType, StartBare, Texture, Vec2 } from "bare-engine";
+import { assetsHandler, Scene, Color, MaskType, StartBare, Texture, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO RENDER SHAPES, TEXTURES AND MASKS
 */
 
-export class GameGraphics extends BareGame
+export class GameGraphics extends Scene
 {
     flowerTexture:Texture;
     treeTexture:Texture;
@@ -27,7 +27,7 @@ export class GameGraphics extends BareGame
     OnRender(): void
     {
         // CIRCLE
-        bare.renderCircle({
+        rapid.renderCircle({
             position: new Vec2(100, 200),
             radius: 50, segments: 32,
             color: Color.Red
@@ -104,18 +104,18 @@ export class GameGraphics extends BareGame
         });
 
         // MASK WITH TEXTURES
-        rapid.drawMask(MaskType.Exclude, () => {
-            rapid.renderSprite({
+        bare.drawMask(MaskType.Exclude, () => {
+            bare.renderSprite({
                 texture: this.treeTexture,
                 position: new Vec2(75, 465)
             });
         })
-        rapid.renderSprite({
+        bare.renderSprite({
             texture: this.flowerTexture,
             position: new Vec2(60, 460)
         });
-        rapid.clearMask();
+        bare.clearMask();
     }
 }
 
-StartBare(GameGraphics);
+//StartBare(GameGraphics);

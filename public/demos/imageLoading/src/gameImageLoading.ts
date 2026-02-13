@@ -1,5 +1,5 @@
 
-import { BareGame, Easing, Helper } from "bare-engine";
+import { Scene, Easing, Helper } from "bare-engine";
 
 /*  
     ALMOST ALL THE IMAGES IN THIS DEMO ARE STREAMED IN 
@@ -13,7 +13,7 @@ import { BareGame, Easing, Helper } from "bare-engine";
     THIS DEMO DEMONSTRATTES DIFFERENT WAYS OF LOADING IN AND USING IMAGES
 */
 
-export class GameImageLoading extends BareGame
+export class GameImageLoading extends Scene
 {
     OnStart()
     {

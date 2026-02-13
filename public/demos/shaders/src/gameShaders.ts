@@ -1,11 +1,11 @@
-import { BareGame, StartBare } from "bare-engine";
+import { Scene, StartBare } from "bare-engine";
 import { GhostShader } from "./ghostShader";
 
 /*  
     HOW TO ATTACH A SHADER TO A GAME OBJECT
 */
 
-export class GameShaders extends BareGame
+export class GameShaders extends Scene
 {
     OnStart()
     {
@@ -20,4 +20,4 @@ export class GameShaders extends BareGame
     }
 }
 
-StartBare(GameShaders);
+//StartBare(GameShaders);

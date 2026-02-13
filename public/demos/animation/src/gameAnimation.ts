@@ -1,5 +1,5 @@
 
-import { AnimationComponent, BareGame, StartBare, assetsHandler, events, BareEvent } from "bare-engine";
+import { AnimationComponent, Scene, StartBare, assetsHandler, BareEvent } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO LOAD AND PLAY AN ANIMATION
@@ -25,7 +25,7 @@ const data = ` {
   }`;
 
 
-export class GameAnimation extends BareGame
+export class GameAnimation extends Scene
 {
     constructor()
     {
@@ -52,7 +52,7 @@ export class GameAnimation extends BareGame
         buffalo.SetScale(4);
         buffalo.SetPosition(100, 550);
         
-        events.on(BareEvent.pointer_down, (info) => {
+        this.events.on(BareEvent.pointer_down, (info) => {
             if (info.isLeftButton)
                 animComponent.Play('eat', () => trace('animation complete'))
         });
@@ -64,4 +64,4 @@ export class GameAnimation extends BareGame
     }
 }
 
-StartBare(GameAnimation, {antiAlias: false});
+//StartBare(GameAnimation, {antiAlias: false});

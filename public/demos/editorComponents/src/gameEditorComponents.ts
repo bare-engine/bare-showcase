@@ -2,7 +2,7 @@ import entityDataJson from './../data/entityData.json'
 import mapDataJson from './../data/mapData.json'
 import mapLevelJson from './../levels/map.json'
 
-import { BareGame, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, BareClasses as BareClasses, StartBare, levelController, CameraScaleMode, editorController, cameraHandler, SettingsHandler, plugin} from "bare-engine";
+import { Scene, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, StartBare, CameraScaleMode, cameraHandler, SettingsHandler, plugin} from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, mapHandler } from './mapHandler';
 import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
@@ -17,7 +17,7 @@ import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
     SO IT DOESN'T HAVE TO LOOK LIKE A LEVEL FILE ANYMORE, MORE PURE DATA
 */
 
-export class GameEditorComponents extends BareGame
+export class GameEditorComponents extends Scene
 {
     mapDataStore: SettingsHandler = new SettingsHandler();
 
@@ -26,7 +26,7 @@ export class GameEditorComponents extends BareGame
 
     constructor()
     {
-        super(entityDataJson);
+        super({entityData: entityDataJson});
         
         // CREATE MAP EDITOR BUTTON
         const original = document.getElementById('editor-button') as HTMLButtonElement;
@@ -41,7 +41,7 @@ export class GameEditorComponents extends BareGame
 
         // TOGGLE MAP EDITOR ON CLICK
         this.OnClickMapEditorButton = () => {
-            editorController.Toggle(this.mapDataStore, `demos/editorComponents/levels/map.json`);
+           // editorController.Toggle(this.mapDataStore, `demos/editorComponents/levels/map.json`);
         }
         this.mapEditorButton.addEventListener('click', this.OnClickMapEditorButton);
     }
@@ -69,10 +69,10 @@ export class GameEditorComponents extends BareGame
     {
         this.mapEditorButton.style.display = 'block';
 
-        await levelController.LoadLevel("level_car");
+        await this.LoadLevel("level_car");
     }
 
-    override OnLoadedLevel(level:LevelData)
+    override OnAfterLoadedLevel(level:LevelData)
     {
         cameraHandler.SetScaleMode(CameraScaleMode.Contain);
         cameraHandler.SetDimensionsToLevel();
@@ -137,7 +137,7 @@ export class GameEditorComponents extends BareGame
             // NOTE: THE HITBOX ON THIS IS CURRENTLY NOT ENTIRELY CORRECT, IT DOESN'T ACCOUNT FOR ROTATION
             var hb = hitboxController.AssignButton(arrow, {OnPress: () => {
                 var targetLevelStr = connections[dir as Direction];
-                levelController.LoadLevel(targetLevelStr);
+                this.LoadLevel(targetLevelStr);
             }});
             hb.type = HitboxType.Rectangle;
             hb.rectangle = {x: 0, y: 0, width: 86, height: 86};
@@ -156,4 +156,4 @@ export class GameEditorComponents extends BareGame
     }
 }
 
-StartBare(GameEditorComponents);
+//StartBare(GameEditorComponents);

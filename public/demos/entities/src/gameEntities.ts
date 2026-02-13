@@ -1,5 +1,5 @@
 
-import { BareGame, Color, GameObject, StartBare, Text } from "bare-engine";
+import { Scene, Color, GameObject, StartBare, Text } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS THE POWER OF ENTITIES, A CONCEPT SOMEWHAT UNIQUE TO BARE 
@@ -41,7 +41,7 @@ const data = ` {
     }
   }`;
 
-export class GameEntities extends BareGame
+export class GameEntities extends Scene
 {
     constructor()
     {
@@ -80,4 +80,4 @@ export class Fruit extends GameObject
     }
 }
 
-StartBare(GameEntities);
+//StartBare(GameEntities);

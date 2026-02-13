@@ -1,11 +1,11 @@
 
-import { assetsHandler, BareGame, Color, mouseController, particleController, ParticleEmitter, ParticleShape, StartBare, Vec2 } from "bare-engine";
+import { assetsHandler, Scene, Color, mouseController, particleController, ParticleEmitter, ParticleShape, StartBare, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP PARTICLE EMITTERS, EITHER CONTINUES OR ONE SHOT
 */ 
 
-export class GameParticles extends BareGame
+export class GameParticles extends Scene
 {
     smokeEmitter: ParticleEmitter;
     explosionEmitter: ParticleEmitter;
@@ -99,4 +99,4 @@ export class GameParticles extends BareGame
     }
 }
 
-StartBare(GameParticles);
+//StartBare(GameParticles);

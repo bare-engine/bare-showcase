@@ -1,4 +1,4 @@
-import { BareGame, cameraHandler, levelController, StartBare } from "bare-engine";
+import { Scene, cameraHandler, StartBare } from "bare-engine";
 
 /*  
 	THIS DEMO SHOWS HOW TO LOAD THE LEVEL "level_forest"
@@ -31,7 +31,7 @@ const data = ` {
 
 // NOT SETTING doSave ON OBJECTS, IT'S SAVED ON DEFAULT
 
-export class GameLevel extends BareGame
+export class GameLevel extends Scene
 {
 	constructor()
 	{
@@ -40,7 +40,7 @@ export class GameLevel extends BareGame
 
 	async OnStart()
 	{
-		await levelController.LoadLevel("level_forest");
+		await this.LoadLevel("level_forest");
 	}
 	
 	OnLoadedLevel()
@@ -50,4 +50,4 @@ export class GameLevel extends BareGame
 	}
 }
 
-StartBare(GameLevel);
+//StartBare(GameLevel);
