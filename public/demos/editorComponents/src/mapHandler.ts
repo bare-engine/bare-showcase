@@ -1,5 +1,5 @@
 
-import { events, globalEvents, LevelData } from "bare-engine";
+import { globalEvents, LevelData } from "bare-engine";
 import type { Events } from "bare-engine";
 
 export type Direction = "top" | "right" | "bottom" | "left";

@@ -1,5 +1,5 @@
 
-import { Scene, Easing, hitboxController, Tween, tweenController, TweenTo, StartBare } from "bare-engine";
+import { Scene, Easing, hitboxController, Tween, tweenController, TweenTo, StartBare, assetsHandler } from "bare-engine";
 
 /*  
     THIS SHOWS ALL THE DIFFERENT WAYS YOU CAN TWEEN THINGS!
@@ -8,6 +8,11 @@ import { Scene, Easing, hitboxController, Tween, tweenController, TweenTo, Start
 
 export class GameTweens extends Scene
 {
+    async OnAwake(): Promise<void>
+    {
+        await assetsHandler.GetTexturePromise("❤");
+    }
+    
     OnStart()
     {
         var heart = bare.AddGameObject('❤')

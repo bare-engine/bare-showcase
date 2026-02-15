@@ -1,5 +1,5 @@
 
-import { Scene, UILayer, Text, GameObject, StartBare } from "bare-engine";
+import { Scene, UILayer, BareText, GameObject, StartBare } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP UI
@@ -33,7 +33,7 @@ export class GameUi extends Scene
 
     CreateText(textStr: string): GameObject
     {
-        var text = new Text({
+        var text = new BareText({
             text: textStr,
             fontSize: 20,
             fontFamily: 'monospace',

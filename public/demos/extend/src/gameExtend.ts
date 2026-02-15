@@ -1,5 +1,5 @@
 
-import { Scene, Text, BaseComponent, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2} from "bare-engine";
+import { Scene, BareText, BaseComponent, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2} from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO EXTEND ALL THE EXTENDABLE DATA STRUCTURES IN BARE
@@ -136,7 +136,7 @@ export class GameExtend extends Scene
 
     OnRender()
     {
-        var text = new Text({text: `Happy Emojis Clicked: ${SaveData.happyEmojisClicked}`, fontSize: 32, fontFamily: 'monospace'});
+        var text = new BareText({text: `Happy Emojis Clicked: ${SaveData.happyEmojisClicked}`, fontSize: 32, fontFamily: 'monospace'});
         bare.renderSprite({texture: text, position: new Vec2(bare.width * .5, 170), origin: new Vec2(.5, .5)});
     }
 }

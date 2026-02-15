@@ -24,7 +24,6 @@ export class MainGame extends Scene
         GameSopiroPhysics,
         GameBarePhysics,
         GameSound,
-        GameScreens,
         GameCamera,
         GameUi,
     ];
@@ -173,6 +172,5 @@ import { GameExtend } from '../public/demos/extend/src/gameExtend';
 import { GameLevel } from '../public/demos/level/src/gameLevel';
 import { GameEditorComponents } from '../public/demos/editorComponents/src/gameEditorComponents';
 import { GameSound } from '../public/demos/sound/src/gameSound';
-import { GameScreens } from '../public/demos/screens/src/gameScreens';
 import { GameUi } from '../public/demos/ui/src/gameUi';
 import { GameCamera } from '../public/demos/camera/src/gameCamera';
