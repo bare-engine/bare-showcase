@@ -2,7 +2,7 @@ import entityDataJson from './../data/entityData.json'
 import mapDataJson from './../data/mapData.json'
 import mapLevelJson from './../levels/map.json'
 
-import { Scene, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, StartBare, CameraScaleMode, cameraHandler, SettingsHandler, plugin} from "bare-engine";
+import { Scene, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, StartBare, CameraScaleMode, cameraHandler, SettingsHandler, plugin, BareEvent, sceneController} from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, mapHandler } from './mapHandler';
 import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
@@ -17,77 +17,23 @@ import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
     SO IT DOESN'T HAVE TO LOOK LIKE A LEVEL FILE ANYMORE, MORE PURE DATA
 */
 
-export class GameEditorComponents extends Scene
+export class UIScene extends Scene
 {
-    mapDataStore: SettingsHandler = new SettingsHandler();
-
-    mapEditorButton: HTMLButtonElement;
-    OnClickMapEditorButton: () => void;
-
     constructor()
     {
-        super({entityData: entityDataJson});
-        
-        // CREATE MAP EDITOR BUTTON
-        const original = document.getElementById('editor-button') as HTMLButtonElement;
-        const clone = original.cloneNode(true) as HTMLButtonElement;
-        clone.id = 'editor-button-map';
-        clone.textContent = 'Open Map Editor';
-        clone.style.position = 'absolute';
-        clone.style.top = '57px';
-        clone.style.margin = '0px';
-        document.getElementById('initial-assets')?.appendChild(clone);
-        this.mapEditorButton = clone;
-
-        // TOGGLE MAP EDITOR ON CLICK
-        this.OnClickMapEditorButton = () => {
-           // editorController.Toggle(this.mapDataStore, `demos/editorComponents/levels/map.json`);
-        }
-        this.mapEditorButton.addEventListener('click', this.OnClickMapEditorButton);
+        super({UI: true});
     }
-        
+
     async OnAwake()
     {
-        // REGISTER LevelConnectorComponent, NEEDED SINCE IT'S REFERENCED IN mapDataJson
-        this.AddClass(LevelConnectorComponent);
-
-        // REGISTER PhysicsObjectBare, NEEDED SINCE IT'S REFERENCED IN entityDataJson
-        this.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
-
-        // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
-        plugin.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
-
-        // THE MAP HAS "level_[editorImages]" IN IT'S CATEGORIES, THIS WILL RESOLVE THAT
-        // BY FINDING ALL IMAGES IN editorImages FOLDER AND MAKING THEM INTO PLACABLE OBJECTS
-        // NOT NEEDED RIGHT AWAY, BUT HANDY TO HAVE IT BEFORE OPENING THE MAP EDITOR
-        await this.mapDataStore.Process(mapDataJson);
-
         await assetsHandler.GetTexturePromise("arrowLevel");
-    }
 
-    async OnStart()
-    {
-        this.mapEditorButton.style.display = 'block';
-
-        await this.LoadLevel("level_car");
-    }
-
-    override OnAfterLoadedLevel(level:LevelData)
-    {
-        cameraHandler.SetScaleMode(CameraScaleMode.Contain);
-        cameraHandler.SetDimensionsToLevel();
-
-        // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
-        // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
-        mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
-
-        this.PlaceDirectionalButtons();
+        bare.events.on(BareEvent.level_loaded, this.PlaceDirectionalButtons.bind(this));
     }
 
     PlaceDirectionalButtons()
     {
-        var uiObjs = uiController.GetLayer(UILayer.UI).slice(0);
-        uiObjs.forEach(o => bare.RemoveGameObject(o));
+        this.Clear();
 
         var connections = mapHandler.map[SaveData.currentLevelStr]?.connections;
         for (let dir in connections)
@@ -124,7 +70,7 @@ export class GameEditorComponents extends Scene
                     break;
             }
 
-            let arrow = this.AddGameObject("arrowLevel", UILayer.UI)
+            let arrow = this.AddGameObject("arrowLevel", 0)
                 .SetPosition(x, y)
                 .CenterPivot()
                 .SetRotation(rotation);
@@ -139,9 +85,75 @@ export class GameEditorComponents extends Scene
                 var targetLevelStr = connections[dir as Direction];
                 this.LoadLevel(targetLevelStr);
             }});
-            hb.type = HitboxType.Rectangle;
-            hb.rectangle = {x: 0, y: 0, width: 86, height: 86};
+            //hb.type = HitboxType.Rectangle;
+            //hb.rectangle = {x: 0, y: 0, width: 86, height: 86};
         }
+    }
+}
+
+export class GameEditorComponents extends Scene
+{
+    mapDataStore: SettingsHandler = new SettingsHandler();
+
+    mapEditorButton: HTMLButtonElement;
+    OnClickMapEditorButton: () => void;
+
+    constructor()
+    {
+        super({entityData: entityDataJson});
+        
+        // CREATE MAP EDITOR BUTTON
+        const original = document.getElementById('editor-button') as HTMLButtonElement;
+        const clone = original.cloneNode(true) as HTMLButtonElement;
+        clone.id = 'editor-button-map';
+        clone.textContent = 'Open Map Editor';
+        clone.style.position = 'absolute';
+        clone.style.top = '57px';
+        clone.style.margin = '0px';
+        document.getElementById('initial-assets')?.appendChild(clone);
+        this.mapEditorButton = clone;
+
+        // TOGGLE MAP EDITOR ON CLICK
+        this.OnClickMapEditorButton = () => {
+           // editorController.Toggle(this.mapDataStore, `demos/editorComponents/levels/map.json`);
+        }
+        this.mapEditorButton.addEventListener('click', this.OnClickMapEditorButton);
+
+    }
+        
+    async OnAwake()
+    {
+        sceneController.Add(UIScene);
+        // REGISTER LevelConnectorComponent, NEEDED SINCE IT'S REFERENCED IN mapDataJson
+        this.AddClass(LevelConnectorComponent);
+
+        // REGISTER PhysicsObjectBare, NEEDED SINCE IT'S REFERENCED IN entityDataJson
+        this.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
+
+        // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
+        plugin.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
+
+        // THE MAP HAS "level_[editorImages]" IN IT'S CATEGORIES, THIS WILL RESOLVE THAT
+        // BY FINDING ALL IMAGES IN editorImages FOLDER AND MAKING THEM INTO PLACABLE OBJECTS
+        // NOT NEEDED RIGHT AWAY, BUT HANDY TO HAVE IT BEFORE OPENING THE MAP EDITOR
+        await this.mapDataStore.Process(mapDataJson);
+    }
+
+    async OnStart()
+    {
+        this.mapEditorButton.style.display = 'block';
+
+        await this.LoadLevel("level_car");
+    }
+
+    override OnAfterLoadedLevel(level:LevelData)
+    {
+        cameraHandler.SetScaleMode(CameraScaleMode.Contain);
+        cameraHandler.SetDimensionsToLevel();
+
+        // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
+        // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
+        mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
     }
 
     OnClear(full?: boolean): void

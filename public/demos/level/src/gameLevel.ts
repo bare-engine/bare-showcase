@@ -43,7 +43,7 @@ export class GameLevel extends Scene
 		await this.LoadLevel("level_forest");
 	}
 	
-	OnLoadedLevel()
+	OnAfterLoadedLevel()
 	{
 		cameraHandler.SetPosition(0, 0);
 		cameraHandler.SetDimensionsToLevel();
