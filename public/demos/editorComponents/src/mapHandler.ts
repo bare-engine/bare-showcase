@@ -1,6 +1,6 @@
 
 import { globalEvents, LevelData } from "bare-engine";
-import type { Events } from "bare-engine";
+import type { Events, Scene } from "bare-engine";
 
 export type Direction = "top" | "right" | "bottom" | "left";
 
@@ -12,17 +12,19 @@ type LevelMap = Record<string, Level>;
 
 export class MapHandler
 {
+    public scene: Scene;
     public map: LevelMap;
     public lastSavedMap: LevelData;
 
-    constructor()
+    constructor(scene: Scene)
     {
+      this.scene = scene;
       globalEvents.persistent.on('level_savedToDisk', this.OnLevelSaved.bind(this));
     }
 
     OnLevelSaved({ level }: Events['level_savedToDisk'])
     {
-      if (bare.currentSettings.name == "mapEditor")
+      if (bare.settingsData.name == "mapEditor")
       {
         this.lastSavedMap = level;
       }
@@ -67,5 +69,3 @@ export class MapHandler
         return level;
     }
 }
-
-export const mapHandler = new MapHandler();

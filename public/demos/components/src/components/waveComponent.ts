@@ -1,13 +1,13 @@
-import { BaseComponent, GameObject, TweenTo } from "bare-engine"
+import { BaseComponent, GameObject, Scene, TweenTo } from "bare-engine"
 
 export class WaveComponent extends BaseComponent
 {
     countDown:number = 0;
     frequency: number;
 
-    constructor(frequency:number = 1)
+    constructor(scene:Scene, frequency:number = 1)
     {
-        super();
+        super(scene);
         
         this.frequency = frequency;
     }

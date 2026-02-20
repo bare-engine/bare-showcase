@@ -4,7 +4,7 @@ import mapLevelJson from './../levels/map.json'
 
 import { Scene, LevelData, SaveData, assetsHandler, UILayer, HitboxType, hitboxController, TweenTo, StartBare, CameraScaleMode, cameraHandler, SettingsHandler, plugin, BareEvent, sceneController} from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
-import { Direction, mapHandler } from './mapHandler';
+import { Direction, MapHandler } from './mapHandler';
 import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
 
 /*  
@@ -16,6 +16,8 @@ import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
     IN THE FUTURE, COULD MAKE COMPRESS/DECOMRESS FUNCTIONALITY
     SO IT DOESN'T HAVE TO LOOK LIKE A LEVEL FILE ANYMORE, MORE PURE DATA
 */
+
+var mapHandler: MapHandler;
 
 export class UIScene extends Scene
 {
@@ -34,7 +36,7 @@ export class UIScene extends Scene
     PlaceDirectionalButtons()
     {
         this.Clear();
-
+        
         var connections = mapHandler.map[SaveData.currentLevelStr]?.connections;
         for (let dir in connections)
         {
@@ -93,7 +95,7 @@ export class UIScene extends Scene
 
 export class GameEditorComponents extends Scene
 {
-    mapDataStore: SettingsHandler = new SettingsHandler();
+    mapDataStore: SettingsHandler = new SettingsHandler(this);
 
     mapEditorButton: HTMLButtonElement;
     OnClickMapEditorButton: () => void;
@@ -123,7 +125,10 @@ export class GameEditorComponents extends Scene
         
     async OnAwake()
     {
+        mapHandler = new MapHandler(this);
+
         sceneController.Add(UIScene);
+
         // REGISTER LevelConnectorComponent, NEEDED SINCE IT'S REFERENCED IN mapDataJson
         this.AddClass(LevelConnectorComponent);
 

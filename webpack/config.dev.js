@@ -6,7 +6,7 @@ const fs = require("fs");
 const InjectInitialAssetsPlugin = require("./InjectInitialAssetsPlugin");
 const GenerateLayersPlugin = require("./GenerateLayersPlugin");
 const WatchTexturePackImagesPlugin = require("./WatchTexturePackImagesPlugin");
-const { createAwaitRewriteTransformer } = require("./await-transformer");
+const createControllerProxyTransformer = require("./controllerProxyTransformer");
 
 // Counter for skip reload requests (handles rapid successive saves)
 let skipReloadCount = 0;
@@ -53,8 +53,6 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".js", ".json"],
-        // Follow symlinks so file:../BareEngine changes are tracked by watch/cache
-        symlinks: true,
         alias: {
         }
     },
@@ -70,15 +68,17 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules[\\/](?!bare-engine)/,
-                use: {
-                    loader: "ts-loader",
-                    options: {
-                        transpileOnly: true,
-                        getCustomTransformers: () => ({
-                            before: [createAwaitRewriteTransformer()]
-                        })
+                use: [
+                    {
+                        loader: "ts-loader",
+                        options: {
+                            transpileOnly: true,
+                            getCustomTransformers: (program) => ({
+                                before: [createControllerProxyTransformer(program)]
+                            })
+                        }
                     }
-				}
+                ]
             },
             {
                 test: [/\.vert$/, /\.frag$/],
@@ -108,19 +108,16 @@ module.exports = {
     ],
     watchOptions: {
         ignored: [
-            "**/node_modules/**",
-            "!**/node_modules/bare-engine/**",
+            '**/node_modules/**',
             '**/public/assets/_data/levels/**',
             '**/dist/**',
-            '**/src/_bareTypes/layer.ts',
-            '**/levels/**' // ADDED JUST FOR DEMO, TO IGNORE EVERY LEVEL FOLDER
+            '**/src/_bareTypes/layer.ts'
         ],
         aggregateTimeout: 100,
         poll: false
     },
-    // Avoid filesystem cache staleness with linked bare-engine in dev
     cache: {
-        type: 'memory'
+        type: 'filesystem'
     },
     devServer: {
         static: {
@@ -192,6 +189,95 @@ module.exports = {
                         }));
                     } catch (error) {
                         console.error('Save error:', error);
+                        res.status(500).setHeader('Content-Type', 'application/json');
+                        res.end(JSON.stringify({ error: error.message }));
+                    }
+                });
+            });
+
+            // Create level endpoint
+            devServer.app.post('/api/create-level', (req, res) => {
+                let body = '';
+                req.on('data', chunk => {
+                    body += chunk.toString();
+                });
+                req.on('end', () => {
+                    try {
+                        const { levelData, path: levelPath } = JSON.parse(body);
+                        if (!levelData || !levelData.name) {
+                            throw new Error('levelData.name is required');
+                        }
+                        if (!levelPath) {
+                            throw new Error('path is required');
+                        }
+
+                        const safePath = String(levelPath);
+                        if (safePath.includes("..") || safePath.startsWith("..")) {
+                            throw new Error('Invalid path');
+                        }
+
+                        const fullPath = path.join(__dirname, '../public', safePath);
+                        const dir = path.dirname(fullPath);
+
+                        if (!fs.existsSync(dir)) {
+                            fs.mkdirSync(dir, { recursive: true });
+                        }
+
+                        if (fs.existsSync(fullPath)) {
+                            res.status(409).setHeader('Content-Type', 'application/json');
+                            res.end(JSON.stringify({ error: `Level already exists: ${safePath}` }));
+                            return;
+                        }
+
+                        fs.writeFileSync(fullPath, JSON.stringify(levelData, null, 2));
+                        res.setHeader('Content-Type', 'application/json');
+                        res.end(JSON.stringify({
+                            success: true,
+                            message: `Level created at ${fullPath}`,
+                            path: safePath
+                        }));
+                    } catch (error) {
+                        console.error('Create level error:', error);
+                        res.status(500).setHeader('Content-Type', 'application/json');
+                        res.end(JSON.stringify({ error: error.message }));
+                    }
+                });
+            });
+
+            // Remove level endpoint
+            devServer.app.post('/api/remove-level', (req, res) => {
+                let body = '';
+                req.on('data', chunk => {
+                    body += chunk.toString();
+                });
+                req.on('end', () => {
+                    try {
+                        const { path: levelPath } = JSON.parse(body);
+                        if (!levelPath) {
+                            throw new Error('path is required');
+                        }
+
+                        const safePath = String(levelPath);
+                        if (safePath.includes("..") || safePath.startsWith("..")) {
+                            throw new Error('Invalid path');
+                        }
+
+                        const fullPath = path.join(__dirname, '../public', safePath);
+                        if (!fs.existsSync(fullPath)) {
+                            res.status(404).setHeader('Content-Type', 'application/json');
+                            res.end(JSON.stringify({ error: `Level not found: ${safePath}` }));
+                            return;
+                        }
+
+                        fs.unlinkSync(fullPath);
+                        res.setHeader('Content-Type', 'application/json');
+                        res.end(JSON.stringify({
+                            success: true,
+                            message: `Level removed at ${fullPath}`,
+                            path: safePath
+                        }));
+                    } catch (error) {
+                        console.error('Remove level error:', error);
                         res.status(500).setHeader('Content-Type', 'application/json');
                         res.end(JSON.stringify({ error: error.message }));
                     }

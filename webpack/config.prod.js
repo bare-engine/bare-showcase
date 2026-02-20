@@ -11,7 +11,7 @@ const PreserveComponentPropertiesPlugin = require('./PreserveComponentProperties
 const ComponentParamPreserverPlugin = require('./ComponentParamPreserverPlugin');
 const InjectInitialAssetsPlugin = require("./InjectInitialAssetsPlugin");
 const { EsbuildPlugin } = require("esbuild-loader");
-const { createAwaitRewriteTransformer } = require("./await-transformer");
+const createControllerProxyTransformer = require("./controllerProxyTransformer");
 
 function ensureDir(dirPath) {
     if (!fs.existsSync(dirPath)) {
@@ -33,7 +33,6 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".js", ".json"],
-        symlinks: false,
         alias: {
         }
     },
@@ -54,15 +53,17 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules[\\/](?!bare-engine)/,
-                use: {
-                    loader: "ts-loader",
-                    options: {
-                        transpileOnly: true,
-                        getCustomTransformers: () => ({
-                            before: [createAwaitRewriteTransformer()]
-                        })
+                use: [
+                    {
+                        loader: "ts-loader",
+                        options: {
+                            transpileOnly: true,
+                            getCustomTransformers: (program) => ({
+                                before: [createControllerProxyTransformer(program)]
+                            })
+                        }
                     }
-                }
+                ]
             },
             {
                 test: [/\.vert$/, /\.frag$/],

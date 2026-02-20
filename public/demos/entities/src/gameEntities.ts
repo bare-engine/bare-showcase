@@ -68,9 +68,9 @@ export class Fruit extends GameObject
 {
     text: Text;
 
-    constructor(x: number = 0, y: number = 0, texturePath: string = "")
+    constructor(scene: Scene, x: number = 0, y: number = 0, texturePath: string = "")
     {
-        super(x, y, texturePath);
+        super(scene, x, y, texturePath);
 
         this.AddChild(new BareText({
             text: "I'm a Fruit class",

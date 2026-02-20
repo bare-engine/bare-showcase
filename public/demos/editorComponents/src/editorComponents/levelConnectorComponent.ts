@@ -1,4 +1,4 @@
-import { BaseComponent, componentController, mouseController } from "bare-engine"
+import { BaseComponent, componentController, mouseController, Scene } from "bare-engine"
 import { GameObject } from "bare-engine";
 import { Color, Vec2 } from "bare-engine";
 
@@ -11,9 +11,9 @@ export class LevelConnectorComponent extends BaseComponent
     private bottom:string;
     private left:string;
 
-    constructor(top:string, right:string, bottom:string, left:string)
+    constructor(scene:Scene, top:string, right:string, bottom:string, left:string)
     {
-        super();
+        super(scene);
         
         this.top = top;
         this.right = right;
