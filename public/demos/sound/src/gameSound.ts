@@ -1,5 +1,5 @@
 
-import { Scene, Helper, hitboxController, StartBare, TweenTo } from "bare-engine";
+import { Scene, Helper, hitboxController, StartBare, TweenTo, assetsHandler } from "bare-engine";
 import { soundHandler } from "bare-engine/sound";
 
 /*
@@ -8,6 +8,11 @@ import { soundHandler } from "bare-engine/sound";
 
 export class GameSound extends Scene
 {
+    async OnAwake(): Promise<void>
+    {
+        await assetsHandler.GetTexturePromise("🔊");
+    }
+
     OnStart()
     {
         soundHandler.registerSound('click', 'bubble-pop.mp3');

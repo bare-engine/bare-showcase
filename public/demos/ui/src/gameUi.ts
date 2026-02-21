@@ -1,5 +1,5 @@
 
-import { Scene, UILayer, BareText, GameObject, StartBare } from "bare-engine";
+import { BareText, GameObject, Scene } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP UI
@@ -8,6 +8,11 @@ import { Scene, UILayer, BareText, GameObject, StartBare } from "bare-engine";
 
 export class GameUi extends Scene
 {
+    constructor()
+    {
+        super({ UI: true });
+    }
+
     OnStart()
     {
         this.CreateText('Resize me')
@@ -38,7 +43,7 @@ export class GameUi extends Scene
             fontSize: 20,
             fontFamily: 'monospace',
         });
-        var textObj = bare.AddGameObject(text, UILayer.UI);
+        var textObj = bare.AddGameObject(text);
 
         return textObj;
     }

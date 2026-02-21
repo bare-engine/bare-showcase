@@ -34,7 +34,7 @@ export class GameSopiroPhysics extends Scene
         // EXAMPLE OF CREATING A RIGID BODY BY CODE
         // THIS WORKS SINCE CIRCLE EXTENDS RIGIDBODY WHICH EXTENDS GAMEOBJECT
         this.events.on(BareEvent.pointer_down, () => {
-            var rigidBody = new Circle(36, Type.Dynamic);
+            var rigidBody = new Circle(this, 36, Type.Dynamic);
             rigidBody.restitution = .8;
             rigidBody.mass = 2;
             bare.AddGameObject(rigidBody);

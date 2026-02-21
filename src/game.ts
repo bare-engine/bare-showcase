@@ -31,51 +31,35 @@ export class MainGame extends Scene
     private demoIndex = 0;
     private currentDemo: Scene;
 
-    private title: HTMLDivElement;
-    private instructions: HTMLDivElement;
+    private title: TextObject;
+    private instructions: TextObject;
 
     constructor()
     {
-        super();
+        super({UI: true});
 
         this.persistent = true;
     }
 
     async OnAwake()
     {
-        // TITLE DIV
-        var title = document.createElement('div');
-        title.className = 'title';
-        title.innerHTML = `${this.demos[this.demoIndex].name}`;
-        title.style.position = 'absolute';
-        title.style.top = '0px';
-        title.style.margin = '16px';
-        title.style.fontSize = '28px';
-        title.style.pointerEvents = 'none';
-        document.body.appendChild(title);
+        // TITLE
+        var title = new TextObject(this, {text: `${this.demos[this.demoIndex].name}`, fontSize: 28, fontFamily: 'monospace'})
+        this.AddGameObject(title)
+            .SetPosition(bare.width * .5, 16)
+            .SetPivot(.5, 0);
         this.title = title;
 
-        // ARROWKEY INSTRUCTIONS DIV
-        var instructions = document.createElement('div');
-        instructions.className = 'title';
-        instructions.innerHTML = `⬅️ Use arrowkeys to switch between demos ➡️`;
-        instructions.style.position = 'absolute';
-        instructions.style.top = '36px';
-        instructions.style.margin = '16px';
-        instructions.style.fontSize = '18px';
-        instructions.style.pointerEvents = 'none';
-        document.body.appendChild(instructions);
+        // ARROWKEY INSTRUCTIONS
+        var instructions = new TextObject(this, {text: `⬅️ Use arrowkeys to switch between demos ➡️`, fontSize: 22, fontFamily: 'monospace'});
+        this.AddGameObject(instructions)
+            .SetPosition(bare.width * .5, 56)
+            .SetPivot(.5, 0);
         this.instructions = instructions;
 
-        // SET FONT
-        document.body.style.fontFamily = 'monospace';
-        
-        this.events.persistent.on('gameStarted', () => this.DetermineEditorButtonVisibility());
+        // LISTEN TO EVENTS FOR TEXT VISIBILITY
         this.events.persistent.on('editor_opened', () => this.SetDemoTextVisibility(false));
         this.events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
-
-        // ENABLE PLUGIN
-        this.AddClass(BarePlugin);
 
         document.addEventListener('keydown', async (e: KeyboardEvent) => {
             if (!this.currentDemo.started)
@@ -97,6 +81,9 @@ export class MainGame extends Scene
                 this.currentDemo.Restart();
             }
         });
+
+        // ENABLE PLUGIN
+        this.AddClass(BarePlugin);
     }
 
     OnStart(): void | Promise<void>
@@ -116,14 +103,17 @@ export class MainGame extends Scene
         Scene.soundPath = ``;
 
         // UPDATE TEXT "TITLE: X. NAME"
-        this.title.innerHTML = `${demoIndex + 1}. ` + name
+        this.title.SetText(`${demoIndex + 1}. ` + name
                 .replace(/([A-Z])/g, ' $1')
                 .replace(/^./, c => c.toUpperCase())
-                .trim();
+                .trim()
+        );
 
         // START
         var demoClass = this.demos[demoIndex];
-        this.currentDemo = await sceneController.Goto(demoClass)
+        this.currentDemo = await sceneController.Goto(demoClass);
+        sceneController.MoveToFront(this);
+        sceneController.MoveToFront(EditorUIScene);
     }
 
     ChangeDemo(delta: number)
@@ -139,23 +129,16 @@ export class MainGame extends Scene
         this.StartDemo(this.demoIndex);
     }
 
-    // ONLY SHOW THE EDITOR BUTTON FOR DEMOS WITH LEVELS
-    DetermineEditorButtonVisibility()
-    {
-        const editorButton = document.getElementById('editor-button') as HTMLButtonElement;
-        editorButton.style.display = (bare.currentLevelStr ? 'block' : 'none');
-    }
-
     SetDemoTextVisibility(visible: boolean)
     {
-        this.title.style.display = (visible ? 'block' : 'none');
-        this.instructions.style.display = (visible ? 'block' : 'none');
+        this.title.visible = visible;
+        this.instructions.visible = visible;
     }
 }
 
 StartBare(MainGame, {antiAlias: true});
 
-import { StartBare, Scene, Helper, globalEvents, BarePlugin, sceneController } from 'bare-engine';
+import { StartBare, Scene, Helper, globalEvents, BarePlugin, sceneController, BareText, TextObject } from 'bare-engine';
 import { GameBasics } from '../public/demos/basics/src/gameBasics';
 import { GameImageLoading } from '../public/demos/imageLoading/src/gameImageLoading';
 import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
@@ -174,3 +157,4 @@ import { GameEditorComponents } from '../public/demos/editorComponents/src/gameE
 import { GameSound } from '../public/demos/sound/src/gameSound';
 import { GameUi } from '../public/demos/ui/src/gameUi';
 import { GameCamera } from '../public/demos/camera/src/gameCamera';
+import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';

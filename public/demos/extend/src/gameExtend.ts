@@ -1,5 +1,5 @@
 
-import { Scene, BareText, BaseComponent, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2} from "bare-engine";
+import { Scene, BareText, BaseComponent, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2, assetsHandler} from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO EXTEND ALL THE EXTENDABLE DATA STRUCTURES IN BARE
@@ -83,13 +83,16 @@ export class GameExtend extends Scene
         super(JSON.parse(data));
     }
         
-    OnAwake(): void
+    async OnAwake(): Promise<void>
     {
         // EMOJIOBJECT AND POPCOMPONENT ARE DESCRIBED IN ENTITY DATA ABOVE
         // SO THESE NEED TO BE REGISTERED HERE (CLASS NEEDS TO EXIST IN CODE), 
         // SO THE ENGINE CAN CREATE THEM
         this.AddClass(EmojiObject);
         this.AddClass(PopComponent);
+
+        await assetsHandler.GetTexturePromise("😃");
+        await assetsHandler.GetTexturePromise("🙁");
     }
 
     OnStart()
