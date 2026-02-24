@@ -2,12 +2,10 @@ import entityDataJson from './../data/entityData.json';
 import mapDataJson from './../data/mapData.json';
 import mapLevelJson from './../levels/map.json';
 
-import { BareEvent, Button, CameraScaleMode, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController } from "bare-engine";
+import { BareEvent, Button, CameraScaleMode, EditorScene, EditorUIScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController } from "bare-engine";
 import { PhysicsObjectBare } from 'bare-engine/barePhysics';
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
-import { EditorScene } from '../../../../../BareEngine/src/scenes/editorScene';
-import { EditorUIScene } from '../../../../../BareEngine/src/scenes/editorUIScene';
 
 /*  
     THIS DEMO SHOWS THE LevelConnectorComponent IN THE MAP EDITOR
@@ -84,6 +82,12 @@ export class GameEditorComponents extends Scene
 
     OnClear(full?: boolean): void
     {
+        if (full)
+        if (this.mapEditorButton)
+        {
+            var editorUIScene = sceneController.Get(EditorUIScene);
+            editorUIScene.RemoveGameObject(this.mapEditorButton);
+        }
     }
 }
 
@@ -158,7 +162,7 @@ export class UIScene extends Scene
             // NOTE: THE HITBOX ON THIS IS CURRENTLY NOT ENTIRELY CORRECT, IT DOESN'T ACCOUNT FOR ROTATION
             hitboxController.AssignButton(arrow, {OnPress: () => {
                 var targetLevelStr = connections[dir as Direction];
-                sceneController.Get(GameEditorComponents).LoadLevel(targetLevelStr);
+                sceneController.GetLevelScene().LoadLevel(targetLevelStr);
             }});
         }
     }

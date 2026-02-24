@@ -8,12 +8,12 @@
     "color": "#979797"
   },
   "entitiesByLayer": {
-    "OBJECTS": [
+    "objects": [
       {
         "name": "level_farm",
         "position": {
-          "x": 1101,
-          "y": 782
+          "x": 1085.6720738732474,
+          "y": 797.3283034667029
         },
         "editorComponents": {
           "levelConnector": {
@@ -27,8 +27,8 @@
       {
         "name": "level_goal",
         "position": {
-          "x": 1112.067208098841,
-          "y": 453.4643435875954
+          "x": 1086.5201614343196,
+          "y": 468.792458384323
         },
         "editorComponents": {
           "levelConnector": {
@@ -99,13 +99,6 @@
           }
         }
       }
-    ],
-    "BACKGROUND": [],
-    "SURFACE": [],
-    "FOREGROUND": [],
-    "COLLISION": [],
-    "ARROWS": [],
-    "TEST": [],
-    "TOP": []
+    ]
   }
 }

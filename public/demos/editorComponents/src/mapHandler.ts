@@ -1,5 +1,5 @@
 
-import { globalEvents, LevelData } from "bare-engine";
+import { EditorScene, globalEvents, LevelData, sceneController } from "bare-engine";
 import type { Events, Scene } from "bare-engine";
 
 export type Direction = "top" | "right" | "bottom" | "left";
@@ -24,7 +24,8 @@ export class MapHandler
 
     OnLevelSaved({ level }: Events['level_savedToDisk'])
     {
-      if (bare.settingsData.name == "mapEditor")
+      var editorScene = sceneController.Get(EditorScene) as EditorScene;
+      if (editorScene?.settingsData.name == "mapEditor")
       {
         this.lastSavedMap = level;
       }
@@ -36,7 +37,7 @@ export class MapHandler
       this.map = {};
 
       var map:LevelData = levelMapJson;
-      var entities = map.entitiesByLayer.OBJECTS;
+      var entities = map.entitiesByLayer.objects;
       for (var entity of entities)
       {
         var levelName = entity.name;
