@@ -8,7 +8,7 @@
     "color": "#4CAF50"
   },
   "entitiesByLayer": {
-    "OBJECTS": [
+    "objects": [
       {
         "name": "🌱",
         "position": {
@@ -127,10 +127,6 @@
           "y": 1096.028327391276
         }
       }
-    ],
-    "FOREGROUND": [],
-    "COLLISION": [],
-    "ARROWS": [],
-    "WORLD_UI": []
+    ]
   }
 }

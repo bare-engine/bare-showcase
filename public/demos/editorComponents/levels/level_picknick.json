@@ -8,7 +8,7 @@
     "color": "#4CAF50"
   },
   "entitiesByLayer": {
-    "OBJECTS": [
+    "objects": [
       {
         "name": "🌲",
         "position": {
@@ -272,8 +272,7 @@
         }
       }
     ],
-    "BACKGROUND": [],
-    "SURFACE": [
+    "surface": [
       {
         "name": "picnicCloth",
         "position": {
@@ -281,10 +280,6 @@
           "y": 1118
         }
       }
-    ],
-    "FOREGROUND": [],
-    "COLLISION": [],
-    "ARROWS": [],
-    "WORLD_UI": []
+    ]
   }
 }

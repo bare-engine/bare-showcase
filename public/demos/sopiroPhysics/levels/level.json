@@ -5,7 +5,7 @@
     "height": 1625
   },
   "entitiesByLayer": {
-    "OBJECTS": [
+    "objects": [
       {
         "name": "platform",
         "position": {

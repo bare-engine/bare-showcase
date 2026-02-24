@@ -8,7 +8,7 @@
     "color": "#747474"
   },
   "entitiesByLayer": {
-    "OBJECTS": [
+    "objects": [
       {
         "name": "🏤",
         "position": {
@@ -163,10 +163,6 @@
           "y": 1785.6845005821183
         }
       }
-    ],
-    "BACKGROUND": [],
-    "SURFACE": [],
-    "FOREGROUND": [],
-    "COLLISION": []
+    ]
   }
 }
