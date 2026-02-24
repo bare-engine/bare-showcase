@@ -1,5 +1,5 @@
 
-import { Scene, Easing, Helper } from "bare-engine";
+import { Scene, Helper } from "bare-engine";
 
 /*  
     ALMOST ALL THE IMAGES IN THIS DEMO ARE STREAMED IN 
@@ -10,7 +10,7 @@ import { Scene, Easing, Helper } from "bare-engine";
     YOU CAN ALSO MANAGE YOUR OWN TEXTURE PACKS, USING TEXTURE PACKER
     JUST EXPORT FOR PIXI AND SAVE IN FOLDER 'public/assets/_initial/'
 
-    THIS DEMO DEMONSTRATTES DIFFERENT WAYS OF LOADING IN AND USING IMAGES
+    THIS DEMO DEMONSTRATES DIFFERENT WAYS OF LOADING IN AND USING IMAGES
 */
 
 export class GameImageLoading extends Scene

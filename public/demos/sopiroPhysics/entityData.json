@@ -8,8 +8,6 @@
         }
     ],
     "entityBases": {
-        "ANY": {
-        },
         "physicsBase": {
             "mass": 1,
             "restitution": 0.7

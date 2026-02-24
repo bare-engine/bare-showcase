@@ -1,4 +1,4 @@
-import { Scene, Color, GameObject, Helper, RenderTexture, StartBare } from "bare-engine";
+import { Scene, GameObject, Helper, RenderTexture, StartBare } from "bare-engine";
 
 /*  
     THIS SHOW HOW TO SETUP A RENDER TEXTURE AND RENDER LOTS OF TEXTURES TO IT

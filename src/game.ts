@@ -58,7 +58,8 @@ export class MainGame extends Scene
         this.events.persistent.on('editor_opened', () => this.SetDemoTextVisibility(false));
         this.events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
 
-        globalEvents.on(BareEvent.key_pressed, (e) =>  {
+        // LISTEN TO KEYBOARD EVENTS
+        this.events.on(BareEvent.key_down, (e) =>  {
             if (!this.currentDemo.started)
                 return; // CURRENT DEMO HASN'T LOADED EVERYTHING YET
 
@@ -93,7 +94,6 @@ export class MainGame extends Scene
         var name = this.demos[demoIndex].name.replace('Game', '');
 
         // SET PATHS TO UPCOMING DEMO DIR
-        //var folderName = name.toLowerCase();
         var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
         Scene.rootPath = `demos/${folderName}`;
         Scene.imagePath = `images`;
@@ -123,7 +123,6 @@ export class MainGame extends Scene
 
         this.demoIndex = newDemoIndex;
 
-        //Scene.ClearAll();
         this.StartDemo(this.demoIndex);
     }
 
