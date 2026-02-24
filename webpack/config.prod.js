@@ -105,14 +105,11 @@ module.exports = {
             }
         ]),
 		new webpack.DefinePlugin({
-			__DEV__: JSON.stringify(false)
+			__DEV__: JSON.stringify(true)
 		}),
         new InjectInitialAssetsPlugin(),
         new CopyPlugin({
-            patterns: [{ from: "public/assets", to: "assets" }]
-        }),
-        new CopyPlugin({
-            patterns: [{ from: "public/editor.html", to: "" }]
+            patterns: [{ from: "public", to: "" }]
         }),
         new (class {
             apply(compiler) {

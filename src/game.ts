@@ -35,9 +35,7 @@ export class MainGame extends Scene
 
     constructor()
     {
-        super({UI: true});
-
-        this.persistent = true;
+        super({persistent: true, UI: true});
     }
 
     async OnAwake()
@@ -60,16 +58,16 @@ export class MainGame extends Scene
         this.events.persistent.on('editor_opened', () => this.SetDemoTextVisibility(false));
         this.events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
 
-        document.addEventListener('keydown', async (e: KeyboardEvent) => {
+        globalEvents.on(BareEvent.key_pressed, (e) =>  {
             if (!this.currentDemo.started)
                 return; // CURRENT DEMO HASN'T LOADED EVERYTHING YET
 
             // CHANGE DEMO WITH ARROW KEYS
-            if (e.key == "ArrowLeft")
+            if (e.key == "arrowLeft")
             {
                 this.ChangeDemo(-1);
             }
-            if (e.key == "ArrowRight")
+            if (e.key == "arrowRight")
             {
                 this.ChangeDemo(1);
             }
@@ -95,7 +93,8 @@ export class MainGame extends Scene
         var name = this.demos[demoIndex].name.replace('Game', '');
 
         // SET PATHS TO UPCOMING DEMO DIR
-        var folderName = name.toLowerCase();
+        //var folderName = name.toLowerCase();
+        var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
         Scene.rootPath = `demos/${folderName}`;
         Scene.imagePath = `images`;
         Scene.levelPath = `levels`;
@@ -137,7 +136,7 @@ export class MainGame extends Scene
 
 StartBare(MainGame, {antiAlias: true});
 
-import { BarePlugin, Helper, Scene, StartBare, TextObject, sceneController } from 'bare-engine';
+import { BareEvent, BarePlugin, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
 import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';
 import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
 import { GameBarePhysics } from '../public/demos/barePhysics/src/gameBarePhysics';
