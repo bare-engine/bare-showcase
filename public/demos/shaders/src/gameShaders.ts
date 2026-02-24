@@ -1,4 +1,4 @@
-import { Scene, StartBare } from "bare-engine";
+import { assetsHandler, Scene, StartBare } from "bare-engine";
 import { GhostShader } from "./ghostShader";
 
 /*  
@@ -7,6 +7,11 @@ import { GhostShader } from "./ghostShader";
 
 export class GameShaders extends Scene
 {
+    async OnAwake(): Promise<void>
+    {
+        await assetsHandler.GetTexturePromise("👻");
+    }
+
     OnStart()
     {
         var ghost = bare.AddGameObject('👻')

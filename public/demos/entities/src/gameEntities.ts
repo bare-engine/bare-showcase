@@ -68,10 +68,8 @@ export class Fruit extends GameObject
 {
     text: Text;
 
-    constructor(scene: Scene, x: number = 0, y: number = 0, texturePath: string = "")
+    OnAwake(): void
     {
-        super(scene, x, y, texturePath);
-
         this.AddChild(new BareText({
             text: "I'm a Fruit class",
             fontSize: 20,
