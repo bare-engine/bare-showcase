@@ -15,15 +15,15 @@ import { Scene, cameraHandler, StartBare } from "bare-engine";
 const data = ` {
 	"categories": [
 		{
-			"Objects": {
+			"objects": {
 				"image": "🌳",
 				"entries": ["🏚", "🌲", "🌳", "🪵", "🪓", "grassPatch"]
 			}
 		}
 	],
-	"layers": ["Objects", "Surface"],
+	"layers": ["objects", "surface"],
 	"layersInfo": {
-		"Surface": {
+		"surface": {
 			"doSave": true
 		}
 	}

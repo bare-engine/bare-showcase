@@ -1,5 +1,5 @@
 
-import { Scene, cameraHandler, CameraScaleMode, Helper, mouseController, StartBare, TweenTo } from "bare-engine";
+import { Scene, cameraHandler, CameraScaleMode, Helper, mouseController, StartBare, TweenTo, BareEvent } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO MOVE THE CAMERA 
@@ -24,6 +24,10 @@ export class GameCamera extends Scene
                 .SetScale(.6)
                 .CenterPivot();
         }
+        
+        this.events.on(BareEvent.pointer_down, () => {
+            cameraHandler.StartShake(5, .5);
+        });
  
         var count = 0;
         TweenTo(this, 1, { delay: 2, onEveryStart: () => {

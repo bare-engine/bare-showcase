@@ -1,4 +1,3 @@
-
 /*  
     HERE WE SETUP THE GAME AND MANAGE THE DEMOS
     EACH DEMO IS A Scene ON ITS OWN, WHICH MAKES IT EASY TO EXTRACT THE CODE 
@@ -138,23 +137,23 @@ export class MainGame extends Scene
 
 StartBare(MainGame, {antiAlias: true});
 
-import { StartBare, Scene, Helper, globalEvents, BarePlugin, sceneController, BareText, TextObject } from 'bare-engine';
-import { GameBasics } from '../public/demos/basics/src/gameBasics';
-import { GameImageLoading } from '../public/demos/imageLoading/src/gameImageLoading';
-import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
-import { GameRenderTexture } from '../public/demos/renderTexture/src/gameRenderTexture';
-import { GameGraphics } from '../public/demos/graphics/src/gameGraphics';
-import { GameParticles } from '../public/demos/particles/src/gameParticles';
-import { GameShaders } from '../public/demos/shaders/src/gameShaders';
-import { GameTweens } from '../public/demos/tweens/src/gameTweens';
-import { GameBarePhysics } from '../public/demos/barePhysics/src/gameBarePhysics';
-import { GameSopiroPhysics } from '../public/demos/sopiroPhysics/src/gameSopiroPhysics';
-import { GameEntities } from '../public/demos/entities/src/gameEntities';
-import { GameComponents } from '../public/demos/components/src/gameComponents';
-import { GameExtend } from '../public/demos/extend/src/gameExtend';
-import { GameLevel } from '../public/demos/level/src/gameLevel';
-import { GameEditorComponents } from '../public/demos/editorComponents/src/gameEditorComponents';
-import { GameSound } from '../public/demos/sound/src/gameSound';
-import { GameUi } from '../public/demos/ui/src/gameUi';
-import { GameCamera } from '../public/demos/camera/src/gameCamera';
+import { BarePlugin, Helper, Scene, StartBare, TextObject, sceneController } from 'bare-engine';
 import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';
+import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
+import { GameBarePhysics } from '../public/demos/barePhysics/src/gameBarePhysics';
+import { GameBasics } from '../public/demos/basics/src/gameBasics';
+import { GameCamera } from '../public/demos/camera/src/gameCamera';
+import { GameComponents } from '../public/demos/components/src/gameComponents';
+import { GameEditorComponents } from '../public/demos/editorComponents/src/gameEditorComponents';
+import { GameEntities } from '../public/demos/entities/src/gameEntities';
+import { GameExtend } from '../public/demos/extend/src/gameExtend';
+import { GameGraphics } from '../public/demos/graphics/src/gameGraphics';
+import { GameImageLoading } from '../public/demos/imageLoading/src/gameImageLoading';
+import { GameLevel } from '../public/demos/level/src/gameLevel';
+import { GameParticles } from '../public/demos/particles/src/gameParticles';
+import { GameRenderTexture } from '../public/demos/renderTexture/src/gameRenderTexture';
+import { GameShaders } from '../public/demos/shaders/src/gameShaders';
+import { GameSopiroPhysics } from '../public/demos/sopiroPhysics/src/gameSopiroPhysics';
+import { GameSound } from '../public/demos/sound/src/gameSound';
+import { GameTweens } from '../public/demos/tweens/src/gameTweens';
+import { GameUi } from '../public/demos/ui/src/gameUi';

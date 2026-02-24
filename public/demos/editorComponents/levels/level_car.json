@@ -8,7 +8,7 @@
     "color": "#ad6620"
   },
   "entitiesByLayer": {
-    "SURFACE": [
+    "surface": [
       {
         "name": "roadTexture_6",
         "position": {
@@ -206,7 +206,7 @@
         }
       }
     ],
-    "OBJECTS": [
+    "objects": [
       {
         "name": "🌲",
         "position": {
@@ -305,13 +305,6 @@
           "y": 1989.9999
         }
       }
-    ],
-    "BACKGROUND": [],
-    "FOREGROUND": [],
-    "COLLISION": [],
-    "WORLD_UI": [],
-    "TEST": [],
-    "TOP": [],
-    "ARROWS": []
+    ]
   }
 }

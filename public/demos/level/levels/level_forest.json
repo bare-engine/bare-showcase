@@ -8,7 +8,7 @@
     "color": "#4CAF50"
   },
   "entitiesByLayer": {
-    "OBJECTS": [
+    "objects": [
       {
         "name": "🏚",
         "position": {
@@ -53,7 +53,7 @@
         }
       }
     ],
-    "SURFACE": [
+    "surface": [
       {
         "name": "grassPatch",
         "position": {

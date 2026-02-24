@@ -111,7 +111,8 @@ module.exports = {
             '**/node_modules/**',
             '**/public/assets/_data/levels/**',
             '**/dist/**',
-            '**/src/_bareTypes/layer.ts'
+            '**/src/_bareTypes/layer.ts',
+			'**/levels/**' // ADDED JUST FOR DEMO, TO IGNORE EVERY LEVEL FOLDER
         ],
         aggregateTimeout: 100,
         poll: false

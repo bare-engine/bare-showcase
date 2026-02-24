@@ -12,21 +12,10 @@
 			}
         }
     ],
-    "layers": ["Top", "Effects", "World_ui", "Foreground", "Collision", "Arrows", "Objects", "Test", "Shadow", "Surface", "Background"],
-    "uiLayers": ["Ui", "Fade"],
+    "layers": ["objects", "surface"],
     "layersInfo": {
-        "Foreground": {
-        "doSave": true,
-        "showInEditor": false
-        },
-        "Collision": {
-        "doSave": true
-        },
-        "Surface": {
-        "doSave": true
-        },
-        "World_ui": {
-        "doSave": true
+        "surface": {
+            "doSave": true
         }
     },
     "entityBases": {
