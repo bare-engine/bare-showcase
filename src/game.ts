@@ -59,7 +59,7 @@ export class MainGame extends Scene
         this.events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
 
         // LISTEN TO KEYBOARD EVENTS
-        this.events.on(BareEvent.key_down, (e) =>  {
+        this.events.on(BareEvent.key_pressed, (e) =>  {
             if (!this.currentDemo.started)
                 return; // CURRENT DEMO HASN'T LOADED EVERYTHING YET
 
@@ -96,8 +96,7 @@ export class MainGame extends Scene
         // SET PATHS TO UPCOMING DEMO DIR
         var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
         Scene.rootPath = `demos/${folderName}`;
-        Scene.imagePath = `images`;
-        Scene.levelPath = `levels`;
+        Scene.levelPath = `levels`; 
         Scene.soundPath = ``;
 
         // UPDATE TEXT "TITLE: X. NAME"

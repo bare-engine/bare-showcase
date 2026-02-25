@@ -25,7 +25,7 @@ export class MapHandler
     OnLevelSaved({ level }: Events['level_savedToDisk'])
     {
       var editorScene = sceneController.Get(EditorScene) as EditorScene;
-      if (editorScene?.settingsData.name == "mapEditor")
+      if (editorScene?.settingsData.name == "mapData")
       {
         this.lastSavedMap = level;
       }
