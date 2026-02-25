@@ -56,18 +56,22 @@ export class GameEditorComponents extends Scene
 
         // CREATE MAP EDITOR BUTTON
         var editorUIScene = sceneController.Get(EditorUIScene);
-        this.mapEditorButton = new Button(editorUIScene, {text: "Open Map Editor", OnPress: async () => {
-            sceneController.DisableAllScenes();
-            await sceneController.Add(EditorScene, {
-                levelPathOrData: "demos/editorComponents/levels/map.json",
-                settingsHandler: this.mapSettingsHandler,
-            });
-        }});
-        editorUIScene.AddGameObject(this.mapEditorButton);
-        this.mapEditorButton.x = bare.width;
-        this.mapEditorButton.SetPivot(1, 0);
+        if (!editorUIScene.objectController.GetObjectByName("mapEditorButton")) // CHECKING IF ALREADY ADDED, SINCE EDITOR UI SCENE IS PERSISTENT
+        {
+            this.mapEditorButton = new Button(editorUIScene, {text: "Open Map Editor", OnPress: async () => {
+                sceneController.DisableAllScenes();
+                await sceneController.Add(EditorScene, {
+                    levelPathOrData: "demos/editorComponents/levels/map.json",
+                    settingsHandler: this.mapSettingsHandler,
+                });
+            }});
+            this.mapEditorButton.name = "mapEditorButton";
+            editorUIScene.AddGameObject(this.mapEditorButton)
+                .SetPosition(bare.width, 0)
+                .SetPivot(1, 0)
 
-        this.mapEditorButton.visible = true;
+            this.mapEditorButton.visible = true;
+        }
     }
 
     override OnAfterLoadedLevel(level:LevelData)
