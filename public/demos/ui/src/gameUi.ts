@@ -1,9 +1,9 @@
 
-import { BareText, GameObject, Scene } from "bare-engine";
+import { BareText, GameObject, Scene, TextObject } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP UI
-    WITH bare.AddGameObject(text, UILayer.UI); AN OBJECT CAN BE ADDED TO THE UI
+    WITH super({ UI: true });
 */
 
 export class GameUi extends Scene
@@ -36,14 +36,14 @@ export class GameUi extends Scene
             .SetPivot(.5, 1);
     }
 
-    CreateText(textStr: string): GameObject
+    CreateText(textStr: string): TextObject
     {
-        var text = new BareText({
+        var textObj = new TextObject(this, {
             text: textStr,
             fontSize: 20,
             fontFamily: 'monospace',
         });
-        var textObj = bare.AddGameObject(text);
+        bare.AddGameObject(textObj);
 
         return textObj;
     }
