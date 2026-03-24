@@ -1,12 +1,10 @@
 {
-  "name": "Sample Level",
+  "name": "level_picknick",
   "dimensions": {
     "width": 2250,
     "height": 2000
   },
-  "background": {
-    "color": "#4CAF50"
-  },
+  "backgroundColor": "#4CAF50",
   "entitiesByLayer": {
     "objects": [
       {
@@ -64,16 +62,6 @@
         "position": {
           "x": 1004.2512130050422,
           "y": 839.1853896197233
-        },
-        "componentsRemoved": [
-          "behaviour"
-        ],
-        "components": {
-          "goal": {
-            "emoji": "🍗",
-            "target": 1,
-            "result": "😄+🌟x3"
-          }
         }
       },
       {
@@ -81,16 +69,6 @@
         "position": {
           "x": 1260.3896364508273,
           "y": 929.3722612068948
-        },
-        "componentsRemoved": [
-          "behaviour"
-        ],
-        "components": {
-          "goal": {
-            "emoji": "🥖",
-            "target": 1,
-            "result": "😊+🌟x1"
-          }
         }
       },
       {
@@ -112,16 +90,6 @@
         "position": {
           "x": 1044.7052232314113,
           "y": 1078.0695856224106
-        },
-        "componentsRemoved": [
-          "behaviour"
-        ],
-        "components": {
-          "goal": {
-            "emoji": "🥐",
-            "target": 1,
-            "result": "😁+🌟x1"
-          }
         }
       },
       {

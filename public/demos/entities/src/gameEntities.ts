@@ -51,7 +51,7 @@ export class GameEntities extends Scene
     OnStart()
     {
         // HAVE TO REGISTER THIS MANUALLY FOR NOW, ALSO IMPORTS THE FRUIT CLASS BY REFERENCING IT
-        this.RegisterGameObjectPool(Fruit, 20);
+        bareEngine.RegisterGameObjectPool(Fruit, 20);
 
         bare.AddGameObject('🍐')
             .SetPosition(bare.width * .25, bare.height * .3);

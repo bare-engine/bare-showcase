@@ -1,12 +1,11 @@
 {
-    "categories": [
-        {
-            "Objects": {
-                "image": "📦",
-                "entries": ["🏈", "⚽", "platform", "ledge"]
-            }
+    "categories":
+    {
+        "Objects": {
+            "image": "📦",
+            "entries": ["🏈", "⚽", "platform", "ledge"]
         }
-    ],
+    },
     "entityBases": {
         "physicsBase": {
             "mass": 1,

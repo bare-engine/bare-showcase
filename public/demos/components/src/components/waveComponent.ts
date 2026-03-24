@@ -12,11 +12,6 @@ export class WaveComponent extends BaseComponent
         this.frequency = frequency;
     }
 
-    Added(go: GameObject):void
-    {
-        super.Added(go);
-    }
-
     OnUpdate(deltaTime: number): void
     {
         this.countDown -= deltaTime;
@@ -24,9 +19,10 @@ export class WaveComponent extends BaseComponent
         if (this.countDown <= 0)
         {
             // WAVE
+            this.go.rotation = 0;
             TweenTo(this.go, .3, {rotation: 45, yoyo: true, repeat: 1});
             
-            this.countDown = (2 * this.frequency);
+            this.countDown += this.frequency;
         }
     }
 

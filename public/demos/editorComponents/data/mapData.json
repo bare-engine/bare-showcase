@@ -1,13 +1,12 @@
 {
   "name": "mapData",
-  "categories": [
+  "categories":
     {
       "Levels": {
         "image": "📦",
         "entries": ["level_car", "level_city", "level_cloud", "level_farm", "level_goal", "level_heavens_gate", "level_intro", "level_picknick", "level_whirlwind"]
       }
-    }
-  ],
+    },
   "entityBases": {
     "level": {
       "imagePath": "editorImages",

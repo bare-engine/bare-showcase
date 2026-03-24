@@ -2,10 +2,11 @@ import entityDataJson from './../data/entityData.json';
 import mapDataJson from './../data/mapData.json';
 import mapLevelJson from './../levels/map.json';
 
-import { BareEvent, Button, CameraScaleMode, EditorScene, EditorUIScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController } from "bare-engine";
+import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
 import { PhysicsObjectBare } from 'bare-engine/barePhysics';
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
+import { MainGame } from '../../../../src/game';
 
 /*  
     THIS DEMO SHOWS THE LevelConnectorComponent IN THE MAP EDITOR
@@ -16,6 +17,8 @@ import { Direction, MapHandler } from './mapHandler';
     IN THE FUTURE, COULD MAKE COMPRESS/DECOMRESS FUNCTIONALITY
     SO IT DOESN'T HAVE TO LOOK LIKE A LEVEL FILE ANYMORE, MORE PURE DATA
 */
+
+var mapHandler: MapHandler;
 
 export class GameEditorComponents extends Scene
 {
@@ -37,7 +40,7 @@ export class GameEditorComponents extends Scene
         this.AddClass(LevelConnectorComponent);
 
         // REGISTER PhysicsObjectBare, NEEDED SINCE IT'S REFERENCED IN entityDataJson
-        this.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
+        bareEngine.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
 
         // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
         plugin.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
@@ -46,32 +49,30 @@ export class GameEditorComponents extends Scene
         // BY FINDING ALL IMAGES IN editorImages FOLDER AND MAKING THEM INTO PLACABLE OBJECTS
         // NOT NEEDED RIGHT AWAY, BUT HANDY TO HAVE IT BEFORE OPENING THE MAP EDITOR
         await this.mapSettingsHandler.Process(mapDataJson);
-        
-        sceneController.Add(UIScene);
     }
 
     async OnStart()
     {
+        await assetsHandler.GetTexturePromise("arrowLevel");
         await this.LoadLevel("level_car");
 
         // CREATE MAP EDITOR BUTTON
-        var editorUIScene = sceneController.Get(EditorUIScene);
-        if (!editorUIScene.objectController.GetObjectByName("mapEditorButton")) // CHECKING IF ALREADY ADDED, SINCE EDITOR UI SCENE IS PERSISTENT
-        {
-            this.mapEditorButton = new Button(editorUIScene, {text: "Open Map Editor", OnPress: async () => {
-                sceneController.DisableAllScenes();
-                await sceneController.Add(EditorScene, {
-                    levelPathOrData: "demos/editorComponents/levels/map.json",
-                    settingsHandler: this.mapSettingsHandler,
-                });
-            }});
-            this.mapEditorButton.name = "mapEditorButton";
-            editorUIScene.AddGameObject(this.mapEditorButton)
-                .SetPosition(bare.width, 0)
-                .SetPivot(1, 0)
+        this.mapEditorButton = new Button(uiScene, {text: "Open Map Editor", OnPress: async () => {
+            sceneController.DisableAllScenes();
+            await sceneController.Add(EditorScene, {
+                levelPathOrData: "demos/editorComponents/levels/map.json",
+                settingsHandler: this.mapSettingsHandler,
+            });
+        }});
+        this.mapEditorButton.name = "mapEditorButton";
 
-            this.mapEditorButton.visible = true;
-        }
+        // ADDING mapEditorButton TO MainGame, SO IT'S ON TOP
+        sceneController.Get(MainGame).AddGameObject(this.mapEditorButton)
+            .SetPosition(bare.width, 0)
+            .SetPivot(1, 0);
+
+        this.mapEditorButton.persistent = true;
+        this.mapEditorButton.visible = true;
     }
 
     override OnAfterLoadedLevel(level:LevelData)
@@ -82,41 +83,13 @@ export class GameEditorComponents extends Scene
         // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
         // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
         mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
-    }
 
-    OnClear(full?: boolean): void
-    {
-        if (full)
-        if (this.mapEditorButton)
-        {
-            var editorUIScene = sceneController.Get(EditorUIScene);
-            editorUIScene.RemoveGameObject(this.mapEditorButton);
-        }
-    }
-}
-
-var mapHandler: MapHandler;
-
-export class UIScene extends Scene
-{
-    constructor()
-    {
-        super({UI: true});
-    }
-
-    async OnAwake()
-    {
-        await assetsHandler.GetTexturePromise("arrowLevel");
-    }
-
-    async OnStart()
-    {
-        bare.events.on(BareEvent.level_loaded, this.PlaceDirectionalButtons.bind(this));
+        this.PlaceDirectionalButtons();
     }
 
     PlaceDirectionalButtons()
     {
-        this.objectController.Clear();
+        uiScene.Clear();
         
         var connections = mapHandler.map[SaveData.currentLevelStr]?.connections;
         for (let dir in connections)
@@ -153,7 +126,7 @@ export class UIScene extends Scene
                     break;
             }
 
-            let arrow = this.AddGameObject("arrowLevel", 0)
+            let arrow = uiScene.AddGameObject("arrowLevel", 0)
                 .SetPosition(x, y)
                 .CenterPivot()
                 .SetRotation(rotation);
@@ -164,10 +137,19 @@ export class UIScene extends Scene
             TweenTo(arrow, .3, obj);
 
             // NOTE: THE HITBOX ON THIS IS CURRENTLY NOT ENTIRELY CORRECT, IT DOESN'T ACCOUNT FOR ROTATION
-            hitboxController.AssignButton(arrow, {OnPress: () => {
+            arrow.OnPointerDown(() => {
                 var targetLevelStr = connections[dir as Direction];
-                sceneController.GetLevelScene().LoadLevel(targetLevelStr);
-            }});
+                this.LoadLevel(targetLevelStr);
+            });
+        }
+    }
+
+    OnClear(full?: boolean): void
+    {
+        if (full)
+        if (this.mapEditorButton)
+        {
+            this.mapEditorButton.Remove();
         }
     }
 }

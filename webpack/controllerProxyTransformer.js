@@ -4,7 +4,8 @@ const path = require("path");
 
 const externalClassInfoMap = collectClassInfoFromDirs([
     path.resolve(process.cwd(), "../BareEngine/src"),
-    path.resolve(process.cwd(), "node_modules/bare-engine/src")
+    path.resolve(process.cwd(), "node_modules/bare-engine/src"),
+    path.resolve(process.cwd(), "src")
 ]);
 const externalAddClassDirectiveMap = collectAddClassDirectiveMapFromDirs([
     path.resolve(process.cwd(), "../BareEngine/src"),
@@ -76,9 +77,59 @@ function createControllerProxyTransformer(program) {
             const startBareTargets = isProjectSource ? collectStartBareTargets(sourceFile) : new Set();
             const usedControllerClassNames = new Set();
 
+            function maybeTransformTweenToCallTopLevel(callNode) {
+                if (!ts.isCallExpression(callNode)) {
+                    return callNode;
+                }
+                if (!ts.isIdentifier(callNode.expression)) {
+                    return callNode;
+                }
+                if (callNode.expression.text !== "TweenTo") {
+                    return callNode;
+                }
+                const firstArg = callNode.arguments[0];
+                if (!firstArg) {
+                    return callNode;
+                }
+                if (typeChecker) {
+                    const argType = typeChecker.getTypeAtLocation(firstArg);
+                    if (argType && argType.getProperty("scene")) {
+                        const tweenControllerAccess = factory.createPropertyAccessExpression(
+                            factory.createPropertyAccessExpression(firstArg, "scene"),
+                            "tweenController"
+                        );
+                        const newCallee = factory.createPropertyAccessExpression(
+                            tweenControllerAccess,
+                            "TweenTo"
+                        );
+                        return factory.updateCallExpression(
+                            callNode,
+                            newCallee,
+                            callNode.typeArguments,
+                            callNode.arguments
+                        );
+                    }
+                }
+                return callNode;
+            }
+
             function visit(node) {
                 if (ts.isClassDeclaration(node) || ts.isClassExpression(node)) {
                     return transformClass(node);
+                }
+                if (ts.isCallExpression(node)) {
+                    const updated = maybeTransformTweenToCallTopLevel(node);
+                    if (updated !== node) {
+                        const visitedArgs = updated.arguments.map(
+                            (arg) => ts.visitNode(arg, visit)
+                        );
+                        return factory.updateCallExpression(
+                            updated,
+                            updated.expression,
+                            updated.typeArguments,
+                            visitedArgs
+                        );
+                    }
                 }
                 return ts.visitEachChild(node, visit, context);
             }
@@ -89,6 +140,16 @@ function createControllerProxyTransformer(program) {
                 const usedControllers = isStartBareTarget ? new Set() : null;
                 const hasScene = classHasSceneProperty(node);
                 const extendsScene = classExtendsScene(node);
+                const extendsSceneDeep = extendsScene
+                    || (classInfoMap
+                        ? classExtendsSceneInHierarchy(node, classInfoMap)
+                        : false)
+                    || (typeChecker
+                        ? classExtendsSceneInDeclHierarchy(node, typeChecker)
+                        : false)
+                    || (typeChecker
+                        ? classExtendsSceneInTypeHierarchy(node, typeChecker)
+                        : false);
                 const extendsSceneCarrier = extendsScene
                     || (classInfoMap
                         ? classHasSceneInHierarchy(node, classInfoMap)
@@ -101,9 +162,6 @@ function createControllerProxyTransformer(program) {
                         : false);
                 let needsScene = false;
 
-                const createTweenToSceneArg = () =>
-                    extendsScene ? factory.createThis() : createThisScene();
-
                 function maybeTransformTweenToCall(callNode) {
                     if (!ts.isIdentifier(callNode.expression)) {
                         return callNode;
@@ -112,26 +170,54 @@ function createControllerProxyTransformer(program) {
                         return callNode;
                     }
 
-                    const args = callNode.arguments.slice();
+                    const firstArg = callNode.arguments[0];
+                    if (!firstArg) {
+                        return callNode;
+                    }
 
-                    if (args.length < 3) {
-                        args.push(factory.createObjectLiteralExpression());
-                    }
-                    if (args.length < 4) {
-                        args.push(factory.createTrue());
-                    }
-                    if (args.length < 5) {
-                        if (!extendsScene) {
-                            needsScene = true;
+                    const firstArgIsController = ts.isIdentifier(firstArg)
+                        && registeredControllers.has(firstArg.text);
+
+                    let hasScene = false;
+                    if (!firstArgIsController && typeChecker) {
+                        const argType = typeChecker.getTypeAtLocation(firstArg);
+                        if (argType && argType.getProperty("scene")) {
+                            hasScene = true;
                         }
-                        args.push(createTweenToSceneArg());
                     }
+
+                    let tweenControllerAccess;
+                    if (hasScene) {
+                        // firstArg.scene.tweenController
+                        tweenControllerAccess = factory.createPropertyAccessExpression(
+                            factory.createPropertyAccessExpression(firstArg, "scene"),
+                            "tweenController"
+                        );
+                    } else if (extendsSceneDeep) {
+                        // this.tweenController
+                        tweenControllerAccess = factory.createPropertyAccessExpression(
+                            factory.createThis(),
+                            "tweenController"
+                        );
+                    } else {
+                        // this.scene.tweenController
+                        needsScene = true;
+                        tweenControllerAccess = factory.createPropertyAccessExpression(
+                            createThisScene(),
+                            "tweenController"
+                        );
+                    }
+
+                    const newCallee = factory.createPropertyAccessExpression(
+                        tweenControllerAccess,
+                        "TweenTo"
+                    );
 
                     return factory.updateCallExpression(
                         callNode,
-                        callNode.expression,
+                        newCallee,
                         callNode.typeArguments,
-                        args
+                        callNode.arguments
                     );
                 }
 
@@ -140,7 +226,16 @@ function createControllerProxyTransformer(program) {
                         maybeCollectFromDirectiveMap(n.expression);
                         const updated = maybeTransformTweenToCall(n);
                         if (updated !== n) {
-                            return ts.visitEachChild(updated, visitInClass, context);
+                            // Only visit the arguments, not the callee (which we just created)
+                            const visitedArgs = updated.arguments.map(
+                                (arg) => ts.visitNode(arg, visitInClass)
+                            );
+                            return factory.updateCallExpression(
+                                updated,
+                                updated.expression,
+                                updated.typeArguments,
+                                visitedArgs
+                            );
                         }
                     }
                     if (ts.isPropertyAccessExpression(n)) {
@@ -163,24 +258,39 @@ function createControllerProxyTransformer(program) {
                     }
                     if (ts.isIdentifier(n) && isIdentifierReference(n)) {
                         const name = n.text;
+                        const canRewriteScene = extendsSceneDeep || hasScene || extendsSceneCarrier;
 
                         if (name === "bare") {
-                            if (extendsScene) {
-                                return factory.createThis();
-                            }
+                        if (extendsSceneDeep) {
+                            return factory.createThis();
+                        }
+                        if (canRewriteScene) {
                             needsScene = true;
                             return createThisScene();
+                        }
+                        }
+
+                        if (name === "events") {
+                            if (extendsSceneDeep) {
+                                return createThisProperty(name);
+                            }
+                            if (canRewriteScene) {
+                                needsScene = true;
+                                return createThisSceneProperty(name);
+                            }
                         }
 
                         if (registeredControllers.has(name)) {
                             if (usedControllers) {
                                 usedControllers.add(name);
                             }
-                            if (extendsScene) {
+                            if (extendsSceneDeep) {
                                 return createThisProperty(name);
                             }
-                            needsScene = true;
-                            return createThisSceneProperty(name);
+                            if (canRewriteScene) {
+                                needsScene = true;
+                                return createThisSceneProperty(name);
+                            }
                         }
 
                         if (usedControllers && isProjectSource) {
@@ -1065,12 +1175,44 @@ function classHasSceneInHierarchy(node, classInfoMap) {
         }
         visited.add(baseName);
 
+        if (baseName === "Scene") {
+            return true;
+        }
+
         const info = classInfoMap.get(baseName);
         if (!info) {
             return false;
         }
         if (info.hasScene) {
             return true;
+        }
+        return info.bases.some(walk);
+    }
+
+    return bases.some(walk);
+}
+
+function classExtendsSceneInHierarchy(node, classInfoMap) {
+    const bases = getBaseClassNames(node);
+    if (bases.length === 0) {
+        return false;
+    }
+
+    const visited = new Set();
+
+    function walk(baseName) {
+        if (!baseName || visited.has(baseName)) {
+            return false;
+        }
+        visited.add(baseName);
+
+        if (baseName === "Scene") {
+            return true;
+        }
+
+        const info = classInfoMap.get(baseName);
+        if (!info) {
+            return false;
         }
         return info.bases.some(walk);
     }
@@ -1087,7 +1229,68 @@ function classHasSceneInDeclHierarchy(node, checker) {
         }
         visited.add(decl);
 
+        if (decl.name && decl.name.text === "Scene") {
+            return true;
+        }
+
+        if (classExtendsScene(decl)) {
+            return true;
+        }
+
         if (classHasSceneProperty(decl)) {
+            return true;
+        }
+
+        const bases = decl.heritageClauses
+            ? decl.heritageClauses
+                .filter((clause) => clause.token === ts.SyntaxKind.ExtendsKeyword)
+                .flatMap((clause) => clause.types)
+            : [];
+
+        for (const baseType of bases) {
+            const baseDecls = resolveClassDeclarationsFromType(baseType, checker);
+            for (const baseDecl of baseDecls) {
+                if (walkDeclaration(baseDecl)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    const baseTypes = node.heritageClauses
+        ? node.heritageClauses
+            .filter((clause) => clause.token === ts.SyntaxKind.ExtendsKeyword)
+            .flatMap((clause) => clause.types)
+        : [];
+
+    for (const baseType of baseTypes) {
+        const baseDecls = resolveClassDeclarationsFromType(baseType, checker);
+        for (const baseDecl of baseDecls) {
+            if (walkDeclaration(baseDecl)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+function classExtendsSceneInDeclHierarchy(node, checker) {
+    const visited = new Set();
+
+    function walkDeclaration(decl) {
+        if (!decl || visited.has(decl)) {
+            return false;
+        }
+        visited.add(decl);
+
+        if (decl.name && decl.name.text === "Scene") {
+            return true;
+        }
+
+        if (classExtendsScene(decl)) {
             return true;
         }
 
@@ -1199,9 +1402,40 @@ function classHasSceneInTypeHierarchy(node, checker) {
     return walkType(classType);
 }
 
+function classExtendsSceneInTypeHierarchy(node, checker) {
+    const visited = new Set();
+
+    function walkType(type) {
+        if (!type || visited.has(type)) {
+            return false;
+        }
+        visited.add(type);
+
+        if (type.symbol && type.symbol.name === "Scene") {
+            return true;
+        }
+
+        const baseTypes = type.getBaseTypes ? type.getBaseTypes() : [];
+        for (const baseType of baseTypes || []) {
+            if (walkType(baseType)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    const classType = checker.getTypeAtLocation(node);
+    return walkType(classType);
+}
+
 function typeHasSceneProperty(type, checker) {
     if (!type) {
         return false;
+    }
+
+    if (type.symbol && type.symbol.name === "Scene") {
+        return true;
     }
 
     const sceneProp = type.getProperty("scene");

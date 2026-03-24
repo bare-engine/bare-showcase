@@ -41,9 +41,6 @@ export class GameAnimation extends Scene
     
     OnStart()
     {
-        this.AddGameObject('barn')
-            .SetPosition(0, 110);
-
         var buffalo = this.AddGameObject('buffalo');
         var animComponent = buffalo.AddComponent(AnimationComponent);
         animComponent.Play('run');
@@ -56,6 +53,9 @@ export class GameAnimation extends Scene
             if (info.isLeftButton)
                 animComponent.Play('eat', () => trace('animation complete'))
         });
+        
+        this.AddGameObject('barn')
+            .SetPosition(0, 110);
     }
 
     OnClear(): void

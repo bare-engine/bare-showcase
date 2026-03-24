@@ -1,12 +1,10 @@
 {
-  "name": "Sample Level",
+  "name": "level_goal",
   "dimensions": {
     "width": 2250,
     "height": 2000
   },
-  "background": {
-    "color": "#4CAF50"
-  },
+  "backgroundColor": "#4CAF50",
   "entitiesByLayer": {
     "objects": [
       {
@@ -28,13 +26,6 @@
         "position": {
           "x": 1176.610138782382,
           "y": 639.665630743872
-        },
-        "components": {
-          "goal": {
-            "emoji": "🎉",
-            "target": 3,
-            "result": "🥳+🌟x3"
-          }
         }
       },
       {
@@ -63,9 +54,6 @@
         "position": {
           "x": 1175.1967023411062,
           "y": 971.3678757630578
-        },
-        "components": {
-          "ball": {}
         }
       },
       {
@@ -87,18 +75,41 @@
         "position": {
           "x": 1787.735211883394,
           "y": 1546.8943797597262
-        },
-        "components": {
-          "goal": {
-            "emoji": "💎",
-            "target": 10,
-            "result": "unlock"
-          }
         }
       }
     ],
     "BACKGROUND": [],
     "SURFACE": [
+      {
+        "name": "pathVertical",
+        "position": {
+          "x": 699.9951908286882,
+          "y": 1932.040850166552
+        }
+      },
+      {
+        "name": "shovelSpot",
+        "position": {
+          "x": 1223.0954048419787,
+          "y": 1604.9415173371294
+        }
+      },
+      {
+        "name": "shovelSpot",
+        "position": {
+          "x": 1841.0610376892935,
+          "y": 1189.5021786058192
+        }
+      },
+      {
+        "name": "shovelSpot",
+        "position": {
+          "x": 833.6214082968838,
+          "y": 1096.028327391276
+        }
+      }
+    ],
+    "surface": [
       {
         "name": "pathVertical",
         "position": {

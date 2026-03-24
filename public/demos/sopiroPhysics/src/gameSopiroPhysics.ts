@@ -1,7 +1,7 @@
 import entityDataJson from '../entityData.json' 
 
-import { Scene, BareClasses, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent } from "bare-engine";
-import { Circle, Type } from "bare-engine/sopiroPhysics";
+import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent } from "bare-engine";
+import { Circle, PhysicsControllerSopiro, Type } from "bare-engine/sopiroPhysics";
 
 /*  
     THIS DEMO SHOWS A PHYSICS ENGINE CALLED SOPIRO IN ACTION
@@ -21,7 +21,7 @@ export class GameSopiroPhysics extends Scene
     
     OnAwake()
     {
-        bare.AddClass(BareClasses.PhysicsControllerSopiro);
+        bare.AddClass(PhysicsControllerSopiro);
     }
     
     async OnStart()
@@ -34,14 +34,14 @@ export class GameSopiroPhysics extends Scene
         // EXAMPLE OF CREATING A RIGID BODY BY CODE
         // THIS WORKS SINCE CIRCLE EXTENDS RIGIDBODY WHICH EXTENDS GAMEOBJECT
         this.events.on(BareEvent.pointer_down, () => {
-            var rigidBody = new Circle(this, 36, Type.Dynamic);
-            rigidBody.restitution = .8;
-            rigidBody.mass = 2;
-            bare.AddGameObject(rigidBody);
+            var circleRb = new Circle(this, 36, Type.Dynamic);
+            circleRb.restitution = .8;
+            circleRb.mass = 2;
+            bare.AddGameObject(circleRb);
 
-            rigidBody.InitTexture('⚽');
-            rigidBody.SetPosition(mouseController.world.position.x, mouseController.world.position.y);
-            rigidBody.SetVelocityXY(Helper.RandomRange(-100, 100), Helper.RandomRange(-100, 100));
+            circleRb.InitTexture('⚽');
+            circleRb.SetPosition(mouseController.world.position.x, mouseController.world.position.y);
+            circleRb.SetVelocityXY(Helper.RandomRange(-100, 100), Helper.RandomRange(-100, 100));
         })
     }
 }

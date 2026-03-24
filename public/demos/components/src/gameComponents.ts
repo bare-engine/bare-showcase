@@ -12,7 +12,7 @@ const data = ` {
     "entities": {
         "👋": {
             "components": {
-                "wave": {"frequency": 0.5}
+                "wave": {"frequency": 1}
             }
         }
     }
@@ -42,7 +42,7 @@ export class GameComponents extends Scene
             .SetPosition(bare.width * .5, bare.height * .75)
             .SetPivot(88, 94)
 
-        componentController.GetComponent(obj, WaveComponent)!.frequency = 1;
+        componentController.GetComponent(obj, WaveComponent)!.frequency = 2;
     }
 }
 

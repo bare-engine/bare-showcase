@@ -1,12 +1,10 @@
 {
-  "name": "Sample Level",
+  "name": "map",
   "dimensions": {
     "width": 2250,
     "height": 2000
   },
-  "background": {
-    "color": "#979797"
-  },
+  "backgroundColor": "#979797",
   "entitiesByLayer": {
     "objects": [
       {
@@ -28,7 +26,7 @@
         "name": "level_goal",
         "position": {
           "x": 1086.5201614343196,
-          "y": 468.792458384323
+          "y": 474.7094429340384
         },
         "editorComponents": {
           "levelConnector": {

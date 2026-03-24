@@ -1,12 +1,10 @@
 {
-  "name": "Sample Level",
+  "name": "level_farm",
   "dimensions": {
     "width": 2450,
     "height": 2000
   },
-  "background": {
-    "color": "#4CAF50"
-  },
+  "backgroundColor": "#4CAF50",
   "entitiesByLayer": {
     "objects": [
       {

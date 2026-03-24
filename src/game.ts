@@ -55,8 +55,8 @@ export class MainGame extends Scene
         this.instructions = instructions;
 
         // LISTEN TO EVENTS FOR TEXT VISIBILITY
-        this.events.persistent.on('editor_opened', () => this.SetDemoTextVisibility(false));
-        this.events.persistent.on('editor_closed', () => this.SetDemoTextVisibility(true));
+        this.events.persistent.on(BareEvent.editor_opened, () => this.SetDemoTextVisibility(false));
+        this.events.persistent.on(BareEvent.editor_closed, () => this.SetDemoTextVisibility(true));
 
         // LISTEN TO KEYBOARD EVENTS
         this.events.on(BareEvent.key_pressed, (e) =>  {
@@ -95,9 +95,12 @@ export class MainGame extends Scene
 
         // SET PATHS TO UPCOMING DEMO DIR
         var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
-        Scene.rootPath = `demos/${folderName}`;
-        Scene.levelPath = `levels`; 
-        Scene.soundPath = ``;
+        bareEngine.rootDir = `demos/${folderName}`;
+        bareEngine.levelDir = `levels`; 
+        bareEngine.soundDir = ``;
+
+        // RESET BACKGROUND COLOR
+        rapid.backgroundColor = Color.White;
 
         // UPDATE TEXT "TITLE: X. NAME"
         this.title.SetText(`${demoIndex + 1}. ` + name
@@ -134,7 +137,7 @@ export class MainGame extends Scene
 
 StartBare(MainGame, {antiAlias: true});
 
-import { BareEvent, BarePlugin, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
+import { BareEvent, BarePlugin, Color, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
 import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';
 import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
 import { GameBarePhysics } from '../public/demos/barePhysics/src/gameBarePhysics';

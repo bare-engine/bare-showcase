@@ -4,9 +4,7 @@
     "width": 2250,
     "height": 2000
   },
-  "background": {
-    "color": "#747474"
-  },
+  "backgroundColor": "#747474",
   "entitiesByLayer": {
     "objects": [
       {

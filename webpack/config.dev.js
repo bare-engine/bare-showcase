@@ -72,7 +72,7 @@ module.exports = {
                     {
                         loader: "ts-loader",
                         options: {
-                            transpileOnly: true,
+                            transpileOnly: false,
                             getCustomTransformers: (program) => ({
                                 before: [createControllerProxyTransformer(program)]
                             })
@@ -117,7 +117,7 @@ module.exports = {
         poll: false
     },
     cache: {
-        type: 'filesystem'
+        type: 'memory'
     },
     devServer: {
         static: {

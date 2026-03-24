@@ -4,9 +4,7 @@
     "width": 2450,
     "height": 2000
   },
-  "background": {
-    "color": "#ad6620"
-  },
+  "backgroundColor": "#ad6620",
   "entitiesByLayer": {
     "surface": [
       {
