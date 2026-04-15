@@ -6,7 +6,8 @@
         "moduleResolution": "bundler",
         "baseUrl": "./src",
         "resolveJsonModule": true,
-        "lib": ["ES2020", "DOM"]
+        "lib": ["ES2020", "DOM"],
+        "experimentalDecorators": true
     },
     "include": [
         "src",

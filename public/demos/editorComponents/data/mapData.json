@@ -4,10 +4,10 @@
     {
       "Levels": {
         "image": "📦",
-        "entries": ["level_car", "level_city", "level_cloud", "level_farm", "level_goal", "level_heavens_gate", "level_intro", "level_picknick", "level_whirlwind"]
+        "entries": ["level_car", "level_city", "level_cloud", "level_farm", "level_goal", "level_heavens_gate", "level_intro", "level_picnic", "level_whirlwind"]
       }
     },
-  "entityBases": {
+  "baseEntities": {
     "level": {
       "imagePath": "editorImages",
       "editorComponents": {
@@ -21,31 +21,31 @@
   },
   "entities": {
     "level_car": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
     "level_city": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
     "level_cloud": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
     "level_farm": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
     "level_goal": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
     "level_heavens_gate": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
     "level_intro": {
-      "extendData": "level"
+      "baseEntity": "level"
     },
-    "level_picknick": {
-      "extendData": "level"
+    "level_picnic": {
+      "baseEntity": "level"
     },
     "level_whirlwind": {
-      "extendData": "level"
+      "baseEntity": "level"
     }
   }
 }

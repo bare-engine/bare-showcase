@@ -16,7 +16,7 @@ export class GameSopiroPhysics extends Scene
 {
     constructor()
     {
-        super({entityData: entityDataJson});
+        super({settingsData: entityDataJson});
     }
     
     OnAwake()

@@ -13,9 +13,6 @@ import { MainGame } from '../../../../src/game';
     ALSO SHOWING HOW YOU CAN MAKE A CUSTOM EDITOR OUT OF THE LEVEL EDITOR
     IN THIS CASE, MAKING IT INTO A EDITOR WHERE YOU CAN CONNECT MAPS
     THE RESULTING LEVEL FILE IS SIMPLY USED AS DATA.
-
-    IN THE FUTURE, COULD MAKE COMPRESS/DECOMRESS FUNCTIONALITY
-    SO IT DOESN'T HAVE TO LOOK LIKE A LEVEL FILE ANYMORE, MORE PURE DATA
 */
 
 var mapHandler: MapHandler;
@@ -29,7 +26,7 @@ export class GameEditorComponents extends Scene
 
     constructor()
     {
-        super({entityData: entityDataJson});
+        super({settingsData: entityDataJson});
     }
         
     async OnAwake()

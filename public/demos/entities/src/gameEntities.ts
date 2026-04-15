@@ -16,7 +16,7 @@ import { Scene, Color, GameObject, StartBare, BareText } from "bare-engine";
 */
 
 const data = ` {
-    "entityBases": {
+    "baseEntities": {
         "ANY": {
             "pivot": {"x": 0.5, "y": 0.5}
         },
@@ -26,7 +26,7 @@ const data = ` {
             "rotation": 90
         },
         "bigAndNoRotation": {
-            "extendData": "big",
+            "baseEntity": "big",
             "propertiesRemoved": ["rotation"]
         }
     },
@@ -36,7 +36,7 @@ const data = ` {
             "extendClass": "Fruit"
         },
         "🍎": {
-            "extendData": "bigAndNoRotation"
+            "baseEntity": "bigAndNoRotation"
         }
     }
   }`;

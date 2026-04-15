@@ -7,24 +7,24 @@ import { Scene, BareText, BaseComponent, componentController, GameObject, hitbox
 
 // SETTING UP THE ENTITY DATA WITH SOME UNIQUE PROPERTIES: pop, isHappy, EmojiObject
 const data = ` {
-    "entities": {
-        "😃": {
+    "baseEntities": {
+        "ANY": {
             "pivot": {"x": 0.5, "y": 0.5},
             "components": {
                 "pop": {}
-            },
+            }
+        }
+    },
+    "entities": {
+        "😃": {
             "isHappy": true
         },
         "🙁": {
             "extendClass": "EmojiObject",
-            "pivot": {"x": 0.5, "y": 0.5},
-            "components": {
-                "pop": {}
-            },
             "isHappy": false
         }
     }
-  }`;
+}`;
 
 declare module "bare-engine"
 {
@@ -47,7 +47,7 @@ declare module "bare-engine"
         popped: { gameObject: GameObject };
     }
     
-    // ADDING A NEW SAVE DATA PROPERTY
+    // ADDING A NEW SAVE-DATA PROPERTY
     namespace SaveData {
         let happyEmojisClicked: int;
     }

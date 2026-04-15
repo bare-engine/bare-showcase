@@ -16,9 +16,8 @@
       "doSave": true
     }
   },
-  "entityBases": {
+  "baseEntities": {
     "ANY": {
-      "extendClass": "PhysicsObjectBare",
       "hitbox": "DEFAULT",
       "pivotBasedOnHitbox": "DEFAULT"
     }

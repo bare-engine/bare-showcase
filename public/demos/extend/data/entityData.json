@@ -1,0 +1,16 @@
+{
+  "entities": {
+    "😃": {},
+    "🙁": {
+      "extendClass": "EmojiObject",
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "components": {
+        "pop": {}
+      },
+      "isHappy": false
+    }
+  }
+}

@@ -10,10 +10,10 @@
       {
         "name": "level_farm",
         "position": {
-          "x": 1085.6720738732474,
-          "y": 797.3283034667029
+          "x": 1086,
+          "y": 797
         },
-        "editorComponents": {
+        "components": {
           "levelConnector": {
             "top": "level_goal",
             "right": "",
@@ -25,10 +25,10 @@
       {
         "name": "level_goal",
         "position": {
-          "x": 1086.5201614343196,
-          "y": 474.7094429340384
+          "x": 1087,
+          "y": 475
         },
-        "editorComponents": {
+        "components": {
           "levelConnector": {
             "top": "",
             "right": "",
@@ -43,7 +43,7 @@
           "x": 1094,
           "y": 1138
         },
-        "editorComponents": {
+        "components": {
           "levelConnector": {
             "top": "level_farm",
             "right": "level_picknick",
@@ -55,10 +55,10 @@
       {
         "name": "level_city",
         "position": {
-          "x": 765.5219087985092,
-          "y": 1152.331557611436
+          "x": 766,
+          "y": 1152
         },
-        "editorComponents": {
+        "components": {
           "levelConnector": {
             "top": "",
             "right": "level_car",
@@ -70,10 +70,10 @@
       {
         "name": "level_whirlwind",
         "position": {
-          "x": 1090.8270660096596,
-          "y": 1474.704485676777
+          "x": 1091,
+          "y": 1475
         },
-        "editorComponents": {
+        "components": {
           "levelConnector": {
             "top": "level_car",
             "right": "",
@@ -85,10 +85,15 @@
       {
         "name": "level_picknick",
         "position": {
-          "x": 1463.8270660096596,
-          "y": 1136.704485676777
+          "x": 1464,
+          "y": 1137
         },
-        "editorComponents": {
+        "pivot": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "texture": "whitePixel",
+        "components": {
           "levelConnector": {
             "top": "",
             "right": "",
