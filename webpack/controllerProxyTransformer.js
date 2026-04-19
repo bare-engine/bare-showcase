@@ -2,6 +2,19 @@ const ts = require("typescript");
 const fs = require("fs");
 const path = require("path");
 
+const allControllerNames = new Set([
+    "componentController",
+    "hitboxController",
+    "mouseController",
+    "objectController",
+    "particleController",
+    "physicsControllerBare",
+    "physicsControllerSopiro",
+    "tweenController",
+    "cameraHandler",
+    "levelHandler",
+]);
+
 const externalClassInfoMap = collectClassInfoFromDirs([
     path.resolve(process.cwd(), "../BareEngine/src"),
     path.resolve(process.cwd(), "node_modules/bare-engine/src"),
@@ -16,18 +29,7 @@ const externalControllerUsageByClass = collectControllerUsageByClassFromDirs(
         path.resolve(process.cwd(), "../BareEngine/src"),
         path.resolve(process.cwd(), "node_modules/bare-engine/src")
     ],
-    new Set([
-        "componentController",
-        "hitboxController",
-        "mouseController",
-        "objectController",
-        "particleController",
-        "physicsControllerBare",
-        "physicsControllerSopiro",
-        "tweenController",
-        "cameraHandler",
-        "levelHandler"
-    ])
+    allControllerNames
 );
 
 function createControllerProxyTransformer(program) {
@@ -43,19 +45,9 @@ function createControllerProxyTransformer(program) {
         }
     }
     const typeChecker = program ? program.getTypeChecker() : null;
-    const explicitControllerOrder = [
-        "componentController",
-        "hitboxController",
-        "mouseController",
-        "objectController",
-        "particleController",
-        "physicsControllerBare",
-        "physicsControllerSopiro",
-        "tweenController",
-        "cameraHandler",
-        "levelHandler"
-    ];
-    const explicitControllers = new Set(explicitControllerOrder);
+    const explicitControllerOrder = Array.from(allControllerNames);
+    const explicitControllers = allControllerNames;
+
 
     return (context) => {
         const factory = context.factory || ts;
@@ -137,7 +129,7 @@ function createControllerProxyTransformer(program) {
             function transformClass(node) {
                 const className = node.name ? node.name.text : null;
                 const isStartBareTarget = className && startBareTargets.has(className);
-                const usedControllers = isStartBareTarget ? new Set() : null;
+                const usedControllers = isStartBareTarget ? new Set(explicitControllerOrder) : null;
                 const hasScene = classHasSceneProperty(node);
                 const extendsScene = classExtendsScene(node);
                 const extendsSceneDeep = extendsScene
@@ -337,41 +329,10 @@ function createControllerProxyTransformer(program) {
                     }
                 }
 
-                function collectControllerIdentifiersInNode(targetNode) {
-                    const found = new Set();
-
-                    function walk(n) {
-                        if (ts.isIdentifier(n) && isIdentifierReference(n)) {
-                            const name = n.text;
-                            if (registeredControllers.has(name)) {
-                                found.add(name);
-                            }
-                        }
-                        ts.forEachChild(n, walk);
-                    }
-
-                    walk(targetNode);
-                    return found;
-                }
-
                 function transformBlockWithControllerRefs(block) {
                     const newStatements = [];
 
                     for (const statement of block.statements) {
-                        const usedInStatement = collectControllerIdentifiersInNode(statement);
-                        if (usedInStatement.size > 0) {
-                            const orderedNames = explicitControllerOrder.filter((name) =>
-                                usedInStatement.has(name)
-                            );
-                            for (const name of orderedNames) {
-                                newStatements.push(
-                                    factory.createExpressionStatement(
-                                        factory.createIdentifier(name)
-                                    )
-                                );
-                            }
-                        }
-
                         const updatedStatement = ts.visitEachChild(statement, visitInClass, context);
                         newStatements.push(updatedStatement);
                     }

@@ -7,11 +7,11 @@ const webpack = require("webpack");
 const fs = require("fs");
 const CompressionPlugin = require("compression-webpack-plugin");
 const rimraf = require("rimraf");
-const PreserveComponentPropertiesPlugin = require('./PreserveComponentPropertiesPlugin');
 const ComponentParamPreserverPlugin = require('./ComponentParamPreserverPlugin');
 const InjectInitialAssetsPlugin = require("./InjectInitialAssetsPlugin");
 const { EsbuildPlugin } = require("esbuild-loader");
 const createControllerProxyTransformer = require("./controllerProxyTransformer");
+const createGameObjectNameTransformer = require("./gameObjectNameTransformer");
 
 function ensureDir(dirPath) {
     if (!fs.existsSync(dirPath)) {
@@ -57,9 +57,9 @@ module.exports = {
                     {
                         loader: "ts-loader",
                         options: {
-                            transpileOnly: true,
+                            transpileOnly: false,
                             getCustomTransformers: (program) => ({
-                                before: [createControllerProxyTransformer(program)]
+                                before: [createControllerProxyTransformer(program), createGameObjectNameTransformer(program)]
                             })
                         }
                     }
@@ -105,7 +105,7 @@ module.exports = {
             }
         ]),
 		new webpack.DefinePlugin({
-			__DEV__: JSON.stringify(true)
+			__DEV__: JSON.stringify(false)
 		}),
         new InjectInitialAssetsPlugin(),
         new CopyPlugin({
