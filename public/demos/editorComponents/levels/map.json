@@ -46,7 +46,7 @@
         "components": {
           "levelConnector": {
             "top": "level_farm",
-            "right": "level_picknick",
+            "right": "level_picnic",
             "bottom": "level_whirlwind",
             "left": "level_city"
           }
@@ -83,16 +83,11 @@
         }
       },
       {
-        "name": "level_picknick",
+        "name": "level_picnic",
         "position": {
-          "x": 1464,
+          "x": 1424,
           "y": 1137
         },
-        "pivot": {
-          "x": 0.5,
-          "y": 0.5
-        },
-        "texture": "whitePixel",
         "components": {
           "levelConnector": {
             "top": "",

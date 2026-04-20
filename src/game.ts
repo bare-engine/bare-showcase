@@ -7,6 +7,7 @@
 export class MainGame extends Scene
 {
     private demos = [
+        GameEditorComponents,
         GameBasics,
         GameImageLoading,
         GameAnimation,
@@ -19,7 +20,6 @@ export class MainGame extends Scene
         GameComponents,
         GameExtend,
         GameLevel,
-        GameEditorComponents,
         GameSopiroPhysics,
         GameBarePhysics,
         GameSound,

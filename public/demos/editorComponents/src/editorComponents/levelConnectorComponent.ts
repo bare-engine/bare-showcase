@@ -82,7 +82,7 @@ export class LevelConnectorComponent extends BaseComponent
         }
     }
 
-    Render(): void 
+    OnRender(): void 
     {
         var directions:Direction[] = ["top", "right", "bottom", "left"];
         var allConnectorComponents:LevelConnectorComponent[] = componentController.GetComponentsByType(LevelConnectorComponent as any);

@@ -9,6 +9,7 @@ function toConstantCase(str) {
 }
 
 function generateLayers() {
+    if (!fs.existsSync(jsonPath)) return;
     try {
         const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
         const data = JSON.parse(jsonContent);
@@ -43,7 +44,7 @@ class GenerateLayersPlugin {
     apply(compiler) {
         generateLayers();
 
-        if (compiler.options.mode === 'development') {
+        if (compiler.options.mode === 'development' && fs.existsSync(jsonPath)) {
             fs.watch(jsonPath, (eventType) => {
                 if (eventType === 'change') {
                     generateLayers();

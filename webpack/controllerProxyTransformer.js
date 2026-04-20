@@ -129,7 +129,7 @@ function createControllerProxyTransformer(program) {
             function transformClass(node) {
                 const className = node.name ? node.name.text : null;
                 const isStartBareTarget = className && startBareTargets.has(className);
-                const usedControllers = isStartBareTarget ? new Set(explicitControllerOrder) : null;
+                const usedControllers = isStartBareTarget ? new Set() : null;
                 const hasScene = classHasSceneProperty(node);
                 const extendsScene = classExtendsScene(node);
                 const extendsSceneDeep = extendsScene
@@ -331,8 +331,23 @@ function createControllerProxyTransformer(program) {
 
                 function transformBlockWithControllerRefs(block) {
                     const newStatements = [];
+                    const introducedControllers = new Set();
 
                     for (const statement of block.statements) {
+                        // Scan for controller refs in this statement before rewriting
+                        function scanControllers(n) {
+                            if (ts.isIdentifier(n) && isIdentifierReference(n) && registeredControllers.has(n.text)) {
+                                if (!introducedControllers.has(n.text)) {
+                                    introducedControllers.add(n.text);
+                                    newStatements.push(
+                                        factory.createExpressionStatement(factory.createIdentifier(n.text))
+                                    );
+                                }
+                            }
+                            ts.forEachChild(n, scanControllers);
+                        }
+                        scanControllers(statement);
+
                         const updatedStatement = ts.visitEachChild(statement, visitInClass, context);
                         newStatements.push(updatedStatement);
                     }
@@ -408,91 +423,12 @@ function createControllerProxyTransformer(program) {
                     return member;
                 });
 
-                let membersWithAddClass = updatedMembers;
-
-                if (usedControllers && usedControllers.size > 0 && isProjectSource) {
+                if (usedControllers && usedControllers.size > 0 && isProjectSource && isStartBareTarget) {
                     const orderedControllerNames = Array.from(explicitControllers)
                         .filter((name) => usedControllers.has(name));
-                    const controllerClassNames = orderedControllerNames.map((name) => upperFirst(name));
-
-                    if (isStartBareTarget) {
-                        for (const name of controllerClassNames) {
-                            usedControllerClassNames.add(name);
-                        }
+                    for (const name of orderedControllerNames.map((name) => upperFirst(name))) {
+                        usedControllerClassNames.add(name);
                     }
-                    const existingAddClass = new Set();
-
-                    membersWithAddClass = updatedMembers.map((member) => {
-                        if (!ts.isConstructorDeclaration(member) || !member.body) {
-                            return member;
-                        }
-
-                        for (const statement of member.body.statements) {
-                            if (!ts.isExpressionStatement(statement)) {
-                                continue;
-                            }
-                            const expr = statement.expression;
-                            if (!ts.isCallExpression(expr)) {
-                                continue;
-                            }
-                            if (!ts.isPropertyAccessExpression(expr.expression)) {
-                                continue;
-                            }
-                            const propAccess = expr.expression;
-                            if (
-                                !ts.isThis(propAccess.expression)
-                                || propAccess.name.text !== "AddClass"
-                            ) {
-                                continue;
-                            }
-                            if (expr.arguments.length === 0) {
-                                continue;
-                            }
-                            const arg = expr.arguments[0];
-                            if (ts.isIdentifier(arg)) {
-                                existingAddClass.add(arg.text);
-                            }
-                        }
-
-                        const addStatements = controllerClassNames
-                            .filter((name) => !existingAddClass.has(name))
-                            .map((name) =>
-                                factory.createExpressionStatement(
-                                    factory.createCallExpression(
-                                        factory.createPropertyAccessExpression(
-                                            factory.createThis(),
-                                            "AddClass"
-                                        ),
-                                        undefined,
-                                        [factory.createIdentifier(name)]
-                                    )
-                                )
-                            );
-
-                        if (addStatements.length === 0) {
-                            return member;
-                        }
-
-                        const statements = Array.from(member.body.statements);
-                        const superIndex = statements.findIndex((statement) => {
-                            if (!ts.isExpressionStatement(statement)) {
-                                return false;
-                            }
-                            const expr = statement.expression;
-                            return ts.isCallExpression(expr) && expr.expression.kind === ts.SyntaxKind.SuperKeyword;
-                        });
-
-                        const insertIndex = superIndex >= 0 ? superIndex + 1 : 0;
-                        statements.splice(insertIndex, 0, ...addStatements);
-
-                        return factory.updateConstructorDeclaration(
-                            member,
-                            member.modifiers,
-                            member.parameters,
-                            factory.updateBlock(member.body, statements)
-                        );
-                    });
-
                 }
 
                 const updated = ts.isClassDeclaration(node)
@@ -502,7 +438,7 @@ function createControllerProxyTransformer(program) {
                         node.name,
                         node.typeParameters,
                         node.heritageClauses,
-                        membersWithAddClass
+                        updatedMembers
                     )
                     : factory.updateClassExpression(
                         node,
@@ -510,7 +446,7 @@ function createControllerProxyTransformer(program) {
                         node.name,
                         node.typeParameters,
                         node.heritageClauses,
-                        membersWithAddClass
+                        updatedMembers
                     );
 
                 if (needsScene && !hasScene && !extendsSceneCarrier) {

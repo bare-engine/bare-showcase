@@ -14,7 +14,7 @@ export class GameBarePhysics extends Scene
     constructor()
     {
         super(JSON.parse(`{
-            "entityBases": {
+            "baseEntities": {
                 "ANY": {
                     "hitbox": "FULL",
                     "drag": 0.01
