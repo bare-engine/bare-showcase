@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <title>Bare Game</title>
+    <title>Emoji World</title>
       
     <style>
       :root {
@@ -16,7 +16,7 @@
           height: 100%;
           margin: 0;
           padding: 0;
-          background-color: rgb(255, 255, 255);
+          background-color: rgba(159, 202, 74, 1);
       }
       
       canvas {
@@ -86,7 +86,7 @@
       .editor-button {
           position: fixed;
           top: 9px;
-          right: 9px;
+          left: 9px;
           background-color: #fff;
           color: #333;
           border: 2px solid #333;
@@ -195,22 +195,7 @@
           head.querySelectorAll('[data-initial-asset]')
       );
       
-      function getAssetFileName(url) {
-          try {
-              var urlObj = new URL(url, document.baseURI);
-              var end = urlObj.pathname.split('/').pop();
-              return decodeURIComponent(end);
-          } catch (e) {
-              var end = url.split('/').pop();
-              return decodeURIComponent(end);
-          }
-      }
-
-      var assetsLinkValue = assets.map(function(asset) {
-            var link = (asset.src || asset.href);
-            return getAssetFileName(link);
-      })
-      console.log("Initial assets found: ", assetsLinkValue);
+      console.log(assets);
 
       var readyFired = false;
 
@@ -223,7 +208,7 @@
 
           assets.forEach(function(asset) {
               var url = asset.src || asset.href;
-              var fileName = getAssetFileName(url);
+              var fileName = url.split('/').pop();
 
               assetsObj[fileName] = asset;
 
