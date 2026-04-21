@@ -25,7 +25,7 @@ export class GameBarePhysics extends Scene
                     "hitboxType": "circle"
                 },
                 "⏹": {
-                    "isStatic": true
+                    "static": true
                 }
             },
             "layersInfo": {
