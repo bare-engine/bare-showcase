@@ -17,7 +17,8 @@ export class GameBarePhysics extends Scene
             "baseEntities": {
                 "ANY": {
                     "hitbox": "FULL",
-                    "drag": 0.01
+                    "drag": 0.01,
+                    "restitution": 0.8
                 }
             },
             "entities": {

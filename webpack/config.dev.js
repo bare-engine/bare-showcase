@@ -15,20 +15,10 @@ let skipReloadTimeout = null;
 let skipReloadNextOk = false;
 let lastSettingsDataPath = "";
 
-function ensureDir(dirPath) {
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
-    }
-}
-
-[
-    path.join(__dirname, "../src/components"),
-    path.join(__dirname, "../src/editorComponents")
-].forEach(ensureDir);
 
 const watchTexturePackImagesPlugin = new WatchTexturePackImagesPlugin({
     watchDir: path.join(__dirname, "../texturePackImages"),
-    reloadPath: "/assets/_initial",
+    reloadPath: "/assets/initial",
     buildCommand: ["npm", "run", "build:assets"],
     buildCwd: process.cwd(),
     runOnStart: true

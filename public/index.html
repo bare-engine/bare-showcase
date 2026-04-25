@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <title>Emoji World</title>
+    <title>Bare Demos</title>
       
     <style>
       :root {
@@ -208,7 +208,7 @@
 
           assets.forEach(function(asset) {
               var url = asset.src || asset.href;
-              var fileName = url.split('/').pop();
+              var fileName = decodeURIComponent(url.split('/').pop());
 
               assetsObj[fileName] = asset;
 

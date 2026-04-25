@@ -16,7 +16,7 @@ export class GameRenderTexture extends Scene
 
     OnUpdate(deltaTime: number): void
     {
-        var obj = new GameObject(this, Helper.RandomRange(0, bare.width), Helper.RandomRange(150, bare.height))
+        var obj = new GameObject(this, '', Helper.RandomRange(0, bare.width), Helper.RandomRange(150, bare.height))
         obj.SetRotation(Helper.RandomRange(-45, 45));
         obj.InitTexture(Helper.Choose("😁", "😃", "😄", "😊", "😋", "😛"));
         obj.CenterPivot();
