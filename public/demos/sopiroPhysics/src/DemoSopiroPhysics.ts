@@ -11,7 +11,7 @@ import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Help
     CUSTOM IN-ENGINE TOOL IS PLANNED
 */
 
-export class GameSopiroPhysics extends Scene
+export class DemoSopiroPhysics extends Scene
 {
     constructor()
     {
@@ -45,4 +45,4 @@ export class GameSopiroPhysics extends Scene
     }
 }
 
-//StartBare(GameSopiroPhysics);
+//StartBare(DemoSopiroPhysics);

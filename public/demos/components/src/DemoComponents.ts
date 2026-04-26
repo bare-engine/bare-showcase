@@ -18,7 +18,7 @@ const data = ` {
     }
   }`;
 
-export class GameComponents extends Scene
+export class DemoComponents extends Scene
 {
     constructor()
     {
@@ -46,4 +46,4 @@ export class GameComponents extends Scene
     }
 }
 
-//StartBare(GameComponents);
+//StartBare(DemoComponents);

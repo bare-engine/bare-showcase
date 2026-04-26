@@ -6,11 +6,11 @@ import { BareText, GameObject, Scene, TextObject } from "bare-engine";
     WITH super({ UI: true });
 */
 
-export class GameUi extends Scene
+export class DemoUi extends Scene
 {
     constructor()
     {
-        super({ UI: true });
+        super({ UI: true, resize: true });
     }
 
     OnStart()
@@ -49,4 +49,4 @@ export class GameUi extends Scene
     }
 }
 
-//StartBare(GameUi);
+//StartBare(DemoUi);

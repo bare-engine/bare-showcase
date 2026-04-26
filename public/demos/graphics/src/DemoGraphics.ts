@@ -4,7 +4,7 @@ import { assetsHandler, Scene, Color, MaskType, StartBare, Texture, Vec2 } from 
     THIS DEMO SHOWS HOW TO RENDER SHAPES, TEXTURES AND MASKS
 */
 
-export class GameGraphics extends Scene
+export class DemoGraphics extends Scene
 {
     flowerTexture:Texture;
     treeTexture:Texture;
@@ -118,4 +118,4 @@ export class GameGraphics extends Scene
     }
 }
 
-//StartBare(GameGraphics);
+//StartBare(DemoGraphics);

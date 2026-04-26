@@ -8,7 +8,7 @@ import { Scene, BareClasses, Vec2, StartBare, BareEvent, PhysicsObjectBare } fro
     SOMEHWAT WONKY STILL
 */
 
-export class GameBarePhysics extends Scene
+export class DemoBarePhysics extends Scene
 {
     constructor()
     {
@@ -81,4 +81,4 @@ export class GameBarePhysics extends Scene
     }
 }
 
-//StartBare(GameBarePhysics);
+//StartBare(DemoBarePhysics);

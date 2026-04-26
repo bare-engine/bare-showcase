@@ -5,7 +5,7 @@ import { assetsHandler, Scene, Color, mouseController, particleController, Parti
     THIS DEMO SHOWS HOW TO SETUP PARTICLE EMITTERS, EITHER CONTINUES OR ONE SHOT
 */ 
 
-export class GameParticles extends Scene
+export class DemoParticles extends Scene
 {
     smokeEmitter: ParticleEmitter;
     explosionEmitter: ParticleEmitter;
@@ -99,4 +99,4 @@ export class GameParticles extends Scene
     }
 }
 
-//StartBare(GameParticles);
+//StartBare(DemoParticles);

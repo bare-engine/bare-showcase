@@ -4,7 +4,7 @@ import { Scene, GameObject, Helper, RenderTexture, StartBare } from "bare-engine
     THIS SHOW HOW TO SETUP A RENDER TEXTURE AND RENDER LOTS OF TEXTURES TO IT
 */
 
-export class GameRenderTexture extends Scene
+export class DemoRenderTexture extends Scene
 {
     renderTexture: RenderTexture;
 
@@ -30,4 +30,4 @@ export class GameRenderTexture extends Scene
     }
 }
 
-//StartBare(GameRenderTexture);
+//StartBare(DemoRenderTexture);

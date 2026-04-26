@@ -31,7 +31,7 @@ const data = ` {
 
 // NOT SETTING doSave ON OBJECTS, IT'S SAVED ON DEFAULT
 
-export class GameLevel extends Scene
+export class DemoLevel extends Scene
 {
 	constructor()
 	{
@@ -50,4 +50,4 @@ export class GameLevel extends Scene
 	}
 }
 
-//StartBare(GameLevel);
+//StartBare(DemoLevel);

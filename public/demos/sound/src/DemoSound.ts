@@ -5,7 +5,7 @@ import { Scene, Helper, hitboxController, StartBare, TweenTo, assetsHandler, sou
     PLAY A SOUND, AT DIFFERENT RATES!
 */
 
-export class GameSound extends Scene
+export class DemoSound extends Scene
 {
     async OnAwake(): Promise<void>
     {
@@ -30,4 +30,4 @@ export class GameSound extends Scene
     }
 }
 
-//StartBare(GameSound);
+//StartBare(DemoSound);

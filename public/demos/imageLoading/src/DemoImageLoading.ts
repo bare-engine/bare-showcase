@@ -13,7 +13,7 @@ import { Scene, Helper } from "bare-engine";
     THIS DEMO DEMONSTRATES DIFFERENT WAYS OF LOADING IN AND USING IMAGES
 */
 
-export class GameImageLoading extends Scene
+export class DemoImageLoading extends Scene
 {
     OnStart()
     {

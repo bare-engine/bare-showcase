@@ -76,7 +76,7 @@ export class PopComponent extends BaseComponent
 
 // FINALLY! STARTING THE DEMO
 
-export class GameExtend extends Scene
+export class DemoExtend extends Scene
 {
     constructor()
     {
@@ -144,4 +144,4 @@ export class GameExtend extends Scene
     }
 }
 
-//StartBare(GameExtend);
+//StartBare(DemoExtend);

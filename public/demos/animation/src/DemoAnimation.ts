@@ -25,7 +25,7 @@ const data = ` {
   }`;
 
 
-export class GameAnimation extends Scene
+export class DemoAnimation extends Scene
 {
     constructor()
     {
@@ -64,4 +64,4 @@ export class GameAnimation extends Scene
     }
 }
 
-//StartBare(GameAnimation, {antiAlias: false});
+//StartBare(DemoAnimation, {antiAlias: false});

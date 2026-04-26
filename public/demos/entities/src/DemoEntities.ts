@@ -41,7 +41,7 @@ const data = ` {
     }
   }`;
 
-export class GameEntities extends Scene
+export class DemoEntities extends Scene
 {
     constructor()
     {
@@ -78,4 +78,4 @@ export class Fruit extends GameObject
     }
 }
 
-//StartBare(GameEntities);
+//StartBare(DemoEntities);

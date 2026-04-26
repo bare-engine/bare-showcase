@@ -5,7 +5,7 @@ import { GhostShader } from "./ghostShader";
     HOW TO ATTACH A SHADER TO A GAME OBJECT
 */
 
-export class GameShaders extends Scene
+export class DemoShaders extends Scene
 {
     async OnAwake(): Promise<void>
     {
@@ -25,4 +25,4 @@ export class GameShaders extends Scene
     }
 }
 
-//StartBare(GameShaders);
+//StartBare(DemoShaders);

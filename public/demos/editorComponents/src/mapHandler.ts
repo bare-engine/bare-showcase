@@ -45,7 +45,7 @@ export class MapHandler
         var connections:Partial<Record<Direction, string>> = {};
         this.map[levelName] = {connections: connections};
 
-        var levelConnectorConnections = entity.components!.levelConnector;
+        var levelConnectorConnections = entity.components!.levelConnector as Record<Direction, string>;
         for (var direction in levelConnectorConnections)
         {
           var levelNameInDirection = levelConnectorConnections[direction as Direction];

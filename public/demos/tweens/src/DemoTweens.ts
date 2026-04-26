@@ -6,7 +6,7 @@ import { Scene, Easing, hitboxController, Tween, tweenController, TweenTo, Start
     NOTE THAT TWEENCHAINS DON'T WORK YET
 */
 
-export class GameTweens extends Scene
+export class DemoTweens extends Scene
 {
     async OnAwake(): Promise<void>
     {
@@ -109,4 +109,4 @@ export class GameTweens extends Scene
     }
 }
 
-//StartBare(GameTweens);
+//StartBare(DemoTweens);

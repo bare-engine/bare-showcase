@@ -16,7 +16,7 @@ import { MainGame } from '../../../../src/game';
 
 var mapHandler: MapHandler;
 
-export class GameEditorComponents extends Scene
+export class DemoEditorComponents extends Scene
 {
     mapSettingsHandler: SettingsHandler = new SettingsHandler(this);
 
@@ -150,4 +150,4 @@ export class GameEditorComponents extends Scene
     }
 }
 
-//StartBare(GameEditorComponents);
+//StartBare(DemoEditorComponents);

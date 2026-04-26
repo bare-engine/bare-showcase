@@ -9,7 +9,7 @@ import { Scene, cameraHandler, CameraScaleMode, Helper, mouseController, StartBa
     CONTAIN: WHEN ZOOMED OUT, FITS CONTENT WITHIN SCREEN, WITH SPACE AROUND (WILL SEE OUTSIDE CONTENT BOUNDS / LETTERBOXED)
 */
 
-export class GameCamera extends Scene
+export class DemoCamera extends Scene
 {
     async OnStart()
     {
@@ -63,4 +63,4 @@ export class GameCamera extends Scene
     }
 }
 
-//StartBare(GameCamera);
+//StartBare(DemoCamera);

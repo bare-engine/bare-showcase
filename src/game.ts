@@ -7,24 +7,24 @@
 export class MainGame extends Scene
 {
     private demos = [
-        GameBasics,
-        GameImageLoading,
-        GameAnimation,
-        GameRenderTexture,
-        GameGraphics,
-        GameParticles,
-        GameShaders,
-        GameTweens,
-        GameEntities,
-        GameComponents,
-        GameExtend,
-        GameLevel,
-        GameEditorComponents,
-        GameSopiroPhysics,
-        GameBarePhysics,
-        GameSound,
-        GameCamera,
-        GameUi,
+        DemoBasics,
+        DemoImageLoading,
+        DemoAnimation,
+        DemoRenderTexture,
+        DemoGraphics,
+        DemoParticles,
+        DemoShaders,
+        DemoTweens,
+        DemoEntities,
+        DemoComponents,
+        DemoExtend,
+        DemoLevel,
+        DemoEditorComponents,
+        DemoSopiroPhysics,
+        DemoBarePhysics,
+        DemoSound,
+        DemoCamera,
+        DemoUi,
     ];
 
     private demoIndex = 0;
@@ -91,7 +91,7 @@ export class MainGame extends Scene
 
     async StartDemo(demoIndex: number)
     {
-        var name = this.demos[demoIndex].name.replace('Game', '');
+        var name = this.demos[demoIndex].name.replace('Demo', '');
 
         // SET PATHS TO UPCOMING DEMO DIR
         var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
@@ -139,21 +139,21 @@ StartBare(MainGame, {antiAlias: true});
 
 import { BareEvent, BarePlugin, Color, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
 import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';
-import { GameAnimation } from '../public/demos/animation/src/gameAnimation';
-import { GameBarePhysics } from '../public/demos/barePhysics/src/gameBarePhysics';
-import { GameBasics } from '../public/demos/basics/src/gameBasics';
-import { GameCamera } from '../public/demos/camera/src/gameCamera';
-import { GameComponents } from '../public/demos/components/src/gameComponents';
-import { GameEditorComponents } from '../public/demos/editorComponents/src/gameEditorComponents';
-import { GameEntities } from '../public/demos/entities/src/gameEntities';
-import { GameExtend } from '../public/demos/extend/src/gameExtend';
-import { GameGraphics } from '../public/demos/graphics/src/gameGraphics';
-import { GameImageLoading } from '../public/demos/imageLoading/src/gameImageLoading';
-import { GameLevel } from '../public/demos/level/src/gameLevel';
-import { GameParticles } from '../public/demos/particles/src/gameParticles';
-import { GameRenderTexture } from '../public/demos/renderTexture/src/gameRenderTexture';
-import { GameShaders } from '../public/demos/shaders/src/gameShaders';
-import { GameSopiroPhysics } from '../public/demos/sopiroPhysics/src/gameSopiroPhysics';
-import { GameSound } from '../public/demos/sound/src/gameSound';
-import { GameTweens } from '../public/demos/tweens/src/gameTweens';
-import { GameUi } from '../public/demos/ui/src/gameUi';
+import { DemoAnimation } from '../public/demos/animation/src/DemoAnimation';
+import { DemoBarePhysics } from '../public/demos/barePhysics/src/DemoBarePhysics';
+import { DemoBasics } from '../public/demos/basics/src/DemoBasics';
+import { DemoCamera } from '../public/demos/camera/src/DemoCamera';
+import { DemoComponents } from '../public/demos/components/src/DemoComponents';
+import { DemoEditorComponents } from '../public/demos/editorComponents/src/DemoEditorComponents';
+import { DemoEntities } from '../public/demos/entities/src/DemoEntities';
+import { DemoExtend } from '../public/demos/extend/src/DemoExtend';
+import { DemoGraphics } from '../public/demos/graphics/src/DemoGraphics';
+import { DemoImageLoading } from '../public/demos/imageLoading/src/DemoImageLoading';
+import { DemoLevel } from '../public/demos/level/src/DemoLevel';
+import { DemoParticles } from '../public/demos/particles/src/DemoParticles';
+import { DemoRenderTexture } from '../public/demos/renderTexture/src/DemoRenderTexture';
+import { DemoShaders } from '../public/demos/shaders/src/DemoShaders';
+import { DemoSopiroPhysics } from '../public/demos/sopiroPhysics/src/DemoSopiroPhysics';
+import { DemoSound } from '../public/demos/sound/src/DemoSound';
+import { DemoTweens } from '../public/demos/tweens/src/DemoTweens';
+import { DemoUi } from '../public/demos/ui/src/DemoUi';

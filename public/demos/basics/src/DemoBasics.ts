@@ -6,7 +6,7 @@ import { Scene, GameObject, StartBare } from "bare-engine";
     IT WILL FIND ITS CORRESPONDING IMAGE AT 'public/demos/basics/images/' AND STREAM IT IN
 */
 
-export class GameBasics extends Scene
+export class DemoBasics extends Scene
 {
     cog: GameObject;
 
@@ -24,4 +24,4 @@ export class GameBasics extends Scene
     }
 }
 
-//StartBare(GameBasics);
+//StartBare(DemoBasics);
