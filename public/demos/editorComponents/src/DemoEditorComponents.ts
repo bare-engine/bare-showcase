@@ -1,4 +1,4 @@
-import entityDataJson from './../data/entityData.json';
+import settingsDataJson from './../data/settingsData.json';
 import mapDataJson from './../data/mapData.json';
 import mapLevelJson from './../levels/map.json';
 
@@ -25,7 +25,7 @@ export class DemoEditorComponents extends Scene
 
     constructor()
     {
-        super({settingsData: entityDataJson});
+        super({settingsData: settingsDataJson});
     }
         
     async OnAwake()
