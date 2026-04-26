@@ -1,6 +1,5 @@
 
-import { Scene, Helper, hitboxController, StartBare, TweenTo, assetsHandler } from "bare-engine";
-import { soundHandler } from "bare-engine/sound";
+import { Scene, Helper, hitboxController, StartBare, TweenTo, assetsHandler, soundHandler } from "bare-engine";
 
 /*
     PLAY A SOUND, AT DIFFERENT RATES!

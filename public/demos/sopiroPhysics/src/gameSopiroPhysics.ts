@@ -1,7 +1,6 @@
 import entityDataJson from '../entityData.json' 
 
-import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent } from "bare-engine";
-import { Circle, PhysicsControllerSopiro, Type } from "bare-engine/sopiroPhysics";
+import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent, Circle, PhysicsControllerSopiro, Type } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS A PHYSICS ENGINE CALLED SOPIRO IN ACTION

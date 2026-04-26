@@ -1,6 +1,5 @@
 
-import { Scene, BareClasses, Vec2, StartBare, BareEvent } from "bare-engine";
-import { PhysicsObjectBare  } from 'bare-engine/barePhysics';
+import { Scene, BareClasses, Vec2, StartBare, BareEvent, PhysicsObjectBare } from "bare-engine";
 
 /* 
     SIMPLE PHYSICS WITH RECTANGLES AND CIRCLES.

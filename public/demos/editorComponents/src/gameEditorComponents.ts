@@ -2,8 +2,7 @@ import entityDataJson from './../data/entityData.json';
 import mapDataJson from './../data/mapData.json';
 import mapLevelJson from './../levels/map.json';
 
-import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
-import { PhysicsObjectBare } from 'bare-engine/barePhysics';
+import { Button, CameraScaleMode, EditorScene, LevelData, PhysicsObjectBare, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
 import { MainGame } from '../../../../src/game';
