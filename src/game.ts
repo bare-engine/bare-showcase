@@ -79,9 +79,6 @@ export class MainGame extends Scene
                 this.currentDemo.Restart();
             }
         });
-
-        // ENABLE PLUGIN
-        this.AddClass(BarePlugin);
     }
 
     OnStart(): void | Promise<void>
@@ -137,7 +134,7 @@ export class MainGame extends Scene
 
 StartBare(MainGame, {antiAlias: true});
 
-import { BareEvent, BarePlugin, Color, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
+import { BareEvent, Color, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
 import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';
 import { DemoAnimation } from '../public/demos/animation/src/DemoAnimation';
 import { DemoBarePhysics } from '../public/demos/barePhysics/src/DemoBarePhysics';

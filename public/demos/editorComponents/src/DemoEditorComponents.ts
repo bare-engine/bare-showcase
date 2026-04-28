@@ -5,7 +5,6 @@ import mapLevelJson from './../levels/map.json';
 import { Button, CameraScaleMode, EditorScene, LevelData, PhysicsObjectBare, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
-import { MainGame } from '../../../../src/game';
 
 /*  
     THIS DEMO SHOWS THE LevelConnectorComponent IN THE MAP EDITOR
@@ -62,10 +61,11 @@ export class DemoEditorComponents extends Scene
         }});
         this.mapEditorButton.name = "mapEditorButton";
 
-        // ADDING mapEditorButton TO MainGame, SO IT'S ON TOP
-        sceneController.Get(MainGame).AddGameObject(this.mapEditorButton)
+        // ADDING mapEditorButton
+        uiScene.AddGameObject(this.mapEditorButton)
             .SetPosition(bare.width, 0)
-            .SetPivot(1, 0);
+            .SetPivot(1, 0)
+            .persistent = true;
 
         this.mapEditorButton.persistent = true;
         this.mapEditorButton.visible = true;
@@ -85,7 +85,7 @@ export class DemoEditorComponents extends Scene
 
     PlaceDirectionalButtons()
     {
-        uiScene.Clear();
+        uiScene.Clear(false);
         
         var connections = mapHandler.map[SaveData.currentLevelStr]?.connections;
         for (let dir in connections)
