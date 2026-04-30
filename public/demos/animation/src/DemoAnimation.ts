@@ -12,18 +12,17 @@ import { AnimationComponent, Scene, StartBare, assetsHandler, BareEvent } from "
 */
 
 const data = ` {
-  "animations": {
-	  "buffalo_run": {
-		  "framesPerSecond": 9
-	  },
-	  "buffalo_eat": {
-		  "frames": ["buffalo_eat_00","buffalo_eat_01","buffalo_eat_03","buffalo_eat_00","buffalo_eat_01","buffalo_eat_03","buffalo_eat_00","buffalo_eat_01","buffalo_eat_02"],
-		  "framesPerSecond": 9,
-		  "loop": false
-	  }
+    "animations": {
+        "buffalo_run": {
+            "framesPerSecond": 9
+        },
+        "buffalo_eat": {
+            "frames": ["buffalo_eat_00#01+03+00#01+03+00#02"], 
+            "framesPerSecond": 9,
+            "loop": false
+        }
     }
-  }`;
-
+}`;
 
 export class DemoAnimation extends Scene
 {
