@@ -1,4 +1,4 @@
-import { Scene, GameObject, Helper, RenderTexture, StartBare } from "bare-engine";
+import { Scene, GameObject, Helper, RenderTexture, StartBare, Color } from "bare-engine";
 
 /*  
     THIS SHOW HOW TO SETUP A RENDER TEXTURE AND RENDER LOTS OF TEXTURES TO IT
@@ -10,7 +10,7 @@ export class DemoRenderTexture extends Scene
 
     OnStart()
     {
-        this.renderTexture = new RenderTexture(bare.width, bare.height);
+        this.renderTexture = new RenderTexture(rapid, bare.width, bare.height, new Color(0, 0, 0, 0));
         bare.AddGameObject(this.renderTexture);
     }
 

@@ -64,8 +64,10 @@ export class DemoEditorComponents extends Scene
         // ADDING mapEditorButton
         uiScene.AddGameObject(this.mapEditorButton)
             .SetPosition(bare.width, 0)
-            .SetPivot(1, 0)
-            .persistent = true;
+            .SetPivot(1, 0);
+
+        uiScene.persistent = true;
+        uiScene.resize = true;
 
         this.mapEditorButton.persistent = true;
         this.mapEditorButton.visible = true;

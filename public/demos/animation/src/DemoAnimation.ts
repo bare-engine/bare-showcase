@@ -33,7 +33,7 @@ export class DemoAnimation extends Scene
 
     async OnAwake()
     {
-        bare.textures.setAntialias(false); // DISABLE ANTIALIAS TO SHOW CRISP PIXEL ART
+        rapid.setAntialias(false); // DISABLE ANTIALIAS TO SHOW CRISP PIXEL ART
 
         await assetsHandler.LoadAtlas("texturePackImages");
     }
@@ -59,7 +59,7 @@ export class DemoAnimation extends Scene
 
     OnClear(): void
     {
-        bare.textures.setAntialias(true); // REVERT ANTIALIAS BACK, JUST SO IT'S ENABLED FOR OTHER DEMOS
+        rapid.setAntialias(true); // REVERT ANTIALIAS BACK, JUST SO IT'S ENABLED FOR OTHER DEMOS
     }
 }
 

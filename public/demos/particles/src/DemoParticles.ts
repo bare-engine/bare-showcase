@@ -19,7 +19,7 @@ export class DemoParticles extends Scene
         var stripeParticleTexture = await assetsHandler.GetTexturePromise("stripeParticle");
 
         // TODO: MAKE THIS ABLE TO LOAD A JSON STRING, GOTTA PORT COLOR AND VEC2
-        this.smokeEmitter = new ParticleEmitter({
+        this.smokeEmitter = new ParticleEmitter(rapid, {
             position: new Vec2(0, 0),
             life: 1.2,
             texture: particleTexture,
@@ -51,7 +51,7 @@ export class DemoParticles extends Scene
             }
         });
 
-        this.explosionEmitter = new ParticleEmitter({
+        this.explosionEmitter = new ParticleEmitter(rapid, {
             position: new Vec2(0, 0),
             life: .8,
             texture: stripeParticleTexture,

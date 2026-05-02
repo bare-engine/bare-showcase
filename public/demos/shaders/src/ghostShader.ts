@@ -1,8 +1,7 @@
-import { Uniform, ShaderType } from "bare-engine";
+import { CustomGlShader } from "bare-engine";
 
 export class GhostShader {
-    private shader: any = null;
-    private uniform: any = null;
+    private shader: CustomGlShader = null;
     private startTime: number = Date.now();
     private target: any = null;
     private originalShader: any = null;
@@ -18,7 +17,7 @@ export class GhostShader {
             uniform float uWobbleStrength;
             uniform float uWobbleSpeed;
 
-            void vertex(inout vec2 position, inout vec2 region) {
+            void vertex(inout vec4 position, inout vec2 region) {
                 float wobbleX = sin(uTime * uWobbleSpeed + position.y * 0.01) * uWobbleStrength;
                 float wobbleY = cos(uTime * uWobbleSpeed * 0.7 + position.x * 0.008) * uWobbleStrength * 0.5;
                 
@@ -39,8 +38,7 @@ export class GhostShader {
                 
                 float pulse = 0.5 + 0.3 * sin(uTime * uPulseSpeed);
                 
-                vec2 center = vec2(0.5, 0.5);
-                float distanceFromCenter = length(gl_FragCoord.xy / vec2(512.0, 512.0) - center);
+                float distanceFromCenter = length(vUV - vec2(0.5, 0.5));
                 float glow = 1.0 - smoothstep(0.0, uEdgeFade, distanceFromCenter);
                 
                 vec3 ghostColor = mix(color.rgb, uGhostTint, 0.6);
@@ -49,13 +47,11 @@ export class GhostShader {
                 float shimmer = 0.5 + 0.5 * sin(uTime * 3.0 + gl_FragCoord.x * 0.1 + gl_FragCoord.y * 0.08);
                 ghostColor = mix(ghostColor, vec3(1.0), shimmer * 0.1);
                 
-                color = color.rgba;
+                color = vec4(ghostColor, finalAlpha);
             }
         `;
 
-        this.shader = rapid.createCostumShader(ghostVertexShaderSource, ghostFragmentShaderSource, ShaderType.SPRITE, 0);
-
-        this.uniform = new Uniform({
+        this.shader = new CustomGlShader(rapid, ghostVertexShaderSource, ghostFragmentShaderSource, 0, {
             uTime: 0.0,
             uWobbleStrength: 10.0,
             uWobbleSpeed: 5.0,
@@ -73,13 +69,12 @@ export class GhostShader {
         this.startTime = Date.now();
         
         gameObject.shader = this.shader;
-        gameObject.uniforms = this.uniform;
     }
 
     public update(): void {
         if (!this.target) return;
         const currentTime = (Date.now() - this.startTime) * 0.001;
-        this.uniform.setUniform('uTime', currentTime);
+        this.shader.setUniforms({ uTime: currentTime });
     }
 
     public stop(): void {

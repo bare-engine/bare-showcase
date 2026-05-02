@@ -100,7 +100,7 @@ export class LevelConnectorComponent extends BaseComponent
                     var thisPos = this.go.position;
                     var otherPos = otherGo.position;
 
-                    rapid.renderLine({  points: [new Vec2(thisPos.x, thisPos.y), new Vec2(otherPos.x, otherPos.y)], 
+                    rapid.drawLine({  points: [new Vec2(thisPos.x, thisPos.y), new Vec2(otherPos.x, otherPos.y)], 
                                         width: 5,
                                         color: new Color(255, 255, 255, 255)});
 

@@ -1,5 +1,5 @@
 
-import { Scene, Color, GameObject, StartBare, BareText } from "bare-engine";
+import { Scene, Color, GameObject, StartBare, TextTexture } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS THE POWER OF ENTITIES, A CONCEPT SOMEWHAT UNIQUE TO BARE 
@@ -70,7 +70,7 @@ export class Fruit extends GameObject
 
     OnAwake(): void
     {
-        this.AddChild(new BareText({
+        this.AddChild(new TextTexture(rapid, {
             text: "I'm a Fruit class",
             fontSize: 20,
             fontFamily: 'monospace'

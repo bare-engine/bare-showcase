@@ -1,5 +1,5 @@
 
-import { BareText, GameObject, Scene, TextObject } from "bare-engine";
+import { GameObject, Scene, TextObject } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP UI
