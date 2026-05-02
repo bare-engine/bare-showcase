@@ -35,7 +35,7 @@ export class MainGame extends Scene
 
     constructor()
     {
-        super({persistent: true, UI: true});
+        super({persistent: true, UI: true, resize: true});
     }
 
     async OnAwake()
