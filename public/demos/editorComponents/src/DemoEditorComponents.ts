@@ -142,12 +142,16 @@ export class DemoEditorComponents extends Scene
         }
     }
 
-    OnClear(full?: boolean): void
+    OnClear(includingPersistent?: boolean): void
     {
-        if (full)
-        if (this.mapEditorButton)
+        if (includingPersistent)
         {
-            this.mapEditorButton.Remove();
+            uiScene.Clear(true);
+            
+            if (this.mapEditorButton)
+            {
+                this.mapEditorButton.Remove();
+            }
         }
     }
 }
