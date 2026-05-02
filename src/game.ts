@@ -106,11 +106,14 @@ export class MainGame extends Scene
                 .trim()
         );
 
+        // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
+        assetsHandler.Clear();
+        bareEngine.ImplementInitialTextures();
+
         // START
         var demoClass = this.demos[demoIndex];
         this.currentDemo = await sceneController.Goto(demoClass);
         sceneController.MoveToFront(this);
-        sceneController.MoveToFront(EditorUIScene);
     }
 
     ChangeDemo(delta: number)
@@ -134,8 +137,7 @@ export class MainGame extends Scene
 
 StartBare(MainGame, {antiAlias: true});
 
-import { BareEvent, Color, Helper, Scene, StartBare, TextObject, globalEvents, sceneController } from 'bare-engine';
-import { EditorUIScene } from '../../BareEngine/src/scenes/editorUIScene';
+import { BareEvent, Color, Helper, Scene, StartBare, TextObject, assetsHandler, sceneController } from 'bare-engine';
 import { DemoAnimation } from '../public/demos/animation/src/DemoAnimation';
 import { DemoBarePhysics } from '../public/demos/barePhysics/src/DemoBarePhysics';
 import { DemoBasics } from '../public/demos/basics/src/DemoBasics';
@@ -154,3 +156,4 @@ import { DemoSopiroPhysics } from '../public/demos/sopiroPhysics/src/DemoSopiroP
 import { DemoSound } from '../public/demos/sound/src/DemoSound';
 import { DemoTweens } from '../public/demos/tweens/src/DemoTweens';
 import { DemoUi } from '../public/demos/ui/src/DemoUi';
+
