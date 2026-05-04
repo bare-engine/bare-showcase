@@ -1,5 +1,5 @@
 
-import { AnimationComponent, Scene, StartBare, assetsHandler, BareEvent } from "bare-engine";
+import { AnimationComponent, Scene, StartBare, assetsHandler, BareEvent, TextureFilterMode } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO LOAD AND PLAY AN ANIMATION
@@ -33,7 +33,7 @@ export class DemoAnimation extends Scene
 
     async OnAwake()
     {
-        rapid.setAntialias(false); // DISABLE ANTIALIAS TO SHOW CRISP PIXEL ART
+        rapid.setTextureFilter(TextureFilterMode.NEAREST); // SET TO NEAREST TO SHOW CRISP PIXEL ART
 
         await assetsHandler.LoadAtlas("texturePackImages");
     }
@@ -59,7 +59,7 @@ export class DemoAnimation extends Scene
 
     OnClear(): void
     {
-        rapid.setAntialias(true); // REVERT ANTIALIAS BACK, JUST SO IT'S ENABLED FOR OTHER DEMOS
+        rapid.setTextureFilter(TextureFilterMode.LINEAR); // REVERT TO LINEAR, JUST SO IT'S ENABLED FOR OTHER DEMOS AGAIN
     }
 }
 

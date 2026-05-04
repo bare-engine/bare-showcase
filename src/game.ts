@@ -79,6 +79,12 @@ export class MainGame extends Scene
                 this.currentDemo.Restart();
             }
         });
+
+        this.events.persistent.on(BareEvent.scene_removed, () => {
+            // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
+            assetsHandler.Clear();
+            bareEngine.ImplementInitialTextures();
+        });
     }
 
     OnStart(): void | Promise<void>
@@ -105,10 +111,6 @@ export class MainGame extends Scene
                 .replace(/^./, c => c.toUpperCase())
                 .trim()
         );
-
-        // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
-        assetsHandler.Clear();
-        bareEngine.ImplementInitialTextures();
 
         // START
         var demoClass = this.demos[demoIndex];

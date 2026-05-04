@@ -10,7 +10,7 @@ export class DemoRenderTexture extends Scene
 
     OnStart()
     {
-        this.renderTexture = new RenderTexture(rapid, bare.width, bare.height, new Color(0, 0, 0, 0));
+        this.renderTexture = new RenderTexture(rapid, { width: bare.width, height: bare.height, clearColor: new Color(0, 0, 0, 0) });
         bare.AddGameObject(this.renderTexture);
     }
 
