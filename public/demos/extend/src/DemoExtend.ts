@@ -48,7 +48,8 @@ declare module "bare-engine"
     }
     
     // ADDING A NEW SAVE-DATA PROPERTY
-    namespace SaveData {
+    namespace SaveData
+    {
         let happyEmojisClicked: int;
     }
 }
@@ -128,7 +129,7 @@ export class DemoExtend extends Scene
 
             if (isHappy)
             {
-                // NOTIFY THAT WE TAPPED A HAPPY EMOJI
+                // NOTIFY THAT WE CLICKED A HAPPY EMOJI
                 SaveData.happyEmojisClicked++;
                 SaveDataHandler.Save();
                 
