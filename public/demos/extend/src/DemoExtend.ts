@@ -142,9 +142,11 @@ export class DemoExtend extends Scene
     {
         var text = new TextTexture(rapid, {text: `Happy Emojis Clicked: ${SaveData.happyEmojisClicked}`, fontSize: 32, fontFamily: 'monospace'});
         
-        rapid.withTransform(() => {
-            bare.drawSprite(text);
-        }, { position: new Vec2(bare.width * .5, 170), origin: new Vec2(.5, .5) }, text.width, text.height);
+        bare.drawSprite({
+            texture: text,
+            position: new Vec2(bare.width * .5, 170),
+            origin: new Vec2(.5, .5),
+        });
 
         //bare.renderSprite({texture: text, position: new Vec2(bare.width * .5, 170), origin: new Vec2(.5, .5)});
     }
