@@ -46,8 +46,8 @@ export class GhostShader {
                 
                 float shimmer = 0.5 + 0.5 * sin(uTime * 3.0 + gl_FragCoord.x * 0.1 + gl_FragCoord.y * 0.08);
                 ghostColor = mix(ghostColor, vec3(1.0), shimmer * 0.1);
-                
-                color = vec4(ghostColor, finalAlpha);
+
+                color = vec4(ghostColor * finalAlpha, finalAlpha);
             }
         `;
 
