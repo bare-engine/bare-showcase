@@ -20,7 +20,7 @@ const data = ` {
             "isHappy": true
         },
         "🙁": {
-            "extendClass": "EmojiObject",
+            "baseClass": "EmojiObject",
             "isHappy": false
         }
     }

@@ -18,16 +18,17 @@
   },
   "baseEntities": {
     "ANY": {
+      "baseClass": "PhysicsObjectBare",
       "hitbox": "DEFAULT",
       "pivotBasedOnHitbox": "DEFAULT"
     },
-    "STATIC": {
+    "static": {
       "static": true
     }
   },
   "entities": {
     "roadTexture_#": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "imagePath": "roads",
       "pivot": {
         "x": 0,
@@ -36,7 +37,7 @@
       "hitbox": "NONE"
     },
     "barn": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": {
         "x1": 27,
         "y1": 362,
@@ -45,7 +46,7 @@
       }
     },
     "🏚": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": {
         "x1": 41,
         "y1": 291,
@@ -54,7 +55,7 @@
       }
     },
     "🌲": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": {
         "x1": 124,
         "y1": 335,
@@ -63,7 +64,7 @@
       }
     },
     "🌳": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": {
         "x1": 134,
         "y1": 340,
@@ -72,7 +73,7 @@
       }
     },
     "fence": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": {
         "x1": 0,
         "y1": 96,
@@ -81,7 +82,7 @@
       }
     },
     "fenceTop": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": {
         "x1": 2,
         "y1": 0,
@@ -90,11 +91,11 @@
       }
     },
     "💎": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": "FULL"
     },
     "pathHorizontal": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": "NONE",
       "pivot": {
         "x": 0.5,
@@ -102,7 +103,7 @@
       }
     },
     "pathVertical": {
-      "baseEntity": "STATIC",
+      "baseEntity": "static",
       "hitbox": "NONE",
       "pivot": {
         "x": 0.5,

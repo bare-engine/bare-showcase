@@ -33,7 +33,7 @@ const data = ` {
     "entities": {
         "🍐": {},
         "🍌": {
-            "extendClass": "Fruit"
+            "baseClass": "Fruit"
         },
         "🍎": {
             "baseEntity": "bigAndNoRotation"

@@ -15,6 +15,7 @@ export class DemoBarePhysics extends Scene
         super(JSON.parse(`{
             "baseEntities": {
                 "ANY": {
+                    "baseClass": "PhysicsObjectBare",
                     "hitbox": "FULL",
                     "drag": 0.01,
                     "restitution": 0.8

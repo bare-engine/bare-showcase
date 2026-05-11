@@ -17,21 +17,21 @@
     },
     "entities": {
         "⚽": {
-            "extendClass": "Circle",
+            "baseClass": "Circle",
             "baseEntity": "physicsBase"
         },
         "🏈": {
-            "extendClass": "Polygon",
+            "baseClass": "Polygon",
             "baseEntity": "physicsBase",
             "restitution": 1,
             "polygonVertices": [23, 29, 36, 17, 51, 9, 66, 3, 86, 1, 101, 4, 114, 11, 119, 22, 120, 35, 116, 61, 106, 81, 92, 99, 71, 112, 50, 119, 30, 122, 17, 121, 7, 116, 1, 103, 1, 84, 4, 61]
         },
         "platform": {
-            "extendClass": "Box",
+            "baseClass": "Box",
             "baseEntity": "physicsStatic"
         },
         "ledge": {
-            "extendClass": "Box",
+            "baseClass": "Box",
             "baseEntity": "physicsStatic"
         }
     }
