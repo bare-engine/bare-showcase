@@ -8,7 +8,7 @@ import { Scene, cameraHandler, StartBare } from "bare-engine";
 	IT WILL AUTOMATICALLY INCLUDE EDITOR CONTROLLER AND EVERYTHING THAT COMES WITH IT
 	AN EDITOR BUTTON WILL APPEAR ON THE SCREEN
 	BUT ONLY IN DEVELOPMENT, IF YOU WANT LEVEL EDITING IN PRODUCTION, 
-	USE: this.AddClass(BareClasses.EditorController);
+	USE: bareEngine.AddClass(BareClasses.EditorController);
 	THEN TO OPEN IT: editorController.OpenEditor() OR editorController.Toggle();
 */
 

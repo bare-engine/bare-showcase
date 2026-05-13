@@ -89,8 +89,8 @@ export class DemoExtend extends Scene
         // EMOJIOBJECT AND POPCOMPONENT ARE DESCRIBED IN ENTITY DATA ABOVE
         // SO THESE NEED TO BE REGISTERED HERE (CLASS NEEDS TO EXIST IN CODE), 
         // SO THE ENGINE CAN CREATE THEM
-        this.AddClass(EmojiObject);
-        this.AddClass(PopComponent);
+        bareEngine.AddClass(EmojiObject);
+        bareEngine.AddClass(PopComponent);
 
         await assetsHandler.GetTexturePromise("😃");
         await assetsHandler.GetTexturePromise("🙁");
