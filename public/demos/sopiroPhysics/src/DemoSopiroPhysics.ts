@@ -20,7 +20,7 @@ export class DemoSopiroPhysics extends Scene
     
     OnAwake()
     {
-        bare.AddClass(PhysicsControllerSopiro);
+        bareEngine.AddClass(PhysicsControllerSopiro);
     }
     
     async OnStart()

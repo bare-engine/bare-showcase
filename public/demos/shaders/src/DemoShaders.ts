@@ -14,6 +14,7 @@ export class DemoShaders extends Scene
 
     OnStart()
     {
+        // ADD THE GAME OBJECT
         var ghost = bare.AddGameObject('👻')
             .SetPosition(bare.width * .5, bare.height * .5)
             .CenterPivot()

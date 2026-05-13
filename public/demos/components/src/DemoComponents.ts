@@ -27,7 +27,7 @@ export class DemoComponents extends Scene
     
     OnAwake(): void
     {
-        this.AddClass(WaveComponent);
+        bareEngine.AddClass(WaveComponent);
     }
 
     OnStart()

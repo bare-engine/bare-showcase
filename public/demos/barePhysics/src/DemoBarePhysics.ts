@@ -39,7 +39,7 @@ export class DemoBarePhysics extends Scene
         
     OnAwake()
     {
-        bare.AddClass(BareClasses.PhysicsControllerBare);
+        bareEngine.AddClass(BareClasses.PhysicsControllerBare);
     }
 
     OnStart()

@@ -32,7 +32,7 @@ export class DemoEditorComponents extends Scene
         mapHandler = new MapHandler(this);
 
         // REGISTER LevelConnectorComponent, NEEDED SINCE IT'S REFERENCED IN mapDataJson
-        this.AddClass(LevelConnectorComponent);
+        bareEngine.AddClass(LevelConnectorComponent);
 
         // REGISTER PhysicsObjectBare, NEEDED SINCE IT'S REFERENCED IN entityDataJson
         bareEngine.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
