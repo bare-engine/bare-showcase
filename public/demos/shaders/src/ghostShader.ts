@@ -38,7 +38,7 @@ export class GhostShader {
                 
                 float pulse = 0.5 + 0.3 * sin(uTime * uPulseSpeed);
                 
-                float distanceFromCenter = length(vUV - vec2(0.5, 0.5));
+                float distanceFromCenter = length(vRegion - vec2(0.5, 0.5));
                 float glow = 1.0 - smoothstep(0.0, uEdgeFade, distanceFromCenter);
                 
                 vec3 ghostColor = mix(color.rgb, uGhostTint, 0.6);
