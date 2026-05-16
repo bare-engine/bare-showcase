@@ -1,5 +1,5 @@
 
-import { Scene, BareClasses, Vec2, StartBare, BareEvent, PhysicsObjectBare } from "bare-engine";
+import { Scene, Vec2, StartBare, BareEvent, PhysicsObjectBare, PhysicsControllerBare } from "bare-engine";
 
 /* 
     SIMPLE PHYSICS WITH RECTANGLES AND CIRCLES.
@@ -39,7 +39,7 @@ export class DemoBarePhysics extends Scene
         
     OnAwake()
     {
-        bareEngine.AddClass(BareClasses.PhysicsControllerBare);
+        bareEngine.AddClass(PhysicsControllerBare);
     }
 
     OnStart()

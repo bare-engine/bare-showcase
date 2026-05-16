@@ -38,7 +38,7 @@ export class DemoEditorComponents extends Scene
         bareEngine.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
 
         // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
-        plugin.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
+        plugin?.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
 
         // THE MAP HAS "level_[editorImages]" IN IT'S CATEGORIES, THIS WILL RESOLVE THAT
         // BY FINDING ALL IMAGES IN editorImages FOLDER AND MAKING THEM INTO PLACABLE OBJECTS
