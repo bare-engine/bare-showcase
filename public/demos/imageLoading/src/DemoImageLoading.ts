@@ -8,7 +8,7 @@ import { Scene, Helper } from "bare-engine";
     THEN ON GAME READY, ALL IMAGES WILL BE AVAILABLE FOR USE.
 
     YOU CAN ALSO MANAGE YOUR OWN TEXTURE PACKS, USING TEXTURE PACKER
-    JUST EXPORT FOR PIXI AND SAVE IN FOLDER 'public/assets/initial/'
+    JUST EXPORT FOR PIXI AND SAVE IN FOLDER 'public/initial/'
 
     THIS DEMO DEMONSTRATES DIFFERENT WAYS OF LOADING IN AND USING IMAGES
 */
@@ -17,19 +17,19 @@ export class DemoImageLoading extends Scene
 {
     OnStart()
     {
-        // THIS IMAGE IS PRELOADED FROM BareDemos/public/assets/initial
+        // THIS IMAGE IS PRELOADED FROM BareDemos/public/initial
         bare.AddGameObject('🏠')
             .SetPosition(bare.width * .5, bare.height * .35)
             .CenterPivot();
 
-        // THIS IMAGE IS PRELOADED FROM BareDemos/public/assets/initial/folder
+        // THIS IMAGE IS PRELOADED FROM BareDemos/public/initial/folder
         // NOTE THAT IT'S JUST FOUND WITH '🦋', NO 'folder/🦋' NEEDED
         // EVEN THOUGH THIS SEPARATE PRELOAD IS POSSIBLE, IT'S RECOMMENDED TO LOAD THEM IN THE WAY SHOWN ABOVE (ATLAS)
         bare.AddGameObject('🦋')
             .SetPosition(bare.width * .5, bare.height * .9)
             .CenterPivot();
 
-        // THESE IMAGES ARE PRELOADED FROM BareDemos/public/assets/initial/generated
+        // THESE IMAGES ARE PRELOADED FROM BareDemos/public/initial/generated
         // THEY HAVE BEEN TURNED INTO AN ATLAS BY PLACING THEM IN BareDemos/texturePackImages
         for (var i = 0; i < 5; i++)
         {
