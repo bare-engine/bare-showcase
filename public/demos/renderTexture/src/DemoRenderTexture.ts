@@ -11,7 +11,7 @@ export class DemoRenderTexture extends Scene
     OnStart()
     {
         this.renderTexture = new RenderTexture(rapid, { width: bare.width, height: bare.height, clearColor: new Color(0, 0, 0, 0) });
-        bare.AddGameObject(this.renderTexture);
+        bScene.AddGameObject(this.renderTexture);
     }
 
     OnUpdate(deltaTime: number): void
@@ -21,7 +21,7 @@ export class DemoRenderTexture extends Scene
         obj.InitTexture(Helper.Choose("😁", "😃", "😄", "😊", "😋", "😛"));
         obj.CenterPivot();
 
-		bare.RenderTo(obj, this.renderTexture); // COULD ALSO SUPPLY A TEXTURE INSTEAD OF GAMEOBJECT
+		bScene.RenderTo(obj, this.renderTexture); // COULD ALSO SUPPLY A TEXTURE INSTEAD OF GAMEOBJECT
     }
 
     OnClear(): void

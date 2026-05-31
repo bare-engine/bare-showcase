@@ -15,7 +15,7 @@ export class DemoTweens extends Scene
     
     OnStart()
     {
-        var heart = bare.AddGameObject('❤')
+        var heart = bScene.AddGameObject('❤')
             .SetPosition(bare.width * .5, bare.height * .5)
             .CenterPivot();
 
@@ -44,42 +44,42 @@ export class DemoTweens extends Scene
         const bottomY = bare.height * .75;
 
         // ROTATION LOOP
-        const spinner = bare.AddGameObject('❤')
+        const spinner = bScene.AddGameObject('❤')
             .SetPosition(leftX, topY)
             .CenterPivot();
 
         TweenTo(spinner, 2, {rotation: 360, repeat: Infinity, ease: Easing.Linear.None});
 
         // BOUNCE (Y + YOYO)
-        const bouncer = bare.AddGameObject('❤')
+        const bouncer = bScene.AddGameObject('❤')
             .SetPosition(centerX, topY)
             .CenterPivot();
 
         TweenTo(bouncer, .8, {y: topY - 50, yoyo: true, repeat: Infinity, ease: Easing.Quadratic.Out});
 
         // FADE IN/OUT (ALPHA)
-        const fader = bare.AddGameObject('❤')
+        const fader = bScene.AddGameObject('❤')
             .SetPosition(rightX, topY)
             .CenterPivot();
 
         TweenTo(fader, 1.2, {alpha: .2, yoyo: true, repeat: Infinity, ease: Easing.Quadratic.InOut});
 
         // INNER TRANSFORM SWAY
-        const sway = bare.AddGameObject('❤')
+        const sway = bScene.AddGameObject('❤')
             .SetPosition(leftX, bottomY)
             .CenterPivot();
 
         TweenTo(sway, 1.4, {innerRotation: 18, yoyo: true, repeat: Infinity, ease: Easing.Sinusoidal.InOut});
 
         // INNER POSITION DRIFT
-        const drift = bare.AddGameObject('❤')
+        const drift = bScene.AddGameObject('❤')
             .SetPosition(centerX, bottomY)
             .CenterPivot();
 
         TweenTo(drift.innerPosition, 1, {x: 14, yoyo: true, repeat: Infinity, ease: Easing.Quadratic.InOut});
 
         // SEQUENCED TWEENS WITH AddChain - NOT WORKING, BEING REMOVED RIGHT AWAY
-        const pop = bare.AddGameObject('❤')
+        const pop = bScene.AddGameObject('❤')
             .SetPosition(rightX, bottomY)
             .CenterPivot();
 

@@ -10,7 +10,7 @@
   "baseEntities": {
     "level": {
       "imagePath": "editorImages",
-      "editorComponents": {
+      "components": {
         "levelConnector": {}
       },
       "pivot": {

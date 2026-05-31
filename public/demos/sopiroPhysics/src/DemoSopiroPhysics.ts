@@ -1,6 +1,7 @@
 import entityDataJson from '../entityData.json' 
 
-import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent, Circle, PhysicsControllerSopiro, Type } from "bare-engine";
+import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent } from "bare-engine";
+import { SopiroPhysicsController, Circle, Type } from 'bare-engine/sopiro';
 
 /*  
     THIS DEMO SHOWS A PHYSICS ENGINE CALLED SOPIRO IN ACTION
@@ -20,7 +21,7 @@ export class DemoSopiroPhysics extends Scene
     
     OnAwake()
     {
-        bareEngine.AddClass(PhysicsControllerSopiro);
+        bare.AddClass(SopiroPhysicsController);
     }
     
     async OnStart()
@@ -36,7 +37,7 @@ export class DemoSopiroPhysics extends Scene
             var circleRb = new Circle(this, 36, Type.Dynamic);
             circleRb.restitution = .8;
             circleRb.mass = 2;
-            bare.AddGameObject(circleRb);
+            bScene.AddGameObject(circleRb);
 
             circleRb.InitTexture('⚽');
             circleRb.SetPosition(mouseController.world.position.x, mouseController.world.position.y);

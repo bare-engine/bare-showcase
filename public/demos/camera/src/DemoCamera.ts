@@ -17,7 +17,7 @@ export class DemoCamera extends Scene
 
         for (var i = 0; i < 500; i++)
         {
-            bare.AddGameObject('🌱')
+            bScene.AddGameObject('🌱')
                 .SetPosition(
                     Helper.RandomRange(cameraHandler.bounds.x, cameraHandler.bounds.x + cameraHandler.bounds.width),
                     Helper.RandomRange(cameraHandler.bounds.y, cameraHandler.bounds.y + cameraHandler.bounds.height))

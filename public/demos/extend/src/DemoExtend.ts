@@ -1,5 +1,5 @@
 
-import { Scene, TextTexture, BaseComponent, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2, assetsHandler} from "bare-engine";
+import { Scene, TextTexture, Component, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2, assetsHandler} from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO EXTEND ALL THE EXTENDABLE DATA STRUCTURES IN BARE
@@ -66,7 +66,7 @@ export class EmojiObject extends GameObject
 }
 
 // EXTENDING A COMPONENT
-export class PopComponent extends BaseComponent
+export class PopComponent extends Component
 {
     Pop()
     {
@@ -89,8 +89,8 @@ export class DemoExtend extends Scene
         // EMOJIOBJECT AND POPCOMPONENT ARE DESCRIBED IN ENTITY DATA ABOVE
         // SO THESE NEED TO BE REGISTERED HERE (CLASS NEEDS TO EXIST IN CODE), 
         // SO THE ENGINE CAN CREATE THEM
-        bareEngine.AddClass(EmojiObject);
-        bareEngine.AddClass(PopComponent);
+        bare.AddClass(EmojiObject);
+        bare.AddClass(PopComponent);
 
         await assetsHandler.GetTexturePromise("😃");
         await assetsHandler.GetTexturePromise("🙁");
@@ -103,10 +103,10 @@ export class DemoExtend extends Scene
         trace('happy emojis clicked:', SaveData.happyEmojisClicked);
 
         // CREATING THE GAME OBJECTS
-        var emojiSad = bare.AddGameObject('🙁')
+        var emojiSad = bScene.AddGameObject('🙁')
             .SetPosition(bare.width * .5, bare.height * .4)
         
-        var emojiHappy = bare.AddGameObject('😃')
+        var emojiHappy = bScene.AddGameObject('😃')
             .SetPosition(bare.width * .5, bare.height * .6)
 
         // ASSIGNING BUTTONS TO SEND OUT A CUSTOM EVENT

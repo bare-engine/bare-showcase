@@ -11,10 +11,6 @@
     "objects": [
       {
         "name": "level_farm",
-        "position": {
-          "x": 1086,
-          "y": 797
-        },
         "components": {
           "levelConnector": {
             "top": "level_goal",
@@ -22,14 +18,14 @@
             "bottom": "level_car",
             "left": ""
           }
+        },
+        "position": {
+          "x": 1086,
+          "y": 797
         }
       },
       {
         "name": "level_goal",
-        "position": {
-          "x": 1087,
-          "y": 475
-        },
         "components": {
           "levelConnector": {
             "top": "",
@@ -37,14 +33,14 @@
             "bottom": "level_farm",
             "left": ""
           }
+        },
+        "position": {
+          "x": 1092,
+          "y": 507
         }
       },
       {
         "name": "level_car",
-        "position": {
-          "x": 1094,
-          "y": 1138
-        },
         "components": {
           "levelConnector": {
             "top": "level_farm",
@@ -52,14 +48,14 @@
             "bottom": "level_whirlwind",
             "left": "level_city"
           }
+        },
+        "position": {
+          "x": 1094,
+          "y": 1138
         }
       },
       {
         "name": "level_city",
-        "position": {
-          "x": 766,
-          "y": 1152
-        },
         "components": {
           "levelConnector": {
             "top": "",
@@ -67,14 +63,14 @@
             "bottom": "",
             "left": ""
           }
+        },
+        "position": {
+          "x": 766,
+          "y": 1152
         }
       },
       {
         "name": "level_whirlwind",
-        "position": {
-          "x": 1091,
-          "y": 1475
-        },
         "components": {
           "levelConnector": {
             "top": "level_car",
@@ -82,14 +78,14 @@
             "bottom": "",
             "left": ""
           }
+        },
+        "position": {
+          "x": 1091,
+          "y": 1475
         }
       },
       {
         "name": "level_picnic",
-        "position": {
-          "x": 1424,
-          "y": 1137
-        },
         "components": {
           "levelConnector": {
             "top": "",
@@ -97,6 +93,10 @@
             "bottom": "",
             "left": "level_car"
           }
+        },
+        "position": {
+          "x": 1419,
+          "y": 1137
         }
       }
     ]

@@ -51,15 +51,15 @@ export class DemoEntities extends Scene
     OnStart()
     {
         // HAVE TO REGISTER THIS MANUALLY FOR NOW, ALSO IMPORTS THE FRUIT CLASS BY REFERENCING IT
-        bareEngine.RegisterGameObjectPool(Fruit, 20);
+        bare.RegisterGameObjectPool(Fruit, 20);
 
-        bare.AddGameObject('🍐')
+        bScene.AddGameObject('🍐')
             .SetPosition(bare.width * .25, bare.height * .3);
 
-        bare.AddGameObject('🍌')
+        bScene.AddGameObject('🍌')
             .SetPosition(bare.width * .5, bare.height * .4);
 
-        bare.AddGameObject('🍎')
+        bScene.AddGameObject('🍎')
             .SetPosition(bare.width * .5, bare.height * .6);
     }
 }

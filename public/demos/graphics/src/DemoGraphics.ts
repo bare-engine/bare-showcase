@@ -15,10 +15,10 @@ export class DemoGraphics extends Scene
         this.treeTexture = await assetsHandler.GetTexturePromise("🌲");
 
         // SETTING UP MASK WITH GAMEOBJECTS
-        var flower = bare.AddGameObject(this.flowerTexture)
+        var flower = bScene.AddGameObject(this.flowerTexture)
             .SetPosition(210, 460);
 
-        var tree = bare.AddGameObject(this.treeTexture)
+        var tree = bScene.AddGameObject(this.treeTexture)
             .SetPosition(225, 465);
 
         flower.SetMask(tree);

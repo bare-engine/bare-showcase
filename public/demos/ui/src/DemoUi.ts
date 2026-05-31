@@ -43,7 +43,7 @@ export class DemoUi extends Scene
             fontSize: 20,
             fontFamily: 'monospace',
         });
-        bare.AddGameObject(textObj);
+        bScene.AddGameObject(textObj);
 
         return textObj;
     }

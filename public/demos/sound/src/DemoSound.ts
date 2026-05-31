@@ -16,7 +16,7 @@ export class DemoSound extends Scene
     {
         soundHandler.registerSound('click', 'bubble-pop.mp3');
         
-        var obj = bare.AddGameObject('🔊')
+        var obj = bScene.AddGameObject('🔊')
             .SetPosition(bare.width * .5, bare.height * .5)
             .CenterPivot();
 

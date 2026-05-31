@@ -1,5 +1,6 @@
 
-import { Scene, Vec2, StartBare, BareEvent, PhysicsObjectBare, PhysicsControllerBare } from "bare-engine";
+import { Scene, Vec2, StartBare, BareEvent } from "bare-engine";
+import { ArcadePhysicsController, ArcadeObject } from 'bare-engine/arcade';
 
 /* 
     SIMPLE PHYSICS WITH RECTANGLES AND CIRCLES.
@@ -15,7 +16,7 @@ export class DemoBarePhysics extends Scene
         super(JSON.parse(`{
             "baseEntities": {
                 "ANY": {
-                    "baseClass": "PhysicsObjectBare",
+                    "baseClass": "ArcadeObject",
                     "hitbox": "FULL",
                     "drag": 0.01,
                     "restitution": 0.8
@@ -39,38 +40,38 @@ export class DemoBarePhysics extends Scene
         
     OnAwake()
     {
-        bareEngine.AddClass(PhysicsControllerBare);
+        bare.AddClass(ArcadePhysicsController);
     }
 
     OnStart()
     {
-        bare.AddGameObject('⏹')
+        bScene.AddGameObject('⏹')
             .SetPosition(bare.width * .5, bare.height * .2)
             .CenterPivot();
 
-        bare.AddGameObject('⏺')
+        bScene.AddGameObject('⏺')
             .SetPosition(bare.width * .5, bare.height * .7)
             .CenterPivot();
 
-        bare.AddGameObject('⏺')
+        bScene.AddGameObject('⏺')
             .SetPosition(bare.width * .3, bare.height * .9)
             .CenterPivot();
 
-        bare.AddGameObject('⏹')
+        bScene.AddGameObject('⏹')
             .SetPosition(bare.width * .7, bare.height * .9)
             .CenterPivot();
 
-        bare.AddGameObject('⚽')
+        bScene.AddGameObject('⚽')
             .SetPosition(bare.width * .25, bare.height * .5)
             .CenterPivot();
             
-        bare.AddGameObject('⚽')
+        bScene.AddGameObject('⚽')
             .SetPosition(bare.width * .75, bare.height * .5)
             .CenterPivot();
 
-        var ball = bare.AddGameObject('⚽')
+        var ball = bScene.AddGameObject('⚽')
             .SetPosition(bare.width * .5, bare.height * .5)
-            .CenterPivot() as PhysicsObjectBare;
+            .CenterPivot() as ArcadeObject;
         ball.SetVelocityXY(546, 546);
 
         this.events.on(BareEvent.pointer_down, (info) => {

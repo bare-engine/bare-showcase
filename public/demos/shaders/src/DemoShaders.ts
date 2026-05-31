@@ -15,14 +15,13 @@ export class DemoShaders extends Scene
     OnStart()
     {
         // ADD THE GAME OBJECT
-        var ghost = bare.AddGameObject('👻')
+        var ghost = bScene.AddGameObject('👻')
             .SetPosition(bare.width * .5, bare.height * .5)
             .CenterPivot()
             .SetScale(2);
 
         // ADD THE SHADER
-        var ghostShader = new GhostShader();
-        ghost.AddShader(ghostShader);
+        ghost.AddShader(GhostShader);
     }
 }
 

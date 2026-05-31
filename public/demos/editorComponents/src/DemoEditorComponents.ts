@@ -2,9 +2,10 @@ import settingsDataJson from './../data/settingsData.json';
 import mapDataJson from './../data/mapData.json';
 import mapLevelJson from './../levels/map.json';
 
-import { Button, CameraScaleMode, EditorScene, LevelData, PhysicsObjectBare, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
+import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
+import { ArcadeObject } from 'bare-engine/arcade';
 
 /*  
     THIS DEMO SHOWS THE LevelConnectorComponent IN THE MAP EDITOR
@@ -31,11 +32,12 @@ export class DemoEditorComponents extends Scene
     {
         mapHandler = new MapHandler(this);
 
-        // REGISTER LevelConnectorComponent, NEEDED SINCE IT'S REFERENCED IN mapDataJson
-        bareEngine.AddClass(LevelConnectorComponent);
+        // REGISTER LevelConnectorComponent,
+        // NEEDED SINCE IT'S REFERENCED IN mapDataJson
+        bare.AddClass(LevelConnectorComponent);
 
-        // REGISTER PhysicsObjectBare, NEEDED SINCE IT'S REFERENCED IN entityDataJson
-        bareEngine.RegisterGameObjectPool(PhysicsObjectBare, 30); //SET POOL SIZE
+        // REGISTER ArcadeObject, NEEDED SINCE IT'S REFERENCED IN entityDataJson
+        bare.RegisterGameObjectPool(ArcadeObject, 30); //SET POOL SIZE
 
         // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
         plugin?.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
@@ -52,12 +54,15 @@ export class DemoEditorComponents extends Scene
         await this.LoadLevel("level_car");
 
         // CREATE MAP EDITOR BUTTON
-        this.mapEditorButton = new Button(uiScene, {text: "Open Map Editor", OnPress: async () => {
+        this.OnClickMapEditorButton = async () => {
             sceneController.DisableAllScenes();
             await sceneController.Add(EditorScene, {
                 levelPathOrData: "demos/editorComponents/levels/map.json",
                 settingsHandler: this.mapSettingsHandler,
             });
+        }
+        this.mapEditorButton = new Button(uiScene, {text: "Open Map Editor", OnPress: async () => {
+            await this.OnClickMapEditorButton();
         }});
         this.mapEditorButton.name = "mapEditorButton";
 
@@ -73,7 +78,7 @@ export class DemoEditorComponents extends Scene
         this.mapEditorButton.visible = true;
     }
 
-    override OnAfterLoadedLevel(level:LevelData)
+    override OnPostLoadLevel(level:LevelData)
     {
         cameraHandler.SetScaleMode(CameraScaleMode.Contain);
         cameraHandler.SetDimensionsToLevel();

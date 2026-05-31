@@ -1,17 +1,11 @@
-import { CustomGlShader } from "bare-engine";
+import { GameObject, Shader } from "bare-engine";
 
-export class GhostShader {
-    private shader: CustomGlShader = null;
-    private startTime: number = Date.now();
-    private target: any = null;
-    private originalShader: any = null;
-    private originalUniforms: any = null;
+export class GhostShader extends Shader
+{
+    startTime: number;
 
-    constructor() {
-        this.initShader();
-    }
-
-    private initShader() {
+    constructor()
+    {
         const ghostVertexShaderSource = `
             uniform float uTime;
             uniform float uWobbleStrength;
@@ -51,7 +45,9 @@ export class GhostShader {
             }
         `;
 
-        this.shader = new CustomGlShader(rapid, ghostVertexShaderSource, ghostFragmentShaderSource, 0, {
+        super(ghostVertexShaderSource, ghostFragmentShaderSource);
+
+        this.shader.setUniforms({
             uTime: 0.0,
             uWobbleStrength: 10.0,
             uWobbleSpeed: 5.0,
@@ -60,27 +56,14 @@ export class GhostShader {
             uGhostTint: [0.9, 0.95, 1.0],
             uEdgeFade: 0.8
         });
-    }
 
-    public start(gameObject: any): void {
-        this.target = gameObject;
-        this.originalShader = gameObject.shader;
-        this.originalUniforms = gameObject.uniforms;
         this.startTime = Date.now();
-        
-        gameObject.shader = this.shader;
     }
 
-    public update(): void {
-        if (!this.target) return;
+    update(gameObject?: GameObject)
+    {
         const currentTime = (Date.now() - this.startTime) * 0.001;
         this.shader.setUniforms({ uTime: currentTime });
     }
 
-    public stop(): void {
-        if (!this.target) return;
-        this.target.shader = this.originalShader;
-        this.target.uniforms = this.originalUniforms;
-        this.target = null;
-    }
 }

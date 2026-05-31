@@ -13,7 +13,7 @@ export class DemoBasics extends Scene
     OnStart()
     {
         // ADD A SIMPLE GAME OBJECT ⚙ 
-        this.cog = bare.AddGameObject('⚙')
+        this.cog = bScene.AddGameObject('⚙')
             .SetPosition(bare.width * .5, bare.height * .5)
             .CenterPivot();
     }

@@ -83,7 +83,7 @@ export class MainGame extends Scene
         this.events.persistent.on(BareEvent.scene_removed, () => {
             // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
             assetsHandler.Clear();
-            bareEngine.ImplementInitialTextures();
+            bare.ImplementInitialTextures();
         });
     }
 
@@ -98,9 +98,9 @@ export class MainGame extends Scene
 
         // SET PATHS TO UPCOMING DEMO DIR
         var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
-        bareEngine.rootDir = `demos/${folderName}`;
-        bareEngine.levelDir = `levels`; 
-        bareEngine.soundDir = ``;
+        bare.rootDir = `demos/${folderName}`;
+        bare.levelDir = `levels`; 
+        bare.soundDir = ``;
 
         // RESET BACKGROUND COLOR
         rapid.backgroundColor = Color.White;

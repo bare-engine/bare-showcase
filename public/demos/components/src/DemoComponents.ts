@@ -27,18 +27,18 @@ export class DemoComponents extends Scene
     
     OnAwake(): void
     {
-        bareEngine.AddClass(WaveComponent);
+        bare.AddClass(WaveComponent);
     }
 
     OnStart()
     {
         // ADD A GAME OBJECT 👋 - IT WILL INSTANTIATE WITH WAVE COMPONENT BASED ON DATA ABOVE
-        bare.AddGameObject('👋')
+        bScene.AddGameObject('👋')
             .SetPosition(bare.width * .5, bare.height * .4)
             .SetPivot(88, 94);
 
         // SAME HERE, BUT WE CHANGE THE FREQUENCY
-        var obj = bare.AddGameObject('👋')
+        var obj = bScene.AddGameObject('👋')
             .SetPosition(bare.width * .5, bare.height * .75)
             .SetPivot(88, 94)
 
