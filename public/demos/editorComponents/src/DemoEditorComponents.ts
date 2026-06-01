@@ -1,6 +1,4 @@
 import settingsDataJson from './../data/settingsData.json';
-import mapDataJson from './../data/mapData.json';
-import mapLevelJson from './../levels/map.json';
 
 import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
@@ -14,15 +12,8 @@ import { ArcadeObject } from 'bare-engine/arcade';
     THE RESULTING LEVEL FILE IS SIMPLY USED AS DATA.
 */
 
-var mapHandler: MapHandler;
-
 export class DemoEditorComponents extends Scene
 {
-    mapSettingsHandler: SettingsHandler = new SettingsHandler(this);
-
-    mapEditorButton: Button;
-    OnClickMapEditorButton: () => void;
-
     constructor()
     {
         super({settingsData: settingsDataJson});
@@ -30,7 +21,7 @@ export class DemoEditorComponents extends Scene
         
     async OnAwake()
     {
-        mapHandler = new MapHandler(this);
+        await MapHandler.Init(this);
 
         // REGISTER LevelConnectorComponent,
         // NEEDED SINCE IT'S REFERENCED IN mapDataJson
@@ -38,14 +29,6 @@ export class DemoEditorComponents extends Scene
 
         // REGISTER ArcadeObject, NEEDED SINCE IT'S REFERENCED IN entityDataJson
         bare.RegisterGameObjectPool(ArcadeObject, 30); //SET POOL SIZE
-
-        // ADD DEBUG ACTIONS FOR THE CHROME PLUGIN (IF IT'S THERE)
-        plugin?.AddDebugAction("Toggle Map Editor", () => this.OnClickMapEditorButton());
-
-        // THE MAP HAS "level_[editorImages]" IN IT'S CATEGORIES, THIS WILL RESOLVE THAT
-        // BY FINDING ALL IMAGES IN editorImages FOLDER AND MAKING THEM INTO PLACABLE OBJECTS
-        // NOT NEEDED RIGHT AWAY, BUT HANDY TO HAVE IT BEFORE OPENING THE MAP EDITOR
-        await this.mapSettingsHandler.Process(mapDataJson);
     }
 
     async OnStart()
@@ -53,39 +36,14 @@ export class DemoEditorComponents extends Scene
         await assetsHandler.GetTexturePromise("arrowLevel");
         await this.LoadLevel("level_car");
 
-        // CREATE MAP EDITOR BUTTON
-        this.OnClickMapEditorButton = async () => {
-            sceneController.DisableAllScenes();
-            await sceneController.Add(EditorScene, {
-                levelPathOrData: "demos/editorComponents/levels/map.json",
-                settingsHandler: this.mapSettingsHandler,
-            });
-        }
-        this.mapEditorButton = new Button(uiScene, {text: "Open Map Editor", OnPress: async () => {
-            await this.OnClickMapEditorButton();
-        }});
-        this.mapEditorButton.name = "mapEditorButton";
-
-        // ADDING mapEditorButton
-        uiScene.AddGameObject(this.mapEditorButton)
-            .SetPosition(bare.width, 0)
-            .SetPivot(1, 0);
-
         uiScene.persistent = true;
         uiScene.resize = true;
-
-        this.mapEditorButton.persistent = true;
-        this.mapEditorButton.visible = true;
     }
 
     override OnPostLoadLevel(level:LevelData)
     {
         cameraHandler.SetScaleMode(CameraScaleMode.Contain);
         cameraHandler.SetDimensionsToLevel();
-
-        // READ LEVEL MAP, SO WE KNOW HOW LEVELS ARE CONNECTED
-        // CHECKING FIRST FOR lastSavedMap, TO GET THE LATEST
-        mapHandler.FillLevelMap(mapHandler.lastSavedMap || mapLevelJson);
 
         this.PlaceDirectionalButtons();
     }
@@ -94,7 +52,7 @@ export class DemoEditorComponents extends Scene
     {
         uiScene.Clear(false);
         
-        var connections = mapHandler.map[SaveData.currentLevelStr]?.connections;
+        var connections = MapHandler.map[SaveData.currentLevelStr]?.connections;
         for (let dir in connections)
         {
             if (connections[dir as Direction] == "")
@@ -152,11 +110,6 @@ export class DemoEditorComponents extends Scene
         if (includingPersistent)
         {
             uiScene.Clear(true);
-            
-            if (this.mapEditorButton)
-            {
-                this.mapEditorButton.Remove();
-            }
         }
     }
 }

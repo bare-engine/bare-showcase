@@ -47,7 +47,7 @@ export class GhostShader extends Shader
 
         super(ghostVertexShaderSource, ghostFragmentShaderSource);
 
-        this.shader.setUniforms({
+        this.SetUniforms({
             uTime: 0.0,
             uWobbleStrength: 10.0,
             uWobbleSpeed: 5.0,
@@ -60,10 +60,9 @@ export class GhostShader extends Shader
         this.startTime = Date.now();
     }
 
-    update(gameObject?: GameObject)
+    Update()
     {
         const currentTime = (Date.now() - this.startTime) * 0.001;
-        this.shader.setUniforms({ uTime: currentTime });
+        this.SetUniforms({ uTime: currentTime });
     }
-
 }
