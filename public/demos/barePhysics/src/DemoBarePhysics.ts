@@ -24,7 +24,7 @@ export class DemoBarePhysics extends Scene
             },
             "entities": {
                 "⚽": {
-                    "hitboxType": "circle"
+                    "hitboxType": "Circle"
                 },
                 "⏹": {
                     "static": true

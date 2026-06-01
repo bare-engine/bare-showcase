@@ -40,7 +40,7 @@ export class DemoAnimation extends Scene
     
     OnStart()
     {
-        var buffalo = this.AddGameObject('buffalo');
+        var buffalo = this.AddGameObject('-buffalo');
         var animComponent = buffalo.AddComponent(AnimationComponent);
         animComponent.Play('run');
         animComponent.OnComplete('eat', 'run');
