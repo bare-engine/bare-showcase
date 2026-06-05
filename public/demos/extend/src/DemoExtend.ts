@@ -32,7 +32,7 @@ declare module "bare-engine"
     // SO THAT CallMethodOnAllComponents('Pop'); WORKS
     interface Component 
     {
-        Pop?: () => void
+        Pop?(): void
     }
 
     // ADDING A NEW ENTITY PROPERTY

@@ -49,8 +49,7 @@ export class DemoAnimation extends Scene
         buffalo.SetPosition(100, 550);
         
         this.events.on(BareEvent.pointer_down, (info) => {
-            if (info.isLeftButton)
-                animComponent.Play('eat', () => trace('animation complete'))
+            animComponent.Play('eat', () => trace('animation complete'))
         });
         
         this.AddGameObject('barn')

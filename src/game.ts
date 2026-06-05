@@ -79,12 +79,6 @@ export class MainGame extends Scene
                 this.currentDemo.Restart();
             }
         });
-
-        this.events.persistent.on(BareEvent.scene_removed, () => {
-            // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
-            assetsHandler.Clear();
-            bare.ImplementInitialTextures();
-        });
     }
 
     OnStart(): void | Promise<void>
@@ -127,6 +121,10 @@ export class MainGame extends Scene
 
         this.demoIndex = newDemoIndex;
 
+        // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
+        assetsHandler.Clear();
+        bare.ImplementInitialTextures();
+        
         this.StartDemo(this.demoIndex);
     }
 

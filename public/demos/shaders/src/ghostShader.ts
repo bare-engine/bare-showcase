@@ -1,4 +1,4 @@
-import { GameObject, Shader } from "bare-engine";
+import { Shader } from "bare-engine";
 
 export class GhostShader extends Shader
 {
