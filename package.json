@@ -27,5 +27,9 @@
   "dependencies": {
     "bare-engine": "github:BareEngine/BareEngine"
   },
-  "bareEngine": {}
+  "bareEngine": {
+    "imageGlobs": [
+      "demos/**/images/**"
+    ]
+  }
 }

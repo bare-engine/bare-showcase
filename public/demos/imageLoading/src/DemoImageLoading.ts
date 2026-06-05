@@ -23,9 +23,8 @@ export class DemoImageLoading extends Scene
             .CenterPivot();
 
         // THIS IMAGE IS PRELOADED FROM BareDemos/public/initial/folder
-        // NOTE THAT IT'S JUST FOUND WITH '🦋', NO 'folder/🦋' NEEDED
         // EVEN THOUGH THIS SEPARATE PRELOAD IS POSSIBLE, IT'S RECOMMENDED TO LOAD THEM IN THE WAY SHOWN BELOW (ATLAS)
-        bScene.AddGameObject('🦋')
+        bScene.AddGameObject('folder/🦋')
             .SetPosition(bare.width * .5, bare.height * .9)
             .CenterPivot();
 
