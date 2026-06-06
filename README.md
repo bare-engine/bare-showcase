@@ -19,3 +19,25 @@ npm run dev</code></pre></li>
 <br>
 Or click code->download zip and follow the npm commands in step 2<br>
 <br>
+
+<h2>The showcase contains the following features:</h2>
+<ul>
+  <li>Basics</li>
+  <li>Image loading</li>
+  <li>Animation</li>
+  <li>Rendertexture</li>
+  <li>Graphics</li>
+  <li>Particles</li>
+  <li>Shaders</li>
+  <li>Tweens</li>
+  <li>Entities</li>
+  <li>Components</li>
+  <li>Extending classes</li>
+  <li>Levels</li>
+  <li>Editor components</li>
+  <li>Sopiro physics</li>
+  <li>Bare physics</li>
+  <li>Sound</li>
+  <li>Camera</li>
+  <li>UI anchoring</li>
+</ul>
