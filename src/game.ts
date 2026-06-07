@@ -21,7 +21,7 @@ export class MainGame extends Scene
         DemoLevel,
         DemoEditorComponents,
         DemoSopiroPhysics,
-        DemoBarePhysics,
+        DemoArcadePhysics,
         DemoSound,
         DemoCamera,
         DemoUi,
@@ -139,7 +139,7 @@ StartBare(MainGame, {antiAlias: true});
 
 import { BareEvent, Color, Helper, Scene, StartBare, TextObject, assetsHandler, sceneController } from 'bare-engine';
 import { DemoAnimation } from '../public/demos/animation/src/DemoAnimation';
-import { DemoBarePhysics } from '../public/demos/barePhysics/src/DemoBarePhysics';
+import { DemoArcadePhysics } from '../public/demos/arcadePhysics/src/DemoArcadePhysics';
 import { DemoBasics } from '../public/demos/basics/src/DemoBasics';
 import { DemoCamera } from '../public/demos/camera/src/DemoCamera';
 import { DemoComponents } from '../public/demos/components/src/DemoComponents';

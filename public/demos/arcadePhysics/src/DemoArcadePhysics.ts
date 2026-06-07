@@ -4,12 +4,10 @@ import { ArcadePhysicsController, ArcadeObject } from 'bare-engine/arcade';
 
 /* 
     SIMPLE PHYSICS WITH RECTANGLES AND CIRCLES.
-    STATIC AND DYNAMIC.
-
-    SOMEHWAT WONKY STILL
+    STATIC AND DYNAMIC OBJECTS.
 */
 
-export class DemoBarePhysics extends Scene
+export class DemoArcadePhysics extends Scene
 {
     constructor()
     {
@@ -83,4 +81,4 @@ export class DemoBarePhysics extends Scene
     }
 }
 
-//StartBare(DemoBarePhysics);
+//StartBare(DemoArcadePhysics);
