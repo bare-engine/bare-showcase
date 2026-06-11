@@ -42,7 +42,7 @@ export class DemoComponents extends Scene
             .SetPosition(bare.width * .5, bare.height * .75)
             .SetPivot(88, 94)
 
-        componentController.GetComponent(obj, WaveComponent)!.frequency = 2;
+        componentController.Get(obj, WaveComponent)!.frequency = 2;
     }
 }
 

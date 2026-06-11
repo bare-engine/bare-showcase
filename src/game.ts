@@ -108,8 +108,8 @@ export class MainGame extends Scene
 
         // START
         var demoClass = this.demos[demoIndex];
-        this.currentDemo = await sceneController.Goto(demoClass);
-        sceneController.MoveToFront(this);
+        this.currentDemo = await bare.scene.Goto(demoClass);
+        bare.scene.MoveToFront(this);
     }
 
     ChangeDemo(delta: number)
@@ -122,7 +122,7 @@ export class MainGame extends Scene
         this.demoIndex = newDemoIndex;
 
         // CLEAR ASSETS AND RELOAD INITIAL TEXTURES, WE WANT TO KEEP THOSE
-        assetsHandler.Clear();
+        bare.asset.Clear();
         bare.ImplementInitialTextures();
         
         this.StartDemo(this.demoIndex);
@@ -137,7 +137,7 @@ export class MainGame extends Scene
 
 StartBare(MainGame, {antiAlias: true});
 
-import { BareEvent, Color, Helper, Scene, StartBare, TextObject, assetsHandler, sceneController } from 'bare-engine';
+import { BareEvent, Color, Helper, Scene, StartBare, TextObject } from 'bare-engine';
 import { DemoAnimation } from '../public/demos/animation/src/DemoAnimation';
 import { DemoArcadePhysics } from '../public/demos/arcadePhysics/src/DemoArcadePhysics';
 import { DemoBasics } from '../public/demos/basics/src/DemoBasics';

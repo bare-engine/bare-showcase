@@ -46,9 +46,9 @@ export class MapHandler
     {
         // CREATE MAP EDITOR BUTTON
         var OnClickMapEditorButton = async () => {
-            sceneController.DisableAllScenes();
+            sceneController.DisableAll();
 
-            for (var scene of sceneController.GetAllScenes())
+            for (var scene of sceneController.GetAll())
             {
                 // HARDCODED THESE FOR NOW - NEEDED SO MOUSE IS NOT LOCKED TO DOWN AFTER CLICKING THIS BUTTON
                 // HITBOX CONTROLLER FOR GOOD MEASURE TOO
