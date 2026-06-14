@@ -1,6 +1,6 @@
 import settingsDataJson from './../data/settingsData.json';
 
-import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, assetsHandler, cameraHandler, hitboxController, plugin, sceneController, uiScene } from "bare-engine";
+import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, plugin, uiScene } from "bare-engine";
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
 import { ArcadeObject } from 'bare-engine/arcade';
@@ -33,7 +33,7 @@ export class DemoEditorComponents extends Scene
 
     async OnStart()
     {
-        await assetsHandler.GetTexturePromise("arrowLevel");
+        await bare.asset.GetTexturePromise("arrowLevel");
         await this.LoadLevel("level_car");
 
         uiScene.persistent = true;
@@ -42,8 +42,8 @@ export class DemoEditorComponents extends Scene
 
     override OnPostLoadLevel(level:LevelData)
     {
-        cameraHandler.SetScaleMode(CameraScaleMode.Contain);
-        cameraHandler.SetDimensionsToLevel();
+        bare.camera.SetScaleMode(CameraScaleMode.Contain);
+        bare.camera.SetDimensionsToLevel();
 
         this.PlaceDirectionalButtons();
     }

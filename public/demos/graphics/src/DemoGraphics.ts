@@ -1,4 +1,4 @@
-import { assetsHandler, Scene, Color, MaskType, StartBare, Texture, Vec2 } from "bare-engine";
+import { Scene, Color, MaskType, StartBare, Texture, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO RENDER SHAPES, TEXTURES AND MASKS
@@ -11,8 +11,8 @@ export class DemoGraphics extends Scene
 
     async OnStart()
     {
-        this.flowerTexture = await assetsHandler.GetTexturePromise("🌼");
-        this.treeTexture = await assetsHandler.GetTexturePromise("🌲");
+        this.flowerTexture = await bare.asset.GetTexturePromise("🌼");
+        this.treeTexture = await bare.asset.GetTexturePromise("🌲");
 
         // SETTING UP MASK WITH GAMEOBJECTS
         var flower = bScene.AddGameObject(this.flowerTexture)

@@ -1,5 +1,5 @@
 
-import { Scene, componentController, StartBare } from "bare-engine";
+import { Scene, StartBare } from "bare-engine";
 import { WaveComponent } from "./components/waveComponent";
 
 /*  
@@ -42,7 +42,7 @@ export class DemoComponents extends Scene
             .SetPosition(bare.width * .5, bare.height * .75)
             .SetPivot(88, 94)
 
-        componentController.Get(obj, WaveComponent)!.frequency = 2;
+        bare.component.Get(obj, WaveComponent)!.frequency = 2;
     }
 }
 

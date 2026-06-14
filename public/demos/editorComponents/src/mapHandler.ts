@@ -1,5 +1,5 @@
 
-import { BareEvent, Button, EditorScene, globalEvents, LevelData, plugin, sceneController, SettingsHandler, uiScene } from "bare-engine";
+import { BareEvent, Button, EditorScene, globalEvents, LevelData, plugin, SettingsHandler, uiScene } from "bare-engine";
 import type { Events } from "bare-engine";
 import mapDataJson from './../data/mapData.json';
 import mapLevelJson from './../levels/map.json';
@@ -46,20 +46,20 @@ export class MapHandler
     {
         // CREATE MAP EDITOR BUTTON
         var OnClickMapEditorButton = async () => {
-            sceneController.DisableAll();
+            bare.scene.DisableAll();
 
-            for (var scene of sceneController.GetAll())
+            for (var scene of bare.scene.GetAll())
             {
                 // HARDCODED THESE FOR NOW - NEEDED SO MOUSE IS NOT LOCKED TO DOWN AFTER CLICKING THIS BUTTON
                 // HITBOX CONTROLLER FOR GOOD MEASURE TOO
-                scene.hitboxController?.Reset();
-                scene.mouseController?.Reset();
+                scene.hitbox?.Reset();
+                scene.hitbox?.Reset();
             }
 
             // ADDING _DEV_ HERE TOO, TO PREVENT EditorScene FROM BEING IMPORTED
             if (__DEV__)
             {
-                await sceneController.Add(EditorScene, {
+                await bare.scene.Add(EditorScene, {
                     levelPathOrData: "demos/editorComponents/levels/map.json",
                     settingsHandler: this.mapSettingsHandler,
                 });

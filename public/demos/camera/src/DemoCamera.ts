@@ -1,5 +1,5 @@
 
-import { Scene, cameraHandler, CameraScaleMode, Helper, mouseController, StartBare, TweenTo, BareEvent } from "bare-engine";
+import { Scene, CameraScaleMode, Helper, StartBare, TweenTo, BareEvent } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO MOVE THE CAMERA 
@@ -13,20 +13,20 @@ export class DemoCamera extends Scene
 {
     async OnStart()
     {
-        cameraHandler.SetBounds({ x: -4500, y: -1500, width: 9000, height: 3000 });
+        bare.camera.SetBounds({ x: -4500, y: -1500, width: 9000, height: 3000 });
 
         for (var i = 0; i < 500; i++)
         {
             bScene.AddGameObject('🌱')
                 .SetPosition(
-                    Helper.RandomRange(cameraHandler.bounds.x, cameraHandler.bounds.x + cameraHandler.bounds.width),
-                    Helper.RandomRange(cameraHandler.bounds.y, cameraHandler.bounds.y + cameraHandler.bounds.height))
+                    Helper.RandomRange(bare.camera.bounds.x, bare.camera.bounds.x + bare.camera.bounds.width),
+                    Helper.RandomRange(bare.camera.bounds.y, bare.camera.bounds.y + bare.camera.bounds.height))
                 .SetScale(.6)
                 .CenterPivot();
         }
         
         this.events.on(BareEvent.pointer_down, () => {
-            cameraHandler.StartShake(5, .5);
+            bare.camera.StartShake(5, .5);
         });
  
         var count = 0;
@@ -36,29 +36,29 @@ export class DemoCamera extends Scene
             if (count % 4 == 0)
             {
                 trace('Switched scaleMode to cover');
-                cameraHandler.SetScaleMode(CameraScaleMode.Cover);
+                bare.camera.SetScaleMode(CameraScaleMode.Cover);
                 zoom = .05;
             }
             else
             if (count % 2 == 0)
             {
                 trace('Switched scaleMode to contain');
-                cameraHandler.SetScaleMode(CameraScaleMode.Contain);
+                bare.camera.SetScaleMode(CameraScaleMode.Contain);
                 zoom = .05;
             }
 
-            TweenTo(cameraHandler, .6, { zoom: zoom });
+            TweenTo(bare.camera, .6, { zoom: zoom });
             count++;
         }, onUpdate: () => {
-            cameraHandler.CalculateZoomFit()
+            bare.camera.CalculateZoomFit()
         }, repeat: Infinity });
     }
 
     OnUpdate(deltaTime: number): void
     {
-        cameraHandler.SetPosition(
-            mouseController.screen.position.x,
-            mouseController.screen.position.y
+        bare.camera.SetPosition(
+            bare.mouse.screen.position.x,
+            bare.mouse.screen.position.y
         );
     }
 }

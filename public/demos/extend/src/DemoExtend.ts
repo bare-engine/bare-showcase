@@ -1,5 +1,5 @@
 
-import { Scene, TextTexture, Component, componentController, GameObject, hitboxController, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2, assetsHandler} from "bare-engine";
+import { Scene, TextTexture, Component, GameObject, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO EXTEND ALL THE EXTENDABLE DATA STRUCTURES IN BARE
@@ -92,8 +92,8 @@ export class DemoExtend extends Scene
         bare.AddClass(EmojiObject);
         bare.AddClass(PopComponent);
 
-        await assetsHandler.GetTexturePromise("😃");
-        await assetsHandler.GetTexturePromise("🙁");
+        await bare.asset.GetTexturePromise("😃");
+        await bare.asset.GetTexturePromise("🙁");
     }
 
     OnStart()
@@ -113,12 +113,12 @@ export class DemoExtend extends Scene
         var pressedEmoji = (go: GameObject) => {
             this.events.emit('popped', {gameObject: go});
         }
-        hitboxController.AssignButton(emojiSad, {OnPress: pressedEmoji});
-        hitboxController.AssignButton(emojiHappy, {OnPress: pressedEmoji});
+        bare.hitbox.AssignButton(emojiSad, {OnPress: pressedEmoji});
+        bare.hitbox.AssignButton(emojiHappy, {OnPress: pressedEmoji});
         
         // WHAT SHOULD HAPPEN WHEN THE CUSTOM EVENT IS EMITTED
         this.events.on('popped', ({gameObject}) => {
-            componentController.CallMethodOnAllComponents('Pop');
+            bare.component.CallMethodOnAllComponents('Pop');
 
             var isHappy = gameObject.entity!.isHappy;
 

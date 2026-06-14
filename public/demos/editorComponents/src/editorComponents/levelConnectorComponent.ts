@@ -1,4 +1,4 @@
-import { Component, componentController, GameMode, mouseController, Run, Scene } from "bare-engine"
+import { Component, GameMode, Run, Scene } from "bare-engine"
 import { GameObject } from "bare-engine";
 import { Color, Vec2 } from "bare-engine";
 
@@ -29,7 +29,7 @@ export class LevelConnectorComponent extends Component
 
     OnUpdate(deltaTime: number): void 
     {
-        if (mouseController.IsDown() || mouseController.IsRightDown()/* && hitboxController.GetCurrentHover() == this.go.hitbox*/)
+        if (bare.mouse.IsDown() || bare.mouse.IsRightDown()/* && bare.hitbox.GetCurrentHover() == this.go.hitbox*/)
         {
             var directions:Direction[] = ["top", "right", "bottom", "left"];
             for (var direction of directions)
@@ -40,7 +40,7 @@ export class LevelConnectorComponent extends Component
             var lineMargin = 100;
             var minDist = 400;
 
-            var allConnectorComponents:LevelConnectorComponent[] = componentController.GetAllByType(LevelConnectorComponent as any);
+            var allConnectorComponents:LevelConnectorComponent[] = bare.component.GetAllByType(LevelConnectorComponent as any);
             for (var connectorComp of allConnectorComponents)
             {
                 var otherBO = connectorComp.go;
@@ -85,7 +85,7 @@ export class LevelConnectorComponent extends Component
     OnRender(): void 
     {
         var directions:Direction[] = ["top", "right", "bottom", "left"];
-        var allConnectorComponents:LevelConnectorComponent[] = componentController.GetAllByType(LevelConnectorComponent as any);
+        var allConnectorComponents:LevelConnectorComponent[] = bare.component.GetAllByType(LevelConnectorComponent as any);
         for (var connectorComp of allConnectorComponents)
         {
             var otherGo = connectorComp.go;

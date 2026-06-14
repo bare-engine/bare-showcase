@@ -1,5 +1,5 @@
 
-import { AnimationComponent, Scene, StartBare, assetsHandler, BareEvent, TextureFilterMode } from "bare-engine";
+import { AnimationComponent, Scene, StartBare, BareEvent, TextureFilterMode } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO LOAD AND PLAY AN ANIMATION
@@ -35,7 +35,7 @@ export class DemoAnimation extends Scene
     {
         rapid.setTextureFilter(TextureFilterMode.NEAREST); // SET TO NEAREST TO SHOW CRISP PIXEL ART
 
-        await assetsHandler.LoadAtlas("texturePackImages");
+        await bare.asset.LoadAtlas("texturePackImages");
     }
     
     OnStart()

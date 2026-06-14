@@ -1,6 +1,6 @@
 import entityDataJson from '../entityData.json' 
 
-import { Scene, StartBare, CameraScaleMode, cameraHandler, mouseController, Helper, BareEvent } from "bare-engine";
+import { Scene, StartBare, CameraScaleMode, Helper, BareEvent } from "bare-engine";
 import { SopiroPhysicsController, Circle, Type } from 'bare-engine/sopiro';
 
 /*  
@@ -28,8 +28,8 @@ export class DemoSopiroPhysics extends Scene
     {
         await this.LoadLevel('level');
 
-        cameraHandler.SetDimensionsToLevel();
-        cameraHandler.SetScaleMode(CameraScaleMode.Contain); 
+        bare.camera.SetDimensionsToLevel();
+        bare.camera.SetScaleMode(CameraScaleMode.Contain);
 
         // EXAMPLE OF CREATING A RIGID BODY BY CODE
         // THIS WORKS SINCE CIRCLE EXTENDS RIGIDBODY WHICH EXTENDS GAMEOBJECT
@@ -40,7 +40,7 @@ export class DemoSopiroPhysics extends Scene
             bScene.AddGameObject(circleRb);
 
             circleRb.InitTexture('⚽');
-            circleRb.SetPosition(mouseController.world.position.x, mouseController.world.position.y);
+            circleRb.SetPosition(bare.mouse.world.position.x, bare.mouse.world.position.y);
             circleRb.SetVelocityXY(Helper.RandomRange(-100, 100), Helper.RandomRange(-100, 100));
         })
     }

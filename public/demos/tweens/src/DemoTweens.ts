@@ -1,5 +1,5 @@
 
-import { Scene, Easing, hitboxController, Tween, tweenController, TweenTo, StartBare, assetsHandler } from "bare-engine";
+import { Scene, Easing, Tween, TweenTo, StartBare } from "bare-engine";
 
 /*  
     THIS SHOWS ALL THE DIFFERENT WAYS YOU CAN TWEEN THINGS!
@@ -10,7 +10,7 @@ export class DemoTweens extends Scene
 {
     async OnAwake(): Promise<void>
     {
-        await assetsHandler.GetTexturePromise("❤");
+        await bare.asset.GetTexturePromise("❤");
     }
     
     OnStart()
@@ -25,9 +25,9 @@ export class DemoTweens extends Scene
 
         TweenTo(heart, .3, {innerScale: 1.12, yoyo: true, repeat: Infinity});
 
-        hitboxController.AssignButton(heart, {
+        bare.hitbox.AssignButton(heart, {
             OnPress: () => {
-                tweenController.Shake(heart.innerPosition, "y", 1.2, -0.5, 3, 4, 0.075, 30);
+                bare.tween.Shake(heart.innerPosition, "y", 1.2, -0.5, 3, 4, 0.075, 30);
             },
             OnEnter: () => {
                 TweenTo(heart, 0.3, { scale: 2 });
@@ -101,7 +101,7 @@ export class DemoTweens extends Scene
                 .easing(Easing.Quadratic.In)
                 .onComplete(startPopChain);
 
-            tweenController.AddChain(t1, t2, t3, t4);
+            bare.tween.AddChain(t1, t2, t3, t4);
             t1.chain(t4); // CONNECT THEM UP TO LOOP
         };
 

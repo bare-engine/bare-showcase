@@ -1,4 +1,4 @@
-import { assetsHandler, Scene, StartBare } from "bare-engine";
+import { Scene, StartBare } from "bare-engine";
 import { GhostShader } from "./ghostShader";
 
 /*  
@@ -9,7 +9,7 @@ export class DemoShaders extends Scene
 {
     async OnAwake(): Promise<void>
     {
-        await assetsHandler.GetTexturePromise("👻");
+        await bare.asset.GetTexturePromise("👻");
     }
 
     OnStart()

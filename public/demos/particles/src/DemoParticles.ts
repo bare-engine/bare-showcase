@@ -1,5 +1,5 @@
 
-import { assetsHandler, Scene, Color, mouseController, particleController, ParticleEmitter, ParticleShape, StartBare, Vec2 } from "bare-engine";
+import { Scene, Color, ParticleEmitter, ParticleShape, StartBare, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP PARTICLE EMITTERS, EITHER CONTINUES OR ONE SHOT
@@ -15,8 +15,8 @@ export class DemoParticles extends Scene
     
     async OnStart()
     {
-        var particleTexture = await assetsHandler.GetTexturePromise("starParticle");
-        var stripeParticleTexture = await assetsHandler.GetTexturePromise("stripeParticle");
+        var particleTexture = await bare.asset.GetTexturePromise("starParticle");
+        var stripeParticleTexture = await bare.asset.GetTexturePromise("stripeParticle");
 
         // TODO: MAKE THIS ABLE TO LOAD A JSON STRING, GOTTA PORT COLOR AND VEC2
         this.smokeEmitter = new ParticleEmitter(rapid, {
@@ -78,14 +78,14 @@ export class DemoParticles extends Scene
             }
         });
         
-        particleController.Add(this.explosionEmitter); // ONE SHOT IS THE DEFAULT. ACTIVATED BELOW WITH oneShot()
-        particleController.Add(this.smokeEmitter, {autoStart: true}); // AUTO START MAKES IT BECOME A CONTINUOUS EMITTER
+        bare.particle.Add(this.explosionEmitter); // ONE SHOT IS THE DEFAULT. ACTIVATED BELOW WITH oneShot()
+        bare.particle.Add(this.smokeEmitter, {autoStart: true}); // AUTO START MAKES IT BECOME A CONTINUOUS EMITTER
     }
 
     OnUpdate(deltaTime: number): void
     {
         // LET THE SMOKE FOLLOW THE MOUSE
-        this.smokeEmitter.position.set(mouseController.screen.position.x, mouseController.screen.position.y);
+        this.smokeEmitter.position.set(bare.mouse.screen.position.x, bare.mouse.screen.position.y);
         
         // ONE SHOT THE EXPLOSION EVERY explosionInterval SECONDS
         this.explosionTimer += deltaTime;
