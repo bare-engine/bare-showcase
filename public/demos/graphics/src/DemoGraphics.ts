@@ -11,8 +11,8 @@ export class DemoGraphics extends Scene
 
     async OnStart()
     {
-        this.flowerTexture = await bare.asset.GetTexturePromise("🌼");
-        this.treeTexture = await bare.asset.GetTexturePromise("🌲");
+        this.flowerTexture = await bare.asset.LoadTexture("🌼");
+        this.treeTexture = await bare.asset.LoadTexture("🌲");
 
         // SETTING UP MASK WITH GAMEOBJECTS
         var flower = bScene.AddGameObject(this.flowerTexture)

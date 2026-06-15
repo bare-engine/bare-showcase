@@ -33,7 +33,7 @@ export class DemoEditorComponents extends Scene
 
     async OnStart()
     {
-        await bare.asset.GetTexturePromise("arrowLevel");
+        await bare.asset.LoadTexture("arrowLevel");
         await this.LoadLevel("level_car");
 
         uiScene.persistent = true;

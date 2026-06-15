@@ -15,8 +15,8 @@ export class DemoParticles extends Scene
     
     async OnStart()
     {
-        var particleTexture = await bare.asset.GetTexturePromise("starParticle");
-        var stripeParticleTexture = await bare.asset.GetTexturePromise("stripeParticle");
+        var particleTexture = await bare.asset.LoadTexture("starParticle");
+        var stripeParticleTexture = await bare.asset.LoadTexture("stripeParticle");
 
         // TODO: MAKE THIS ABLE TO LOAD A JSON STRING, GOTTA PORT COLOR AND VEC2
         this.smokeEmitter = new ParticleEmitter(rapid, {

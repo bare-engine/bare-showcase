@@ -92,8 +92,8 @@ export class DemoExtend extends Scene
         bare.AddClass(EmojiObject);
         bare.AddClass(PopComponent);
 
-        await bare.asset.GetTexturePromise("😃");
-        await bare.asset.GetTexturePromise("🙁");
+        await bare.asset.LoadTexture("😃");
+        await bare.asset.LoadTexture("🙁");
     }
 
     OnStart()

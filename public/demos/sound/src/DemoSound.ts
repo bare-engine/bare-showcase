@@ -9,7 +9,7 @@ export class DemoSound extends Scene
 {
     async OnAwake(): Promise<void>
     {
-        await bare.asset.GetTexturePromise("🔊");
+        await bare.asset.LoadTexture("🔊");
     }
 
     OnStart()
