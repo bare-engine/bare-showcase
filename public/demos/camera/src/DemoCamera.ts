@@ -37,7 +37,7 @@ export class DemoCamera extends Scene
             {
                 trace('Switched scaleMode to cover');
                 bare.camera.SetScaleMode(CameraScaleMode.Cover);
-                zoom = .05;
+                zoom = .05; // ZOOMING WAY OUT TO GET THE CAMERA IN BOUNDS AND SEE THE SCALE MODE IN ACTION
             }
             else
             if (count % 2 == 0)
@@ -49,8 +49,6 @@ export class DemoCamera extends Scene
 
             TweenTo(bare.camera, .6, { zoom: zoom });
             count++;
-        }, onUpdate: () => {
-            bare.camera.CalculateZoomFit()
         }, repeat: Infinity });
     }
 

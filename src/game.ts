@@ -135,7 +135,7 @@ export class MainGame extends Scene
     }
 }
 
-StartBare(MainGame, {antiAlias: true});
+StartBare(MainGame, {antiAlias: true, showEditorButton: true});
 
 import { BareEvent, Color, Helper, Scene, StartBare, TextObject } from 'bare-engine';
 import { DemoAnimation } from '../public/demos/animation/src/DemoAnimation';

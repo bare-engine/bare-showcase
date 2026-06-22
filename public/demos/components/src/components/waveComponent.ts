@@ -1,15 +1,15 @@
-import { Component, GameObject, Scene, TweenTo } from "bare-engine"
+import { Component, InspectorField, Scene, TweenTo } from "bare-engine";
 
 export class WaveComponent extends Component
 {
     countDown:number = 0;
-    frequency: number;
 
-    constructor(scene:Scene, frequency:number = 1)
+    @InspectorField
+    interval: number;
+
+    constructor(scene:Scene)
     {
         super(scene);
-        
-        this.frequency = frequency;
     }
 
     OnUpdate(deltaTime: number): void
@@ -22,7 +22,7 @@ export class WaveComponent extends Component
             this.go.rotation = 0;
             TweenTo(this.go, .3, {rotation: 45, yoyo: true, repeat: 1});
             
-            this.countDown += this.frequency;
+            this.countDown += this.interval;
         }
     }
 

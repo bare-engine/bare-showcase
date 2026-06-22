@@ -13,14 +13,12 @@ import { Scene, StartBare } from "bare-engine";
 */
 
 const data = ` {
-	"categories": [
-		{
-			"objects": {
-				"image": "🌳",
-				"entries": ["🏚", "🌲", "🌳", "🪵", "🪓", "grassPatch"]
-			}
+	"categories": {
+		"objects": {
+			"image": "🌳",
+			"entries": ["🏚", "🌲", "🌳", "🪵", "🪓", "grassPatch"]
 		}
-	],
+	},
 	"layers": ["objects", "surface"],
 	"layersInfo": {
 		"surface": {
