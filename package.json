@@ -28,6 +28,7 @@
     "bare-engine": "github:BareEngine/BareEngine"
   },
   "bareEngine": {
+	"name": "Bare Demos",
     "imageGlobs": [
       "demos/**/images/**"
     ]
