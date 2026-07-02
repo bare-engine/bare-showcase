@@ -1,5 +1,5 @@
 
-import { Scene, Color, GameObject, StartBare, TextTexture } from "bare-engine";
+import { Scene, Color, GameObject, TextTexture } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS THE POWER OF ENTITIES, A CONCEPT SOMEWHAT UNIQUE TO BARE 
@@ -77,5 +77,3 @@ export class Fruit extends GameObject
         }));
     }
 }
-
-//StartBare(DemoEntities);

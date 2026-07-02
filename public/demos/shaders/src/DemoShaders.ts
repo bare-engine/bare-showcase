@@ -1,4 +1,4 @@
-import { Scene, StartBare } from "bare-engine";
+import { Scene } from "bare-engine";
 import { GhostShader } from "./ghostShader";
 
 /*  
@@ -24,5 +24,3 @@ export class DemoShaders extends Scene
         ghost.AddShader(GhostShader);
     }
 }
-
-//StartBare(DemoShaders);

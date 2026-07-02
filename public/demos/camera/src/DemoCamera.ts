@@ -1,5 +1,5 @@
 
-import { Scene, CameraScaleMode, Helper, StartBare, TweenTo, BareEvent } from "bare-engine";
+import { Scene, CameraScaleMode, Helper, TweenTo, BareEvent } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO MOVE THE CAMERA 
@@ -60,5 +60,3 @@ export class DemoCamera extends Scene
         );
     }
 }
-
-//StartBare(DemoCamera);

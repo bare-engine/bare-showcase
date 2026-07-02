@@ -1,4 +1,4 @@
-import { Scene, Color, MaskType, StartBare, Texture, Vec2 } from "bare-engine";
+import { Scene, Color, MaskType, Texture, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO RENDER SHAPES, TEXTURES AND MASKS
@@ -126,5 +126,3 @@ export class DemoGraphics extends Scene
         );
     }
 }
-
-//StartBare(DemoGraphics);

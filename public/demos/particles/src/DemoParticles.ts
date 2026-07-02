@@ -1,5 +1,5 @@
 
-import { Scene, Color, ParticleEmitter, ParticleShape, StartBare, Vec2 } from "bare-engine";
+import { Scene, Color, ParticleEmitter, ParticleShape, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP PARTICLE EMITTERS, EITHER CONTINUES OR ONE SHOT
@@ -98,5 +98,3 @@ export class DemoParticles extends Scene
         }
     }
 }
-
-//StartBare(DemoParticles);

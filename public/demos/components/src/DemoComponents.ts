@@ -1,5 +1,5 @@
 
-import { Scene, StartBare } from "bare-engine";
+import { Scene } from "bare-engine";
 import { WaveComponent } from "./components/waveComponent";
 
 /*  
@@ -45,5 +45,3 @@ export class DemoComponents extends Scene
         bare.component.Get(obj, WaveComponent)!.interval = 2;
     }
 }
-
-//StartBare(DemoComponents);

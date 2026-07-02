@@ -1,5 +1,5 @@
 
-import { Scene, Easing, Tween, TweenTo, StartBare } from "bare-engine";
+import { Scene, Easing, Tween, TweenTo } from "bare-engine";
 
 /*  
     THIS SHOWS ALL THE DIFFERENT WAYS YOU CAN TWEEN THINGS!
@@ -108,5 +108,3 @@ export class DemoTweens extends Scene
         startPopChain();
     }
 }
-
-//StartBare(DemoTweens);

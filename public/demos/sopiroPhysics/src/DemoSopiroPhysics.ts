@@ -1,6 +1,6 @@
 import entityDataJson from '../entityData.json' 
 
-import { Scene, StartBare, CameraScaleMode, Helper, BareEvent } from "bare-engine";
+import { Scene, CameraScaleMode, Helper, BareEvent } from "bare-engine";
 import { SopiroPhysicsController, Circle, Type } from 'bare-engine/sopiro';
 
 /*  
@@ -45,5 +45,3 @@ export class DemoSopiroPhysics extends Scene
         })
     }
 }
-
-//StartBare(DemoSopiroPhysics);

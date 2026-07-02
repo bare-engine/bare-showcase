@@ -1,4 +1,4 @@
-import { Scene, StartBare } from "bare-engine";
+import { Scene } from "bare-engine";
 
 /*  
 	THIS DEMO SHOWS HOW TO LOAD THE LEVEL "level_forest"
@@ -47,5 +47,3 @@ export class DemoLevel extends Scene
 		bare.camera.SetDimensionsToLevel();
 	}
 }
-
-//StartBare(DemoLevel);

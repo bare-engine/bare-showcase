@@ -48,5 +48,3 @@ export class DemoUi extends Scene
         return textObj;
     }
 }
-
-//StartBare(DemoUi);

@@ -1,5 +1,5 @@
 
-import { Scene, GameObject, StartBare } from "bare-engine";
+import { Scene, GameObject } from "bare-engine";
 
 /*  
     WE ADD A SIMPLE GAME OBJECT WITH NAME '⚙'
@@ -23,5 +23,3 @@ export class DemoBasics extends Scene
         this.cog.rotation++;
     }
 }
-
-//StartBare(DemoBasics);

@@ -1,5 +1,5 @@
 
-import { AnimationComponent, Scene, StartBare, BareEvent, TextureFilterMode } from "bare-engine";
+import { AnimationComponent, Scene, BareEvent, TextureFilterMode } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO LOAD AND PLAY AN ANIMATION
@@ -61,5 +61,3 @@ export class DemoAnimation extends Scene
         rapid.setTextureFilter(TextureFilterMode.LINEAR); // REVERT TO LINEAR, JUST SO IT'S ENABLED FOR OTHER DEMOS AGAIN
     }
 }
-
-//StartBare(DemoAnimation, {antiAlias: false});

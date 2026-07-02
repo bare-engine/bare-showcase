@@ -1,5 +1,5 @@
 
-import { Scene, Helper, StartBare, TweenTo } from "bare-engine";
+import { Scene, Helper, TweenTo } from "bare-engine";
 
 /*
     PLAY A SOUND, AT DIFFERENT RATES!
@@ -28,5 +28,3 @@ export class DemoSound extends Scene
         });
     }
 }
-
-//StartBare(DemoSound);

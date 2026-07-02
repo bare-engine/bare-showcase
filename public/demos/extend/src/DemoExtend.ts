@@ -1,5 +1,5 @@
 
-import { Scene, TextTexture, Component, GameObject, SaveData, SaveDataHandler, TweenTo, StartBare, Vec2 } from "bare-engine";
+import { Scene, TextTexture, Component, GameObject, SaveData, SaveDataHandler, TweenTo, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO EXTEND ALL THE EXTENDABLE DATA STRUCTURES IN BARE
@@ -151,5 +151,3 @@ export class DemoExtend extends Scene
         //bare.renderSprite({texture: text, position: new Vec2(bare.width * .5, 170), origin: new Vec2(.5, .5)});
     }
 }
-
-//StartBare(DemoExtend);

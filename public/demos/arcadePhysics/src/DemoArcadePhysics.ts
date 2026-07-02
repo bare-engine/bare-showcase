@@ -1,5 +1,5 @@
 
-import { Scene, Vec2, StartBare, BareEvent } from "bare-engine";
+import { Scene, Vec2, BareEvent } from "bare-engine";
 import { ArcadePhysicsController, ArcadeObject } from 'bare-engine/arcade';
 
 /* 
@@ -80,5 +80,3 @@ export class DemoArcadePhysics extends Scene
         });
     }
 }
-
-//StartBare(DemoArcadePhysics);

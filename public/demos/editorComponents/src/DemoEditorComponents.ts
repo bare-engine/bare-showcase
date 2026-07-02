@@ -113,5 +113,3 @@ export class DemoEditorComponents extends Scene
         }
     }
 }
-
-//StartBare(DemoEditorComponents);

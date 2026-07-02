@@ -1,4 +1,4 @@
-import { Scene, GameObject, Helper, RenderTexture, StartBare, Color } from "bare-engine";
+import { Scene, GameObject, Helper, RenderTexture, Color } from "bare-engine";
 
 /*  
     THIS SHOW HOW TO SETUP A RENDER TEXTURE AND RENDER LOTS OF TEXTURES TO IT
@@ -29,5 +29,3 @@ export class DemoRenderTexture extends Scene
         this.renderTexture.destroy();
     }
 }
-
-//StartBare(DemoRenderTexture);
