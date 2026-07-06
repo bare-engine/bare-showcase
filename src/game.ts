@@ -7,6 +7,7 @@
 export class MainGame extends Scene
 {
     private demos = [
+        DemoECS,
         DemoBasics,
         DemoImageLoading,
         DemoAnimation,
@@ -91,7 +92,9 @@ export class MainGame extends Scene
         var name = this.demos[demoIndex].name.replace('Demo', '');
 
         // SET PATHS TO UPCOMING DEMO DIR
-        var folderName = name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
+        var folderName = name == name.toUpperCase()
+            ? name.toLowerCase()
+            : name.charAt(0).toLowerCase() + name.slice(1); // LOWERCASE FIRST LETTER
         bare.rootDir = `demos/${folderName}`;
         bare.levelDir = `levels`; 
         bare.soundDir = ``;
@@ -156,4 +159,5 @@ import { DemoSopiroPhysics } from '../public/demos/sopiroPhysics/src/DemoSopiroP
 import { DemoSound } from '../public/demos/sound/src/DemoSound';
 import { DemoTweens } from '../public/demos/tweens/src/DemoTweens';
 import { DemoUi } from '../public/demos/ui/src/DemoUi';
+import { DemoECS } from '../public/demos/ecs/src/DemoECS';
 
