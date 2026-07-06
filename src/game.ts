@@ -104,7 +104,8 @@ export class MainGame extends Scene
 
         // UPDATE TEXT "TITLE: X. NAME"
         this.title.SetText(`${demoIndex + 1}. ` + name
-                .replace(/([A-Z])/g, ' $1')
+                .replace(/([a-z])([A-Z])/g, '$1 $2')
+                .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
                 .replace(/^./, c => c.toUpperCase())
                 .trim()
         );
