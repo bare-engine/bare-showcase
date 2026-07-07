@@ -22,16 +22,20 @@ type Health = {
 type DemoObject = GameObject & {
     health?: Health;
     healthTextObj?: TextObject;
+    clickDamage?: number;
+    poisonOnClick?: true;
     poisoned?: true;
     dead?: true;
 };
 
 type HealthObject = With<DemoObject, "health" | "healthTextObj">;
+type ClickDamageObject = With<HealthObject, "clickDamage" | "poisonOnClick">;
 type PoisonedObject = With<HealthObject, "poisoned">;
 type DeadObject = With<DemoObject, "dead">;
 
 type DemoQueries = {
     health: Query<HealthObject>;
+    clickDamage: Query<ClickDamageObject>;
     poisoned: Query<PoisonedObject>;
     dead: Query<DeadObject>;
 };
@@ -62,9 +66,18 @@ export class DemoECS extends Scene
         const health = this.world.with("health", "healthTextObj");
         this.queries = {
             health,
+            clickDamage: health.with("clickDamage", "poisonOnClick"),
             poisoned: health.with("poisoned"),
             dead: this.world.with("dead")
         };
+
+        // REGISTER INPUT FOR OBJECTS THAT HAVE CLICK DAMAGE COMPONENTS
+        this.unsubscribers.push(this.queries.clickDamage.onEntityAdded.subscribe(obj => {
+            obj.OnPointerDown(() => {
+                this.Damage(obj, obj.clickDamage);
+                this.Poison(obj);
+            });
+        }));
 
         // CREATE CHARACTERS
         this.CreateCharacter("Character A", bare.width * .5, bare.height * .2, 50);
@@ -114,16 +127,11 @@ export class DemoECS extends Scene
         // ASSIGN COMPONENTS
         obj.health = { current: maxHealth, max: maxHealth };
         obj.healthTextObj = healthTextObj;
+        obj.clickDamage = 10;
+        obj.poisonOnClick = true;
 
         // ADD TO WORLD
         this.world.add(obj);
-
-        // APPLY DAMAGE AND POISON ON CLICK
-        const healthObject = (obj as HealthObject);
-        obj.OnPointerDown(() => {
-            this.Damage(healthObject, 10);
-            this.Poison(healthObject);
-        });
     }
 
     OnFixedUpdate(fixedDeltaTime: number): void
