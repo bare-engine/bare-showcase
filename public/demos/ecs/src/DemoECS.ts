@@ -1,5 +1,5 @@
 import { Color, GameObject, Scene, TextObject, TextureFilterMode } from "bare-engine";
-import { World, createQueue, type Query, type With } from "bare-engine";
+import { World, type Query, type With } from "bare-engine";
 
 type Health = {
     current: number;
@@ -27,7 +27,6 @@ export class DemoECS extends Scene
 {
     private world: World<DemoObject>;
     private queries: DemoQueries;
-    private queue = createQueue();
     
     private statsText: TextObject;
     private poisonTicksPerSecond = 6;
@@ -43,28 +42,30 @@ export class DemoECS extends Scene
 
     OnStart()
     {
+        // CREATE THE ECS WORLD
         this.world = new World<DemoObject>();
         
+        // SETUP QUERIES - USED TO GET OBJECTS WITH CERTAIN COMPONENTS
         const health = this.world.with("health", "healthTextObj");
-
         this.queries = {
             health,
             poisoned: health.with("poisoned"),
             dead: this.world.with("dead")
         };
 
-        // POISON CLEANUP
-        this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(obj => {
-            this.world.removeComponent(obj, "poisoned");
-        }));
+        // CREATE CHARACTERS
+        this.CreateCharacter("Character A", bare.width * .5, bare.height * .2, 100);
+        this.CreateCharacter("Character B", bare.width * .5, bare.height * .45, 70);
+        this.CreateCharacter("Character C", bare.width * .5, bare.height * .7, 50);
 
-        // CORPSE VISUALS
+        // LISTEN TO DEATH EVENT
         this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(obj => {
             obj.OffPointers();
             obj.SetColor(Color.Gray);
             obj.rotation = 90;
         }));
 
+        // STATS TEXT
         this.statsText = new TextObject(this, {
             text: "",
             fontSize: 16,
@@ -72,34 +73,11 @@ export class DemoECS extends Scene
             fill: "#222222"
         });
         this.AddGameObject(this.statsText)
-            .SetPosition(bare.width * 0.5, bare.height - 50)
+            .SetPosition(bare.width * .5, bare.height - 50)
             .CenterPivot();
-
-        this.CreateCharacter("Character A", bare.width * .5, bare.height * .2, 100);
-        this.CreateCharacter("Character B", bare.width * .5, bare.height * .45, 70);
-        this.CreateCharacter("Character C", bare.width * .5, bare.height * .7, 50);
-
-        this.UpdateTexts();
     }
 
-    OnFixedUpdate(fixedDeltaTime: number): void
-    {
-        if (!this.queries)
-            return;
-
-        this.poisonCountdown -= fixedDeltaTime;
-
-        if (this.poisonCountdown <= 0)
-        {
-            this.PoisonSystem();
-            this.DeathSystem();
-            this.UpdateTexts();
-
-            this.poisonCountdown = 1 / this.poisonTicksPerSecond;
-        }
-    }
-
-    private CreateCharacter(name: string, x: number, y: number, maxHealth: number): HealthObject
+    private CreateCharacter(name: string, x: number, y: number, maxHealth: number): void
     {
         const obj = this.AddGameObject<DemoObject>("player")
             .SetScale(5)
@@ -118,42 +96,49 @@ export class DemoECS extends Scene
             .SetPosition(obj.x, obj.y + 80)
             .CenterPivot();
 
-        // ASSIGN COMPONENTS BEFORE world.add() - PLAIN ASSIGNMENT AFTER ADD WON'T UPDATE QUERIES, ONLY world.addComponent() DOES
+        // ASSIGN COMPONENTS
         obj.health = { current: maxHealth, max: maxHealth };
         obj.healthTextObj = healthTextObj;
 
-        const healthObject = this.world.add(obj) as HealthObject;
+        // ADD TO WORLD
+        this.world.add(obj);
 
+        // POINTER INPUT ONLY WRITES DATA - THE SYSTEMS PICK UP THE CHANGES NEXT TICK
+        const healthObject = obj as HealthObject;
         obj.OnPointerDown(() => {
             this.Damage(healthObject, 10);
             this.Poison(healthObject);
-            this.DeathSystem();
-            this.UpdateTexts();
         });
-
-        return healthObject;
     }
 
-    private Damage(entity: { health: Health }, amount: number)
+    OnFixedUpdate(fixedDeltaTime: number): void
     {
-        entity.health.current = Math.max(0, entity.health.current - amount);
+        // RUN THE SYSTEMS
+        this.PoisonSystem(fixedDeltaTime);
+        this.DeathSystem();
+        this.TextSystem();
+        this.StatsSystem();
     }
 
-    private Poison(obj: HealthObject)
+    private PoisonSystem(fixedDeltaTime: number)
     {
-        this.world.addComponent(obj, "poisoned", true);
-    }
+        // APPLY POISON EVERY poisonTicksPerSecond
+        this.poisonCountdown -= fixedDeltaTime;
 
-    private PoisonSystem()
-    {
-        for (const obj of this.queries.poisoned) {
-            this.Damage(obj, 1);
+        if (this.poisonCountdown <= 0)
+        {
+            for (const obj of this.queries.poisoned) {
+                this.Damage(obj, 1);
+            }
+
+            this.poisonCountdown = 1 / this.poisonTicksPerSecond;
         }
     }
 
     private DeathSystem()
     {
-        for (const obj of this.queries.health) {
+        for (const obj of this.queries.health)
+        {
             if (obj.health.current > 0)
                 continue;
 
@@ -165,30 +150,35 @@ export class DemoECS extends Scene
         }
     }
 
-    private UpdateTexts()
+    private TextSystem()
     {
-        this.SetHealthTextObjs();
-        this.SetStats();
-    }
-
-    private SetHealthTextObjs()
-    {
-        for (const obj of this.queries.health) {
+        for (const obj of this.queries.health)
+        {
             this.SetHealthTextObj(obj, obj.poisoned ? "#2f7d32" : "#222222");
         }
     }
 
-    private SetHealthTextObj(obj: HealthObject, fill: string)
-    {
-        obj.healthTextObj.textTexture.style.fill = fill;
-        obj.healthTextObj.SetText(`${obj.name}: ${obj.health.current}/${obj.health.max}`);
-    }
-
-    private SetStats()
+    private StatsSystem()
     {
         this.statsText.SetText(
             `Alive: ${this.queries.health.size} | Poisoned: ${this.queries.poisoned.size} | Dead: ${this.queries.dead.size}`
         );
+    }
+
+    private Damage(obj: { health: Health }, amount: number)
+    {
+        obj.health.current = Math.max(0, obj.health.current - amount);
+    }
+
+    private Poison(obj: HealthObject)
+    {
+        this.world.addComponent(obj, "poisoned", true);
+    }
+
+    private SetHealthTextObj(obj: HealthObject, fill: string)
+    {
+        obj.healthTextObj.textTexture.style = { fill };
+        obj.healthTextObj.SetText(`${obj.name}: ${obj.health.current}/${obj.health.max}`);
     }
 
     OnClear(): void
