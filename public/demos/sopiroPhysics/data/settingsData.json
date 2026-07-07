@@ -1,0 +1,92 @@
+{
+  "categories": {
+    "Objects": {
+      "image": "📦",
+      "entries": ["🏈", "⚽", "collisionRect"]
+    }
+  },
+  "baseEntities": {
+    "physicsBase": {
+      "mass": 1,
+      "restitution": 0.7,
+      "pivot": "CENTER"
+    },
+    "physicsStatic": {
+      "static": true,
+      "pivot": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "entities": {
+    "⚽": {
+      "baseClass": "Circle",
+      "baseEntity": "physicsBase"
+    },
+    "🏈": {
+      "baseClass": "Polygon",
+      "baseEntity": "physicsBase",
+      "restitution": 1,
+      "polygonVertices": [
+        23,
+        29,
+        36,
+        17,
+        51,
+        9,
+        66,
+        3,
+        86,
+        1,
+        101,
+        4,
+        114,
+        11,
+        119,
+        22,
+        120,
+        35,
+        116,
+        61,
+        106,
+        81,
+        92,
+        99,
+        71,
+        112,
+        50,
+        119,
+        30,
+        122,
+        17,
+        121,
+        7,
+        116,
+        1,
+        103,
+        1,
+        84,
+        4,
+        61
+      ]
+    },
+    "collisionRect": {
+      "baseEntity": "physicsStatic",
+      "baseClass": "Box",
+      "texture": "whitePixel",
+      "color": "#000000",
+      "imagePath": "",
+      "collide": true,
+      "scale": {
+        "x": 128,
+        "y": 128
+      },
+      "hitbox": "FULL"
+    }
+  },
+  "settings": {
+    "gridEnabled": true,
+    "gridSize": 64
+  }
+}

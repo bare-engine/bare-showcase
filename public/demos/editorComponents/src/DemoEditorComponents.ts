@@ -27,7 +27,7 @@ export class DemoEditorComponents extends Scene
         // NEEDED SINCE IT'S REFERENCED IN mapDataJson
         bare.AddClass(LevelConnectorComponent);
 
-        // REGISTER ArcadeObject, NEEDED SINCE IT'S REFERENCED IN entityDataJson
+        // REGISTER ArcadeObject, NEEDED SINCE IT'S REFERENCED IN settingsDataJson
         bare.RegisterGameObjectPool(ArcadeObject, 30); //SET POOL SIZE
     }
 
