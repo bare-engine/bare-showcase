@@ -6,26 +6,26 @@ type Health = {
     max: number;
 };
 
-type DemoEntity = GameObject & {
+type DemoObject = GameObject & {
     health?: Health;
     healthTextObj?: TextObject;
     poisoned?: true;
     dead?: true;
 };
 
-type HealthEntity = With<DemoEntity, "health" | "healthTextObj">;
-type PoisonedEntity = With<HealthEntity, "poisoned">;
-type DeadEntity = With<DemoEntity, "dead">;
+type HealthObject = With<DemoObject, "health" | "healthTextObj">;
+type PoisonedObject = With<HealthObject, "poisoned">;
+type DeadObject = With<DemoObject, "dead">;
 
 type DemoQueries = {
-    health: Query<HealthEntity>;
-    poisoned: Query<PoisonedEntity>;
-    dead: Query<DeadEntity>;
+    health: Query<HealthObject>;
+    poisoned: Query<PoisonedObject>;
+    dead: Query<DeadObject>;
 };
 
 export class DemoECS extends Scene
 {
-    private world: World<DemoEntity>;
+    private world: World<DemoObject>;
     private queries: DemoQueries;
     private queue = createQueue();
     
@@ -43,7 +43,7 @@ export class DemoECS extends Scene
 
     OnStart()
     {
-        this.world = new World<DemoEntity>();
+        this.world = new World<DemoObject>();
         
         const health = this.world.with("health", "healthTextObj");
 
@@ -54,30 +54,30 @@ export class DemoECS extends Scene
         };
 
         // POISON CLEANUP
-        this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(entity => {
-            this.world.removeComponent(entity, "poisoned");
+        this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(obj => {
+            this.world.removeComponent(obj, "poisoned");
         }));
 
         // CORPSE VISUALS
-        this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(entity => {
-            entity.OffPointers();
-            entity.SetColor(Color.Gray);
-            entity.rotation = 90;
+        this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(obj => {
+            obj.OffPointers();
+            obj.SetColor(Color.Gray);
+            obj.rotation = 90;
         }));
 
         this.statsText = new TextObject(this, {
             text: "",
-            fontSize: 22,
+            fontSize: 16,
             fontFamily: "monospace",
             fill: "#222222"
         });
         this.AddGameObject(this.statsText)
-            .SetPosition(bare.width * 0.5, 110)
+            .SetPosition(bare.width * 0.5, bare.height - 50)
             .CenterPivot();
 
-        this.CreateCharacter("Character A", bare.width * .5, bare.height * .3, 100);
-        this.CreateCharacter("Character B", bare.width * .5, bare.height * .55, 70);
-        this.CreateCharacter("Character C", bare.width * .5, bare.height * .8, 50);
+        this.CreateCharacter("Character A", bare.width * .5, bare.height * .2, 100);
+        this.CreateCharacter("Character B", bare.width * .5, bare.height * .45, 70);
+        this.CreateCharacter("Character C", bare.width * .5, bare.height * .7, 50);
 
         this.UpdateTexts();
     }
@@ -99,14 +99,14 @@ export class DemoECS extends Scene
         }
     }
 
-    private CreateCharacter(name: string, x: number, y: number, maxHealth: number): HealthEntity
+    private CreateCharacter(name: string, x: number, y: number, maxHealth: number): HealthObject
     {
-        const entity = this.AddGameObject<DemoEntity>("player")
+        const obj = this.AddGameObject<DemoObject>("player")
             .SetScale(5)
             .SetPosition(x, y)
             .CenterPivot();
         
-        entity.name = name;
+        obj.name = name;
 
         const healthTextObj = new TextObject(this, {
             text: "",
@@ -115,23 +115,23 @@ export class DemoECS extends Scene
             fill: "#222222"
         });
         this.AddGameObject(healthTextObj)
-            .SetPosition(entity.x, entity.y + 80)
+            .SetPosition(obj.x, obj.y + 80)
             .CenterPivot();
 
         // ASSIGN COMPONENTS BEFORE world.add() - PLAIN ASSIGNMENT AFTER ADD WON'T UPDATE QUERIES, ONLY world.addComponent() DOES
-        entity.health = { current: maxHealth, max: maxHealth };
-        entity.healthTextObj = healthTextObj;
+        obj.health = { current: maxHealth, max: maxHealth };
+        obj.healthTextObj = healthTextObj;
 
-        const healthEntity = this.world.add(entity) as HealthEntity;
+        const healthObject = this.world.add(obj) as HealthObject;
 
-        entity.OnPointerDown(() => {
-            this.Damage(healthEntity, 10);
-            this.Poison(healthEntity);
+        obj.OnPointerDown(() => {
+            this.Damage(healthObject, 10);
+            this.Poison(healthObject);
             this.DeathSystem();
             this.UpdateTexts();
         });
 
-        return healthEntity;
+        return healthObject;
     }
 
     private Damage(entity: { health: Health }, amount: number)
@@ -139,29 +139,29 @@ export class DemoECS extends Scene
         entity.health.current = Math.max(0, entity.health.current - amount);
     }
 
-    private Poison(entity: HealthEntity)
+    private Poison(obj: HealthObject)
     {
-        this.world.addComponent(entity, "poisoned", true);
+        this.world.addComponent(obj, "poisoned", true);
     }
 
     private PoisonSystem()
     {
-        for (const entity of this.queries.poisoned) {
-            this.Damage(entity, 1);
+        for (const obj of this.queries.poisoned) {
+            this.Damage(obj, 1);
         }
     }
 
     private DeathSystem()
     {
-        for (const entity of this.queries.health) {
-            if (entity.health.current > 0)
+        for (const obj of this.queries.health) {
+            if (obj.health.current > 0)
                 continue;
 
-            // SET THE FINAL TEXT NOW, THE ENTITY LEAVES THE HEALTH QUERY AND WON'T BE RENDERED AGAIN
-            this.SetHealthTextObj(entity, Color.Gray.toHex());
+            // SET THE FINAL TEXT NOW, THE OBJ LEAVES THE HEALTH QUERY AND WON'T BE RENDERED AGAIN
+            this.SetHealthTextObj(obj, Color.Gray.toHex());
 
-            this.world.addComponent(entity, "dead", true);
-            this.world.removeComponent(entity, "health");
+            this.world.addComponent(obj, "dead", true);
+            this.world.removeComponent(obj, "health");
         }
     }
 
@@ -173,15 +173,15 @@ export class DemoECS extends Scene
 
     private SetHealthTextObjs()
     {
-        for (const entity of this.queries.health) {
-            this.SetHealthTextObj(entity, entity.poisoned ? "#2f7d32" : "#222222");
+        for (const obj of this.queries.health) {
+            this.SetHealthTextObj(obj, obj.poisoned ? "#2f7d32" : "#222222");
         }
     }
 
-    private SetHealthTextObj(entity: HealthEntity, fill: string)
+    private SetHealthTextObj(obj: HealthObject, fill: string)
     {
-        entity.healthTextObj.textTexture.style.fill = fill;
-        entity.healthTextObj.SetText(`${entity.name}: ${entity.health.current}/${entity.health.max}`);
+        obj.healthTextObj.textTexture.style.fill = fill;
+        obj.healthTextObj.SetText(`${obj.name}: ${obj.health.current}/${obj.health.max}`);
     }
 
     private SetStats()
