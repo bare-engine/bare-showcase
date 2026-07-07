@@ -84,13 +84,6 @@ export class DemoECS extends Scene
         this.CreateCharacter("Character B", bare.width * .5, bare.height * .45, 70);
         this.CreateCharacter("Character C", bare.width * .5, bare.height * .7, 100);
 
-        // LISTEN TO DEATH EVENT - (COULD'VE BEEN UNDER KILL(), BUT PUT HERE TO SHOWCASE EVENTS)
-        this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(obj => {
-            obj.OffPointers();
-            obj.SetColor(Color.Gray);
-            obj.rotation = 90;
-        }));
-
         // STATS TEXT
         this.statsText = new TextObject(this, {
             text: "",
@@ -194,6 +187,10 @@ export class DemoECS extends Scene
         if (obj.dead)
             return;
 
+        obj.OffPointers();
+        obj.SetColor(Color.Gray);
+        obj.rotation = 90;
+        
         this.SetHealthTextObj(obj, Color.Gray.toHex());
 
         this.world.addComponent(obj, "dead", true);
