@@ -1,4 +1,5 @@
-import { Color, ECSScene, GameObject, Scene, TextObject, TextureFilterMode, type Query, type With, type World } from "bare-engine";
+import { Color, GameObject, Scene, TextObject, TextureFilterMode } from "bare-engine";
+import { World, createQueue, type Query, type With } from "bare-engine";
 
 type Health = {
     current: number;
@@ -6,16 +7,15 @@ type Health = {
 };
 
 type DemoEntity = GameObject & {
-    label?: string;
     health?: Health;
-    healthLabel?: TextObject;
+    healthTextObj?: TextObject;
     poisoned?: true;
     dead?: true;
 };
 
-type HealthEntity = With<DemoEntity, "label" | "health" | "healthLabel">;
+type HealthEntity = With<DemoEntity, "health" | "healthTextObj">;
 type PoisonedEntity = With<HealthEntity, "poisoned">;
-type DeadEntity = With<DemoEntity, "label" | "healthLabel" | "dead">;
+type DeadEntity = With<DemoEntity, "dead">;
 
 type DemoQueries = {
     health: Query<HealthEntity>;
@@ -23,32 +23,34 @@ type DemoQueries = {
     dead: Query<DeadEntity>;
 };
 
-export class DemoECS extends ECSScene
+export class DemoECS extends Scene
 {
-    private world!: World<DemoEntity>;
-    private queries!: DemoQueries;
-    private statsText!: TextObject;
-    private poisonTimer = 0;
+    private world: World<DemoEntity>;
+    private queries: DemoQueries;
+    private queue = createQueue();
+    
+    private statsText: TextObject;
+    private poisonTicksPerSecond = 6;
+    private poisonCountdown = 0;
     private unsubscribers: (() => void)[] = [];
-
+    
     async OnAwake()
     {
         rapid.setTextureFilter(TextureFilterMode.NEAREST); // SET TO NEAREST TO SHOW CRISP PIXEL ART
-        await bare.asset.LoadTexture("player");
 
+        await bare.asset.LoadTexture("player");
     }
 
     OnStart()
     {
-        this.world = this.worldECS as unknown as World<DemoEntity>;
-        this.world.clear();
+        this.world = new World<DemoEntity>();
         
-        const health = this.world.with("label", "health", "healthLabel");
+        const health = this.world.with("health", "healthTextObj");
 
         this.queries = {
             health,
             poisoned: health.with("poisoned"),
-            dead: this.world.with("label", "healthLabel", "dead")
+            dead: this.world.with("dead")
         };
 
         // POISON CLEANUP
@@ -73,108 +75,116 @@ export class DemoECS extends ECSScene
             .SetPosition(bare.width * 0.5, 110)
             .CenterPivot();
 
-        this.createCharacter("Player", bare.width * 0.25, bare.height * 0.45, 100);
-        this.createCharacter("Enemy A", bare.width * 0.5, bare.height * 0.45, 70);
-        this.createCharacter("Enemy B", bare.width * 0.75, bare.height * 0.45, 50);
+        this.CreateCharacter("Character A", bare.width * .5, bare.height * .3, 100);
+        this.CreateCharacter("Character B", bare.width * .5, bare.height * .55, 70);
+        this.CreateCharacter("Character C", bare.width * .5, bare.height * .8, 50);
 
-        this.renderECSState();
+        this.UpdateTexts();
     }
 
-    OnFixedUpdate(): void
+    OnFixedUpdate(fixedDeltaTime: number): void
     {
         if (!this.queries)
             return;
 
-        this.poisonTimer++;
+        this.poisonCountdown -= fixedDeltaTime;
 
-        if (this.poisonTimer >= 10) {
-            this.poisonTimer = 0;
-            this.poisonSystem();
-            this.deathSystem();
-            this.renderECSState();
+        if (this.poisonCountdown <= 0)
+        {
+            this.PoisonSystem();
+            this.DeathSystem();
+            this.UpdateTexts();
+
+            this.poisonCountdown = 1 / this.poisonTicksPerSecond;
         }
     }
 
-    private createCharacter(label: string, x: number, y: number, maxHealth: number): HealthEntity
+    private CreateCharacter(name: string, x: number, y: number, maxHealth: number): HealthEntity
     {
         const entity = this.AddGameObject<DemoEntity>("player")
             .SetScale(5)
             .SetPosition(x, y)
             .CenterPivot();
         
-        const healthLabel = new TextObject(this, {
+        entity.name = name;
+
+        const healthTextObj = new TextObject(this, {
             text: "",
             fontSize: 24,
             fontFamily: "monospace",
             fill: "#222222"
         });
-        this.AddGameObject(healthLabel)
+        this.AddGameObject(healthTextObj)
             .SetPosition(entity.x, entity.y + 80)
             .CenterPivot();
 
-        entity.label = label;
+        // ASSIGN COMPONENTS BEFORE world.add() - PLAIN ASSIGNMENT AFTER ADD WON'T UPDATE QUERIES, ONLY world.addComponent() DOES
         entity.health = { current: maxHealth, max: maxHealth };
-        entity.healthLabel = healthLabel;
+        entity.healthTextObj = healthTextObj;
 
         const healthEntity = this.world.add(entity) as HealthEntity;
 
         entity.OnPointerDown(() => {
-            this.damage(healthEntity, 10);
-            this.poison(healthEntity);
-            this.deathSystem();
-            this.renderECSState();
+            this.Damage(healthEntity, 10);
+            this.Poison(healthEntity);
+            this.DeathSystem();
+            this.UpdateTexts();
         });
 
         return healthEntity;
     }
 
-    private damage(entity: { health: Health }, amount: number)
+    private Damage(entity: { health: Health }, amount: number)
     {
         entity.health.current = Math.max(0, entity.health.current - amount);
     }
 
-    private poison(entity: HealthEntity)
+    private Poison(entity: HealthEntity)
     {
         this.world.addComponent(entity, "poisoned", true);
     }
 
-    private poisonSystem()
+    private PoisonSystem()
     {
         for (const entity of this.queries.poisoned) {
-            this.damage(entity, 1);
+            this.Damage(entity, 1);
         }
     }
 
-    private deathSystem()
+    private DeathSystem()
     {
         for (const entity of this.queries.health) {
             if (entity.health.current > 0)
                 continue;
 
-            // BAKE THE FINAL LABEL NOW, THE ENTITY LEAVES THE HEALTH QUERY AND WON'T BE RENDERED AGAIN
-            entity.healthLabel.textTexture.style.fill = Color.Gray.toHex();
-            entity.healthLabel.SetText(`${entity.label}: 0/${entity.health.max}`);
+            // SET THE FINAL TEXT NOW, THE ENTITY LEAVES THE HEALTH QUERY AND WON'T BE RENDERED AGAIN
+            this.SetHealthTextObj(entity, Color.Gray.toHex());
 
             this.world.addComponent(entity, "dead", true);
             this.world.removeComponent(entity, "health");
         }
     }
 
-    private renderECSState()
+    private UpdateTexts()
     {
-        this.renderHealthLabels();
-        this.renderStats();
+        this.SetHealthTextObjs();
+        this.SetStats();
     }
 
-    private renderHealthLabels()
+    private SetHealthTextObjs()
     {
         for (const entity of this.queries.health) {
-            entity.healthLabel.textTexture.style.fill = entity.poisoned ? "#2f7d32" : "#222222";
-            entity.healthLabel.SetText(`${entity.label}: ${entity.health.current}/${entity.health.max}`);
+            this.SetHealthTextObj(entity, entity.poisoned ? "#2f7d32" : "#222222");
         }
     }
 
-    private renderStats()
+    private SetHealthTextObj(entity: HealthEntity, fill: string)
+    {
+        entity.healthTextObj.textTexture.style.fill = fill;
+        entity.healthTextObj.SetText(`${entity.name}: ${entity.health.current}/${entity.health.max}`);
+    }
+
+    private SetStats()
     {
         this.statsText.SetText(
             `Alive: ${this.queries.health.size} | Poisoned: ${this.queries.poisoned.size} | Dead: ${this.queries.dead.size}`
