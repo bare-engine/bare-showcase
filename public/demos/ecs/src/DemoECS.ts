@@ -1,6 +1,19 @@
 import { Color, GameObject, Scene, TextObject, TextureFilterMode } from "bare-engine";
 import { World, type Query, type With } from "bare-engine";
 
+/*
+    THIS DEMO SHOWS A SIMPLE ENTITY-COMPONENT-SYSTEM.
+
+    THIS VERSION USES GAMEOBJECTS AS ENTITIES. COMPONENTS ARE PLAIN DATA FIELDS
+    ADDED TO THOSE OBJECTS, SUCH AS health, poisoned, AND dead.
+
+    ECS IS USEFUL FOR ORGANIZING GAMEPLAY LOGIC BY SEPARATING DATA FROM SYSTEMS.
+    INSTEAD OF EACH OBJECT OWNING ALL OF ITS BEHAVIOUR, SYSTEMS OPERATE ON
+    QUERIES OF OBJECTS THAT HAVE THE REQUIRED COMPONENTS.
+
+    THE MAIN BENEFIT IN THIS DEMO IS CODE ORGANIZATION, NOT PERFORMANCE.
+*/
+
 type Health = {
     current: number;
     max: number;
@@ -54,11 +67,11 @@ export class DemoECS extends Scene
         };
 
         // CREATE CHARACTERS
-        this.CreateCharacter("Character A", bare.width * .5, bare.height * .2, 100);
+        this.CreateCharacter("Character A", bare.width * .5, bare.height * .2, 50);
         this.CreateCharacter("Character B", bare.width * .5, bare.height * .45, 70);
-        this.CreateCharacter("Character C", bare.width * .5, bare.height * .7, 50);
+        this.CreateCharacter("Character C", bare.width * .5, bare.height * .7, 100);
 
-        // LISTEN TO DEATH EVENT
+        // LISTEN TO DEATH EVENT - (COULD'VE BEEN UNDER KILL(), BUT PUT HERE TO SHOWCASE EVENTS)
         this.unsubscribers.push(this.queries.dead.onEntityAdded.subscribe(obj => {
             obj.OffPointers();
             obj.SetColor(Color.Gray);
@@ -79,13 +92,15 @@ export class DemoECS extends Scene
 
     private CreateCharacter(name: string, x: number, y: number, maxHealth: number): void
     {
+        // CREATE THE CHARACTER OBJECT
         const obj = this.AddGameObject<DemoObject>("player")
             .SetScale(5)
             .SetPosition(x, y)
             .CenterPivot();
-        
+
         obj.name = name;
 
+        // CREATE HEALTH TEXT OBJECT
         const healthTextObj = new TextObject(this, {
             text: "",
             fontSize: 24,
@@ -103,8 +118,8 @@ export class DemoECS extends Scene
         // ADD TO WORLD
         this.world.add(obj);
 
-        // POINTER INPUT ONLY WRITES DATA - THE SYSTEMS PICK UP THE CHANGES NEXT TICK
-        const healthObject = obj as HealthObject;
+        // APPLY DAMAGE AND POISON ON CLICK
+        const healthObject = (obj as HealthObject);
         obj.OnPointerDown(() => {
             this.Damage(healthObject, 10);
             this.Poison(healthObject);
@@ -115,7 +130,6 @@ export class DemoECS extends Scene
     {
         // RUN THE SYSTEMS
         this.PoisonSystem(fixedDeltaTime);
-        this.DeathSystem();
         this.TextSystem();
         this.StatsSystem();
     }
@@ -127,26 +141,12 @@ export class DemoECS extends Scene
 
         if (this.poisonCountdown <= 0)
         {
-            for (const obj of this.queries.poisoned) {
+            for (const obj of [...this.queries.poisoned])
+            {
                 this.Damage(obj, 1);
             }
 
             this.poisonCountdown = 1 / this.poisonTicksPerSecond;
-        }
-    }
-
-    private DeathSystem()
-    {
-        for (const obj of this.queries.health)
-        {
-            if (obj.health.current > 0)
-                continue;
-
-            // SET THE FINAL TEXT NOW, THE OBJ LEAVES THE HEALTH QUERY AND WON'T BE RENDERED AGAIN
-            this.SetHealthTextObj(obj, Color.Gray.toHex());
-
-            this.world.addComponent(obj, "dead", true);
-            this.world.removeComponent(obj, "health");
         }
     }
 
@@ -165,14 +165,32 @@ export class DemoECS extends Scene
         );
     }
 
-    private Damage(obj: { health: Health }, amount: number)
+    private Damage(obj: HealthObject, amount: number)
     {
         obj.health.current = Math.max(0, obj.health.current - amount);
+
+        if (obj.health.current <= 0)
+            this.Kill(obj);
     }
 
     private Poison(obj: HealthObject)
     {
+        if (obj.dead || obj.poisoned)
+            return;
+
         this.world.addComponent(obj, "poisoned", true);
+    }
+
+    private Kill(obj: HealthObject)
+    {
+        if (obj.dead)
+            return;
+
+        this.SetHealthTextObj(obj, Color.Gray.toHex());
+
+        this.world.addComponent(obj, "dead", true);
+        this.world.removeComponent(obj, "poisoned");
+        this.world.removeComponent(obj, "health");
     }
 
     private SetHealthTextObj(obj: HealthObject, fill: string)
