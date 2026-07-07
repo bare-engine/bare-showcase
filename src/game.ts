@@ -7,7 +7,6 @@
 export class MainGame extends Scene
 {
     private demos = [
-        DemoECS,
         DemoBasics,
         DemoImageLoading,
         DemoAnimation,
@@ -25,6 +24,7 @@ export class MainGame extends Scene
         DemoArcadePhysics,
         DemoSound,
         DemoCamera,
+        DemoECS,
         DemoUi,
     ];
 
