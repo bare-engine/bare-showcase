@@ -1,5 +1,5 @@
 {
-  "name": "Sample Level",
+  "name": "level_forest",
   "dimensions": {
     "width": 1560,
     "height": 1625
@@ -9,11 +9,11 @@
     "objects": [
       {
         "name": "🏚",
+        "customName": "brokenHouse",
         "position": {
-          "x": 342.0651189413752,
-          "y": 245.37260749019606
-        },
-        "customName": "brokenHouse"
+          "x": 342,
+          "y": 245
+        }
       },
       {
         "name": "🪵",
@@ -46,8 +46,8 @@
       {
         "name": "🪓",
         "position": {
-          "x": 865.8122106609429,
-          "y": 808.3812210660944
+          "x": 866,
+          "y": 808
         }
       }
     ],

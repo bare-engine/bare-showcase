@@ -20,7 +20,7 @@
     "ANY": {
       "baseClass": "ArcadeObject",
       "hitbox": "DEFAULT",
-      "pivotBasedOnHitbox": "DEFAULT"
+      "pivotBasedOnHitbox": "CENTER"
     },
     "static": {
       "static": true
