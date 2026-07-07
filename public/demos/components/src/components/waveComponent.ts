@@ -1,11 +1,11 @@
-import { Component, InspectorField, Scene, TweenTo } from "bare-engine";
+import { Component, Easing, InspectorField, Scene, TweenTo } from "bare-engine";
 
 export class WaveComponent extends Component
 {
     countDown:number = 0;
 
     @InspectorField
-    interval: number;
+    wavesPerSecond: number = 1;
 
     constructor(scene:Scene)
     {
@@ -14,15 +14,21 @@ export class WaveComponent extends Component
 
     OnUpdate(deltaTime: number): void
     {
+        if (this.wavesPerSecond <= 0)
+            return;
+
         this.countDown -= deltaTime;
 
         if (this.countDown <= 0)
         {
+            const interval = 1 / this.wavesPerSecond;
+            const waveDuration = interval * .5;
+
             // WAVE
             this.go.rotation = 0;
-            TweenTo(this.go, .3, {rotation: 45, yoyo: true, repeat: 1});
+            TweenTo(this.go, waveDuration, {rotation: 45, ease: Easing.Sinusoidal.InOut, yoyo: true, repeat: 1});
             
-            this.countDown += this.interval;
+            this.countDown += interval;
         }
     }
 

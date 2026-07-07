@@ -12,7 +12,7 @@ const data = ` {
     "entities": {
         "👋": {
             "components": {
-                "wave": {"interval": 1}
+                "wave": {"wavesPerSecond": 1}
             }
         }
     }
@@ -42,6 +42,6 @@ export class DemoComponents extends Scene
             .SetPosition(bare.width * .5, bare.height * .75)
             .SetPivot(88, 94)
 
-        bare.component.Get(obj, WaveComponent)!.interval = 2;
+        bare.component.Get(obj, WaveComponent)!.wavesPerSecond = 2;
     }
 }
