@@ -2,7 +2,8 @@
   "categories": {
     "Objects": {
       "image": "📦",
-      "entries": ["🏈", "⚽", "collisionRect"]
+      "entries": ["🏈", "⚽", "boxStatic", "boxDynamic", "motorJointObject"],
+      "showLabels": true
     }
   },
   "baseEntities": {
@@ -12,11 +13,7 @@
       "pivot": "CENTER"
     },
     "physicsStatic": {
-      "static": true,
-      "pivot": {
-        "x": 0,
-        "y": 0
-      }
+      "static": true
     }
   },
   "entities": {
@@ -71,22 +68,42 @@
         61
       ]
     },
-    "collisionRect": {
+    "boxStatic": {
       "baseEntity": "physicsStatic",
       "baseClass": "Box",
       "texture": "whitePixel",
       "color": "#000000",
       "imagePath": "",
-      "collide": true,
       "scale": {
         "x": 128,
         "y": 128
       },
       "hitbox": "FULL"
+    },
+    "boxDynamic": {
+      "baseClass": "Box",
+      "texture": "whitePixel",
+      "color": "#0000ff",
+      "imagePath": "",
+      "scale": {
+        "x": 128,
+        "y": 128
+      },
+      "hitbox": "FULL"
+    },
+    "motorJointObject": {
+      "baseClass": "MotorJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER",
+      "visible": false
     }
   },
   "settings": {
     "gridEnabled": true,
-    "gridSize": 64
+    "gridSize": 32
   }
 }
