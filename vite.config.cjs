@@ -6,12 +6,14 @@ module.exports = (env) => {
     const config = engineConfig(env);
     const projectRoot = process.cwd();
     const demosRoot = path.join(projectRoot, "public/demos").replace(/\\/g, "/");
+    const stripDecorators = env?.mode !== "development";
 
     config.plugins = [
         bareTypeScriptTransformPlugin({
             projectRoot,
             tsconfigPath: path.join(projectRoot, "tsconfig.json"),
             useTypeChecker: env?.mode !== "development",
+            stripDecorators,
             include: (filePath) => filePath.replace(/\\/g, "/").startsWith(demosRoot)
         }),
         ...(config.plugins || [])
@@ -19,3 +21,4 @@ module.exports = (env) => {
 
     return config;
 };
+
