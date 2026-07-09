@@ -2,7 +2,7 @@
   "categories": {
     "Objects": {
       "image": "📦",
-      "entries": ["🏈", "⚽", "boxStatic", "boxDynamic", "motorJointObject"],
+      "entries": ["🏈", "⚽", "boxStatic", "boxDynamic", "motorJointObject", "revoluteJointObject", "distanceJointObject", "weldJointObject", "angleJointObject", "lineJointObject", "prismaticJointObject"],
       "showLabels": true
     }
   },
@@ -83,7 +83,7 @@
     "boxDynamic": {
       "baseClass": "Box",
       "texture": "whitePixel",
-      "color": "#0000ff",
+      "color": "#000000",
       "imagePath": "",
       "scale": {
         "x": 128,
@@ -100,6 +100,65 @@
       },
       "pivot": "CENTER",
       "visible": false
+    },
+    "revoluteJointObject": {
+      "baseClass": "RevoluteJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER",
+      "visible": false
+    },
+    "distanceJointObject": {
+      "baseClass": "DistanceJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER",
+      "frequency": 0.7,
+      "dampingRatio": 0.1
+    },
+    "weldJointObject": {
+      "baseClass": "WeldJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER",
+      "visible": false
+    },
+    "angleJointObject": {
+      "baseClass": "AngleJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER",
+      "visible": false
+    },
+    "lineJointObject": {
+      "baseClass": "LineJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER"
+    },
+    "prismaticJointObject": {
+      "baseClass": "PrismaticJointObject",
+      "texture": "whitePixel",
+      "scale": {
+        "x": 32,
+        "y": 32
+      },
+      "pivot": "CENTER"
     }
   },
   "settings": {
