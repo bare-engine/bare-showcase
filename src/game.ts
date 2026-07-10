@@ -20,8 +20,8 @@ export class MainGame extends Scene
         DemoExtend,
         DemoLevel,
         DemoEditorComponents,
-        DemoSopiroPhysics,
         DemoArcadePhysics,
+        DemoRealisticPhysics,
         DemoSound,
         DemoCamera,
         DemoECS,
@@ -156,7 +156,7 @@ import { DemoLevel } from '../public/demos/level/src/DemoLevel';
 import { DemoParticles } from '../public/demos/particles/src/DemoParticles';
 import { DemoRenderTexture } from '../public/demos/renderTexture/src/DemoRenderTexture';
 import { DemoShaders } from '../public/demos/shaders/src/DemoShaders';
-import { DemoSopiroPhysics } from '../public/demos/sopiroPhysics/src/DemoSopiroPhysics';
+import { DemoRealisticPhysics } from '../public/demos/realisticPhysics/src/DemoRealisticPhysics';
 import { DemoSound } from '../public/demos/sound/src/DemoSound';
 import { DemoTweens } from '../public/demos/tweens/src/DemoTweens';
 import { DemoUi } from '../public/demos/ui/src/DemoUi';
