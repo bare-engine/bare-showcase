@@ -12,7 +12,7 @@ import { SopiroPhysicsController, Circle, Type } from 'bare-engine/sopiro';
     CUSTOM IN-ENGINE TOOL IS PLANNED
 */
 
-export class DemoSopiroPhysics extends Scene
+export class DemoRealisticPhysics extends Scene
 {
     constructor()
     {
