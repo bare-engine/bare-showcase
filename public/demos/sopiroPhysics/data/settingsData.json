@@ -2,13 +2,12 @@
   "categories": {
     "Objects": {
       "image": "📦",
-      "entries": ["🏈", "⚽", "boxStatic", "boxDynamic", "motorJointObject", "revoluteJointObject", "distanceJointObject", "weldJointObject", "angleJointObject", "lineJointObject", "prismaticJointObject"],
+      "entries": ["🏈", "⚽", "boxStatic", "boxDynamic", "motorJointObject", "revoluteJointObject", "distanceJointObject", "weldJointObject", "angleJointObject", "lineJointObject"],
       "showLabels": true
     }
   },
   "baseEntities": {
     "physicsBase": {
-      "mass": 1,
       "restitution": 0.7,
       "pivot": "CENTER"
     },
@@ -150,19 +149,11 @@
         "y": 32
       },
       "pivot": "CENTER"
-    },
-    "prismaticJointObject": {
-      "baseClass": "PrismaticJointObject",
-      "texture": "whitePixel",
-      "scale": {
-        "x": 32,
-        "y": 32
-      },
-      "pivot": "CENTER"
     }
   },
   "settings": {
     "gridEnabled": true,
     "gridSize": 32
-  }
+  },
+  "layers": ["joints", "objects"]
 }
