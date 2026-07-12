@@ -154,6 +154,5 @@
   "settings": {
     "gridEnabled": true,
     "gridSize": 32
-  },
-  "layers": ["joints", "objects"]
+  }
 }
