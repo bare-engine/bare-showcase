@@ -1,16 +1,16 @@
-import { Component, GameMode, Run, Scene } from "bare-engine"
+import { Component, GameMode, Run, Save, Scene } from "bare-engine"
 import { GameObject } from "bare-engine";
 import { Color, Vec2 } from "bare-engine";
 
 type Direction = "top" | "right" | "bottom" | "left";
 
-@Run(GameMode.Editor)
+@Run(GameMode.Edit)
 export class LevelConnectorComponent extends Component
 {
-    private top:string;
-    private right:string;
-    private bottom:string;
-    private left:string;
+    @Save private top:string;
+    @Save private right:string;
+    @Save private bottom:string;
+    @Save private left:string;
 
     constructor(scene:Scene, top:string, right:string, bottom:string, left:string)
     {

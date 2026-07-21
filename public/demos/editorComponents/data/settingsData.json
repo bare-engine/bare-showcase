@@ -11,11 +11,6 @@
     }
   },
   "layers": ["objects", "surface"],
-  "layersInfo": {
-    "surface": {
-      "doSave": true
-    }
-  },
   "baseEntities": {
     "ANY": {
       "baseClass": "ArcadeObject",
