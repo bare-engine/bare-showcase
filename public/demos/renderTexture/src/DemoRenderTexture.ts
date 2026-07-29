@@ -10,8 +10,11 @@ export class DemoRenderTexture extends Scene
 
     OnStart()
     {
-        this.renderTexture = new RenderTexture(rapid, { width: bare.width, height: bare.height, clearColor: new Color(0, 0, 0, 0) });
-        bScene.AddGameObject(this.renderTexture);
+        this.renderTexture = new RenderTexture(rapid, { width: bare.width, height: bare.height, clearColor: new Color(0, 0, 0, 0) })
+        bScene.AddGameObject(this.renderTexture)
+            .CenterPivot()
+            .SetPosition(bare.width * .5, bare.height * .5)
+            .SetScale(.8);
     }
 
     OnUpdate(deltaTime: number): void
