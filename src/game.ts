@@ -49,7 +49,7 @@ export class MainGame extends Scene
         this.title = title;
 
         // ARROWKEY INSTRUCTIONS
-        var instructions = new TextObject(this, {text: `⬅️ Use arrowkeys to switch between demos ➡️`, fontSize: 22, fontFamily: 'monospace', fill: '#0000ff'});
+        var instructions = new TextObject(this, {text: `⬅️ Use arrowkeys to switch between demos ➡️`, fontSize: 22, fontFamily: 'monospace', fill: '#5093eb'});
         this.AddGameObject(instructions)
             .SetPosition(bare.width * .5, 56)
             .SetPivot(.5, 0);
