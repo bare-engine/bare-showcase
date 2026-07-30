@@ -28,9 +28,10 @@
     "bare-engine": "github:BareEngine/BareEngine"
   },
   "bareEngine": {
-	"name": "Bare Demos",
+    "name": "Bare Demos",
     "imageGlobs": [
       "demos/**/images/**"
-    ]
+    ],
+    "gameId": "bareDemos"
   }
 }
