@@ -230,13 +230,13 @@
         "name": "lineJointObject",
         "baseCustomName": "jointAnchor",
         "targetCustomName": "body_955.9523439265805_-116.49208912795439",
-        "position": {
-          "x": 96,
-          "y": 608
-        },
         "slideDirection": {
           "x": 1344,
           "y": 352
+        },
+        "position": {
+          "x": 96,
+          "y": 608
         }
       },
       {
