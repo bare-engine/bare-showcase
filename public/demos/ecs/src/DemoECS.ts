@@ -209,7 +209,7 @@ export class DemoECS extends Scene
         this.unsubscribers.forEach(unsubscribe => unsubscribe());
         this.unsubscribers = [];
 
-        this.world.clear();
+        this.world?.clear();
 
         rapid.setTextureFilter(TextureFilterMode.LINEAR); // REVERT TO LINEAR, JUST SO IT'S ENABLED FOR OTHER DEMOS AGAIN
     }
