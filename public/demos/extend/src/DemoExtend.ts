@@ -7,23 +7,27 @@ import { Scene, TextTexture, Component, GameObject, SaveData, SaveDataHandler, T
 
 // SETTING UP THE ENTITY DATA WITH SOME UNIQUE PROPERTIES: pop, isHappy, EmojiObject
 const data = ` {
-    "baseEntities": {
-        "ANY": {
+    "baseEntities": [
+        {
+            "name": "ANY",
+            "texture": "NAME",
             "pivot": {"x": 0.5, "y": 0.5},
             "components": {
                 "pop": {}
             }
         }
-    },
-    "entities": {
-        "😃": {
+    ],
+    "entities": [
+        {
+            "name": "😃",
             "isHappy": true
         },
-        "🙁": {
+        {
+            "name": "🙁",
             "baseClass": "EmojiObject",
             "isHappy": false
         }
-    }
+    ]
 }`;
 
 declare module "bare-engine"

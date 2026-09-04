@@ -2,27 +2,43 @@
   "categories": {
     "Objects": {
       "image": "📦",
-      "entries": ["🏈", "⚽", "boxStatic", "boxDynamic", "motorJointObject", "revoluteJointObject", "distanceJointObject", "weldJointObject", "angleJointObject", "lineJointObject"],
+      "entries": [
+        "🏈",
+        "⚽",
+        "boxStatic",
+        "boxDynamic",
+        "motorJointObject",
+        "revoluteJointObject",
+        "distanceJointObject",
+        "weldJointObject",
+        "angleJointObject",
+        "lineJointObject"
+      ],
       "showLabels": true
     }
   },
-  "baseEntities": {
-    "physicsBase": {
+  "baseEntities": [
+    {
+      "name": "physicsBase",
       "restitution": 0.7,
       "pivot": "CENTER"
     },
-    "physicsStatic": {
+    {
+      "name": "physicsStatic",
       "static": true
     }
-  },
-  "entities": {
-    "⚽": {
+  ],
+  "entities": [
+    {
+      "name": "⚽",
       "baseClass": "Circle",
-      "baseEntity": "physicsBase"
+      "entity": "physicsBase",
+      "texture": "⚽"
     },
-    "🏈": {
+    {
+      "name": "🏈",
       "baseClass": "Polygon",
-      "baseEntity": "physicsBase",
+      "entity": "physicsBase",
       "restitution": 1,
       "polygonVertices": [
         23,
@@ -65,12 +81,14 @@
         84,
         4,
         61
-      ]
+      ],
+      "texture": "🏈"
     },
-    "boxStatic": {
-      "baseEntity": "physicsStatic",
+    {
+      "name": "boxStatic",
+      "entity": "physicsStatic",
       "baseClass": "Box",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "color": "#000000",
       "imagePath": "",
       "scale": {
@@ -79,9 +97,10 @@
       },
       "hitbox": "FULL"
     },
-    "boxDynamic": {
+    {
+      "name": "boxDynamic",
       "baseClass": "Box",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "color": "#000000",
       "imagePath": "",
       "scale": {
@@ -90,9 +109,10 @@
       },
       "hitbox": "FULL"
     },
-    "motorJointObject": {
+    {
+      "name": "motorJointObject",
       "baseClass": "MotorJointObject",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "scale": {
         "x": 32,
         "y": 32
@@ -100,9 +120,10 @@
       "pivot": "CENTER",
       "visible": false
     },
-    "revoluteJointObject": {
+    {
+      "name": "revoluteJointObject",
       "baseClass": "RevoluteJointObject",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "scale": {
         "x": 32,
         "y": 32
@@ -110,9 +131,10 @@
       "pivot": "CENTER",
       "visible": false
     },
-    "distanceJointObject": {
+    {
+      "name": "distanceJointObject",
       "baseClass": "DistanceJointObject",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "scale": {
         "x": 32,
         "y": 32
@@ -121,9 +143,10 @@
       "frequency": 0.7,
       "dampingRatio": 0.1
     },
-    "weldJointObject": {
+    {
+      "name": "weldJointObject",
       "baseClass": "WeldJointObject",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "scale": {
         "x": 32,
         "y": 32
@@ -131,9 +154,10 @@
       "pivot": "CENTER",
       "visible": false
     },
-    "angleJointObject": {
+    {
+      "name": "angleJointObject",
       "baseClass": "AngleJointObject",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "scale": {
         "x": 32,
         "y": 32
@@ -141,16 +165,17 @@
       "pivot": "CENTER",
       "visible": false
     },
-    "lineJointObject": {
+    {
+      "name": "lineJointObject",
       "baseClass": "LineJointObject",
-      "texture": "whitePixel",
+      "texture": "PIXEL",
       "scale": {
         "x": 32,
         "y": 32
       },
       "pivot": "CENTER"
     }
-  },
+  ],
   "settings": {
     "gridEnabled": true,
     "gridSize": 32

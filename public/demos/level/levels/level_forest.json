@@ -8,52 +8,51 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "name": "🏚",
-        "customName": "brokenHouse",
-        "position": {
-          "x": 342,
-          "y": 245
-        }
-      },
-      {
-        "name": "🪵",
+        "entity": "🪵",
         "position": {
           "x": 900,
           "y": 382
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 667,
           "y": 1262
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 1050,
           "y": 48
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 114,
           "y": 943
         }
       },
       {
-        "name": "🪓",
+        "entity": "🪓",
         "position": {
           "x": 866,
           "y": 808
+        }
+      },
+      {
+        "name": "🏚",
+        "position": {
+          "x": 204,
+          "y": 184
         }
       }
     ],
     "surface": [
       {
-        "name": "grassPatch",
+        "entity": "grassPatch",
         "position": {
           "x": 37,
           "y": 633

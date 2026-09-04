@@ -7,7 +7,7 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "name": "boxStatic",
+        "entity": "boxStatic",
         "position": {
           "x": 1344,
           "y": 128
@@ -18,7 +18,7 @@
         }
       },
       {
-        "name": "boxStatic",
+        "entity": "boxStatic",
         "position": {
           "x": 128,
           "y": 1408
@@ -29,8 +29,8 @@
         }
       },
       {
-        "name": "boxStatic",
-        "customName": "body_128_1152",
+        "entity": "boxStatic",
+        "name": "body_128_1152",
         "position": {
           "x": 128,
           "y": 1152
@@ -41,7 +41,7 @@
         }
       },
       {
-        "name": "boxStatic",
+        "entity": "boxStatic",
         "position": {
           "x": 1344,
           "y": 1152
@@ -52,24 +52,24 @@
         }
       },
       {
-        "name": "⚽",
-        "customName": "body_896_736",
+        "entity": "⚽",
+        "name": "body_896_736",
         "position": {
           "x": 1152,
           "y": 1024
         }
       },
       {
-        "name": "🏈",
-        "customName": "joint_target_960_416",
+        "entity": "🏈",
+        "name": "joint_target_960_416",
         "position": {
           "x": 352,
           "y": 896
         }
       },
       {
-        "name": "🏈",
-        "customName": "body_832_224",
+        "entity": "🏈",
+        "name": "body_832_224",
         "density": 0.9999999999999999,
         "mass": 1.8069480000000002,
         "position": {
@@ -83,16 +83,16 @@
         "rotation": 42.66374620336224
       },
       {
-        "name": "⚽",
-        "customName": "body_800_192",
+        "entity": "⚽",
+        "name": "body_800_192",
         "position": {
           "x": 716,
           "y": 647
         }
       },
       {
-        "name": "boxDynamic",
-        "customName": "joint_target_1088_832",
+        "entity": "boxDynamic",
+        "name": "joint_target_1088_832",
         "restitution": 0.29,
         "mass": 2.8672,
         "position": {
@@ -105,15 +105,15 @@
         }
       },
       {
-        "name": "🏈",
+        "entity": "🏈",
         "position": {
           "x": 672,
           "y": 1141
         }
       },
       {
-        "name": "🏈",
-        "customName": "body_414_323.1",
+        "entity": "🏈",
+        "name": "body_414_323.1",
         "density": 0.9999999999999999,
         "mass": 4.715172,
         "position": {
@@ -127,30 +127,30 @@
         "rotation": 40.90924101512943
       },
       {
-        "name": "⚽",
-        "customName": "body_961.5603074781925_196.19559638476147",
+        "entity": "⚽",
+        "name": "body_961.5603074781925_196.19559638476147",
         "position": {
           "x": 946,
           "y": 633
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 575,
           "y": 1000
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 934,
           "y": 1266
         }
       },
       {
-        "name": "🏈",
-        "customName": "body_955.9523439265805_-116.49208912795439",
+        "entity": "🏈",
+        "name": "body_955.9523439265805_-116.49208912795439",
         "angularVelocity": 4,
         "position": {
           "x": 96,
@@ -159,29 +159,29 @@
         "rotation": -67.81452240930436
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 792,
           "y": 1036
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 1136,
           "y": 1214
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 834,
           "y": 1280
         }
       },
       {
-        "name": "🏈",
-        "customName": "body_905_944",
+        "entity": "🏈",
+        "name": "body_905_944",
         "position": {
           "x": 384,
           "y": 512
@@ -190,8 +190,8 @@
         "color": "#9fcdfeff"
       },
       {
-        "name": "boxDynamic",
-        "customName": "body_500.8593232620976_134.93190247998737",
+        "entity": "boxDynamic",
+        "name": "body_500.8593232620976_134.93190247998737",
         "restitution": 0.3,
         "linearVelocity": {
           "x": 1121
@@ -208,15 +208,15 @@
         }
       },
       {
-        "name": "⚽",
-        "customName": "body_183.6647976219042_325.65519691862806",
+        "entity": "⚽",
+        "name": "body_183.6647976219042_325.65519691862806",
         "position": {
           "x": 960,
           "y": 960
         }
       },
       {
-        "name": "boxStatic",
+        "entity": "boxStatic",
         "position": {
           "x": 128,
           "y": 128
@@ -227,9 +227,9 @@
         }
       },
       {
-        "name": "lineJointObject",
-        "baseCustomName": "jointAnchor",
-        "targetCustomName": "body_955.9523439265805_-116.49208912795439",
+        "entity": "lineJointObject",
+        "baseName": "jointAnchor",
+        "targetName": "body_955.9523439265805_-116.49208912795439",
         "slideDirection": {
           "x": 1344,
           "y": 352
@@ -240,9 +240,9 @@
         }
       },
       {
-        "name": "lineJointObject",
-        "baseCustomName": "jointAnchor",
-        "targetCustomName": "body_500.8593232620976_134.93190247998737",
+        "entity": "lineJointObject",
+        "baseName": "jointAnchor",
+        "targetName": "body_500.8593232620976_134.93190247998737",
         "jointMass": 100,
         "lockRotation": true,
         "position": {
@@ -251,9 +251,9 @@
         }
       },
       {
-        "name": "motorJointObject",
-        "baseCustomName": "jointAnchor",
-        "targetCustomName": "joint_target_1088_832",
+        "entity": "motorJointObject",
+        "baseName": "jointAnchor",
+        "targetName": "joint_target_1088_832",
         "dampingRatio": 0,
         "jointMass": 1000,
         "angularSpeed": -4,
@@ -263,27 +263,27 @@
         }
       },
       {
-        "name": "revoluteJointObject",
-        "baseCustomName": "jointAnchor",
-        "targetCustomName": "joint_target_960_416",
+        "entity": "revoluteJointObject",
+        "baseName": "jointAnchor",
+        "targetName": "joint_target_960_416",
         "position": {
           "x": 352,
           "y": 896
         }
       },
       {
-        "name": "weldJointObject",
-        "baseCustomName": "body_832_224",
-        "targetCustomName": "body_800_192",
+        "entity": "weldJointObject",
+        "baseName": "body_832_224",
+        "targetName": "body_800_192",
         "position": {
           "x": 740,
           "y": 647
         }
       },
       {
-        "name": "distanceJointObject",
-        "baseCustomName": "body_500.8593232620976_134.93190247998737",
-        "targetCustomName": "body_414_323.1",
+        "entity": "distanceJointObject",
+        "baseName": "body_500.8593232620976_134.93190247998737",
+        "targetName": "body_414_323.1",
         "frequency": 2.5,
         "targetOffset": {
           "x": -37.80025277936477,
@@ -295,9 +295,9 @@
         }
       },
       {
-        "name": "distanceJointObject",
-        "baseCustomName": "body_500.8593232620976_134.93190247998737",
-        "targetCustomName": "body_414_323.1",
+        "entity": "distanceJointObject",
+        "baseName": "body_500.8593232620976_134.93190247998737",
+        "targetName": "body_414_323.1",
         "frequency": 2.5,
         "targetOffset": {
           "x": 41.94661502237159,
@@ -309,9 +309,9 @@
         }
       },
       {
-        "name": "angleJointObject",
-        "baseCustomName": "jointAnchor",
-        "targetCustomName": "body_905_944",
+        "entity": "angleJointObject",
+        "baseName": "jointAnchor",
+        "targetName": "body_905_944",
         "frequency": 162,
         "position": {
           "x": 384,
@@ -319,30 +319,30 @@
         }
       },
       {
-        "name": "weldJointObject",
-        "baseCustomName": "body_832_224",
-        "targetCustomName": "body_961.5603074781925_196.19559638476147",
+        "entity": "weldJointObject",
+        "baseName": "body_832_224",
+        "targetName": "body_961.5603074781925_196.19559638476147",
         "position": {
           "x": 920,
           "y": 636
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 544,
           "y": 1312
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 320,
           "y": 1280
         }
       },
       {
-        "name": "⚽",
+        "entity": "⚽",
         "position": {
           "x": 416,
           "y": 1120

@@ -8,266 +8,266 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 540,
           "y": 404
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 1588.2452382135298,
           "y": 402.0695333446856
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 944,
           "y": 432
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1542.0113060430676,
           "y": 650.0502586804223
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1694,
           "y": 655
         }
       },
       {
-        "name": "barn",
+        "entity": "barn",
         "position": {
           "x": 1284.1599876836926,
           "y": 656.6618309460473
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1844,
           "y": 657
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1042.8377220586926,
           "y": 658.3146629772973
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 889.1187889532239,
           "y": 658.3146629772973
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 737.0526878790051,
           "y": 659.9675560437036
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1917.2178490118176,
           "y": 664.9262352429223
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 652.7551414922864,
           "y": 678.1493797741723
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1918.8708031133801,
           "y": 808.727932020266
         }
       },
       {
-        "name": "🧑‍🌾",
+        "texture": "🧑‍🌾",
         "position": {
           "x": 1298.7468407110364,
           "y": 816.7196617565942
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 652.7551414922864,
           "y": 821.951076551516
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2196,
           "y": 516
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 355.23452686826295,
           "y": 937.6532860241723
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1918.8708031133801,
           "y": 957.4882469616723
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 652.7551414922864,
           "y": 965.752590223391
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1919.6020494654585,
           "y": 1105.092625093401
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 652.7551414922864,
           "y": 1111.2072411022973
         }
       },
       {
-        "name": "diamondPickup",
+        "texture": "diamondPickup",
         "position": {
           "x": 339.8040528607198,
           "y": 1167.6299987896095
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1920.5236351446301,
           "y": 1253.3559227429223
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 656.0609276250989,
           "y": 1255.0088768444848
         }
       },
       {
-        "name": "🐔",
+        "texture": "🐔",
         "position": {
           "x": 1113.4239376353617,
           "y": 1381.3323368193448
         }
       },
       {
-        "name": "🐓",
+        "texture": "🐓",
         "position": {
           "x": 1483.362840418415,
           "y": 1381.406814968759
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1920.5236351446301,
           "y": 1398.8105125866723
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 656.0609276250989,
           "y": 1402.1162987194848
         }
       },
       {
-        "name": "🍀",
+        "texture": "🍀",
         "position": {
           "x": 2191,
           "y": 1197
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 1920.5236351446301,
           "y": 1542.6120262585473
         }
       },
       {
-        "name": "fenceTop",
+        "entity": "fenceTop",
         "position": {
           "x": 654.4080345586926,
           "y": 1550.8766746960473
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1844.4906761602551,
           "y": 1615.3394432507348
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1694.0773460821301,
           "y": 1616.9922752819848
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 737.0526878790051,
           "y": 1623.6038475476098
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1538.7055199102551,
           "y": 1623.6038475476098
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 892.4245750860364,
           "y": 1625.2568016491723
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1049.4492943243176,
           "y": 1628.5625877819848
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1175.0691673711926,
           "y": 1631.8683739147973
@@ -276,7 +276,7 @@
     ],
     "surface": [
       {
-        "name": "pathVertical",
+        "entity": "pathVertical",
         "position": {
           "x": 1350,
           "y": 1936

@@ -15,31 +15,49 @@ import { Scene, Color, GameObject, TextTexture } from "bare-engine";
          BUT AS DEFINED IN propertiesRemoved, IT WILL NOT INHERIT THE 'rotation' PROPERTY
 */
 
-const data = ` {
-    "baseEntities": {
-        "ANY": {
-            "pivot": {"x": 0.5, "y": 0.5}
+const data = `
+{
+    "baseEntities": [
+        {
+            "name": "ANY",
+            "texture": "NAME",
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            }
         },
-        "big": {
+        {
+            "name": "big",
             "scale": 2,
-            "pivot": {"x": 0, "y": 0},
+            "pivot": {
+                "x": 0,
+                "y": 0
+            },
             "rotation": 90
         },
-        "bigAndNoRotation": {
-            "baseEntity": "big",
-            "propertiesRemoved": ["rotation"]
+        {
+            "name": "bigAndNoRotation",
+            "entity": "big",
+            "propertiesRemoved": [
+                "rotation"
+            ]
         }
-    },
-    "entities": {
-        "🍐": {},
-        "🍌": {
+    ],
+    "entities": [
+        {
+            "name": "🍐"
+        },
+        {
+            "name": "🍌",
             "baseClass": "Fruit"
         },
-        "🍎": {
-            "baseEntity": "bigAndNoRotation"
+        {
+            "name": "🍎",
+            "entity": "bigAndNoRotation"
         }
-    }
-  }`;
+    ]
+}
+`;
 
 export class DemoEntities extends Scene
 {

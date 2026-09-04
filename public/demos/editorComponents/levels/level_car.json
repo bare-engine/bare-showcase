@@ -8,196 +8,196 @@
   "entitiesByLayer": {
     "surface": [
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 632,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 888,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 1144,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_3",
+        "entity": "roadTexture_3",
         "position": {
           "x": 376,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_4",
+        "entity": "roadTexture_4",
         "position": {
           "x": 1912,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 1400,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 1656,
           "y": 371
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 376,
           "y": 627
         }
       },
       {
-        "name": "roadTexture_8",
+        "entity": "roadTexture_8",
         "position": {
           "x": 376,
           "y": 883
         }
       },
       {
-        "name": "roadTexture_3",
+        "entity": "roadTexture_3",
         "position": {
           "x": 120,
           "y": 883
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 120,
           "y": 1139
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 120,
           "y": 1395
         }
       },
       {
-        "name": "roadTexture_7",
+        "entity": "roadTexture_7",
         "position": {
           "x": 120,
           "y": 1651
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 376,
           "y": 1651
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 632,
           "y": 1651
         }
       },
       {
-        "name": "roadTexture_8",
+        "entity": "roadTexture_8",
         "position": {
           "x": 888,
           "y": 1651
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 888,
           "y": 1395
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 888,
           "y": 1139
         }
       },
       {
-        "name": "roadTexture_3",
+        "entity": "roadTexture_3",
         "position": {
           "x": 888,
           "y": 883
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 1144,
           "y": 883
         }
       },
       {
-        "name": "roadTexture_4",
+        "entity": "roadTexture_4",
         "position": {
           "x": 1400,
           "y": 883
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 1400,
           "y": 1139
         }
       },
       {
-        "name": "roadTexture_7",
+        "entity": "roadTexture_7",
         "position": {
           "x": 1400,
           "y": 1395
         }
       },
       {
-        "name": "roadTexture_6",
+        "entity": "roadTexture_6",
         "position": {
           "x": 1656,
           "y": 1395
         }
       },
       {
-        "name": "roadTexture_8",
+        "entity": "roadTexture_8",
         "position": {
           "x": 1912,
           "y": 1395
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 1912,
           "y": 1139
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 1912,
           "y": 883
         }
       },
       {
-        "name": "roadTexture_2",
+        "entity": "roadTexture_2",
         "position": {
           "x": 1912,
           "y": 627
@@ -206,98 +206,98 @@
     ],
     "objects": [
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2357,
           "y": 182
         }
       },
       {
-        "name": "🏣",
+        "texture": "🏣",
         "position": {
           "x": 1034,
           "y": 302
         }
       },
       {
-        "name": "diamondPickup",
+        "texture": "diamondPickup",
         "position": {
           "x": 1568,
           "y": 201
         }
       },
       {
-        "name": "🏠",
+        "texture": "🏠",
         "position": {
           "x": 2017,
           "y": 330
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1577,
           "y": 359
         }
       },
       {
-        "name": "🏠",
+        "texture": "🏠",
         "position": {
           "x": 256,
           "y": 384
         }
       },
       {
-        "name": "🚓",
+        "texture": "🚓",
         "position": {
           "x": 1288,
           "y": 1051
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 1733,
           "y": 869
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 802,
           "y": 1001
         }
       },
       {
-        "name": "fence",
+        "entity": "fence",
         "position": {
           "x": 1291,
           "y": 1260
         }
       },
       {
-        "name": "diamondPickup",
+        "texture": "diamondPickup",
         "position": {
           "x": 1277,
           "y": 1394
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 638,
           "y": 1503
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2344,
           "y": 1937
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2111,
           "y": 1990

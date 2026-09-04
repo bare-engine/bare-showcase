@@ -9,13 +9,15 @@ import { WaveComponent } from "./components/waveComponent";
 */
 
 const data = ` {
-    "entities": {
-        "👋": {
+    "entities": [
+        {
+            "name": "👋",
+            "texture": "👋",
             "components": {
                 "wave": {"wavesPerSecond": 1}
             }
         }
-    }
+    ]
   }`;
 
 export class DemoComponents extends Scene

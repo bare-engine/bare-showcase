@@ -8,231 +8,231 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2139,
           "y": 186
         }
       },
       {
-        "name": "🥖",
+        "texture": "🥖",
         "position": {
           "x": 1881,
           "y": 303
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 2189,
           "y": 399
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 911,
           "y": 496
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 1618,
           "y": 560
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 1992,
           "y": 682
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 1799,
           "y": 811
         }
       },
       {
-        "name": "😠",
+        "texture": "😠",
         "position": {
           "x": 1004,
           "y": 839
         }
       },
       {
-        "name": "😞",
+        "texture": "😞",
         "position": {
           "x": 1260,
           "y": 929
         }
       },
       {
-        "name": "🐦",
+        "texture": "🐦",
         "position": {
           "x": 1758,
           "y": 1008
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 2088,
           "y": 1041
         }
       },
       {
-        "name": "😑",
+        "texture": "😑",
         "position": {
           "x": 1045,
           "y": 1078
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 258,
           "y": 1055
         }
       },
       {
-        "name": "🧺",
+        "texture": "🧺",
         "position": {
           "x": 1233,
           "y": 1158
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 1982,
           "y": 1249
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 1754,
           "y": 1416
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2184,
           "y": 1446
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 510,
           "y": 1502
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 1279,
           "y": 1643
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 723,
           "y": 1780
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 1026,
           "y": 1810
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 1946,
           "y": 1861
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 258,
           "y": 1871
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 1598,
           "y": 1941
         }
       },
       {
-        "name": "🌱",
+        "texture": "🌱",
         "position": {
           "x": 1845,
           "y": 2002
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 2225,
           "y": 2048
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 1239,
           "y": 2093
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 556,
           "y": 2123
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 1442,
           "y": 196
         }
       },
       {
-        "name": "🌲",
+        "entity": "🌲",
         "position": {
           "x": 1157,
           "y": 339
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 795,
           "y": 218
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 532,
           "y": 481
         }
       },
       {
-        "name": "🌳",
+        "entity": "🌳",
         "position": {
           "x": 313,
           "y": 180
@@ -241,7 +241,7 @@
     ],
     "surface": [
       {
-        "name": "picnicCloth",
+        "texture": "picnicCloth",
         "position": {
           "x": 1135,
           "y": 1118

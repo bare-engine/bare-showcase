@@ -13,21 +13,27 @@ import { Scene } from "bare-engine";
 */
 
 const data = ` {
+    "baseEntities": [
+        {
+            "name": "ANY",
+            "texture": "NAME"
+		}
+	],
 	"categories": {
 		"objects": {
 			"image": "🌳",
 			"entries": ["🏚", "🌲", "🌳", "🪵", "🪓", "grassPatch"]
 		}
 	},
-	"layers": ["objects", "surface"],
+	"layers": ["surface", "objects"],
 	"layersInfo": {
 		"surface": {
-			"doSave": true
+			"save": true
 		}
 	}
 }`;
 
-// NOT SETTING doSave ON OBJECTS, IT'S SAVED ON DEFAULT
+// NOT SETTING save ON objects LAYER ABOVE, IT'S SAVED ON DEFAULT
 
 export class DemoLevel extends Scene
 {

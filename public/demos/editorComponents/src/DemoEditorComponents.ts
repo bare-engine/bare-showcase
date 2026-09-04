@@ -1,9 +1,9 @@
 import settingsDataJson from './../data/settingsData.json';
 
-import { Button, CameraScaleMode, EditorScene, LevelData, SaveData, Scene, SettingsHandler, TweenTo, plugin, uiScene } from "bare-engine";
+import { CameraScaleMode, LevelData, SaveData, Scene, TweenTo, uiScene } from "bare-engine";
+import { ArcadeObject } from 'bare-engine/arcade';
 import { LevelConnectorComponent } from "./editorComponents/levelConnectorComponent";
 import { Direction, MapHandler } from './mapHandler';
-import { ArcadeObject } from 'bare-engine/arcade';
 
 /*  
     THIS DEMO SHOWS THE LevelConnectorComponent IN THE MAP EDITOR
@@ -87,7 +87,7 @@ export class DemoEditorComponents extends Scene
                     break;
             }
 
-            let arrow = uiScene.AddGameObject("arrowLevel", 0)
+            let arrow = uiScene.AddGameObject("arrowLevel")
                 .SetPosition(x, y)
                 .CenterPivot()
                 .SetRotation(rotation);

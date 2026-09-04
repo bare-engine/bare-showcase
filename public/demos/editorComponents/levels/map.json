@@ -10,7 +10,7 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "name": "level_farm",
+        "entity": "level_farm",
         "components": {
           "levelConnector": {
             "top": "level_goal",
@@ -25,7 +25,7 @@
         }
       },
       {
-        "name": "level_goal",
+        "entity": "level_goal",
         "components": {
           "levelConnector": {
             "top": "",
@@ -40,7 +40,7 @@
         }
       },
       {
-        "name": "level_car",
+        "entity": "level_car",
         "components": {
           "levelConnector": {
             "top": "level_farm",
@@ -55,7 +55,7 @@
         }
       },
       {
-        "name": "level_city",
+        "entity": "level_city",
         "components": {
           "levelConnector": {
             "top": "",
@@ -70,7 +70,7 @@
         }
       },
       {
-        "name": "level_whirlwind",
+        "entity": "level_whirlwind",
         "components": {
           "levelConnector": {
             "top": "level_car",
@@ -85,7 +85,7 @@
         }
       },
       {
-        "name": "level_picnic",
+        "entity": "level_picnic",
         "components": {
           "levelConnector": {
             "top": "",

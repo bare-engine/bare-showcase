@@ -1,29 +1,115 @@
 {
-  "categories":
-  {
+  "categories": {
     "Objects": {
       "image": "🌳",
-      "entries": ["⚽", "⛏", "⛪", "🌪", "🌱", "🌲", "🌳", "🌸", "🌺", "🌼", "🍀", "🍃", "🍕", "🍗", "🍪", "🏚", "🏠", "🏡", "🏢", "🏣", "🏤", "🏥", "🏨", "🐓", "🐔", "🐦", "👻", "💐", "💥", "💧", "💩", "📦", "🕌", "😂", "😊", "😋", "😑", "😞", "😠", "😩", "😭", "😵", "😵‍💫", "🙂", "🙂‍↔", "🙂‍↕", "🚓", "🚕", "🤣", "🤮", "🤯", "🥅", "🥐", "🥖", "🥚", "🥩", "🥳", "🥹", "🦖", "🧑‍🌾", "🧺", "🪓", "🪦", "🪨", "🪴", "🪵", "🪶", "🪺", "grassPatch", "barn", "bush", "diamondPickup", "fence", "fenceTop", "pathHorizontal", "pathVertical", "picnicCloth", "shovel", "shovelSpot"]
+      "entries": [
+        "⚽",
+        "⛏",
+        "⛪",
+        "🌪",
+        "🌱",
+        "🌲",
+        "🌳",
+        "🌸",
+        "🌺",
+        "🌼",
+        "🍀",
+        "🍃",
+        "🍕",
+        "🍗",
+        "🍪",
+        "🏚",
+        "🏠",
+        "🏡",
+        "🏢",
+        "🏣",
+        "🏤",
+        "🏥",
+        "🏨",
+        "🐓",
+        "🐔",
+        "🐦",
+        "👻",
+        "💐",
+        "💥",
+        "💧",
+        "💩",
+        "📦",
+        "🕌",
+        "😂",
+        "😊",
+        "😋",
+        "😑",
+        "😞",
+        "😠",
+        "😩",
+        "😭",
+        "😵",
+        "😵‍💫",
+        "🙂",
+        "🙂‍↔",
+        "🙂‍↕",
+        "🚓",
+        "🚕",
+        "🤣",
+        "🤮",
+        "🤯",
+        "🥅",
+        "🥐",
+        "🥖",
+        "🥚",
+        "🥩",
+        "🥳",
+        "🥹",
+        "🦖",
+        "🧑‍🌾",
+        "🧺",
+        "🪓",
+        "🪦",
+        "🪨",
+        "🪴",
+        "🪵",
+        "🪶",
+        "🪺",
+        "grassPatch",
+        "barn",
+        "bush",
+        "diamondPickup",
+        "fence",
+        "fenceTop",
+        "pathHorizontal",
+        "pathVertical",
+        "picnicCloth",
+        "shovel",
+        "shovelSpot"
+      ]
     },
     "road": {
       "image": "🚕",
       "entries": "roadTexture_1#12"
     }
   },
-  "layers": ["objects", "surface"],
-  "baseEntities": {
-    "ANY": {
+  "layers": [
+    "surface",
+    "objects"
+  ],
+  "baseEntities": [
+    {
+      "name": "ANY",
+      "texture": "NAME",
       "baseClass": "ArcadeObject",
       "hitbox": "DEFAULT",
       "pivotBasedOnHitbox": "CENTER"
     },
-    "static": {
+    {
+      "name": "static",
       "static": true
     }
-  },
-  "entities": {
-    "roadTexture_#": {
-      "baseEntity": "static",
+  ],
+  "entities": [
+    {
+      "name": "roadTexture_#",
+      "entity": "static",
       "imagePath": "roads",
       "pivot": {
         "x": 0,
@@ -31,8 +117,9 @@
       },
       "hitbox": "NONE"
     },
-    "barn": {
-      "baseEntity": "static",
+    {
+      "name": "barn",
+      "entity": "static",
       "hitbox": {
         "x1": 27,
         "y1": 362,
@@ -40,8 +127,9 @@
         "y2": 378
       }
     },
-    "🏚": {
-      "baseEntity": "static",
+    {
+      "name": "🏚",
+      "entity": "static",
       "hitbox": {
         "x1": 41,
         "y1": 291,
@@ -49,8 +137,9 @@
         "y2": 327
       }
     },
-    "🌲": {
-      "baseEntity": "static",
+    {
+      "name": "🌲",
+      "entity": "static",
       "hitbox": {
         "x1": 124,
         "y1": 335,
@@ -58,8 +147,9 @@
         "y2": 355
       }
     },
-    "🌳": {
-      "baseEntity": "static",
+    {
+      "name": "🌳",
+      "entity": "static",
       "hitbox": {
         "x1": 134,
         "y1": 340,
@@ -67,8 +157,9 @@
         "y2": 360
       }
     },
-    "fence": {
-      "baseEntity": "static",
+    {
+      "name": "fence",
+      "entity": "static",
       "hitbox": {
         "x1": 0,
         "y1": 96,
@@ -76,8 +167,9 @@
         "y2": 105
       }
     },
-    "fenceTop": {
-      "baseEntity": "static",
+    {
+      "name": "fenceTop",
+      "entity": "static",
       "hitbox": {
         "x1": 2,
         "y1": 0,
@@ -85,30 +177,34 @@
         "y2": 174
       }
     },
-    "💎": {
-      "baseEntity": "static",
+    {
+      "name": "💎",
+      "entity": "static",
       "hitbox": "FULL"
     },
-    "pathHorizontal": {
-      "baseEntity": "static",
+    {
+      "name": "pathHorizontal",
+      "entity": "static",
       "hitbox": "NONE",
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "pathVertical": {
-      "baseEntity": "static",
+    {
+      "name": "pathVertical",
+      "entity": "static",
       "hitbox": "NONE",
       "pivot": {
         "x": 0.5,
         "y": 0.5
       }
     },
-    "arrowLevel": {
+    {
+      "name": "arrowLevel",
       "hitbox": "FULL"
     }
-  },
+  ],
   "presets": {
     "DEFAULT": {
       "hitbox": {

@@ -1,14 +1,25 @@
 {
   "name": "mapData",
-  "categories":
+  "categories": {
+    "Levels": {
+      "image": "📦",
+      "entries": [
+        "level_car",
+        "level_city",
+        "level_cloud",
+        "level_farm",
+        "level_goal",
+        "level_heavens_gate",
+        "level_intro",
+        "level_picnic",
+        "level_whirlwind"
+      ]
+    }
+  },
+  "baseEntities": [
     {
-      "Levels": {
-        "image": "📦",
-        "entries": ["level_car", "level_city", "level_cloud", "level_farm", "level_goal", "level_heavens_gate", "level_intro", "level_picnic", "level_whirlwind"]
-      }
-    },
-  "baseEntities": {
-    "level": {
+      "name": "level",
+      "texture": "NAME",
       "imagePath": "editorImages",
       "components": {
         "levelConnector": {}
@@ -18,34 +29,43 @@
         "y": 0.5
       }
     }
-  },
-  "entities": {
-    "level_car": {
-      "baseEntity": "level"
+  ],
+  "entities": [
+    {
+      "name": "level_car",
+      "entity": "level"
     },
-    "level_city": {
-      "baseEntity": "level"
+    {
+      "name": "level_city",
+      "entity": "level"
     },
-    "level_cloud": {
-      "baseEntity": "level"
+    {
+      "name": "level_cloud",
+      "entity": "level"
     },
-    "level_farm": {
-      "baseEntity": "level"
+    {
+      "name": "level_farm",
+      "entity": "level"
     },
-    "level_goal": {
-      "baseEntity": "level"
+    {
+      "name": "level_goal",
+      "entity": "level"
     },
-    "level_heavens_gate": {
-      "baseEntity": "level"
+    {
+      "name": "level_heavens_gate",
+      "entity": "level"
     },
-    "level_intro": {
-      "baseEntity": "level"
+    {
+      "name": "level_intro",
+      "entity": "level"
     },
-    "level_picnic": {
-      "baseEntity": "level"
+    {
+      "name": "level_picnic",
+      "entity": "level"
     },
-    "level_whirlwind": {
-      "baseEntity": "level"
+    {
+      "name": "level_whirlwind",
+      "entity": "level"
     }
-  }
+  ]
 }

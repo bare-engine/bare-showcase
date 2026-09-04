@@ -12,22 +12,26 @@ export class DemoArcadePhysics extends Scene
     constructor()
     {
         super(JSON.parse(`{
-            "baseEntities": {
-                "ANY": {
+            "baseEntities": [
+                {
+                    "name": "ANY",
+                    "texture": "NAME",
                     "baseClass": "ArcadeObject",
                     "hitbox": "FULL",
                     "drag": 0.01,
                     "restitution": 0.8
                 }
-            },
-            "entities": {
-                "⚽": {
+            ],
+            "entities": [
+                {
+                    "name": "⚽",
                     "hitboxType": "Circle"
                 },
-                "⏹": {
+                {
+                    "name": "⏹",
                     "static": true
                 }
-            },
+            ],
             "layersInfo": {
                 "Objects": {
                     "hasPhysics": true
