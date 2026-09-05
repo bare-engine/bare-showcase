@@ -43,11 +43,12 @@ export class DemoParticles extends Scene
                 },
                 velocity: {
                     start: new Vec2(30, 0),
+                    delta: new Vec2(0, -250)// Use delta instead of acceleration
                 },
-                acceleration: {
-                    start: new Vec2(0, -200),
-                    end: new Vec2(0, -300),
-                },
+                // acceleration: {
+                //     start: new Vec2(0, -200),
+                //     end: new Vec2(0, -300),
+                // },
             }
         });
 

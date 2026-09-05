@@ -7,7 +7,7 @@ export class GhostShader extends Shader
     constructor()
     {
         const ghostVertexShaderSource = `
-            uniform float uTime;
+            uniform highp float uTime;
             uniform float uWobbleStrength;
             uniform float uWobbleSpeed;
 
@@ -21,7 +21,7 @@ export class GhostShader extends Shader
         `;
 
         const ghostFragmentShaderSource = `
-            uniform float uTime;
+            uniform highp float uTime;
             uniform float uGhostAlpha;
             uniform float uPulseSpeed;
             uniform vec3 uGhostTint;
