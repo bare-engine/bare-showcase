@@ -60,8 +60,8 @@ export class MainGame extends Scene
         this.events.persistent.on(BareEvent.editor_closed, () => this.SetDemoTextVisibility(true));
 
         // LISTEN TO KEYBOARD EVENTS
-        this.events.on(BareEvent.key_pressed, (e) =>  {
-            if (!this.currentDemo.started)
+        this.events.on(BareEvent.key_down, (e) =>  {
+            if (!this.currentDemo?.started)
                 return; // CURRENT DEMO HASN'T LOADED EVERYTHING YET
 
             // CHANGE DEMO WITH ARROW KEYS
@@ -112,6 +112,7 @@ export class MainGame extends Scene
 
         // START
         var demoClass = this.demos[demoIndex];
+        this.currentDemo = null; // WHILE LOADING THERE IS NO CURRENT DEMO, SO KEY HANDLER IGNORES INPUT
         this.currentDemo = await bare.scene.Goto(demoClass);
         bare.scene.MoveToFront(this);
     }
