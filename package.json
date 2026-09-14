@@ -29,6 +29,7 @@
   },
   "bareEngine": {
     "name": "Bare Demos",
+    "preloadCurrentLevel": false,
     "imageGlobs": [
       "demos/**/images/**"
     ],
