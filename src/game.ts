@@ -15,7 +15,7 @@ export class MainGame extends Scene
         DemoParticles,
         DemoShaders,
         DemoTweens,
-        DemoEntities,
+        DemoPrefabs,
         DemoComponents,
         DemoExtend,
         DemoLevel,
@@ -149,7 +149,7 @@ import { DemoBasics } from '../public/demos/basics/src/DemoBasics';
 import { DemoCamera } from '../public/demos/camera/src/DemoCamera';
 import { DemoComponents } from '../public/demos/components/src/DemoComponents';
 import { DemoEditorComponents } from '../public/demos/editorComponents/src/DemoEditorComponents';
-import { DemoEntities } from '../public/demos/entities/src/DemoEntities';
+import { DemoPrefabs } from '../public/demos/prefabs/src/DemoPrefabs';
 import { DemoExtend } from '../public/demos/extend/src/DemoExtend';
 import { DemoGraphics } from '../public/demos/graphics/src/DemoGraphics';
 import { DemoImageLoading } from '../public/demos/imageLoading/src/DemoImageLoading';

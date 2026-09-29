@@ -7,7 +7,7 @@ import { Scene, TextTexture, Component, GameObject, SaveData, SaveDataHandler, T
 
 // SETTING UP THE ENTITY DATA WITH SOME UNIQUE PROPERTIES: pop, isHappy, EmojiObject
 const data = ` {
-    "baseEntities": [
+    "basePrefabs": [
         {
             "name": "ANY",
             "texture": "NAME",
@@ -17,7 +17,7 @@ const data = ` {
             }
         }
     ],
-    "entities": [
+    "prefabs": [
         {
             "name": "😃",
             "isHappy": true

@@ -12,7 +12,7 @@ export class DemoArcadePhysics extends Scene
     constructor()
     {
         super(JSON.parse(`{
-            "baseEntities": [
+            "basePrefabs": [
                 {
                     "name": "ANY",
                     "texture": "NAME",
@@ -22,7 +22,7 @@ export class DemoArcadePhysics extends Scene
                     "restitution": 0.8
                 }
             ],
-            "entities": [
+            "prefabs": [
                 {
                     "name": "⚽",
                     "hitboxType": "Circle"

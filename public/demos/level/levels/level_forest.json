@@ -8,35 +8,35 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "entity": "🪵",
+        "extends": "🪵",
         "position": {
           "x": 900,
           "y": 382
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 667,
           "y": 1262
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 1050,
           "y": 48
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 114,
           "y": 943
         }
       },
       {
-        "entity": "🪓",
+        "extends": "🪓",
         "position": {
           "x": 866,
           "y": 808
@@ -52,7 +52,7 @@
     ],
     "surface": [
       {
-        "entity": "grassPatch",
+        "extends": "grassPatch",
         "position": {
           "x": 37,
           "y": 633

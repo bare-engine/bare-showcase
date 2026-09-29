@@ -29,7 +29,7 @@ Learn about the core features of the Bare Engine.
   <li>Particles</li>
   <li>Shaders</li>
   <li>Tweens</li>
-  <li>Entities</li>
+  <li>Prefabs</li>
   <li>Components</li>
   <li>Extending classes</li>
   <li>Levels</li>

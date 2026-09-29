@@ -13,7 +13,7 @@ import { Scene } from "bare-engine";
 */
 
 const data = ` {
-    "baseEntities": [
+    "basePrefabs": [
         {
             "name": "ANY",
             "texture": "NAME"

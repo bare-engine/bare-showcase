@@ -81,7 +81,7 @@
     "BACKGROUND": [],
     "SURFACE": [
       {
-        "entity": "pathVertical",
+        "extends": "pathVertical",
         "position": {
           "x": 699.9951908286882,
           "y": 1932.040850166552
@@ -111,7 +111,7 @@
     ],
     "surface": [
       {
-        "entity": "pathVertical",
+        "extends": "pathVertical",
         "position": {
           "x": 699.9951908286882,
           "y": 1932.040850166552

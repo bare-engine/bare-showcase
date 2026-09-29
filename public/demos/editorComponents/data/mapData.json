@@ -16,7 +16,7 @@
       ]
     }
   },
-  "baseEntities": [
+  "basePrefabs": [
     {
       "name": "level",
       "texture": "NAME",
@@ -30,42 +30,42 @@
       }
     }
   ],
-  "entities": [
+  "prefabs": [
     {
       "name": "level_car",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_city",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_cloud",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_farm",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_goal",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_heavens_gate",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_intro",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_picnic",
-      "entity": "level"
+      "extends": "level"
     },
     {
       "name": "level_whirlwind",
-      "entity": "level"
+      "extends": "level"
     }
   ]
 }

@@ -2,11 +2,11 @@
 import { Scene, Color, GameObject, TextTexture } from "bare-engine";
 
 /*  
-    THIS DEMO SHOWS THE POWER OF ENTITIES, A CONCEPT SOMEWHAT UNIQUE TO BARE 
-    YOU CAN THINK OF THEM AS (UNITY) PREFABS, IN THAT GAMEOBJECTS CAN INHERIT DATA FROM THEM
-    ENTITIES CAN ALSO INHERIT DATA FROM EACH OTHER, IF THEY EXTEND FROM EACH OTHER
+    THIS DEMO SHOWS THE POWER OF PREFABS
+    LIKE (UNITY) PREFABS, GAMEOBJECTS CAN INHERIT DATA FROM THEM
+    PREFABS CAN ALSO INHERIT DATA FROM EACH OTHER, THROUGH "extends"
 
-    EXPLAINING THE ENTITY DATA BELOW:
+    EXPLAINING THE PREFAB DATA BELOW:
     ANY: ANY GAMEOBJECT THAT DOES *NOT* EXTEND A CLASS ALREADY INHERITS THIS DATA
     🍐: THIS WILL INHERIT THE 'ANY' DATA
     🍌: THIS EXTENDS Fruit", THE FACT THAT THIS STARTS WITH A CAPITAL DENOTES THAT THIS IS A CLASS, 
@@ -17,7 +17,7 @@ import { Scene, Color, GameObject, TextTexture } from "bare-engine";
 
 const data = `
 {
-    "baseEntities": [
+    "basePrefabs": [
         {
             "name": "ANY",
             "texture": "NAME",
@@ -37,13 +37,13 @@ const data = `
         },
         {
             "name": "bigAndNoRotation",
-            "entity": "big",
+            "extends": "big",
             "propertiesRemoved": [
                 "rotation"
             ]
         }
     ],
-    "entities": [
+    "prefabs": [
         {
             "name": "🍐"
         },
@@ -53,13 +53,13 @@ const data = `
         },
         {
             "name": "🍎",
-            "entity": "bigAndNoRotation"
+            "extends": "bigAndNoRotation"
         }
     ]
 }
 `;
 
-export class DemoEntities extends Scene
+export class DemoPrefabs extends Scene
 {
     constructor()
     {

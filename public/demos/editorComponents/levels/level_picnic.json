@@ -8,7 +8,7 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 2139,
           "y": 186
@@ -36,14 +36,14 @@
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 1618,
           "y": 560
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 1992,
           "y": 682
@@ -78,7 +78,7 @@
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 2088,
           "y": 1041
@@ -113,14 +113,14 @@
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 1754,
           "y": 1416
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 2184,
           "y": 1446
@@ -134,42 +134,42 @@
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 1279,
           "y": 1643
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 723,
           "y": 1780
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 1026,
           "y": 1810
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 1946,
           "y": 1861
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 258,
           "y": 1871
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 1598,
           "y": 1941
@@ -183,56 +183,56 @@
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 2225,
           "y": 2048
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 1239,
           "y": 2093
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 556,
           "y": 2123
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 1442,
           "y": 196
         }
       },
       {
-        "entity": "🌲",
+        "extends": "🌲",
         "position": {
           "x": 1157,
           "y": 339
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 795,
           "y": 218
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 532,
           "y": 481
         }
       },
       {
-        "entity": "🌳",
+        "extends": "🌳",
         "position": {
           "x": 313,
           "y": 180

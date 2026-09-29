@@ -17,7 +17,7 @@
       "showLabels": true
     }
   },
-  "baseEntities": [
+  "basePrefabs": [
     {
       "name": "physicsBase",
       "restitution": 0.7,
@@ -28,17 +28,17 @@
       "static": true
     }
   ],
-  "entities": [
+  "prefabs": [
     {
       "name": "⚽",
       "baseClass": "Circle",
-      "entity": "physicsBase",
+      "extends": "physicsBase",
       "texture": "⚽"
     },
     {
       "name": "🏈",
       "baseClass": "Polygon",
-      "entity": "physicsBase",
+      "extends": "physicsBase",
       "restitution": 1,
       "polygonVertices": [
         23,
@@ -86,7 +86,7 @@
     },
     {
       "name": "boxStatic",
-      "entity": "physicsStatic",
+      "extends": "physicsStatic",
       "baseClass": "Box",
       "texture": "PIXEL",
       "color": "#000000",

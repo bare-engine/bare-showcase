@@ -9,7 +9,7 @@ import { WaveComponent } from "./components/waveComponent";
 */
 
 const data = ` {
-    "entities": [
+    "prefabs": [
         {
             "name": "👋",
             "texture": "👋",

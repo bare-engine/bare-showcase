@@ -7,7 +7,7 @@
   "entitiesByLayer": {
     "objects": [
       {
-        "entity": "boxStatic",
+        "extends": "boxStatic",
         "position": {
           "x": 1344,
           "y": 128
@@ -18,7 +18,7 @@
         }
       },
       {
-        "entity": "boxStatic",
+        "extends": "boxStatic",
         "position": {
           "x": 128,
           "y": 1408
@@ -29,7 +29,7 @@
         }
       },
       {
-        "entity": "boxStatic",
+        "extends": "boxStatic",
         "name": "body_128_1152",
         "position": {
           "x": 128,
@@ -41,7 +41,7 @@
         }
       },
       {
-        "entity": "boxStatic",
+        "extends": "boxStatic",
         "position": {
           "x": 1344,
           "y": 1152
@@ -52,7 +52,7 @@
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "name": "body_896_736",
         "position": {
           "x": 1152,
@@ -60,7 +60,7 @@
         }
       },
       {
-        "entity": "🏈",
+        "extends": "🏈",
         "name": "joint_target_960_416",
         "position": {
           "x": 352,
@@ -69,7 +69,7 @@
         "mass": 1.0692
       },
       {
-        "entity": "🏈",
+        "extends": "🏈",
         "name": "body_832_224",
         "density": 0.9999999999999999,
         "mass": 1.8069480000000002,
@@ -84,7 +84,7 @@
         "rotation": 42.66374620336224
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "name": "body_800_192",
         "position": {
           "x": 716,
@@ -92,7 +92,7 @@
         }
       },
       {
-        "entity": "boxDynamic",
+        "extends": "boxDynamic",
         "name": "joint_target_1088_832",
         "restitution": 0.29,
         "mass": 2.8672,
@@ -107,7 +107,7 @@
         "density": 1
       },
       {
-        "entity": "🏈",
+        "extends": "🏈",
         "position": {
           "x": 672,
           "y": 1141
@@ -115,7 +115,7 @@
         "mass": 1.0692
       },
       {
-        "entity": "🏈",
+        "extends": "🏈",
         "name": "body_414_323.1",
         "density": 0.9999999999999999,
         "mass": 4.715172,
@@ -130,7 +130,7 @@
         "rotation": 40.90924101512943
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "name": "body_961.5603074781925_196.19559638476147",
         "position": {
           "x": 946,
@@ -138,21 +138,21 @@
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 575,
           "y": 1000
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 934,
           "y": 1266
         }
       },
       {
-        "entity": "🏈",
+        "extends": "🏈",
         "name": "body_955.9523439265805_-116.49208912795439",
         "angularVelocity": 4,
         "position": {
@@ -163,28 +163,28 @@
         "mass": 1.0692
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 792,
           "y": 1036
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 1136,
           "y": 1214
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 834,
           "y": 1280
         }
       },
       {
-        "entity": "🏈",
+        "extends": "🏈",
         "name": "body_905_944",
         "position": {
           "x": 384,
@@ -195,7 +195,7 @@
         "mass": 1.0692
       },
       {
-        "entity": "boxDynamic",
+        "extends": "boxDynamic",
         "name": "body_500.8593232620976_134.93190247998737",
         "restitution": 0.3,
         "linearVelocity": {
@@ -214,7 +214,7 @@
         "density": 1
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "name": "body_183.6647976219042_325.65519691862806",
         "position": {
           "x": 960,
@@ -222,7 +222,7 @@
         }
       },
       {
-        "entity": "boxStatic",
+        "extends": "boxStatic",
         "position": {
           "x": 128,
           "y": 128
@@ -233,7 +233,7 @@
         }
       },
       {
-        "entity": "lineJointObject",
+        "extends": "lineJointObject",
         "baseName": "jointAnchor",
         "targetName": "body_955.9523439265805_-116.49208912795439",
         "slideDirection": {
@@ -246,7 +246,7 @@
         }
       },
       {
-        "entity": "lineJointObject",
+        "extends": "lineJointObject",
         "baseName": "jointAnchor",
         "targetName": "body_500.8593232620976_134.93190247998737",
         "jointMass": 100,
@@ -257,7 +257,7 @@
         }
       },
       {
-        "entity": "motorJointObject",
+        "extends": "motorJointObject",
         "baseName": "jointAnchor",
         "targetName": "joint_target_1088_832",
         "dampingRatio": 0,
@@ -269,7 +269,7 @@
         }
       },
       {
-        "entity": "revoluteJointObject",
+        "extends": "revoluteJointObject",
         "baseName": "jointAnchor",
         "targetName": "joint_target_960_416",
         "position": {
@@ -278,7 +278,7 @@
         }
       },
       {
-        "entity": "weldJointObject",
+        "extends": "weldJointObject",
         "baseName": "body_832_224",
         "targetName": "body_800_192",
         "position": {
@@ -287,7 +287,7 @@
         }
       },
       {
-        "entity": "distanceJointObject",
+        "extends": "distanceJointObject",
         "baseName": "body_500.8593232620976_134.93190247998737",
         "targetName": "body_414_323.1",
         "frequency": 2.5,
@@ -301,7 +301,7 @@
         }
       },
       {
-        "entity": "distanceJointObject",
+        "extends": "distanceJointObject",
         "baseName": "body_500.8593232620976_134.93190247998737",
         "targetName": "body_414_323.1",
         "frequency": 2.5,
@@ -315,7 +315,7 @@
         }
       },
       {
-        "entity": "angleJointObject",
+        "extends": "angleJointObject",
         "baseName": "jointAnchor",
         "targetName": "body_905_944",
         "frequency": 162,
@@ -325,7 +325,7 @@
         }
       },
       {
-        "entity": "weldJointObject",
+        "extends": "weldJointObject",
         "baseName": "body_832_224",
         "targetName": "body_961.5603074781925_196.19559638476147",
         "position": {
@@ -334,21 +334,21 @@
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 544,
           "y": 1312
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 320,
           "y": 1280
         }
       },
       {
-        "entity": "⚽",
+        "extends": "⚽",
         "position": {
           "x": 416,
           "y": 1120
