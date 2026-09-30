@@ -89,7 +89,7 @@ export class Fruit extends GameObject
     OnAwake(): void
     {
         this.AddChild(new TextTexture(rapid, {
-            text: "I'm a Fruit class",
+            text: "I'm a Fruit class instance",
             fontSize: 20,
             fontFamily: 'monospace'
         }));
