@@ -44,7 +44,7 @@ export class DemoGraphics extends Scene
 
         // LINES
         rapid.drawLine({
-            points: Vec2.FromArray([
+            points: Vec2.fromArray([
                 [0, 30],
                 [120, 20],
                 [130, 100],
@@ -59,7 +59,7 @@ export class DemoGraphics extends Scene
 
         // POLYGON
         rapid.drawGraphic({
-            points: Vec2.FromArray([
+            points: Vec2.fromArray([
                 [0, 30],
                 [120, 20],
                 [130, 100],
@@ -73,12 +73,12 @@ export class DemoGraphics extends Scene
 
         // TEXTURE POLYGON + UV
         rapid.drawGraphic({
-            points: Vec2.FromArray([
+            points: Vec2.fromArray([
                 [0, 0],
                 [140, 0],
                 [70, 130],
             ]),
-            uv: Vec2.FromArray([
+            uv: Vec2.fromArray([
                 [0, 0],
                 [1, 0],
                 [0.5, 1],
@@ -90,13 +90,13 @@ export class DemoGraphics extends Scene
 
         // TEXTURE WARPED INTO A QUAD (PERSPECTIVE TILT)
         rapid.drawGraphic({
-            points: Vec2.FromArray([ // TILTED QUAD
+            points: Vec2.fromArray([ // TILTED QUAD
                 [0, 30],
                 [220, 0],
                 [200, 90],
                 [20, 110],
             ]),
-            uv: Vec2.FromArray([ // UV QUAD
+            uv: Vec2.fromArray([ // UV QUAD
                 [0, 1],
                 [1, 1],
                 [1, 0],
