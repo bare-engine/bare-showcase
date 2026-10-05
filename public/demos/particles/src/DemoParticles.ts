@@ -1,5 +1,5 @@
 
-import { Scene, Color, ParticleEmitter, ParticleShape, Vec2 } from "bare-engine";
+import { Scene, Color, ParticleEmitter, ParticleController, ParticleShape, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP PARTICLE EMITTERS, EITHER CONTINUES OR ONE SHOT
@@ -20,7 +20,6 @@ export class DemoParticles extends Scene
 
         // TODO: MAKE THIS ABLE TO LOAD A JSON STRING, GOTTA PORT COLOR AND VEC2
         this.smokeEmitter = new ParticleEmitter(rapid, {
-            position: new Vec2(0, 0),
             life: 1.2,
             texture: particleTexture,
             origin: new Vec2(0.5, 0.5),
@@ -53,7 +52,6 @@ export class DemoParticles extends Scene
         });
 
         this.explosionEmitter = new ParticleEmitter(rapid, {
-            position: new Vec2(0, 0),
             life: .8,
             texture: stripeParticleTexture,
             origin: new Vec2(0.5, 0.5),
@@ -79,21 +77,20 @@ export class DemoParticles extends Scene
             }
         });
         
-        bare.particle.Add(this.explosionEmitter); // ONE SHOT IS THE DEFAULT. ACTIVATED BELOW WITH oneShot()
+        bare.particle.Add(this.explosionEmitter); // ONE SHOT IS THE DEFAULT. ACTIVATED BELOW WITH OneShot()
         bare.particle.Add(this.smokeEmitter, {autoStart: true}); // AUTO START MAKES IT BECOME A CONTINUOUS EMITTER
     }
 
     OnUpdate(deltaTime: number): void
     {
         // LET THE SMOKE FOLLOW THE MOUSE
-        this.smokeEmitter.position.set(bare.mouse.screen.position.x, bare.mouse.screen.position.y);
+        ParticleController.SetPosition(this.smokeEmitter, bare.mouse.screen.position.x, bare.mouse.screen.position.y);
         
         // ONE SHOT THE EXPLOSION EVERY explosionInterval SECONDS
         this.explosionTimer += deltaTime;
         if (this.explosionTimer >= this.explosionInterval)
         {
-            this.explosionEmitter.position.set(bare.width * Math.random(), bare.height * Math.random());
-            this.explosionEmitter.oneShot();
+            bare.particle.OneShot(this.explosionEmitter, { position: new Vec2(bare.width * Math.random(), bare.height * Math.random()) });
             
             this.explosionTimer = 0;
         }

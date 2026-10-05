@@ -27,7 +27,7 @@ export class GhostShader extends Shader
             uniform vec3 uGhostTint;
             uniform float uEdgeFade;
 
-            void fragment(inout vec4 color) {
+            void fragment(inout vec4 color, vec2 vRegion) {
                 if(color.a < 0.1) return;
                 
                 float pulse = 0.5 + 0.3 * sin(uTime * uPulseSpeed);
