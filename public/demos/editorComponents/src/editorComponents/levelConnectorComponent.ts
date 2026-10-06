@@ -1,4 +1,4 @@
-import { Component, GameMode, Run, Save, Scene } from "bare-engine"
+import { Component, GameMode, Run, Scene, SerializeField } from "bare-engine"
 import { GameObject } from "bare-engine";
 import { Color, Vec2 } from "bare-engine";
 
@@ -7,10 +7,10 @@ type Direction = "top" | "right" | "bottom" | "left";
 @Run(GameMode.Edit)
 export class LevelConnectorComponent extends Component
 {
-    @Save private top:string;
-    @Save private right:string;
-    @Save private bottom:string;
-    @Save private left:string;
+    @SerializeField(GameMode.Edit) private top:string;
+    @SerializeField(GameMode.Edit) private right:string;
+    @SerializeField(GameMode.Edit) private bottom:string;
+    @SerializeField(GameMode.Edit) private left:string;
 
     constructor(scene:Scene, top:string, right:string, bottom:string, left:string)
     {

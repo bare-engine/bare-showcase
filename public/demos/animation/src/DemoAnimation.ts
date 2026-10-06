@@ -49,7 +49,7 @@ export class DemoAnimation extends Scene
         buffalo.SetPosition(100, 550);
         
         this.events.on(BareEvent.pointer_down, (info) => {
-            animComponent.Play('eat', () => trace('animation complete'))
+            animComponent.Play('eat', () => trace('eat animation completed'))
         });
         
         this.AddGameObject('barn')

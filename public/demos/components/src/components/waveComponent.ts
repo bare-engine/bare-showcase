@@ -1,10 +1,10 @@
-import { Component, Easing, InspectorField, Scene, TweenTo } from "bare-engine";
+import { Component, Easing, Scene, TweenTo, SerializeField } from "bare-engine";
 
 export class WaveComponent extends Component
 {
     countDown:number = 0;
 
-    @InspectorField
+    @SerializeField
     wavesPerSecond: number = 1;
 
     constructor(scene:Scene)
