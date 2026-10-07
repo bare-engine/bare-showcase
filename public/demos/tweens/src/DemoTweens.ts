@@ -8,12 +8,12 @@ import { Scene, Easing, Tween, TweenTo } from "bare-engine";
 
 export class DemoTweens extends Scene
 {
-    async OnAwake(): Promise<void>
+    override async OnAwake(): Promise<void>
     {
         await bare.asset.LoadTexture("❤");
     }
     
-    OnStart()
+    override OnStart()
     {
         var heart = bScene.AddGameObject('❤')
             .SetPosition(bare.width * .5, bare.height * .5)

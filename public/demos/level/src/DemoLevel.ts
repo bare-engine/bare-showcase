@@ -42,12 +42,12 @@ export class DemoLevel extends Scene
 		super(JSON.parse(data));
 	}
 
-	async OnStart()
+	override async OnStart()
 	{
 		await this.LoadLevel("level_forest");
 	}
 	
-	OnPostLoadLevel()
+	override OnPostLoadLevel()
 	{
 		bare.camera.SetPosition(0, 0);
 		bare.camera.SetDimensionsToLevel();

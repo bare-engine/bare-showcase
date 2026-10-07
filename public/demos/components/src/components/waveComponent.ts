@@ -12,7 +12,7 @@ export class WaveComponent extends Component
         super(scene);
     }
 
-    OnUpdate(deltaTime: number): void
+    override OnUpdate(deltaTime: number): void
     {
         if (this.wavesPerSecond <= 0)
             return;
@@ -32,17 +32,17 @@ export class WaveComponent extends Component
         }
     }
 
-    OnEnable(): void
+    override OnEnable(): void
     {
 
     }
     
-    OnDisable(): void
+    override OnDisable(): void
     {
         
     }
 
-    OnStart(): void
+    override OnStart(): void
     {
         
     }

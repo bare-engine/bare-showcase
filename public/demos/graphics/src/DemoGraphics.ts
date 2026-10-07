@@ -9,7 +9,7 @@ export class DemoGraphics extends Scene
     flowerTexture!: Texture;
     treeTexture!: Texture;
 
-    async OnStart()
+    override async OnStart()
     {
         this.flowerTexture = await bare.asset.LoadTexture("🌼");
         this.treeTexture = await bare.asset.LoadTexture("🌲");
@@ -24,7 +24,7 @@ export class DemoGraphics extends Scene
         flower.SetMask(tree);
     }
 
-    OnRender(): void
+    override OnRender(): void
     {
         // CIRCLE
         rapid.drawCircle({

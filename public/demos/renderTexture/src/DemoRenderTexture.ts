@@ -8,7 +8,7 @@ export class DemoRenderTexture extends Scene
 {
     renderTexture!: RenderTexture;
 
-    OnStart()
+    override OnStart()
     {
         this.renderTexture = new RenderTexture(rapid, { width: bare.width, height: bare.height, clearColor: new Color(0, 0, 0, 0) })
         bScene.AddGameObject(this.renderTexture)
@@ -17,7 +17,7 @@ export class DemoRenderTexture extends Scene
             .SetScale(.8);
     }
 
-    OnUpdate(deltaTime: number): void
+    override OnUpdate(deltaTime: number): void
     {
         var obj = new GameObject(this, '', Helper.RandomRange(0, bare.width), Helper.RandomRange(150, bare.height))
         obj.SetRotation(Helper.RandomRange(-45, 45));
@@ -27,7 +27,7 @@ export class DemoRenderTexture extends Scene
 		bScene.RenderTo(obj, this.renderTexture); // COULD ALSO SUPPLY A TEXTURE INSTEAD OF GAMEOBJECT
     }
 
-    OnClear(): void
+    override OnClear(): void
     {
         this.renderTexture.destroy();
     }

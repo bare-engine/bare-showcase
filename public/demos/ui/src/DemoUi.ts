@@ -13,7 +13,7 @@ export class DemoUi extends Scene
         super({ UI: true, resize: true });
     }
 
-    OnStart()
+    override OnStart()
     {
         this.CreateText('Resize me')
             .SetPosition(bare.width * .5, bare.height * .5)

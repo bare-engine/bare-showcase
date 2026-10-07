@@ -22,12 +22,12 @@ export class LevelConnectorComponent extends Component
         this.left = left;
     }
 
-    Added(go: GameObject):void
+    override Added(go: GameObject):void
     {
         super.Added(go);
     }
 
-    OnUpdate(deltaTime: number): void 
+    override OnUpdate(deltaTime: number): void 
     {
         if (bare.mouse.IsDown() || bare.mouse.IsRightDown()/* && bare.hitbox.GetCurrentHover() == this.go.hitbox*/)
         {
@@ -82,7 +82,7 @@ export class LevelConnectorComponent extends Component
         }
     }
 
-    OnRender(): void 
+    override OnRender(): void 
     {
         var directions:Direction[] = ["top", "right", "bottom", "left"];
         var allConnectorComponents:LevelConnectorComponent[] = bare.component.GetAllByType(LevelConnectorComponent as any);

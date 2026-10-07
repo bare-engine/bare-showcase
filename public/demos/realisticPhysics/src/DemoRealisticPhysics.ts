@@ -19,12 +19,12 @@ export class DemoRealisticPhysics extends Scene
         super({settingsData: settingsDataJson});
     }
     
-    OnAwake()
+    override OnAwake()
     {
         bare.AddClass(SopiroPhysicsController);
     }
     
-    async OnStart()
+    override async OnStart()
     {
         await this.LoadLevel('level');
 
@@ -43,7 +43,7 @@ export class DemoRealisticPhysics extends Scene
         })
     }
 
-    OnPostLoadLevel(level: LevelData, persistenObjUIDs?: string[]): void
+    override OnPostLoadLevel(level: LevelData, persistenObjUIDs?: string[]): void
     {
         bare.camera.SetDimensionsToLevel();
         bare.camera.SetScaleMode(CameraScaleMode.Contain);

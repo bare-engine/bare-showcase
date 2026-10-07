@@ -27,12 +27,12 @@ export class DemoComponents extends Scene
         super(JSON.parse(data));
     }
     
-    OnAwake(): void
+    override OnAwake(): void
     {
         bare.AddClass(WaveComponent);
     }
 
-    OnStart()
+    override OnStart()
     {
         // ADD A GAME OBJECT 👋 - IT WILL INSTANTIATE WITH WAVE COMPONENT BASED ON DATA ABOVE
         bScene.AddGameObject('👋')

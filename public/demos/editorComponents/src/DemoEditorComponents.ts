@@ -19,7 +19,7 @@ export class DemoEditorComponents extends Scene
         super({settingsData: settingsDataJson});
     }
         
-    async OnAwake()
+    override async OnAwake()
     {
         await MapHandler.Init(this);
 
@@ -31,7 +31,7 @@ export class DemoEditorComponents extends Scene
         bare.RegisterGameObjectPool(ArcadeObject, 30); //SET POOL SIZE
     }
 
-    async OnStart()
+    override async OnStart()
     {
         await bare.asset.LoadTexture("arrowLevel");
         await this.LoadLevel("level_car");
@@ -105,7 +105,7 @@ export class DemoEditorComponents extends Scene
         }
     }
 
-    OnClear(includingPersistent?: boolean): void
+    override OnClear(includingPersistent?: boolean): void
     {
         if (includingPersistent)
         {

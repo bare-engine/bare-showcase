@@ -31,14 +31,14 @@ export class DemoAnimation extends Scene
         super(JSON.parse(data));
     }
 
-    async OnAwake()
+    override async OnAwake()
     {
         rapid.setTextureFilter(TextureFilterMode.NEAREST); // SET TO NEAREST TO SHOW CRISP PIXEL ART
 
         await bare.asset.LoadAtlas("texturePackImages");
     }
     
-    OnStart()
+    override OnStart()
     {
         var buffalo = this.AddGameObject({name: 'buffalo'});
         var animComponent = buffalo.AddComponent(AnimationComponent);
@@ -56,7 +56,7 @@ export class DemoAnimation extends Scene
             .SetPosition(0, 110);
     }
 
-    OnClear(): void
+    override OnClear(): void
     {
         rapid.setTextureFilter(TextureFilterMode.LINEAR); // REVERT TO LINEAR, JUST SO IT'S ENABLED FOR OTHER DEMOS AGAIN
     }

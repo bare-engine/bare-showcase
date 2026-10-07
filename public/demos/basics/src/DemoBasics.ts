@@ -10,7 +10,7 @@ export class DemoBasics extends Scene
 {
     cog!: GameObject;
 
-    OnStart()
+    override OnStart()
     {
         // ADD A SIMPLE GAME OBJECT ⚙ 
         this.cog = bScene.AddGameObject('⚙')
@@ -18,7 +18,7 @@ export class DemoBasics extends Scene
             .CenterPivot();
     }
 
-    OnFixedUpdate(): void
+    override OnFixedUpdate(): void
     {
         this.cog.rotation++;
     }

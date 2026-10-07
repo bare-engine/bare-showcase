@@ -13,7 +13,7 @@ export class DemoParticles extends Scene
     explosionTimer = 0;
     explosionInterval = .8;
     
-    async OnStart()
+    override async OnStart()
     {
         var particleTexture = await bare.asset.LoadTexture("starParticle");
         var stripeParticleTexture = await bare.asset.LoadTexture("stripeParticle");
@@ -81,7 +81,7 @@ export class DemoParticles extends Scene
         bare.particle.Add(this.smokeEmitter, {autoStart: true}); // AUTO START MAKES IT BECOME A CONTINUOUS EMITTER
     }
 
-    OnUpdate(deltaTime: number): void
+    override OnUpdate(deltaTime: number): void
     {
         // LET THE SMOKE FOLLOW THE MOUSE
         ParticleController.SetPosition(this.smokeEmitter, bare.mouse.screen.position.x, bare.mouse.screen.position.y);

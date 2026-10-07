@@ -40,12 +40,12 @@ export class DemoArcadePhysics extends Scene
         }`));
     }
         
-    OnAwake()
+    override OnAwake()
     {
         bare.AddClass(ArcadePhysicsController);
     }
 
-    OnStart()
+    override OnStart()
     {
         bScene.AddGameObject('⏹')
             .SetPosition(bare.width * .5, bare.height * .2)

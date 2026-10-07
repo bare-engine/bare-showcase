@@ -50,14 +50,14 @@ export class DemoECS extends Scene
     private poisonCountdown = 0;
     private unsubscribers: (() => void)[] = [];
     
-    async OnAwake()
+    override async OnAwake()
     {
         rapid.setTextureFilter(TextureFilterMode.NEAREST); // SET TO NEAREST TO SHOW CRISP PIXEL ART
 
         await bare.asset.LoadTexture("player");
     }
 
-    OnStart()
+    override OnStart()
     {
         // CREATE THE ECS WORLD
         this.world = new World<DemoObject>();
@@ -127,7 +127,7 @@ export class DemoECS extends Scene
         this.world.add(obj);
     }
 
-    OnFixedUpdate(fixedDeltaTime: number): void
+    override OnFixedUpdate(fixedDeltaTime: number): void
     {
         // RUN THE SYSTEMS
         this.PoisonSystem(fixedDeltaTime);
@@ -204,7 +204,7 @@ export class DemoECS extends Scene
         obj.healthTextObj.SetText(`${obj.name}: ${obj.health.current}/${obj.health.max}`);
     }
 
-    OnClear(): void
+    override OnClear(): void
     {
         this.unsubscribers.forEach(unsubscribe => unsubscribe());
         this.unsubscribers = [];

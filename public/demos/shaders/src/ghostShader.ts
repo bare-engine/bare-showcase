@@ -36,7 +36,7 @@ export class GhostShader extends Shader
         this.startTime = Date.now();
     }
 
-    Update()
+    override Update()
     {
         const currentTime = (Date.now() - this.startTime) * 0.001;
         this.SetUniforms({ uTime: currentTime });

@@ -7,12 +7,12 @@ import { GhostShader } from "./ghostShader";
 
 export class DemoShaders extends Scene
 {
-    async OnAwake(): Promise<void>
+    override async OnAwake(): Promise<void>
     {
         await bare.asset.LoadTexture("👻");
     }
 
-    OnStart()
+    override OnStart()
     {
         // ADD THE GAME OBJECT
         var ghost = bScene.AddGameObject('👻')

@@ -11,7 +11,7 @@ import { Scene, CameraScaleMode, Helper, TweenTo, BareEvent } from "bare-engine"
 
 export class DemoCamera extends Scene
 {
-    async OnStart()
+    override async OnStart()
     {
         bare.camera.SetBounds({ x: -4500, y: -1500, width: 9000, height: 3000 });
 
@@ -52,7 +52,7 @@ export class DemoCamera extends Scene
         }, repeat: Infinity });
     }
 
-    OnUpdate(deltaTime: number): void
+    override OnUpdate(deltaTime: number): void
     {
         bare.camera.SetPosition(
             bare.mouse.screen.position.x,

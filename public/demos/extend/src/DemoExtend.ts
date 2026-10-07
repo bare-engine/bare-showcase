@@ -72,7 +72,7 @@ export class EmojiObject extends GameObject
 // EXTENDING A COMPONENT
 export class PopComponent extends Component
 {
-    Pop()
+    override Pop()
     {
         this.go.scale = 1;
         TweenTo(this.go, .3, {scale: 1.2, yoyo: true});
@@ -88,7 +88,7 @@ export class DemoExtend extends Scene
         super(JSON.parse(data));
     }
         
-    async OnAwake(): Promise<void>
+    override async OnAwake(): Promise<void>
     {
         // EMOJIOBJECT AND POPCOMPONENT ARE DESCRIBED IN ENTITY DATA ABOVE
         // SO THESE NEED TO BE REGISTERED HERE (CLASS NEEDS TO EXIST IN CODE), 
@@ -100,7 +100,7 @@ export class DemoExtend extends Scene
         await bare.asset.LoadTexture("🙁");
     }
 
-    OnStart()
+    override OnStart()
     {
         SaveDataHandler.Load();
 
@@ -142,7 +142,7 @@ export class DemoExtend extends Scene
         });
     }
 
-    OnRender()
+    override OnRender()
     {
         var text = new TextTexture(rapid, {text: `Happy Emojis Clicked: ${SaveData.happyEmojisClicked}`, fontSize: 32, fontFamily: 'monospace'});
         

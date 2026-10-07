@@ -66,7 +66,7 @@ export class DemoPrefabs extends Scene
         super(JSON.parse(data));
     }
     
-    OnStart()
+    override OnStart()
     {
         // HAVE TO REGISTER THIS MANUALLY FOR NOW, ALSO IMPORTS THE FRUIT CLASS BY REFERENCING IT
         bare.RegisterGameObjectPool(Fruit, 20);
@@ -86,7 +86,7 @@ export class Fruit extends GameObject
 {
     text!: Text;
 
-    OnAwake(): void
+    override OnAwake(): void
     {
         this.AddChild(new TextTexture(rapid, {
             text: "I'm a Fruit class instance",

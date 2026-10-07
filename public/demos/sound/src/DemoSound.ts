@@ -7,12 +7,12 @@ import { Scene, Helper, TweenTo } from "bare-engine";
 
 export class DemoSound extends Scene
 {
-    async OnAwake(): Promise<void>
+    override async OnAwake(): Promise<void>
     {
         await bare.asset.LoadTexture("🔊");
     }
 
-    OnStart()
+    override OnStart()
     {
         bare.sound.Register('click', 'bubble-pop.mp3');
         

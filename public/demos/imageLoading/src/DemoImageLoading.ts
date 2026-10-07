@@ -15,7 +15,7 @@ import { Scene, Helper } from "bare-engine";
 
 export class DemoImageLoading extends Scene
 {
-    OnStart()
+    override OnStart()
     {
         // THIS IMAGE IS PRELOADED FROM BareDemos/public/initial
         bScene.AddGameObject('🏠')

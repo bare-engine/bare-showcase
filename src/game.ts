@@ -39,7 +39,7 @@ export class MainGame extends Scene
         super({persistent: true, UI: true, resize: true});
     }
 
-    async OnAwake()
+    override async OnAwake()
     {
         // TITLE
         var title = new TextObject(this, {text: `${this.demos[this.demoIndex].name}`, fontSize: 28, fontFamily: 'monospace'})
@@ -82,7 +82,7 @@ export class MainGame extends Scene
         });
     }
 
-    OnStart(): void | Promise<void>
+    override OnStart(): void | Promise<void>
     {
         this.StartDemo(0);
     }
