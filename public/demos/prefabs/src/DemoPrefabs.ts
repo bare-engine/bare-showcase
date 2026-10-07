@@ -84,7 +84,7 @@ export class DemoPrefabs extends Scene
 
 export class Fruit extends GameObject
 {
-    text: Text;
+    text!: Text;
 
     OnAwake(): void
     {

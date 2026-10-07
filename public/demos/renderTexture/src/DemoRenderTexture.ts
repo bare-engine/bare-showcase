@@ -6,7 +6,7 @@ import { Scene, GameObject, Helper, RenderTexture, Color } from "bare-engine";
 
 export class DemoRenderTexture extends Scene
 {
-    renderTexture: RenderTexture;
+    renderTexture!: RenderTexture;
 
     OnStart()
     {

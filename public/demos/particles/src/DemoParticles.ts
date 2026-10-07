@@ -7,8 +7,8 @@ import { Scene, Color, ParticleEmitter, ParticleController, ParticleShape, Vec2 
 
 export class DemoParticles extends Scene
 {
-    smokeEmitter: ParticleEmitter;
-    explosionEmitter: ParticleEmitter;
+    smokeEmitter!: ParticleEmitter;
+    explosionEmitter!: ParticleEmitter;
 
     explosionTimer = 0;
     explosionInterval = .8;

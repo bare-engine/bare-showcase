@@ -29,10 +29,10 @@ export class MainGame extends Scene
     ];
 
     private demoIndex = 0;
-    private currentDemo: Scene;
+    private currentDemo: Scene | null = null;
 
-    private title: TextObject;
-    private instructions: TextObject;
+    private title!: TextObject;
+    private instructions!: TextObject;
 
     constructor()
     {

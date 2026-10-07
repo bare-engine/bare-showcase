@@ -8,7 +8,7 @@ import { Scene, GameObject } from "bare-engine";
 
 export class DemoBasics extends Scene
 {
-    cog: GameObject;
+    cog!: GameObject;
 
     OnStart()
     {

@@ -6,8 +6,8 @@ import { Scene, Color, MaskType, Texture, Vec2 } from "bare-engine";
 
 export class DemoGraphics extends Scene
 {
-    flowerTexture:Texture;
-    treeTexture:Texture;
+    flowerTexture!: Texture;
+    treeTexture!: Texture;
 
     async OnStart()
     {

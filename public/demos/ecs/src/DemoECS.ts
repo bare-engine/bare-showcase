@@ -42,10 +42,10 @@ type DemoQueries = {
 
 export class DemoECS extends Scene
 {
-    private world: World<DemoObject>;
-    private queries: DemoQueries;
+    private world!: World<DemoObject>;
+    private queries!: DemoQueries;
     
-    private statsText: TextObject;
+    private statsText!: TextObject;
     private poisonTicksPerSecond = 6;
     private poisonCountdown = 0;
     private unsubscribers: (() => void)[] = [];
