@@ -66,7 +66,8 @@
           "x": 352,
           "y": 896
         },
-        "mass": 1.0692
+        "mass": 1.0692,
+        "density": 0.9999999999999999
       },
       {
         "extends": "🏈",
@@ -94,7 +95,7 @@
       {
         "extends": "boxDynamic",
         "name": "joint_target_1088_832",
-        "restitution": 0.29,
+        "restitution": 0.2,
         "mass": 2.8672,
         "position": {
           "x": 1239,
@@ -112,7 +113,8 @@
           "x": 672,
           "y": 1141
         },
-        "mass": 1.0692
+        "mass": 1.0692,
+        "density": 0.9999999999999999
       },
       {
         "extends": "🏈",
@@ -160,7 +162,8 @@
           "y": 608
         },
         "rotation": -67.81452240930436,
-        "mass": 1.0692
+        "mass": 1.0692,
+        "density": 0.9999999999999999
       },
       {
         "extends": "⚽",
@@ -192,12 +195,13 @@
         },
         "rotation": 135.99653107469942,
         "color": "#9fcdfeff",
-        "mass": 1.0692
+        "mass": 1.0692,
+        "density": 0.9999999999999999
       },
       {
         "extends": "boxDynamic",
         "name": "body_500.8593232620976_134.93190247998737",
-        "restitution": 0.3,
+        "restitution": 0.21,
         "linearVelocity": {
           "x": 1121
         },

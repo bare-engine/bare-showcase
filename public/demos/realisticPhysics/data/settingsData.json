@@ -20,7 +20,7 @@
   "basePrefabs": [
     {
       "name": "physicsBase",
-      "restitution": 0.7,
+      "restitution": 0.49,
       "pivot": "CENTER"
     },
     {
@@ -39,7 +39,7 @@
       "name": "🏈",
       "baseClass": "Polygon",
       "extends": "physicsBase",
-      "restitution": 1,
+      "restitution": 0.7,
       "polygonVertices": [
         23,
         29,

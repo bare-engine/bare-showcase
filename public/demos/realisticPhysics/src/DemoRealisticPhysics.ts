@@ -32,7 +32,7 @@ export class DemoRealisticPhysics extends Scene
         // THIS WORKS SINCE CIRCLE EXTENDS RIGIDBODY WHICH EXTENDS GAMEOBJECT
         this.events.on(BareEvent.pointer_down, () => {
             var circleRb = new Circle(this, 36, Type.Dynamic);
-            circleRb.restitution = .8;
+            circleRb.restitution = .56;
             circleRb.mass = 2;
             bScene.AddGameObject(circleRb);
 
