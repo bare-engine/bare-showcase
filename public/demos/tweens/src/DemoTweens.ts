@@ -27,7 +27,7 @@ export class DemoTweens extends Scene
 
         bare.hitbox.AssignButton(heart, {
             OnPress: () => {
-                bare.tween.Shake(heart.innerPosition, "y", 1.2, -0.5, 3, 4, 0.075, 30);
+                bare.tween.Shake(heart.innerPosition, "y", 1.2, -12, 3);
             },
             OnEnter: () => {
                 TweenTo(heart, 0.3, { scale: 2 });
