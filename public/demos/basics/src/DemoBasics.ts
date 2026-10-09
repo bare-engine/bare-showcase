@@ -18,8 +18,8 @@ export class DemoBasics extends Scene
             .CenterPivot();
     }
 
-    override OnFixedUpdate(): void
+    override OnUpdate(deltaTime: number): void
     {
-        this.cog.rotation++;
+        this.cog.rotation += 60 * deltaTime;
     }
 }
