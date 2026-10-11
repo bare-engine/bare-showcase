@@ -1,5 +1,5 @@
 <h1>Bare Showcase</h1>
-Learn about the core features of the Bare Engine.
+Learn about the core features of the <a href="https://github.com/bare-engine/bare-engine">Bare Engine</a>.
 
 <br>
 <br>
