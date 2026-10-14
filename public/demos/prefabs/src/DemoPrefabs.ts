@@ -63,7 +63,7 @@ export class DemoPrefabs extends Scene
 {
     constructor()
     {
-        super(JSON.parse(data));
+        super({settingsData: JSON.parse(data)});
     }
     
     override OnStart()

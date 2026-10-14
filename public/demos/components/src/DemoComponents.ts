@@ -24,7 +24,7 @@ export class DemoComponents extends Scene
 {
     constructor()
     {
-        super(JSON.parse(data));
+        super({settingsData: JSON.parse(data)});
     }
     
     override OnAwake(): void

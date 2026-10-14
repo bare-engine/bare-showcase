@@ -28,7 +28,7 @@ export class DemoAnimation extends Scene
 {
     constructor()
     {
-        super(JSON.parse(data));
+        super({settingsData: JSON.parse(data)});
     }
 
     override async OnAwake()

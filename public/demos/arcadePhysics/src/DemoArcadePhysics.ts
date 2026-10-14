@@ -11,7 +11,7 @@ export class DemoArcadePhysics extends Scene
 {
     constructor()
     {
-        super(JSON.parse(`{
+        super({settingsData: JSON.parse(`{
             "basePrefabs": [
                 {
                     "name": "ANY",
@@ -37,7 +37,7 @@ export class DemoArcadePhysics extends Scene
                     "hasPhysics": true
                 }
             }
-        }`));
+        }`)});
     }
         
     override OnAwake()
