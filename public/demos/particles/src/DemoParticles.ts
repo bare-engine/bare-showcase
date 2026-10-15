@@ -34,7 +34,7 @@ export class DemoParticles extends Scene
                 },
                 rotation: {
                     start: 0,
-                    end: Math.PI * 2,
+                    end: 360,
                 },
                 color: {
                     start: Color.fromHex("#9898987d"),
@@ -63,9 +63,6 @@ export class DemoParticles extends Scene
                 scale: {
                     start: 1,
                     end: 0.2,
-                },
-                rotation: {
-                    start: [0, Math.PI * 2],
                 },
                 color: {
                     start: Color.fromHex("#ff0000ff"),
