@@ -23,7 +23,7 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "bare-engine": "github:BareEngine/BareEngine"
+    "bare-engine": "^1.0.0"
   },
   "bareEngine": {
     "name": "Bare Demos",
