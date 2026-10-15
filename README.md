@@ -3,6 +3,10 @@ Learn about the core features of the <a href="https://github.com/bare-engine/bar
 
 <br>
 <br>
+<b><a href="https://bare-engine.github.io/bare-showcase/">▶ Try it in your browser</a></b>
+
+<br>
+<br>
 <img width="160" alt="localhost_5176_ (1)" src="https://github.com/user-attachments/assets/8680eb76-47fa-4c24-a72b-89cc962739f1" />
 <img width="160" alt="localhost_5176_ (2)" src="https://github.com/user-attachments/assets/10bad9da-79af-4a2c-ba8a-6b1cd62c78b3" />
 <img width="160" alt="localhost_5176_ (3)" src="https://github.com/user-attachments/assets/fbefd992-24e0-4754-961c-32e55cb53280" />
