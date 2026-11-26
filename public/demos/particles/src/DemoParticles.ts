@@ -1,5 +1,5 @@
 
-import { Scene, Color, ParticleEmitter, ParticleController, ParticleShape, Vec2 } from "bare-engine";
+import { Scene, Color, ParticleEmitter, ParticleShape, Vec2 } from "bare-engine";
 
 /*  
     THIS DEMO SHOWS HOW TO SETUP PARTICLE EMITTERS, EITHER CONTINUES OR ONE SHOT
@@ -81,7 +81,7 @@ export class DemoParticles extends Scene
     override OnUpdate(deltaTime: number): void
     {
         // LET THE SMOKE FOLLOW THE MOUSE
-        ParticleController.SetPosition(this.smokeEmitter, bare.mouse.screen.position.x, bare.mouse.screen.position.y);
+        this.smokeEmitter.position.set(bare.mouse.screen.position.x, bare.mouse.screen.position.y);
         
         // ONE SHOT THE EXPLOSION EVERY explosionInterval SECONDS
         this.explosionTimer += deltaTime;
